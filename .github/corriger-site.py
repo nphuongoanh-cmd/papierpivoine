@@ -33,7 +33,8 @@ from pathlib import Path
 
 RACINE = Path(__file__).resolve().parent.parent
 SORTIE = RACINE / "_site"
-EXCLUS = {".git", ".github", "_site"}
+# Coulisses du dépôt : rien à publier.
+EXCLUS = {".git", ".github", "_site", ".gitignore", "PUBLIER.md", ".DS_Store"}
 
 KIT_UID = "27c8b8373b"
 KIT_BALISE = re.compile(
