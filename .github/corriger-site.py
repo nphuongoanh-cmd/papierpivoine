@@ -2,10 +2,10 @@
 """
 Prépare la version publiée de papierpivoine.fr.
 
-Ce script NE MODIFIE PAS le dépôt. Il recopie le site dans _site/ et applique
-là, et là seulement, trois correctifs à des bugs de l'outil de design. Les
-fichiers du dépôt restent donc tels que l'outil les produit : une régénération
-n'écrase plus rien, et il n'y a plus de rustine à réappliquer à la main.
+Ce script NE MODIFIE PAS source/. Il recopie le site de source/ vers _site/ et
+applique là, et là seulement, trois correctifs à des bugs de l'outil de design.
+source/ reste donc exactement ce que l'outil produit : on peut le remplacer en
+bloc à chaque mise à jour, sans rien à réappliquer ni à nettoyer.
 
 Les trois bugs corrigés ici (à supprimer dès que l'amont les aura réglés) :
 
@@ -32,9 +32,9 @@ import sys
 from pathlib import Path
 
 RACINE = Path(__file__).resolve().parent.parent
-SORTIE = RACINE / "_site"
-# Coulisses du dépôt : rien à publier.
-EXCLUS = {".git", ".github", "_site", ".gitignore", "PUBLIER.md", ".DS_Store"}
+ENTREE = RACINE / "source"   # le paquet de l'outil, tel quel
+SORTIE = RACINE / "_site"    # la copie corrigée qui part en ligne
+EXCLUS = {".DS_Store"}
 
 KIT_UID = "27c8b8373b"
 KIT_BALISE = re.compile(
@@ -54,17 +54,25 @@ erreurs = []
 
 
 def copier_le_site():
+    if not ENTREE.is_dir():
+        print("✗ ÉCHEC : le dossier source/ est introuvable.")
+        print("  Il doit contenir le paquet produit par l'outil de design")
+        print("  (index.html, assets/, _ds/, …). Voir PUBLIER.md.")
+        sys.exit(1)
+    if not (ENTREE / "index.html").exists():
+        print("✗ ÉCHEC : source/index.html est absent.")
+        print("  Le contenu du paquet a-t-il bien été déposé DANS source/,")
+        print("  plutôt que le dossier du paquet lui-même ? Voir PUBLIER.md.")
+        sys.exit(1)
+
     if SORTIE.exists():
         shutil.rmtree(SORTIE)
-    SORTIE.mkdir()
-    for item in RACINE.iterdir():
-        if item.name in EXCLUS:
-            continue
-        cible = SORTIE / item.name
-        if item.is_dir():
-            shutil.copytree(item, cible)
-        else:
-            shutil.copy2(item, cible)
+    # _site est reconstruit de zéro à chaque publication : un fichier retiré de
+    # source/ disparaît donc du site tout seul, sans nettoyage manuel.
+    shutil.copytree(
+        ENTREE, SORTIE,
+        ignore=shutil.ignore_patterns(*EXCLUS),
+    )
 
 
 def poser_nojekyll():

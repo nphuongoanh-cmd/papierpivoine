@@ -1,38 +1,63 @@
 # Publier une mise à jour de papierpivoine.fr
 
-## La marche à suivre
+La procédure est la **même pour tout** : nouvel article, nouveau carnet, correction
+de texte, changement d'image, suppression. Pas de cas particulier à retenir.
 
-1. Écris ton article (ou ton produit) **dans l'outil de design**. Jamais ici : les
-   fichiers de ce dépôt sont régénérés par l'outil, toute modification faite à la
-   main y serait écrasée sans prévenir.
-2. Régénère le paquet depuis l'outil. Tu obtiens un dossier `site/` ou `publish/`.
-3. Copie son **contenu** à la racine de ce dépôt (les fichiers ET les dossiers).
-4. Dans GitHub Desktop : écris un petit message, **Commit to main**, puis **Push origin**.
-5. C'est tout. Le site est en ligne au bout d'une minute environ.
+## Les 5 étapes
 
-Tu peux suivre la publication dans l'onglet **Actions** du dépôt sur github.com.
-Pastille verte = en ligne. Pastille rouge = rien n'a été publié, le site reste sur
-sa version précédente (voir plus bas).
+1. **Écris dans l'outil de design.** Jamais dans les fichiers de `source/` : ils sont
+   régénérés par l'outil, toute modification faite à la main y serait écrasée sans
+   prévenir.
 
-## Si tu supprimes quelque chose
+2. **Régénère le paquet** depuis l'outil, puis décompresse le zip. Tu obtiens un
+   dossier nommé `site/` ou `publish/` — le nom n'a aucune importance.
 
-Copier un nouveau paquet **ajoute et remplace, mais n'efface rien**. Si tu retires
-un article ou une image dans l'outil, son fichier restera ici, orphelin. Supprime-le
-à la main dans le Finder avant de committer — GitHub Desktop te montrera la
-suppression.
+3. **Remplace le dossier `source/`** dans `Documents/GitHub/papierpivoine` :
+   - jette l'ancien `source` à la corbeille ;
+   - dépose le dossier fraîchement décompressé à sa place ;
+   - renomme-le `source`.
 
-(Le README du paquet de déploiement affirme que « git gère la suppression
-automatiquement ». C'est faux.)
+   Le contenu de `source` doit être `index.html`, `assets/`, `_ds/`… directement —
+   pas un dossier `publish` contenant un dossier. Si tu te trompes, la publication
+   échouera en te le disant, sans rien casser en ligne.
+
+4. **GitHub Desktop** : écris un petit message (« Nouvel article : … »), clique
+   **Commit to main**, puis **Push origin**.
+
+5. **Attends une minute**, puis va voir ton site.
+
+C'est tout. Les ajouts, les remplacements **et les suppressions** sont gérés : le site
+publié est reconstruit de zéro à partir de `source/` à chaque fois. Un fichier que tu
+retires dans l'outil disparaît du site tout seul — il n'y a plus rien à nettoyer à la
+main.
+
+## Vérifier que c'est passé
+
+Onglet **Actions** du dépôt sur github.com :
+
+- **pastille verte** : c'est en ligne ;
+- **pastille rouge** : rien n'a été publié, ton site reste sur sa version précédente.
+  Il ne tombe jamais. Clique sur la ligne rouge, la raison est écrite en clair.
+
+Le cas le plus probable d'échec : une image supprimée de `source/assets/` mais encore
+référencée par une page. Le script refuse de publier plutôt que de mettre un site
+troué en ligne.
+
+## Comment c'est organisé
+
+| Chemin | Rôle |
+|---|---|
+| `source/` | Le paquet de l'outil de design, **brut**. C'est le seul dossier que tu remplaces. |
+| `.github/corriger-site.py` | Répare les bugs de l'outil, dans une copie (`_site/`). Ne touche jamais à `source/`. |
+| `.github/workflows/publier.yml` | Lance la réparation puis met en ligne, à chaque push. |
+| `PUBLIER.md` | Ce fichier. |
 
 ## Ce que la publication répare toute seule
 
-Le site est publié par `.github/workflows/publier.yml`, qui lance
-`.github/corriger-site.py`. Ce script recopie le site dans `_site/` et y applique
-trois correctifs à des **bugs de l'outil de design**. Tes fichiers ne sont jamais
-modifiés : une régénération n'écrase donc plus rien, et il n'y a plus aucune
-rustine à réappliquer.
+Trois **bugs de l'outil de design**. Ils sont corrigés à la publication, sur une copie,
+donc rien ne peut les écraser :
 
-| Bug de l'outil | Ce qu'on voyait | Correctif appliqué à la publication |
+| Bug de l'outil | Ce qu'on voyait | Correctif appliqué |
 |---|---|---|
 | Jekyll exclut les dossiers en `_` | Site en noir/serif, boutons gris | Ajout de `.nojekyll` |
 | Images en chemin relatif figé au chargement | Photos qui sautent au clic dans le menu | Ajout de `<base href="/">` |
@@ -40,33 +65,21 @@ rustine à réappliquer.
 
 Le détail de chaque bug est expliqué en tête de `.github/corriger-site.py`.
 
-## À demander à l'outil de design
+## À demander à l'outil de design (à copier-coller tel quel)
 
-Ces trois correctifs disparaîtront le jour où l'amont réglera ses bugs :
+> 1. **`support.js`** : ignorer un `<script>` déjà présent dans `document.head`.
+>    Son Set `mounted` ne connaît que ses propres ajouts, donc tout embed tiers
+>    déclaré dans le `<head>` s'exécute deux fois.
+> 2. Émettre les chemins d'images en **absolu** (`/assets/…`), et non en relatif
+>    figé selon la profondeur de l'URL d'arrivée.
+> 3. Inclure **`.nojekyll`** dans le paquet livré.
 
-1. **`support.js`** : ignorer un `<script>` déjà présent dans `document.head`.
-   Son Set `mounted` ne connaît que ses propres ajouts, donc tout embed tiers
-   déclaré dans le `<head>` s'exécute deux fois. *C'est le plus rentable : une ligne.*
-2. Émettre les chemins d'images en **absolu** (`/assets/…`), pas en relatif figé
-   selon la profondeur de l'URL d'arrivée.
-3. Inclure **`.nojekyll`** dans le paquet livré.
-
-Quand l'un d'eux est corrigé, le correctif correspondant peut être retiré du
-script — sans risque : il est déjà écrit pour ne rien faire si le bug a disparu.
-
-## Si la publication échoue (pastille rouge)
-
-Le script refuse de publier plutôt que de mettre un site cassé en ligne. Il vérifie
-que chaque image référencée existe, que `<base>` est bien posé une seule fois par
-page, que l'embed Kit est verrouillé, et que `CNAME`, `index.html`, `sitemap.xml`,
-`robots.txt` et `.nojekyll` sont présents.
-
-Clique sur la publication échouée dans l'onglet **Actions** : la raison est écrite
-en clair. Le cas le plus probable est une image supprimée de `assets/` mais encore
-référencée par une page.
+Quand l'un d'eux est corrigé, le correctif correspondant peut être retiré du script —
+sans risque : il est écrit pour ne rien faire si le bug a disparu. Les trois corrigés,
+le script devient inutile.
 
 ## Réglage à ne pas changer
 
-Dans **Settings → Pages**, la source doit rester **« GitHub Actions »**. Si elle
-repasse à « Deploy from a branch », les correctifs ne seront plus appliqués et les
-trois bugs reviendront d'un coup.
+**Settings → Pages → Source** doit rester **« GitHub Actions »**. S'il repassait à
+« Deploy from a branch », plus rien ne serait publié correctement : le site est
+construit à partir de `source/`, il n'existe pas tel quel dans le dépôt.
