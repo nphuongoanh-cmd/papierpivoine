@@ -1,0 +1,41 @@
+/* Papier Pivoine — Base element defaults
+   Applied lightly so specimen cards and kits inherit the calm baseline. */
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: var(--weight-regular);
+  font-size: var(--text-md);
+  line-height: var(--leading-normal);
+  color: var(--text-body);
+  background: var(--surface-page);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-regular);
+  color: var(--text-heading);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-display);
+  margin: 0 0 var(--space-4);
+  text-wrap: balance;
+}
+
+p { margin: 0 0 var(--space-4); text-wrap: pretty; }
+
+a { color: var(--text-accent); text-decoration: none; }
+a:hover { color: var(--accent-pressed); }
+
+/* Small caps eyebrow label — recurring brand device */
+.pp-eyebrow {
+  font-family: var(--font-body);
+  font-weight: var(--weight-medium);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
