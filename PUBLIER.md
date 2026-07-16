@@ -52,6 +52,17 @@ troué en ligne.
 | `.github/workflows/publier.yml` | Lance la réparation puis met en ligne, à chaque push. |
 | `PUBLIER.md` | Ce fichier. |
 
+## Ce que la publication ajoute toute seule
+
+**La balise de vérification Pinterest.** Elle prouve que le domaine t'appartient
+(nécessaire aux Rich Pins). L'outil de design ne permet pas de l'ajouter, donc elle
+est injectée à la publication — sinon une régénération l'effacerait et Pinterest te
+dé-revendiquerait sans prévenir. Si elle venait à manquer, la publication échoue au
+lieu de te faire perdre ta revendication en silence.
+
+Celle-là est **permanente** : ne la retire pas, contrairement aux trois correctifs
+ci-dessous.
+
 ## Ce que la publication répare toute seule
 
 Trois **bugs de l'outil de design**. Ils sont corrigés à la publication, sur une copie,

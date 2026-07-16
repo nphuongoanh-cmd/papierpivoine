@@ -3,11 +3,24 @@
 Prépare la version publiée de papierpivoine.fr.
 
 Ce script NE MODIFIE PAS source/. Il recopie le site de source/ vers _site/ et
-applique là, et là seulement, trois correctifs à des bugs de l'outil de design.
+applique là, et là seulement, ce que l'outil de design ne sait pas produire.
 source/ reste donc exactement ce que l'outil produit : on peut le remplacer en
 bloc à chaque mise à jour, sans rien à réappliquer ni à nettoyer.
 
-Les trois bugs corrigés ici (à supprimer dès que l'amont les aura réglés) :
+Deux catégories, à ne pas confondre.
+
+═══ A. Ajouts permanents ═══════════════════════════════════════════════════
+À garder tant que l'outil ne les intègre pas.
+
+0. Balise de vérification Pinterest — Pinterest exige un <meta> dans le <head>
+   pour prouver que le domaine appartient bien à Camélia (nécessaire aux Rich
+   Pins). L'outil de design ne permet pas de l'ajouter ; on l'injecte ici pour
+   qu'une régénération ne la supprime pas — ce qui dé-revendiquerait le domaine
+   silencieusement.
+
+═══ B. Correctifs temporaires ══════════════════════════════════════════════
+Bugs de l'outil de design. À supprimer un par un dès que l'amont les aura
+réglés (chacun est écrit pour ne rien faire si le bug a disparu) :
 
 1. .nojekyll — GitHub Pages lançait Jekyll, qui exclut du site publié tout
    dossier commençant par un underscore. La charte vit dans _ds/ : polices et
@@ -36,6 +49,13 @@ ENTREE = RACINE / "source"   # le paquet de l'outil, tel quel
 SORTIE = RACINE / "_site"    # la copie corrigée qui part en ligne
 EXCLUS = {".DS_Store"}
 
+# ── A. Ajout permanent ───────────────────────────────────────────────────────
+# Preuve de propriété du domaine pour Pinterest. Ce n'est pas un secret : la
+# balise est publique, visible dans le source de chaque page. Ne pas la retirer
+# sans dé-revendiquer le domaine côté Pinterest d'abord.
+PINTEREST_META = '<meta name="p:domain_verify" content="65335738f5dcb1dd57bb33a15d99e30a"/>'
+
+# ── B. Correctifs temporaires ────────────────────────────────────────────────
 KIT_UID = "27c8b8373b"
 KIT_BALISE = re.compile(
     r'<script\s+async\s+data-uid="' + KIT_UID + r'"\s+'
@@ -88,6 +108,13 @@ def corriger_page(chemin):
     avant = html
     notes = []
 
+    # A. Vérification Pinterest (permanent)
+    if 'name="p:domain_verify"' not in html:
+        html, n = re.subn(r"<head>", "<head>\n" + PINTEREST_META, html, count=1)
+        if n:
+            notes.append("pinterest")
+
+    # B. Correctifs temporaires
     if '<base href="/">' not in html:
         html, n = re.subn(r"<head>", '<head>\n<base href="/">', html, count=1)
         if n:
@@ -108,6 +135,11 @@ def verifier(pages):
     """Garde-fous : on préfère un build qui échoue à un site cassé en ligne."""
     for page in pages:
         html = page.read_text(encoding="utf-8")
+        if html.count('name="p:domain_verify"') != 1:
+            erreurs.append(
+                f"{page.relative_to(SORTIE)} : balise Pinterest absente ou en double "
+                "(sans elle, le domaine serait dé-revendiqué)"
+            )
         if html.count('<base href="/">') != 1:
             erreurs.append(f"{page.relative_to(SORTIE)} : <base> absent ou en double")
         if f'src="https://camelianguyen.kit.com/{KIT_UID}/index.js"></script>' in html:
