@@ -48,46 +48,33 @@ troué en ligne.
 | Chemin | Rôle |
 |---|---|
 | `source/` | Le paquet de l'outil de design, **brut**. C'est le seul dossier que tu remplaces. |
-| `.github/corriger-site.py` | Répare les bugs de l'outil, dans une copie (`_site/`). Ne touche jamais à `source/`. |
-| `.github/workflows/publier.yml` | Lance la réparation puis met en ligne, à chaque push. |
+| `.github/corriger-site.py` | Ajoute la balise Pinterest dans une copie (`_site/`) et vérifie le site. Ne touche jamais à `source/`. |
+| `.github/workflows/publier.yml` | Lance le script puis met en ligne, à chaque push. |
 | `PUBLIER.md` | Ce fichier. |
 
 ## Ce que la publication ajoute toute seule
 
 **La balise de vérification Pinterest.** Elle prouve que le domaine t'appartient
-(nécessaire aux Rich Pins). L'outil de design ne permet pas de l'ajouter, donc elle
-est injectée à la publication — sinon une régénération l'effacerait et Pinterest te
-dé-revendiquerait sans prévenir. Si elle venait à manquer, la publication échoue au
-lieu de te faire perdre ta revendication en silence.
+(nécessaire aux Rich Pins). L'outil de design ne l'ajoute pas, donc elle est injectée
+à la publication — sinon une régénération l'effacerait et Pinterest te dé-revendiquerait
+sans prévenir. Si elle venait à manquer, la publication échoue au lieu de te faire
+perdre ta revendication en silence.
 
-Celle-là est **permanente** : ne la retire pas, contrairement aux trois correctifs
-ci-dessous.
+C'est désormais **la seule chose** que le build ajoute.
 
-## Ce que la publication répare toute seule
+## Les trois bugs de l'outil sont corrigés (depuis le 2026-07-18)
 
-Trois **bugs de l'outil de design**. Ils sont corrigés à la publication, sur une copie,
-donc rien ne peut les écraser :
+L'outil de design produit maintenant un site correct tout seul. Les trois rustines que
+le build appliquait avant ont été retirées, après vérification en ligne :
 
-| Bug de l'outil | Ce qu'on voyait | Correctif appliqué |
+| Ancien bug | Ce qu'on voyait | Corrigé par l'outil |
 |---|---|---|
-| Jekyll exclut les dossiers en `_` | Site en noir/serif, boutons gris | Ajout de `.nojekyll` |
-| Images en chemin relatif figé au chargement | Photos qui sautent au clic dans le menu | Ajout de `<base href="/">` |
-| `support.js` ré-exécute les `<script>` du `<head>` | Mur de texte CSS à l'ouverture | Verrou sur l'embed Kit |
+| Jekyll exclut les dossiers en `_` | Site en noir/serif, boutons gris | `.nojekyll` fourni dans le paquet |
+| Images en chemin relatif | Photos qui sautent au clic dans le menu | Chemins absolus (`/assets/…`) |
+| `support.js` ré-exécute les `<script>` du `<head>` | Mur de texte CSS à l'ouverture | `support.js` vérifie `document.head` |
 
-Le détail de chaque bug est expliqué en tête de `.github/corriger-site.py`.
-
-## À demander à l'outil de design (à copier-coller tel quel)
-
-> 1. **`support.js`** : ignorer un `<script>` déjà présent dans `document.head`.
->    Son Set `mounted` ne connaît que ses propres ajouts, donc tout embed tiers
->    déclaré dans le `<head>` s'exécute deux fois.
-> 2. Émettre les chemins d'images en **absolu** (`/assets/…`), et non en relatif
->    figé selon la profondeur de l'URL d'arrivée.
-> 3. Inclure **`.nojekyll`** dans le paquet livré.
-
-Quand l'un d'eux est corrigé, le correctif correspondant peut être retiré du script —
-sans risque : il est écrit pour ne rien faire si le bug a disparu. Les trois corrigés,
-le script devient inutile.
+Si l'un de ces bugs réapparaissait dans un futur paquet, le correctif correspondant est
+dans l'historique git (commit `320fa0e` et avant).
 
 ## Réglage à ne pas changer
 
