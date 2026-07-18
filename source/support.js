@@ -1369,6 +1369,12 @@
             const key = "SCRIPT|" + (child.getAttribute("src") || child.textContent || "");
             if (mounted.has(key)) continue;
             mounted.add(key);
+            const __src = child.getAttribute("src");
+            if (__src) {
+              const __reg = window.__dcHelmetScripts || (window.__dcHelmetScripts = /* @__PURE__ */ new Set());
+              if (__reg.has(__src) || doc.head.querySelector('script[src="' + __src + '"]')) continue;
+              __reg.add(__src);
+            }
             const el = doc.createElement("script");
             for (const { name: an, value } of [...child.attributes])
               el.setAttribute(an, value);
