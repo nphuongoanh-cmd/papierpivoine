@@ -1300,11 +1300,13 @@
 class Component extends DCLogic {
   static PAGES = ['accueil', 'programme', 'ecriture', 'activites', 'methode', 'apropos', 'newsletter'];
 
-  // Détermine la page depuis l'ancre de l'URL (#/programme). Un seul fichier index.html.
+  // Détermine la page depuis le chemin de l'URL (/programme/ -> 'programme', / -> 'accueil').
+  // Le site publié sert de vraies pages à ces adresses ; on route donc par chemin propre.
   static pageFromLocation() {
     try {
-      const h = (location.hash || '').replace(/^#\/?/, '');
-      if (Component.PAGES.includes(h)) return h;
+      const seg = (location.pathname || '/').replace(/^\/+|\/+$/g, '').split('/')[0];
+      if (!seg) return 'accueil';
+      if (Component.PAGES.includes(seg)) return seg;
     } catch (e) {}
     return null;
   }
@@ -1321,8 +1323,12 @@ class Component extends DCLogic {
   go(p) {
     this.setState({ page: p, menuOpen: false });
     try { window.scrollTo(0, 0); } catch (_) {}
-    // Navigation par ancre : un seul fichier index.html, servi à la racine du domaine.
-    try { location.hash = '#/' + p; } catch (_) {}
+    // Chemins propres via History API : /programme/ (accueil -> /). L'adresse partagée
+    // pointe alors sur la vraie page, avec ses propres métadonnées pour Pinterest et les réseaux.
+    try {
+      const url = p === 'accueil' ? '/' : '/' + p + '/';
+      history.pushState({ page: p }, '', url);
+    } catch (_) {}
   }
 
   componentDidMount() {
@@ -1331,14 +1337,6 @@ class Component extends DCLogic {
       try { window.scrollTo(0, 0); } catch (e) {}
     };
     window.addEventListener('popstate', this._onPop);
-    this._onHash = () => {
-      const h = (location.hash || '').replace(/^#\/?/, '');
-      if (Component.PAGES.includes(h)) {
-        this.setState({ page: h, menuOpen: false });
-        try { window.scrollTo(0, 0); } catch (e) {}
-      }
-    };
-    window.addEventListener('hashchange', this._onHash);
 
     // Embed Kit (pop-up newsletter) chargé UNE seule fois, hors du <helmet>,
     // pour éviter tout double montage (le loader Kit retire son propre <script>).
@@ -1354,7 +1352,6 @@ class Component extends DCLogic {
 
   componentWillUnmount() {
     window.removeEventListener('popstate', this._onPop);
-    window.removeEventListener('hashchange', this._onHash);
   }
 
   // Rend la pop-up Kit défilable sur mobile : conteneur fixe en overflow-y auto,
