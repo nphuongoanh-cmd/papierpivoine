@@ -987,10 +987,12 @@
           <div style="width:64px;height:1px;background:var(--sage);opacity:0.5;margin:0 auto 44px"></div>
           <p style="font-family:var(--font-display);font-size:24px;letter-spacing:0.04em;color:var(--deep-olive);margin:0 0 14px">Jamais une liste à cocher.</p>
           <p style="font-family:var(--font-body);font-size:16px;color:var(--ink-soft);line-height:1.7;max-width:44ch;margin:0 auto 28px">Tu la retrouveras glissée au fil des carnets, une permission à la fois.</p>
+          <sc-if value="{{ showCarnets }}" hint-placeholder-val="{{ false }}">
           <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
             <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.Button" variant="soft" size="md" onClick="{{ goEcriture }}" hint-size="220px,46px">Voir les carnets d'écriture</x-import>
             <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.Button" variant="secondary" size="md" onClick="{{ goActivites }}" hint-size="220px,46px">Voir les carnets d'activités</x-import>
           </div>
+          </sc-if>
         </div>
 
       </div>
