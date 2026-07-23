@@ -75,8 +75,7 @@
     <nav class="pp-nav-desktop" style="display:flex;gap:6px 24px;align-items:center;flex-wrap:wrap">
       <a href="/" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:;border-bottom:1px solid">Accueil</a>
       <a href="/programme/" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:;border-bottom:1px solid">Programme d'écriture</a>
-      <a href="/ecriture/" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:;border-bottom:1px solid">Carnets d'écriture</a>
-      <a href="/activites/" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:;border-bottom:1px solid">Carnets d'activités</a>
+      
       <a href="/methode/" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:;border-bottom:1px solid">La méthode</a>
       <a href="/apropos/" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:;border-bottom:1px solid">À propos</a>
       <a href="/newsletter/" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:;border-bottom:1px solid">La newsletter</a>
@@ -85,8 +84,7 @@
       <nav class="pp-nav-mobile" style="flex-basis:100%;display:flex;flex-direction:column;padding:2px 0 8px">
         <a href="/" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:;border-top:1px solid var(--border-faint)">Accueil</a>
         <a href="/programme/" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:;border-top:1px solid var(--border-faint)">Programme d'écriture</a>
-        <a href="/ecriture/" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:;border-top:1px solid var(--border-faint)">Carnets d'écriture</a>
-        <a href="/activites/" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:;border-top:1px solid var(--border-faint)">Carnets d'activités</a>
+        
         <a href="/methode/" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:;border-top:1px solid var(--border-faint)">La méthode</a>
         <a href="/apropos/" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:;border-top:1px solid var(--border-faint)">À propos</a>
         <a href="/newsletter/" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:;border-top:1px solid var(--border-faint)">La newsletter</a>
@@ -271,8 +269,7 @@
             <div class="pp-eyebrow" style="margin-bottom:14px">Découvrir</div>
             <div style="display:flex;flex-direction:column;gap:9px;font-family:var(--font-body);font-size:14px;color:var(--ink-soft)">
               <a href="/programme/" style="cursor:pointer">Programme d'écriture</a>
-              <a href="/ecriture/" style="cursor:pointer">Carnets d'écriture</a>
-              <a href="/activites/" style="cursor:pointer">Carnets d'activités</a>
+              
               <a href="/methode/" style="cursor:pointer">La méthode</a>
             </div>
           </div>
@@ -346,8 +343,10 @@
     <nav class="pp-nav-desktop" style="display:flex;gap:6px 24px;align-items:center;flex-wrap:wrap">
       <span onClick="{{ goAccueil }}" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:{{ navCAccueil }};border-bottom:1px solid {{ navUAccueil }}">Accueil</span>
       <span onClick="{{ goProgramme }}" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:{{ navCProgramme }};border-bottom:1px solid {{ navUProgramme }}">Programme d'écriture</span>
-      <span onClick="{{ goEcriture }}" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:{{ navCEcriture }};border-bottom:1px solid {{ navUEcriture }}">Carnets d'écriture</span>
-      <span onClick="{{ goActivites }}" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:{{ navCActivites }};border-bottom:1px solid {{ navUActivites }}">Carnets d'activités</span>
+      <sc-if value="{{ showCarnets }}" hint-placeholder-val="{{ false }}">
+        <span onClick="{{ goEcriture }}" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:{{ navCEcriture }};border-bottom:1px solid {{ navUEcriture }}">Carnets d'écriture</span>
+        <span onClick="{{ goActivites }}" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:{{ navCActivites }};border-bottom:1px solid {{ navUActivites }}">Carnets d'activités</span>
+      </sc-if>
       <span onClick="{{ goMethode }}" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:{{ navCMethode }};border-bottom:1px solid {{ navUMethode }}">La méthode</span>
       <span onClick="{{ goApropos }}" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:{{ navCApropos }};border-bottom:1px solid {{ navUApropos }}">À propos</span>
       <span onClick="{{ goNewsletter }}" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:{{ navCNewsletter }};border-bottom:1px solid {{ navUNewsletter }}">La newsletter</span>
@@ -356,8 +355,10 @@
       <nav class="pp-nav-mobile" style="flex-basis:100%;display:flex;flex-direction:column;padding:2px 0 8px">
         <span onClick="{{ goAccueil }}" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:{{ navCAccueil }};border-top:1px solid var(--border-faint)">Accueil</span>
         <span onClick="{{ goProgramme }}" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:{{ navCProgramme }};border-top:1px solid var(--border-faint)">Programme d'écriture</span>
-        <span onClick="{{ goEcriture }}" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:{{ navCEcriture }};border-top:1px solid var(--border-faint)">Carnets d'écriture</span>
-        <span onClick="{{ goActivites }}" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:{{ navCActivites }};border-top:1px solid var(--border-faint)">Carnets d'activités</span>
+        <sc-if value="{{ showCarnets }}" hint-placeholder-val="{{ false }}">
+          <span onClick="{{ goEcriture }}" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:{{ navCEcriture }};border-top:1px solid var(--border-faint)">Carnets d'écriture</span>
+          <span onClick="{{ goActivites }}" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:{{ navCActivites }};border-top:1px solid var(--border-faint)">Carnets d'activités</span>
+        </sc-if>
         <span onClick="{{ goMethode }}" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:{{ navCMethode }};border-top:1px solid var(--border-faint)">La méthode</span>
         <span onClick="{{ goApropos }}" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:{{ navCApropos }};border-top:1px solid var(--border-faint)">À propos</span>
         <span onClick="{{ goNewsletter }}" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:{{ navCNewsletter }};border-top:1px solid var(--border-faint)">La newsletter</span>
@@ -381,7 +382,7 @@
               <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.Button" variant="primary" size="lg" onClick="{{ goNewsletter }}" hint-size="230px,52px">Recevoir la newsletter</x-import>
               <p style="font-family:var(--font-body);font-size:12px;color:var(--ink-faint);margin:0;max-width:28ch;text-align:center">C'est gratuit. Tu peux te désinscrire quand tu veux.</p>
             </div>
-            <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.Button" variant="secondary" size="lg" onClick="{{ scrollToCarnets }}" hint-size="180px,52px">Voir les carnets</x-import>
+            <sc-if value="{{ showCarnets }}" hint-placeholder-val="{{ false }}"><x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.Button" variant="secondary" size="lg" onClick="{{ scrollToCarnets }}" hint-size="180px,52px">Voir les carnets</x-import></sc-if>
           </div>
         </div>
 
@@ -417,6 +418,7 @@
           </div>
         </div>
 
+        <sc-if value="{{ showCarnets }}" hint-placeholder-val="{{ false }}">
         <div id="pp-carnets" style="background:var(--paper);border-top:1px solid var(--border-faint);padding:84px min(48px,5vw)">
           <div style="max-width:1180px;margin:0 auto">
             <h2 style="font-family:var(--font-display);font-weight:400;font-size:32px;letter-spacing:0.04em;color:var(--deep-olive);text-align:center;margin:0 0 14px">Les carnets</h2>
@@ -462,6 +464,7 @@
             </div>
           </div>
         </div>
+        </sc-if>
 
         <div style="padding:84px min(48px,5vw);text-align:center">
           <div class="pp-eyebrow" style="margin-bottom:18px">La méthode pivoine</div>
@@ -1250,8 +1253,10 @@
             <div class="pp-eyebrow" style="margin-bottom:14px">Découvrir</div>
             <div style="display:flex;flex-direction:column;gap:9px;font-family:var(--font-body);font-size:14px;color:var(--ink-soft)">
               <span onClick="{{ goProgramme }}" style="cursor:pointer">Programme d'écriture</span>
-              <span onClick="{{ goEcriture }}" style="cursor:pointer">Carnets d'écriture</span>
-              <span onClick="{{ goActivites }}" style="cursor:pointer">Carnets d'activités</span>
+              <sc-if value="{{ showCarnets }}" hint-placeholder-val="{{ false }}">
+                <span onClick="{{ goEcriture }}" style="cursor:pointer">Carnets d'écriture</span>
+                <span onClick="{{ goActivites }}" style="cursor:pointer">Carnets d'activités</span>
+              </sc-if>
               <span onClick="{{ goMethode }}" style="cursor:pointer">La méthode</span>
             </div>
           </div>
@@ -1419,6 +1424,9 @@ class Component extends DCLogic {
         const y = el.getBoundingClientRect().top + window.pageYOffset - offset;
         window.scrollTo({ top: y, behavior: 'smooth' });
       },
+      // Masquage temporaire des pages Carnets d'écriture + Carnets d'activités.
+      // Pour les réafficher : repasser à true.
+      showCarnets: false,
       goEcriture: () => this.go('ecriture'),
       goActivites: () => this.go('activites'),
       goMethode: () => this.go('methode'),
