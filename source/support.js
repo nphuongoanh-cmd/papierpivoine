@@ -155,7 +155,11 @@
     runtime.markFetched(rootName);
     runtime.setRootName(rootName);
     runtime.adoptParsed(rootName, parsed);
-    if (!window.__resources) {
+    if (typeof window.__ppRawTpl === "string") {
+      // Site publié : gabarit brut (casse d'origine, onClick…) fourni par le chargeur /_app/<page>.json.
+      const raw = parseDcText("<x-dc>" + window.__ppRawTpl + "</x-dc>");
+      if (raw?.template) runtime.updateHtml(rootName, raw.template);
+    } else if (!window.__resources) {
       fetch(location.href).then((res) => res.ok ? res.text() : "").then((t) => {
         const raw = t ? parseDcText(t) : null;
         if (raw?.template) runtime.updateHtml(rootName, raw.template);

@@ -460,7 +460,7 @@ class Component extends DCLogic {
 <script>
 // Une seule copie du contenu dans le HTML : le gabarit de l'appli live est chargé à part
 // (/_app/<page>.json), puis support.js démarre et remplace #prerender.
-(function(){fetch('/_app/apropos.json').then(function(r){return r.json();}).then(function(d){var x=document.createElement('x-dc');x.innerHTML=d.tpl;document.body.appendChild(x);var s=document.createElement('script');s.src='/support.js';document.head.appendChild(s);}).catch(function(){});})();
+(function(){fetch('/_app/apropos.json').then(function(r){return r.json();}).then(function(d){window.__ppRawTpl=d.tpl;var x=document.createElement('x-dc');x.innerHTML=d.tpl;document.body.appendChild(x);var s=document.createElement('script');s.src='/support.js';document.head.appendChild(s);}).catch(function(){});})();
 (function(){var t=0;function r(){var d=document.getElementById('dc-root');if(d&&d.childElementCount>0){d.style.display='block';var p=document.getElementById('prerender');if(p&&p.parentNode)p.parentNode.removeChild(p);return;}if(t++<900)requestAnimationFrame(r);}requestAnimationFrame(r);})();
 </script>
 </body>
