@@ -44,6 +44,8 @@
       --font-body: 'Nunito Sans', system-ui, sans-serif;
       --font-accent: 'Caveat', cursive;
     }
+    /* Saison : automne par défaut (aucun attribut), "neutre" = palette d'origine. Réglage : prop season. */
+    html:not([data-season="neutre"]) { --sage-soft: #F4DDD4; --paper: #FFFCF9; --paper-warm: #F9EFE8; --border-faint: #EBDCD2; }
     body { margin: 0; background: var(--paper-warm, #FCF6F2); }
     a { color: var(--rose); }
     a:hover { color: var(--rose-deep); }
@@ -283,7 +285,15 @@
 <script type="text/x-dc" data-dc-script data-props="{
   &quot;pageInitiale&quot;: {
     &quot;editor&quot;: &quot;enum&quot;,
-    &quot;options&quot;: [&quot;accueil&quot;, &quot;programme&quot;, &quot;ecriture&quot;, &quot;activites&quot;, &quot;methode&quot;, &quot;apropos&quot;, &quot;newsletter&quot;],
+    &quot;options&quot;: [
+      &quot;accueil&quot;,
+      &quot;programme&quot;,
+      &quot;ecriture&quot;,
+      &quot;activites&quot;,
+      &quot;methode&quot;,
+      &quot;apropos&quot;,
+      &quot;newsletter&quot;
+    ],
     &quot;default&quot;: &quot;accueil&quot;,
     &quot;tsType&quot;: &quot;string&quot;,
     &quot;section&quot;: &quot;Navigation&quot;
@@ -299,6 +309,16 @@
     &quot;default&quot;: &quot;https://www.camelianguyen.fr/papier-pivoine-mensuel&quot;,
     &quot;tsType&quot;: &quot;string&quot;,
     &quot;section&quot;: &quot;Newsletter&quot;
+  },
+  &quot;season&quot;: {
+    &quot;editor&quot;: &quot;enum&quot;,
+    &quot;options&quot;: [
+      &quot;automne&quot;,
+      &quot;neutre&quot;
+    ],
+    &quot;default&quot;: &quot;automne&quot;,
+    &quot;tsType&quot;: &quot;'automne' | 'neutre'&quot;,
+    &quot;section&quot;: &quot;Saison&quot;
   }
 }">
 class Component extends DCLogic {
@@ -335,7 +355,14 @@ class Component extends DCLogic {
     try { history.pushState({ page: p }, '', url); } catch (_) {}
   }
 
+  _applySeason() {
+    try { document.documentElement.dataset.season = this.props.season ?? 'automne'; } catch (_) {}
+  }
+
+  componentDidUpdate() { this._applySeason(); }
+
   componentDidMount() {
+    this._applySeason();
     this._onPop = () => {
       this.setState({ page: Component.pageFromLocation() || 'accueil', menuOpen: false });
       try { window.scrollTo(0, 0); } catch (e) {}
@@ -400,6 +427,7 @@ class Component extends DCLogic {
 
   renderVals() {
     const page = this.state.page;
+    const season = this.props.season ?? 'automne';
     const navC = (k) => (page === k ? 'var(--rose)' : 'var(--ink-soft)');
     const navU = (k) => (page === k ? 'var(--rose)' : 'transparent');
     return {
@@ -425,6 +453,8 @@ class Component extends DCLogic {
       },
       // Masquage temporaire : Carnets d'écriture masqué, Carnets d'activités visible.
       // Pour réafficher l'écriture : showEcriture à true (et vider HIDDEN_PAGES dans tools/build-publish.js).
+      saisonAutomne: season === 'automne',
+      saisonNeutre: season === 'neutre',
       showEcriture: false,
       showActivites: true,
       goEcriture: () => this.go('ecriture'),

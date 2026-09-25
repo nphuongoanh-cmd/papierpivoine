@@ -44,6 +44,8 @@
       --font-body: 'Nunito Sans', system-ui, sans-serif;
       --font-accent: 'Caveat', cursive;
     }
+    /* Saison : automne par défaut (aucun attribut), "neutre" = palette d'origine. Réglage : prop season. */
+    html:not([data-season="neutre"]) { --sage-soft: #F4DDD4; --paper: #FFFCF9; --paper-warm: #F9EFE8; --border-faint: #EBDCD2; }
     body { margin: 0; background: var(--paper-warm, #FCF6F2); }
     a { color: var(--rose); }
     a:hover { color: var(--rose-deep); }
@@ -65,7 +67,7 @@
     }
   </style>
 <style>#dc-root{display:none}#prerender{min-height:100vh}</style>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://papierpivoine.fr/#organization","name":"Papier Pivoine","url":"https://papierpivoine.fr/","logo":{"@type":"ImageObject","url":"https://papierpivoine.fr/assets/favicon.png"},"founder":{"@id":"https://papierpivoine.fr/#camelia"},"sameAs":["https://fr.pinterest.com/papierpivoine/"]},{"@type":"Person","@id":"https://papierpivoine.fr/#camelia","name":"Camélia Nguyen","alternateName":"Camélia","url":"https://papierpivoine.fr/apropos/","worksFor":{"@id":"https://papierpivoine.fr/#organization"}},{"@type":"WebSite","@id":"https://papierpivoine.fr/#website","name":"Papier Pivoine","url":"https://papierpivoine.fr/","inLanguage":"fr","description":"Carnets d'écriture et d'activités douces pour femmes hypersensibles et introverties. Pour les soirs où la tête est pleine, et les moments rien qu'à toi.","publisher":{"@id":"https://papierpivoine.fr/#organization"}},{"@type":"Book","name":"Un été à s'émerveiller","image":"https://papierpivoine.fr/assets/cover-un-ete-800.jpg","inLanguage":"fr","author":{"@id":"https://papierpivoine.fr/#camelia"},"publisher":{"@id":"https://papierpivoine.fr/#organization"},"url":"https://papierpivoine.fr/activites/","workExample":[{"@type":"Book","bookFormat":"https://schema.org/EBook","inLanguage":"fr","url":"https://www.camelianguyen.fr/products/un-ete-a-semerveiller?step=checkout"},{"@type":"Book","bookFormat":"https://schema.org/Paperback","inLanguage":"fr","url":"https://www.amazon.fr/dp/B0H7QKL2GJ"}],"offers":[{"@type":"Offer","url":"https://www.camelianguyen.fr/products/un-ete-a-semerveiller?step=checkout","availability":"https://schema.org/InStock"},{"@type":"Offer","url":"https://www.amazon.fr/dp/B0H7QKL2GJ","availability":"https://schema.org/InStock"}]},{"@type":"Book","name":"La sieste au bord de l'eau","image":"https://papierpivoine.fr/assets/cover-sieste-800.jpg","inLanguage":"fr","author":{"@id":"https://papierpivoine.fr/#camelia"},"publisher":{"@id":"https://papierpivoine.fr/#organization"},"url":"https://papierpivoine.fr/activites/","workExample":[{"@type":"Book","bookFormat":"https://schema.org/Paperback","inLanguage":"fr","url":"https://www.amazon.fr/dp/B0H96F151L"}],"offers":[{"@type":"Offer","url":"https://www.amazon.fr/dp/B0H96F151L","availability":"https://schema.org/InStock"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://papierpivoine.fr/#organization","name":"Papier Pivoine","url":"https://papierpivoine.fr/","logo":{"@type":"ImageObject","url":"https://papierpivoine.fr/assets/favicon.png"},"founder":{"@id":"https://papierpivoine.fr/#camelia"},"sameAs":["https://fr.pinterest.com/papierpivoine/"]},{"@type":"Person","@id":"https://papierpivoine.fr/#camelia","name":"Camélia Nguyen","alternateName":"Camélia","url":"https://papierpivoine.fr/apropos/","worksFor":{"@id":"https://papierpivoine.fr/#organization"}},{"@type":"WebSite","@id":"https://papierpivoine.fr/#website","name":"Papier Pivoine","url":"https://papierpivoine.fr/","inLanguage":"fr","description":"Carnets d'écriture et d'activités douces pour femmes hypersensibles et introverties. Pour les soirs où la tête est pleine, et les moments rien qu'à toi.","publisher":{"@id":"https://papierpivoine.fr/#organization"}},{"@type":"Book","name":"Un été à s'émerveiller","image":"https://papierpivoine.fr/assets/cover-un-ete-800.jpg","inLanguage":"fr","author":{"@id":"https://papierpivoine.fr/#camelia"},"publisher":{"@id":"https://papierpivoine.fr/#organization"},"url":"https://papierpivoine.fr/activites/","workExample":[{"@type":"Book","bookFormat":"https://schema.org/EBook","inLanguage":"fr","url":"https://www.camelianguyen.fr/products/un-ete-a-semerveiller?step=checkout"},{"@type":"Book","bookFormat":"https://schema.org/Paperback","inLanguage":"fr","url":"https://www.amazon.fr/dp/B0H7QKL2GJ"}],"offers":[{"@type":"Offer","url":"https://www.camelianguyen.fr/products/un-ete-a-semerveiller?step=checkout","availability":"https://schema.org/InStock"},{"@type":"Offer","url":"https://www.amazon.fr/dp/B0H7QKL2GJ","availability":"https://schema.org/InStock"}]},{"@type":"Book","name":"La sieste au bord de l'eau","image":"https://papierpivoine.fr/assets/cover-sieste-800.jpg","inLanguage":"fr","author":{"@id":"https://papierpivoine.fr/#camelia"},"publisher":{"@id":"https://papierpivoine.fr/#organization"},"url":"https://papierpivoine.fr/activites/","workExample":[{"@type":"Book","bookFormat":"https://schema.org/Paperback","inLanguage":"fr","url":"https://www.amazon.fr/dp/B0H96F151L"}],"offers":[{"@type":"Offer","url":"https://www.amazon.fr/dp/B0H96F151L","availability":"https://schema.org/InStock"}]},{"@type":"Book","name":"Le cocon d'automne","image":"https://papierpivoine.fr/assets/cover-cocon-automne.jpg","inLanguage":"fr","author":{"@id":"https://papierpivoine.fr/#camelia"},"publisher":{"@id":"https://papierpivoine.fr/#organization"},"url":"https://papierpivoine.fr/activites/","workExample":[{"@type":"Book","bookFormat":"https://schema.org/Paperback","inLanguage":"fr","url":"https://www.amazon.fr/dp/B0HHLYRWNM"}],"offers":[{"@type":"Offer","url":"https://www.amazon.fr/dp/B0HHLYRWNM","availability":"https://schema.org/InStock"}]}]}</script>
 <script>window.__ppStatic=true;</script>
 <style>x-dc{display:none!important}</style>
 </head>
@@ -112,9 +114,11 @@
 
         <div style="padding:clamp(64px,10vw,104px) min(48px,5vw) 84px;display:flex;flex-direction:column;align-items:center;text-align:center">
           <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1" opacity="0.55" aria-hidden="true" style="margin-bottom:22px"><path d="M12 3c2.5 1.5 3 4 2 6 2-1 4 0 4.5 2 .5 2-1 4-3.5 4.5 1.5 1 1.5 3 .5 4.5-1.2 1.8-4 1.8-6 0-2 1.8-4.8 1.8-6 0-1-1.5-1-3.5.5-4.5C1.5 15 0 13 .5 11 1 9 3 8 5 9c-1-2-.5-4.5 2-6 1.6-1 3.4-1 5 0Z"></path><circle cx="12" cy="12" r="2.4"></circle></svg>
-          <div class="pp-eyebrow" style="margin-bottom:22px">Un moment à toi</div>
+          <div class="pp-eyebrow" style="margin-bottom:22px">Pour les soirs qui tombent tôt</div>
+          
           <h1 style="font-family:var(--font-display);font-weight:400;font-size:clamp(32px,6vw,48px);line-height:1.14;letter-spacing:0.04em;color:var(--deep-olive);max-width:21ch;margin:0 0 26px">Un endroit calme pour déposer ce que tu portes.</h1>
-          <p style="font-family:var(--font-body);font-size:clamp(17px,2.6vw,21px);color:var(--ink-soft);line-height:1.7;max-width:44ch;margin:0 0 40px">Des carnets d'écriture et d'activités douces, pensés pour les femmes hypersensibles et introverties. Pour les soirs où la tête est pleine, comme pour les moments que tu t'offres. Ici, rien ne presse.</p>
+          <p style="font-family:var(--font-body);font-size:clamp(17px,2.6vw,21px);color:var(--ink-soft);line-height:1.7;max-width:44ch;margin:0 0 40px">Des carnets d'écriture et d'activités douces, pensés pour les femmes hypersensibles et introverties. Pour les soirs d'automne où il fait nuit tôt, un plaid sur les genoux et une tasse de thé à côté. Ici, rien ne presse.</p>
+          
           <div style="display:flex;gap:14px;align-items:flex-start;justify-content:center;flex-wrap:wrap">
             <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
               <a href="/newsletter/">Recevoir la newsletter</a>
@@ -123,6 +127,26 @@
             <div>Voir les carnets</div>
           </div>
         </div>
+
+        
+        <div style="background:var(--sage-soft);padding:72px min(48px,5vw)">
+          <div style="max-width:980px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:min(56px,6vw);align-items:center">
+            <div style="display:flex;justify-content:center">
+              <img src="/assets/cover-cocon-automne.jpg" width="533" height="800" loading="lazy" alt="Couverture : Le cocon d'automne" style="display:block;height:360px;width:auto;border-radius:6px;border:1px solid var(--border-faint);box-shadow:0 16px 32px rgba(101,109,68,0.2)">
+            </div>
+            <div>
+              <div>Le carnet de la saison</div>
+              <h2 style="font-family:var(--font-display);font-weight:400;font-size:clamp(26px,4vw,34px);letter-spacing:0.04em;color:var(--deep-olive);line-height:1.2;margin:16px 0 10px">Le cocon d'automne</h2>
+              <p style="font-family:var(--font-body);font-size:16px;font-style:italic;color:var(--rose-deep);margin:0 0 16px">Pour savourer le calme et la lenteur de l'automne</p>
+              <p style="font-family:var(--font-body);font-size:16px;color:var(--ink-soft);line-height:1.7;margin:0 0 24px">Trois lignes à écrire, de grandes illustrations à colorier, des mots doux à chercher. Ou rien du tout. 140 pages, aucun chrono, rien à finir.</p>
+              <div style="display:flex;gap:12px;flex-wrap:wrap">
+                <div>Feuilleter et commander sur Amazon</div>
+                <a href="/activites/">Tous les carnets</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
 
         <div style="background:var(--paper);border-top:1px solid var(--border-faint);border-bottom:1px solid var(--border-faint);padding:84px min(48px,5vw);display:flex;justify-content:center">
           <div>
@@ -167,24 +191,23 @@
 
               <a href="/activites/">
                 <div style="height:330px;background:var(--sage-soft);display:flex;align-items:center;justify-content:center">
-                  <img src="/assets/cover-un-ete-800.jpg" width="533" height="800" loading="lazy" alt="Couverture : Un été à s'émerveiller" style="display:block;height:276px;width:auto;border-radius:6px;border:1px solid var(--border-faint);box-shadow:0 14px 28px rgba(101,109,68,0.18)">
-                </div>
-                <div style="padding:28px 30px 30px">
-                  <div>Carnets d'activités</div>
-                  <h3 style="font-family:var(--font-display);font-weight:400;font-size:24px;letter-spacing:0.04em;color:var(--deep-olive);margin:14px 0 10px">Un été à s'émerveiller</h3>
-                  <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.65;margin:0 0 20px">Coloriage, écritures guidées, puzzles et jeux, dans un seul carnet. De quoi te poser cinq minutes ou une heure entière.</p>
-                  <a href="/activites/">Découvrir ce carnet</a>
-                </div>
-              </a>
-
-              <a href="/activites/">
-                <div style="height:330px;background:var(--sage-soft);display:flex;align-items:center;justify-content:center">
                   <img src="/assets/cover-sieste-800.jpg" width="533" height="800" loading="lazy" alt="Couverture : La sieste au bord de l'eau" style="display:block;height:276px;width:auto;border-radius:6px;border:1px solid var(--border-faint);box-shadow:0 14px 28px rgba(101,109,68,0.18)">
                 </div>
                 <div style="padding:28px 30px 30px">
                   <div>Carnets d'activités</div>
                   <h3 style="font-family:var(--font-display);font-weight:400;font-size:24px;letter-spacing:0.04em;color:var(--deep-olive);margin:14px 0 10px">La sieste au bord de l'eau</h3>
                   <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.65;margin:0 0 20px">Coloriages de la mer, jeux de mots et écritures douces. Le carnet d'août, pour se reposer sans culpabiliser.</p>
+                  <a href="/activites/">Découvrir ce carnet</a>
+                </div>
+              </a>
+              <a href="/activites/">
+                <div style="height:330px;background:var(--sage-soft);display:flex;align-items:center;justify-content:center">
+                  <img src="/assets/cover-un-ete-800.jpg" width="533" height="800" loading="lazy" alt="Couverture : Un été à s'émerveiller" style="display:block;height:276px;width:auto;border-radius:6px;border:1px solid var(--border-faint);box-shadow:0 14px 28px rgba(101,109,68,0.18)">
+                </div>
+                <div style="padding:28px 30px 30px">
+                  <div>Carnets d'activités</div>
+                  <h3 style="font-family:var(--font-display);font-weight:400;font-size:24px;letter-spacing:0.04em;color:var(--deep-olive);margin:14px 0 10px">Un été à s'émerveiller</h3>
+                  <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.65;margin:0 0 20px">Coloriage, écritures guidées, puzzles et jeux, dans un seul carnet. De quoi te poser cinq minutes ou une heure entière.</p>
                   <a href="/activites/">Découvrir ce carnet</a>
                 </div>
               </a>
@@ -293,7 +316,15 @@
 <script type="text/x-dc" data-dc-script data-props="{
   &quot;pageInitiale&quot;: {
     &quot;editor&quot;: &quot;enum&quot;,
-    &quot;options&quot;: [&quot;accueil&quot;, &quot;programme&quot;, &quot;ecriture&quot;, &quot;activites&quot;, &quot;methode&quot;, &quot;apropos&quot;, &quot;newsletter&quot;],
+    &quot;options&quot;: [
+      &quot;accueil&quot;,
+      &quot;programme&quot;,
+      &quot;ecriture&quot;,
+      &quot;activites&quot;,
+      &quot;methode&quot;,
+      &quot;apropos&quot;,
+      &quot;newsletter&quot;
+    ],
     &quot;default&quot;: &quot;accueil&quot;,
     &quot;tsType&quot;: &quot;string&quot;,
     &quot;section&quot;: &quot;Navigation&quot;
@@ -309,6 +340,16 @@
     &quot;default&quot;: &quot;https://www.camelianguyen.fr/papier-pivoine-mensuel&quot;,
     &quot;tsType&quot;: &quot;string&quot;,
     &quot;section&quot;: &quot;Newsletter&quot;
+  },
+  &quot;season&quot;: {
+    &quot;editor&quot;: &quot;enum&quot;,
+    &quot;options&quot;: [
+      &quot;automne&quot;,
+      &quot;neutre&quot;
+    ],
+    &quot;default&quot;: &quot;automne&quot;,
+    &quot;tsType&quot;: &quot;'automne' | 'neutre'&quot;,
+    &quot;section&quot;: &quot;Saison&quot;
   }
 }">
 class Component extends DCLogic {
@@ -345,7 +386,14 @@ class Component extends DCLogic {
     try { history.pushState({ page: p }, '', url); } catch (_) {}
   }
 
+  _applySeason() {
+    try { document.documentElement.dataset.season = this.props.season ?? 'automne'; } catch (_) {}
+  }
+
+  componentDidUpdate() { this._applySeason(); }
+
   componentDidMount() {
+    this._applySeason();
     this._onPop = () => {
       this.setState({ page: Component.pageFromLocation() || 'accueil', menuOpen: false });
       try { window.scrollTo(0, 0); } catch (e) {}
@@ -410,6 +458,7 @@ class Component extends DCLogic {
 
   renderVals() {
     const page = this.state.page;
+    const season = this.props.season ?? 'automne';
     const navC = (k) => (page === k ? 'var(--rose)' : 'var(--ink-soft)');
     const navU = (k) => (page === k ? 'var(--rose)' : 'transparent');
     return {
@@ -435,6 +484,8 @@ class Component extends DCLogic {
       },
       // Masquage temporaire : Carnets d'écriture masqué, Carnets d'activités visible.
       // Pour réafficher l'écriture : showEcriture à true (et vider HIDDEN_PAGES dans tools/build-publish.js).
+      saisonAutomne: season === 'automne',
+      saisonNeutre: season === 'neutre',
       showEcriture: false,
       showActivites: true,
       goEcriture: () => this.go('ecriture'),
