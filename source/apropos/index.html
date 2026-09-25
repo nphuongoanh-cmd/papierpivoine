@@ -24,17 +24,26 @@
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon.png">
 <link rel="apple-touch-icon" href="/assets/favicon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-<link rel="stylesheet" href="/_ds/papier-pivoine-design-system-2e8f201d-b7b2-4ba9-95cb-6dcf33a643b1/tokens/fonts.css">
+<link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="/assets/fonts/nunito-sans-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 <link rel="stylesheet" href="/_ds/papier-pivoine-design-system-2e8f201d-b7b2-4ba9-95cb-6dcf33a643b1/tokens/colors.css">
 <link rel="stylesheet" href="/_ds/papier-pivoine-design-system-2e8f201d-b7b2-4ba9-95cb-6dcf33a643b1/tokens/typography.css">
 <link rel="stylesheet" href="/_ds/papier-pivoine-design-system-2e8f201d-b7b2-4ba9-95cb-6dcf33a643b1/tokens/spacing.css">
 <link rel="stylesheet" href="/_ds/papier-pivoine-design-system-2e8f201d-b7b2-4ba9-95cb-6dcf33a643b1/tokens/effects.css">
 <link rel="stylesheet" href="/_ds/papier-pivoine-design-system-2e8f201d-b7b2-4ba9-95cb-6dcf33a643b1/tokens/base.css">
 <link rel="stylesheet" href="/_ds/papier-pivoine-design-system-2e8f201d-b7b2-4ba9-95cb-6dcf33a643b1/styles.css">
-<link href="https://fonts.googleapis.com/css2?family=Allison&display=swap" rel="stylesheet">
 <style>
+    @font-face { font-family: 'Caveat'; font-style: normal; font-weight: 400 600; font-display: swap; src: url(/assets/fonts/caveat-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+    @font-face { font-family: 'Caveat'; font-style: normal; font-weight: 400 600; font-display: swap; src: url(/assets/fonts/caveat-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+    @font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 300 600; font-display: swap; src: url(/assets/fonts/fraunces-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+    @font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 300 600; font-display: swap; src: url(/assets/fonts/fraunces-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+    @font-face { font-family: 'Nunito Sans'; font-style: normal; font-weight: 300 700; font-display: swap; src: url(/assets/fonts/nunito-sans-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+    @font-face { font-family: 'Nunito Sans'; font-style: normal; font-weight: 300 700; font-display: swap; src: url(/assets/fonts/nunito-sans-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+    :root {
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body: 'Nunito Sans', system-ui, sans-serif;
+      --font-accent: 'Caveat', cursive;
+    }
     body { margin: 0; background: var(--paper-warm, #FCF6F2); }
     a { color: var(--rose); }
     a:hover { color: var(--rose-deep); }
@@ -56,7 +65,8 @@
     }
   </style>
 <style>#dc-root{display:none}#prerender{min-height:100vh}</style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"À propos de Papier Pivoine","description":"Papier Pivoine, c'est moi, Camélia. J'écris les carnets, je compose les pages, je choisis chaque couleur. Voici pourquoi.","url":"https://papierpivoine.fr/apropos/","inLanguage":"fr","isPartOf":{"@type":"WebSite","name":"Papier Pivoine","url":"https://papierpivoine.fr/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://papierpivoine.fr/#organization","name":"Papier Pivoine","url":"https://papierpivoine.fr/","logo":{"@type":"ImageObject","url":"https://papierpivoine.fr/assets/favicon.png"},"founder":{"@id":"https://papierpivoine.fr/#camelia"},"sameAs":["https://fr.pinterest.com/papierpivoine/"]},{"@type":"Person","@id":"https://papierpivoine.fr/#camelia","name":"Camélia Nguyen","alternateName":"Camélia","url":"https://papierpivoine.fr/apropos/","worksFor":{"@id":"https://papierpivoine.fr/#organization"}},{"@type":"WebPage","@id":"https://papierpivoine.fr/apropos/","name":"À propos de Papier Pivoine","description":"Papier Pivoine, c'est moi, Camélia. J'écris les carnets, je compose les pages, je choisis chaque couleur. Voici pourquoi.","url":"https://papierpivoine.fr/apropos/","inLanguage":"fr","isPartOf":{"@id":"https://papierpivoine.fr/#website"},"publisher":{"@id":"https://papierpivoine.fr/#organization"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://papierpivoine.fr/"},{"@type":"ListItem","position":2,"name":"À propos","item":"https://papierpivoine.fr/apropos/"}]}]}</script>
+<script>window.__ppStatic=true;</script>
 <script src="/support.js"></script>
 </head>
 <body>
@@ -76,6 +86,7 @@
       <a href="/" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:;border-bottom:1px solid">Accueil</a>
       <a href="/programme/" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:;border-bottom:1px solid">Programme d'écriture</a>
       
+      <a href="/activites/" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:;border-bottom:1px solid">Carnets d'activités</a>
       <a href="/methode/" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:;border-bottom:1px solid">La méthode</a>
       <a href="/apropos/" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:;border-bottom:1px solid">À propos</a>
       <a href="/newsletter/" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:;border-bottom:1px solid">La newsletter</a>
@@ -85,6 +96,7 @@
         <a href="/" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:;border-top:1px solid var(--border-faint)">Accueil</a>
         <a href="/programme/" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:;border-top:1px solid var(--border-faint)">Programme d'écriture</a>
         
+        <a href="/activites/" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:;border-top:1px solid var(--border-faint)">Carnets d'activités</a>
         <a href="/methode/" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:;border-top:1px solid var(--border-faint)">La méthode</a>
         <a href="/apropos/" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:;border-top:1px solid var(--border-faint)">À propos</a>
         <a href="/newsletter/" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:;border-top:1px solid var(--border-faint)">La newsletter</a>
@@ -129,11 +141,11 @@
             <p style="margin:0">Si tu sens tout très fort et si le monde te fatigue vite, ces carnets sont pensés pour toi. Il n'y a rien qui ne va pas chez toi. Tu ne verras pas mon visage ici, je suis quelqu'un de discret. Mais dans chaque page, il y a beaucoup de moi.</p>
           </div>
           <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
-            <img src="/assets/bao.jpg" alt="Bao, chat roux et blanc, allongé sur un plaid rose" style="width:180px;height:180px;border-radius:50%;object-fit:cover;border:1px solid var(--border-faint);box-shadow:0 14px 28px rgba(101,109,68,0.16)">
+            <img src="/assets/bao.jpg" width="400" height="400" loading="lazy" alt="Bao, chat roux et blanc, allongé sur un plaid rose" style="width:180px;height:180px;border-radius:50%;object-fit:cover;border:1px solid var(--border-faint);box-shadow:0 14px 28px rgba(101,109,68,0.16)">
             <span style="font-family:var(--font-body);font-size:13px;font-style:italic;color:var(--ink-faint)">Bao, mon collègue d'écriture.</span>
           </div>
           <a href="/newsletter/">Recevoir la lettre</a>
-          <div style="font-family:'Allison',cursive;font-size:34px;line-height:1.1;color:var(--rose)">Camélia</div>
+          <div style="font-family:var(--font-accent);font-size:34px;line-height:1.1;color:var(--rose)">Camélia</div>
         </div>
 
         <div style="padding:76px min(48px,5vw) 84px;text-align:center">
@@ -189,6 +201,7 @@
             <div style="display:flex;flex-direction:column;gap:9px;font-family:var(--font-body);font-size:14px;color:var(--ink-soft)">
               <a href="/programme/" style="cursor:pointer">Programme d'écriture</a>
               
+              <a href="/activites/" style="cursor:pointer">Carnets d'activités</a>
               <a href="/methode/" style="cursor:pointer">La méthode</a>
             </div>
           </div>
@@ -216,7 +229,6 @@
 <x-dc>
 
 <helmet>
-  <link rel="stylesheet" href="/_ds/papier-pivoine-design-system-2e8f201d-b7b2-4ba9-95cb-6dcf33a643b1/tokens/fonts.css">
   <link rel="stylesheet" href="/_ds/papier-pivoine-design-system-2e8f201d-b7b2-4ba9-95cb-6dcf33a643b1/tokens/colors.css">
   <link rel="stylesheet" href="/_ds/papier-pivoine-design-system-2e8f201d-b7b2-4ba9-95cb-6dcf33a643b1/tokens/typography.css">
   <link rel="stylesheet" href="/_ds/papier-pivoine-design-system-2e8f201d-b7b2-4ba9-95cb-6dcf33a643b1/tokens/spacing.css">
@@ -224,10 +236,20 @@
   <link rel="stylesheet" href="/_ds/papier-pivoine-design-system-2e8f201d-b7b2-4ba9-95cb-6dcf33a643b1/tokens/base.css">
   <link rel="stylesheet" href="/_ds/papier-pivoine-design-system-2e8f201d-b7b2-4ba9-95cb-6dcf33a643b1/styles.css">
   <script src="/_ds/papier-pivoine-design-system-2e8f201d-b7b2-4ba9-95cb-6dcf33a643b1/_ds_bundle.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css2?family=Allison&amp;display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/assets/fonts/nunito-sans-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
   <style>
+    @font-face { font-family: 'Caveat'; font-style: normal; font-weight: 400 600; font-display: swap; src: url(/assets/fonts/caveat-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+    @font-face { font-family: 'Caveat'; font-style: normal; font-weight: 400 600; font-display: swap; src: url(/assets/fonts/caveat-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+    @font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 300 600; font-display: swap; src: url(/assets/fonts/fraunces-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+    @font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 300 600; font-display: swap; src: url(/assets/fonts/fraunces-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+    @font-face { font-family: 'Nunito Sans'; font-style: normal; font-weight: 300 700; font-display: swap; src: url(/assets/fonts/nunito-sans-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+    @font-face { font-family: 'Nunito Sans'; font-style: normal; font-weight: 300 700; font-display: swap; src: url(/assets/fonts/nunito-sans-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+    :root {
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body: 'Nunito Sans', system-ui, sans-serif;
+      --font-accent: 'Caveat', cursive;
+    }
     body { margin: 0; background: var(--paper-warm, #FCF6F2); }
     a { color: var(--rose); }
     a:hover { color: var(--rose-deep); }
@@ -262,10 +284,8 @@
     <nav class="pp-nav-desktop" style="display:flex;gap:6px 24px;align-items:center;flex-wrap:wrap">
       <span onClick="{{ goAccueil }}" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:{{ navCAccueil }};border-bottom:1px solid {{ navUAccueil }}">Accueil</span>
       <span onClick="{{ goProgramme }}" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:{{ navCProgramme }};border-bottom:1px solid {{ navUProgramme }}">Programme d'écriture</span>
-      <sc-if value="{{ showCarnets }}" hint-placeholder-val="{{ false }}">
-        <span onClick="{{ goEcriture }}" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:{{ navCEcriture }};border-bottom:1px solid {{ navUEcriture }}">Carnets d'écriture</span>
-        <span onClick="{{ goActivites }}" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:{{ navCActivites }};border-bottom:1px solid {{ navUActivites }}">Carnets d'activités</span>
-      </sc-if>
+      
+      <sc-if value="{{ showActivites }}" hint-placeholder-val="{{ true }}"><span onClick="{{ goActivites }}" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:{{ navCActivites }};border-bottom:1px solid {{ navUActivites }}">Carnets d'activités</span></sc-if>
       <span onClick="{{ goMethode }}" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:{{ navCMethode }};border-bottom:1px solid {{ navUMethode }}">La méthode</span>
       <span onClick="{{ goApropos }}" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:{{ navCApropos }};border-bottom:1px solid {{ navUApropos }}">À propos</span>
       <span onClick="{{ goNewsletter }}" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:{{ navCNewsletter }};border-bottom:1px solid {{ navUNewsletter }}">La newsletter</span>
@@ -274,10 +294,8 @@
       <nav class="pp-nav-mobile" style="flex-basis:100%;display:flex;flex-direction:column;padding:2px 0 8px">
         <span onClick="{{ goAccueil }}" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:{{ navCAccueil }};border-top:1px solid var(--border-faint)">Accueil</span>
         <span onClick="{{ goProgramme }}" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:{{ navCProgramme }};border-top:1px solid var(--border-faint)">Programme d'écriture</span>
-        <sc-if value="{{ showCarnets }}" hint-placeholder-val="{{ false }}">
-          <span onClick="{{ goEcriture }}" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:{{ navCEcriture }};border-top:1px solid var(--border-faint)">Carnets d'écriture</span>
-          <span onClick="{{ goActivites }}" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:{{ navCActivites }};border-top:1px solid var(--border-faint)">Carnets d'activités</span>
-        </sc-if>
+        
+        <sc-if value="{{ showActivites }}" hint-placeholder-val="{{ true }}"><span onClick="{{ goActivites }}" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:{{ navCActivites }};border-top:1px solid var(--border-faint)">Carnets d'activités</span></sc-if>
         <span onClick="{{ goMethode }}" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:{{ navCMethode }};border-top:1px solid var(--border-faint)">La méthode</span>
         <span onClick="{{ goApropos }}" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:{{ navCApropos }};border-top:1px solid var(--border-faint)">À propos</span>
         <span onClick="{{ goNewsletter }}" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:{{ navCNewsletter }};border-top:1px solid var(--border-faint)">La newsletter</span>
@@ -288,715 +306,19 @@
   <main style="flex:1">
 
     <!-- ═══════════ ACCUEIL ═══════════ -->
-    <sc-if value="{{ isAccueil }}" hint-placeholder-val="{{ true }}">
-      <div data-screen-label="Accueil">
-
-        <div style="padding:clamp(64px,10vw,104px) min(48px,5vw) 84px;display:flex;flex-direction:column;align-items:center;text-align:center">
-          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1" opacity="0.55" aria-hidden="true" style="margin-bottom:22px"><path d="M12 3c2.5 1.5 3 4 2 6 2-1 4 0 4.5 2 .5 2-1 4-3.5 4.5 1.5 1 1.5 3 .5 4.5-1.2 1.8-4 1.8-6 0-2 1.8-4.8 1.8-6 0-1-1.5-1-3.5.5-4.5C1.5 15 0 13 .5 11 1 9 3 8 5 9c-1-2-.5-4.5 2-6 1.6-1 3.4-1 5 0Z"></path><circle cx="12" cy="12" r="2.4"></circle></svg>
-          <div class="pp-eyebrow" style="margin-bottom:22px">Un moment à toi</div>
-          <h1 style="font-family:var(--font-display);font-weight:400;font-size:clamp(32px,6vw,48px);line-height:1.14;letter-spacing:0.04em;color:var(--deep-olive);max-width:21ch;margin:0 0 26px">Un endroit calme pour déposer ce que tu portes.</h1>
-          <p style="font-family:var(--font-body);font-size:clamp(17px,2.6vw,21px);color:var(--ink-soft);line-height:1.7;max-width:44ch;margin:0 0 40px">Des carnets d'écriture et d'activités douces, pensés pour les femmes hypersensibles et introverties. Pour les soirs où la tête est pleine, comme pour les moments que tu t'offres. Ici, rien ne presse.</p>
-          <div style="display:flex;gap:14px;align-items:flex-start;justify-content:center;flex-wrap:wrap">
-            <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
-              <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.Button" variant="primary" size="lg" onClick="{{ goNewsletter }}" hint-size="230px,52px">Recevoir la newsletter</x-import>
-              <p style="font-family:var(--font-body);font-size:12px;color:var(--ink-faint);margin:0;max-width:28ch;text-align:center">C'est gratuit. Tu peux te désinscrire quand tu veux.</p>
-            </div>
-            <sc-if value="{{ showCarnets }}" hint-placeholder-val="{{ false }}"><x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.Button" variant="secondary" size="lg" onClick="{{ scrollToCarnets }}" hint-size="180px,52px">Voir les carnets</x-import></sc-if>
-          </div>
-        </div>
-
-        <div style="background:var(--paper);border-top:1px solid var(--border-faint);border-bottom:1px solid var(--border-faint);padding:84px min(48px,5vw);display:flex;justify-content:center">
-          <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.LetterBlock" align="center" signature="" hint-size="620px,360px">
-            <p style="margin:0 0 1.2em">Bonjour, et bienvenue. Je suis contente que tu sois là.</p>
-            <p style="margin:0 0 1.2em">Je m'appelle Camélia. J'ai fait ces carnets pour les moments où j'avais besoin de me poser : les soirées où ma tête débordait, mais aussi les après-midi tranquilles, juste pour le plaisir. C'est un endroit calme pour déposer ce que tu portes, ou simplement t'offrir une pause.</p>
-            <p style="margin:0">Prends ton temps. Regarde ce qui te fait envie, et laisse le reste.</p>
-            <div style="margin-top:22px;font-family:'Allison',cursive;font-size:34px;line-height:1.1;color:var(--rose)">Camélia</div>
-          </x-import>
-        </div>
-
-        <div style="padding:84px min(48px,5vw)">
-          <div style="max-width:1180px;margin:0 auto">
-            <div class="pp-eyebrow" style="display:block;text-align:center;margin-bottom:44px">Ce qu'elles en disent</div>
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;align-items:start">
-              <div style="background:var(--paper);border:1px solid var(--border-faint);border-radius:14px;padding:28px 30px">
-                <div style="font-size:14px;letter-spacing:0.08em;margin-bottom:12px">⭐️⭐️⭐️⭐️⭐️</div>
-                <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.7;margin:0 0 16px">Je trouve que cette template peut être une ressource pour travailler entre les séances, pour aller vers une autonomisation dans la gestion et l'expression des émotions, tout en construisant la confiance en soi.</p>
-                <div style="font-family:var(--font-body);font-size:13px;color:var(--rose-deep)">Manon · Psychologue pour enfants et adolescents</div>
-              </div>
-              <div style="background:var(--paper);border:1px solid var(--border-faint);border-radius:14px;padding:28px 30px">
-                <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.7;margin:0 0 16px">J'ai rempli plusieurs pages, sans être pressée par le temps. Je suis à l'après de l'exercice du Jour 1 et je me sens assez soulagée, calme, et je ne pensais pas porter tout ça. Je suis surprise que mes pensées soient si positives, moi qui pensais qu'elles étaient plus négatives qu'autre chose. J'adore écrire et cet exercice est parfait pour moi, c'est une routine que je veux intégrer à mon quotidien. Merci pour cette initiative, j'ai beaucoup apprécié ce moment.</p>
-                <div style="font-family:var(--font-body);font-size:13px;color:var(--rose-deep)">Anne-Sophie</div>
-              </div>
-              <div style="background:var(--paper);border:1px solid var(--border-faint);border-radius:14px;padding:28px 30px">
-                <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.7;margin:0 0 10px">⭐️⭐️⭐️⭐️⭐️ Super utile et transformateur !</p>
-                <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.7;margin:0 0 10px">💬 Très utile, j'ai ressenti un vrai changement.</p>
-                <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.7;margin:0 0 16px">💌 Merci de tes conseils, j'ai essayé et cela a fonctionné.</p>
-                <div style="font-family:var(--font-body);font-size:13px;color:var(--rose-deep)">Anonymes</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <sc-if value="{{ showCarnets }}" hint-placeholder-val="{{ false }}">
-        <div id="pp-carnets" style="background:var(--paper);border-top:1px solid var(--border-faint);padding:84px min(48px,5vw)">
-          <div style="max-width:1180px;margin:0 auto">
-            <h2 style="font-family:var(--font-display);font-weight:400;font-size:32px;letter-spacing:0.04em;color:var(--deep-olive);text-align:center;margin:0 0 14px">Les carnets</h2>
-            <p style="font-family:var(--font-body);font-size:16px;color:var(--ink-soft);text-align:center;line-height:1.6;max-width:62ch;margin:0 auto 52px">Deux formes, la même intention : prendre soin de ta tête et de ton cœur, sans rien exiger de toi. Chaque carnet existe en livre broché sur Amazon.</p>
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px">
-
-              <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.Card" padded="{{ false }}" interactive="{{ true }}" onClick="{{ goEcriture }}" hint-size="100%,560px">
-                <div style="height:330px;background:var(--blush);display:flex;align-items:center;justify-content:center">
-                  <img src="/assets/cover-quand-ma-tete-est-pleine.jpg" alt="Couverture : Quand ma tête est pleine" style="display:block;height:276px;width:auto;border-radius:6px;border:1px solid var(--border-faint);box-shadow:0 14px 28px rgba(101,109,68,0.18)">
-                </div>
-                <div style="padding:28px 30px 30px">
-                  <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.Tag" tone="rose" hint-size="130px,26px">Carnets d'écriture</x-import>
-                  <h3 style="font-family:var(--font-display);font-weight:400;font-size:24px;letter-spacing:0.04em;color:var(--deep-olive);margin:14px 0 10px">Quand ma tête est pleine</h3>
-                  <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.65;margin:0 0 20px">Un carnet d'écriture pour apaiser un esprit qui pense trop. Le premier de la série : d'autres suivront, doucement.</p>
-                  <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.Button" variant="secondary" size="md" onClick="{{ goEcriture }}" hint-size="180px,46px">Découvrir ce carnet</x-import>
-                </div>
-              </x-import>
-
-              <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.Card" padded="{{ false }}" interactive="{{ true }}" onClick="{{ goActivites }}" hint-size="100%,560px">
-                <div style="height:330px;background:var(--sage-soft);display:flex;align-items:center;justify-content:center">
-                  <img src="/assets/cover-un-ete-800.jpg" alt="Couverture : Un été à s'émerveiller" style="display:block;height:276px;width:auto;border-radius:6px;border:1px solid var(--border-faint);box-shadow:0 14px 28px rgba(101,109,68,0.18)">
-                </div>
-                <div style="padding:28px 30px 30px">
-                  <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.Tag" tone="sage" hint-size="130px,26px">Carnets d'activités</x-import>
-                  <h3 style="font-family:var(--font-display);font-weight:400;font-size:24px;letter-spacing:0.04em;color:var(--deep-olive);margin:14px 0 10px">Un été à s'émerveiller</h3>
-                  <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.65;margin:0 0 20px">Coloriage, écritures guidées, puzzles et jeux, dans un seul carnet. De quoi te poser cinq minutes ou une heure entière.</p>
-                  <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.Button" variant="secondary" size="md" onClick="{{ goActivites }}" hint-size="180px,46px">Découvrir ce carnet</x-import>
-                </div>
-              </x-import>
-
-              <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.Card" padded="{{ false }}" interactive="{{ true }}" onClick="{{ goActivites }}" hint-size="100%,560px">
-                <div style="height:330px;background:var(--sage-soft);display:flex;align-items:center;justify-content:center">
-                  <img src="/assets/cover-sieste-800.jpg" alt="Couverture : La sieste au bord de l'eau" style="display:block;height:276px;width:auto;border-radius:6px;border:1px solid var(--border-faint);box-shadow:0 14px 28px rgba(101,109,68,0.18)">
-                </div>
-                <div style="padding:28px 30px 30px">
-                  <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.Tag" tone="sage" hint-size="130px,26px">Carnets d'activités</x-import>
-                  <h3 style="font-family:var(--font-display);font-weight:400;font-size:24px;letter-spacing:0.04em;color:var(--deep-olive);margin:14px 0 10px">La sieste au bord de l'eau</h3>
-                  <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.65;margin:0 0 20px">Coloriages de la mer, jeux de mots et écritures douces. Le carnet d'août, pour se reposer sans culpabiliser.</p>
-                  <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.Button" variant="secondary" size="md" onClick="{{ goActivites }}" hint-size="180px,46px">Découvrir ce carnet</x-import>
-                </div>
-              </x-import>
-
-            </div>
-          </div>
-        </div>
-        </sc-if>
-
-        <div style="padding:84px min(48px,5vw);text-align:center">
-          <div class="pp-eyebrow" style="margin-bottom:18px">La méthode pivoine</div>
-          <p style="font-family:var(--font-display);font-size:28px;color:var(--deep-olive);letter-spacing:0.04em;line-height:1.4;max-width:24ch;margin:0 auto 36px">Sept petites permissions. Jamais une liste à cocher.</p>
-          <div style="display:flex;justify-content:center;margin-bottom:30px">
-            <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.PivoineBadge" variant="strip" hint-size="560px,64px"></x-import>
-          </div>
-          <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.Button" variant="ghost" size="md" onClick="{{ goMethode }}" hint-size="200px,44px">Découvrir la méthode</x-import>
-        </div>
-
-      </div>
-    </sc-if>
+    
 
     <!-- ═══════════ PROGRAMME D'ÉCRITURE · MENTAL LÉGER ═══════════ -->
-    <sc-if value="{{ isProgramme }}" hint-placeholder-val="{{ false }}">
-      <div data-screen-label="Programme d'écriture">
-
-        <!-- 1 · En-tête centré -->
-        <div style="padding:clamp(64px,10vw,104px) min(48px,5vw) 8px;display:flex;flex-direction:column;align-items:center;text-align:center">
-          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1" opacity="0.55" aria-hidden="true" style="margin-bottom:24px"><path d="M12 3c2.5 1.5 3 4 2 6 2-1 4 0 4.5 2 .5 2-1 4-3.5 4.5 1.5 1 1.5 3 .5 4.5-1.2 1.8-4 1.8-6 0-2 1.8-4.8 1.8-6 0-1-1.5-1-3.5.5-4.5C1.5 15 0 13 .5 11 1 9 3 8 5 9c-1-2-.5-4.5 2-6 1.6-1 3.4-1 5 0Z"></path><circle cx="12" cy="12" r="2.4"></circle></svg>
-          <h1 style="font-family:var(--font-display);font-weight:400;font-size:clamp(38px,7vw,58px);line-height:1.1;letter-spacing:0.05em;color:var(--deep-olive);margin:0 0 20px">Mental Léger</h1>
-          <p style="font-family:var(--font-body);font-size:clamp(18px,2.8vw,23px);color:var(--ink-soft);line-height:1.5;max-width:24ch;margin:0 0 24px">Six semaines d'écriture pour alléger ton esprit</p>
-          <div style="font-family:var(--font-body);font-size:14px;color:var(--deep-olive);opacity:0.85;line-height:1.5;max-width:36ch">Pour les femmes hypersensibles et introverties qui pensent trop.</div>
-        </div>
-
-        <!-- 2 · Couverture + ouverture · deux colonnes (comme les programmes) -->
-        <div style="padding:clamp(40px,7vw,72px) min(48px,5vw) clamp(56px,9vw,92px)">
-          <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:min(64px,6vw);align-items:center">
-            <div style="background:var(--blush);border-radius:14px;padding:30px 24px 26px;display:flex;flex-direction:column;align-items:center;gap:18px">
-              <div style="display:flex;align-items:center;justify-content:center;width:100%">
-                <div style="display:{{ mlShowCover }}"><img src="/assets/mental-leger-cover.jpg" alt="Mental Léger, couverture du programme d'écriture" style="display:block;height:340px;width:auto;max-width:100%;border-radius:6px;border:1px solid var(--border-faint);box-shadow:0 16px 32px rgba(101,109,68,0.2);background:var(--paper)"></div>
-                <div style="display:{{ mlShowA }}"><img src="/assets/mental-leger-coin-ecriture.jpg" alt="Semaine 0, Mon coin d'écriture, page remplie à la main" style="display:block;height:340px;width:auto;max-width:100%;border-radius:6px;border:1px solid var(--border-faint);box-shadow:0 16px 32px rgba(101,109,68,0.2);background:var(--paper)"></div>
-                <div style="display:{{ mlShowB }}"><img src="/assets/mental-leger-vidage.jpg" alt="Semaine 1 jour 1, Le vidage, page remplie à la main" style="display:block;height:340px;width:auto;max-width:100%;border-radius:6px;border:1px solid var(--border-faint);box-shadow:0 16px 32px rgba(101,109,68,0.2);background:var(--paper)"></div>
-                <div style="display:{{ mlShowC }}"><img src="/assets/mental-leger-roue.jpg" alt="La roue des émotions, page remplie à la main" style="display:block;height:340px;width:auto;max-width:100%;border-radius:6px;border:1px solid var(--border-faint);box-shadow:0 16px 32px rgba(101,109,68,0.2);background:var(--paper)"></div>
-              </div>
-              <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
-                <div onClick="{{ selectMlCover }}" title="Couverture" style="cursor:pointer;border-radius:5px;overflow:hidden;border:2px solid {{ mlBorderCover }};line-height:0;transition:border-color 160ms ease" style-hover="border-color:var(--rose)"><img src="/assets/mental-leger-cover.jpg" alt="Couverture de Mental Léger" style="display:block;height:60px;width:auto"></div>
-                <div onClick="{{ selectMlA }}" title="Mon coin d'écriture" style="cursor:pointer;border-radius:5px;overflow:hidden;border:2px solid {{ mlBorderA }};line-height:0;transition:border-color 160ms ease" style-hover="border-color:var(--rose)"><img src="/assets/mental-leger-coin-ecriture.jpg" alt="Page Mon coin d'écriture" style="display:block;height:60px;width:auto"></div>
-                <div onClick="{{ selectMlB }}" title="Le vidage" style="cursor:pointer;border-radius:5px;overflow:hidden;border:2px solid {{ mlBorderB }};line-height:0;transition:border-color 160ms ease" style-hover="border-color:var(--rose)"><img src="/assets/mental-leger-vidage.jpg" alt="Page Le vidage" style="display:block;height:60px;width:auto"></div>
-                <div onClick="{{ selectMlC }}" title="La roue des émotions" style="cursor:pointer;border-radius:5px;overflow:hidden;border:2px solid {{ mlBorderC }};line-height:0;transition:border-color 160ms ease" style-hover="border-color:var(--rose)"><img src="/assets/mental-leger-roue.jpg" alt="Page La roue des émotions" style="display:block;height:60px;width:auto"></div>
-              </div>
-            </div>
-            <div>
-              <p style="font-family:var(--font-body);font-size:16px;color:var(--ink-soft);line-height:1.7;max-width:52ch;margin:0 0 14px">Il est trois heures du matin et je repense à une phrase entendue au bureau. Une remarque de rien du tout, dite sur un ton un peu bizarre. Deux secondes dans la journée de ma collègue. Trois heures dans la mienne.</p>
-              <p style="font-family:var(--font-body);font-size:16px;color:var(--ink-soft);line-height:1.7;max-width:52ch;margin:0 0 14px">Je me dis que ça n'en vaut pas la peine. Et je continue quand même.</p>
-              <p style="font-family:var(--font-body);font-size:16px;color:var(--ink);font-weight:500;line-height:1.7;max-width:52ch;margin:0 0 24px">Si tu connais ce plafond-là, tu es au bon endroit.</p>
-              <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
-                <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.Button" variant="primary" size="md" onClick="{{ buyMentalLeger }}" hint-size="230px,46px">Recevoir Mental Léger</x-import>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 3 · La reconnaissance -->
-        <div style="background:var(--paper);border-top:1px solid var(--border-faint);border-bottom:1px solid var(--border-faint);padding:clamp(56px,9vw,84px) min(48px,5vw)">
-          <div style="max-width:34rem;margin:0 auto;text-align:center">
-            <h2 style="font-family:var(--font-display);font-weight:400;font-size:clamp(26px,4.4vw,32px);letter-spacing:0.04em;color:var(--deep-olive);line-height:1.2;margin:0 0 44px">Tu te reconnais peut-être ici</h2>
-            <p style="font-family:var(--font-body);font-size:clamp(16px,2.4vw,18px);color:var(--ink-soft);line-height:1.7;margin:0">Tu rentres vidée d'une journée ordinaire, et tu culpabilises d'avoir besoin d'autant de calme pour t'en remettre.</p>
-            <div style="width:28px;height:1px;background:var(--sage);opacity:0.55;margin:26px auto"></div>
-            <p style="font-family:var(--font-body);font-size:clamp(16px,2.4vw,18px);color:var(--ink-soft);line-height:1.7;margin:0">Tu rejoues une conversation de deux minutes pendant toute une soirée.</p>
-            <div style="width:28px;height:1px;background:var(--sage);opacity:0.55;margin:26px auto"></div>
-            <p style="font-family:var(--font-body);font-size:clamp(16px,2.4vw,18px);color:var(--ink-soft);line-height:1.7;margin:0">Tu absorbes l'humeur des autres et tu la portes jusqu'au soir.</p>
-            <div style="width:28px;height:1px;background:var(--sage);opacity:0.55;margin:26px auto"></div>
-            <p style="font-family:var(--font-body);font-size:clamp(16px,2.4vw,18px);color:var(--ink-soft);line-height:1.7;margin:0">Tu dis oui alors que tu voulais dire non, et tu t'en veux après.</p>
-            <div style="width:28px;height:1px;background:var(--sage);opacity:0.55;margin:26px auto"></div>
-            <p style="font-family:var(--font-body);font-size:clamp(16px,2.4vw,18px);color:var(--ink-soft);line-height:1.7;margin:0">Tu te sens à la fois trop et pas assez.</p>
-            <div style="width:28px;height:1px;background:var(--sage);opacity:0.55;margin:26px auto"></div>
-            <p style="font-family:var(--font-body);font-size:clamp(16px,2.4vw,18px);color:var(--ink-soft);line-height:1.7;margin:0">Tu passes tes soirées sur le canapé, devant un écran que tu n'as pas vraiment choisi, et tu te couches tard en te promettant que demain sera différent.</p>
-            <div style="width:48px;height:1px;background:var(--sage);opacity:0.5;margin:40px auto 30px"></div>
-            <p style="font-family:var(--font-display);font-weight:400;font-size:clamp(20px,3.4vw,25px);letter-spacing:0.03em;color:var(--rose);line-height:1.4;margin:0">Il n'y a rien qui ne va pas chez toi.</p>
-          </div>
-        </div>
-
-        <!-- 4 · Ce qu'est Mental Léger -->
-        <div style="padding:clamp(56px,9vw,84px) min(48px,5vw)">
-          <div style="max-width:36rem;margin:0 auto">
-            <h2 style="font-family:var(--font-display);font-weight:400;font-size:clamp(26px,4.4vw,32px);letter-spacing:0.04em;color:var(--deep-olive);line-height:1.2;text-align:center;margin:0 0 36px">Ce qu'est Mental Léger</h2>
-            <div style="font-family:var(--font-body);font-size:clamp(16px,2.4vw,18px);color:var(--ink);line-height:1.8">
-              <p style="margin:0 0 1.3em">Un programme d'écriture, à remplir à la main, sur six semaines.</p>
-              <p style="margin:0 0 1.3em">Cinq jours par semaine, du lundi au vendredi. Cinq ou dix minutes le soir, parfois plus si tu en as envie. Le weekend, tu souffles.</p>
-              <p style="margin:0 0 1.3em">Chaque jour, la même chose simple. Tu apportes ce que tu portes ce jour-là. Tu le poses sur la page, sous la forme qui vient : des phrases, une liste, quelques mots. Et à la fin, tu regardes ce qui s'est apaisé.</p>
-              <p style="margin:0">Tu écris seule, chez toi, à l'heure qui te va. Personne ne lit, personne ne commente, il n'y a pas de groupe à rejoindre.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- 5 · Les six semaines -->
-        <div style="background:var(--paper);border-top:1px solid var(--border-faint);border-bottom:1px solid var(--border-faint);padding:clamp(56px,9vw,84px) min(48px,5vw)">
-          <div style="max-width:40rem;margin:0 auto">
-            <h2 style="font-family:var(--font-display);font-weight:400;font-size:clamp(26px,4.4vw,32px);letter-spacing:0.04em;color:var(--deep-olive);line-height:1.2;text-align:center;margin:0 0 52px">Les six semaines</h2>
-            <div style="display:flex;flex-direction:column;gap:40px">
-              <div style="display:flex;gap:24px;align-items:flex-start">
-                <div style="font-family:var(--font-display);font-size:44px;line-height:0.9;color:var(--deep-olive);width:52px;flex:none;text-align:center">0</div>
-                <div>
-                  <div style="font-family:var(--font-display);font-size:22px;letter-spacing:0.04em;color:var(--deep-olive);margin-bottom:8px">S'installer</div>
-                  <p style="font-family:var(--font-body);font-size:16px;color:var(--ink-soft);line-height:1.7;margin:0">Te préparer une place, un moment, un coin.</p>
-                </div>
-              </div>
-              <div style="display:flex;gap:24px;align-items:flex-start">
-                <div style="font-family:var(--font-display);font-size:44px;line-height:0.9;color:var(--deep-olive);width:52px;flex:none;text-align:center">1</div>
-                <div>
-                  <div style="font-family:var(--font-display);font-size:22px;letter-spacing:0.04em;color:var(--deep-olive);margin-bottom:8px">Vider pour respirer</div>
-                  <p style="font-family:var(--font-body);font-size:16px;color:var(--ink-soft);line-height:1.7;margin:0">Sortir de ta tête ce qui tourne, et le poser sur le papier.</p>
-                </div>
-              </div>
-              <div style="display:flex;gap:24px;align-items:flex-start">
-                <div style="font-family:var(--font-display);font-size:44px;line-height:0.9;color:var(--deep-olive);width:52px;flex:none;text-align:center">2</div>
-                <div>
-                  <div style="font-family:var(--font-display);font-size:22px;letter-spacing:0.04em;color:var(--deep-olive);margin-bottom:8px">Comprendre mon mental hypersensible</div>
-                  <p style="font-family:var(--font-body);font-size:16px;color:var(--ink-soft);line-height:1.7;margin:0">Regarder tes pensées de plus près, sans te juger. Nommer ce que tu ressens, et faire connaissance avec cette voix dure qui parle le soir.</p>
-                </div>
-              </div>
-              <div style="display:flex;gap:24px;align-items:flex-start">
-                <div style="font-family:var(--font-display);font-size:44px;line-height:0.9;color:var(--deep-olive);width:52px;flex:none;text-align:center">3</div>
-                <div>
-                  <div style="font-family:var(--font-display);font-size:22px;letter-spacing:0.04em;color:var(--deep-olive);margin-bottom:8px">Protéger mon énergie</div>
-                  <p style="font-family:var(--font-body);font-size:16px;color:var(--ink-soft);line-height:1.7;margin:0">Remarquer ce qui te vide, ce qui te fait du bien, et préparer tes phrases pour les jours exposés.</p>
-                </div>
-              </div>
-              <div style="display:flex;gap:24px;align-items:flex-start">
-                <div style="font-family:var(--font-display);font-size:44px;line-height:0.9;color:var(--deep-olive);width:52px;flex:none;text-align:center">4</div>
-                <div>
-                  <div style="font-family:var(--font-display);font-size:22px;letter-spacing:0.04em;color:var(--deep-olive);margin-bottom:8px">Cultiver l'auto-compassion</div>
-                  <p style="font-family:var(--font-body);font-size:16px;color:var(--ink-soft);line-height:1.7;margin:0">Te parler comme tu parlerais à une amie, même si ça semble étrange au début.</p>
-                </div>
-              </div>
-              <div style="display:flex;gap:24px;align-items:flex-start">
-                <div style="font-family:var(--font-display);font-size:44px;line-height:0.9;color:var(--deep-olive);width:52px;flex:none;text-align:center">5</div>
-                <div>
-                  <div style="font-family:var(--font-display);font-size:22px;letter-spacing:0.04em;color:var(--deep-olive);margin-bottom:8px">Poser mes limites</div>
-                  <p style="font-family:var(--font-body);font-size:16px;color:var(--ink-soft);line-height:1.7;margin:0">Chercher tes mots à toi pour dire non, et savoir quoi faire de la culpabilité qui arrive juste après.</p>
-                </div>
-              </div>
-              <div style="display:flex;gap:24px;align-items:flex-start">
-                <div style="font-family:var(--font-display);font-size:44px;line-height:0.9;color:var(--deep-olive);width:52px;flex:none;text-align:center">6</div>
-                <div>
-                  <div style="font-family:var(--font-display);font-size:22px;letter-spacing:0.04em;color:var(--deep-olive);margin-bottom:8px">Ce que je garde</div>
-                  <p style="font-family:var(--font-body);font-size:16px;color:var(--ink-soft);line-height:1.7;margin:0">Relire tes semaines, et choisir ce que tu emportes.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 6 · Ce qu'il y a dedans -->
-        <div style="padding:clamp(56px,9vw,84px) min(48px,5vw)">
-          <div style="max-width:36rem;margin:0 auto">
-            <h2 style="font-family:var(--font-display);font-weight:400;font-size:clamp(26px,4.4vw,32px);letter-spacing:0.04em;color:var(--deep-olive);line-height:1.2;text-align:center;margin:0 0 8px">Ce qu'il y a dedans</h2>
-            <div style="display:flex;flex-direction:column;margin-top:32px">
-              <div style="padding:22px 0;border-top:1px solid var(--border-faint)"><p style="font-family:var(--font-body);font-size:clamp(16px,2.4vw,17px);color:var(--ink-soft);line-height:1.7;margin:0">Trente jours d'écriture, avec la place pour écrire directement dans les pages.</p></div>
-              <div style="padding:22px 0;border-top:1px solid var(--border-faint)"><p style="font-family:var(--font-body);font-size:clamp(16px,2.4vw,17px);color:var(--ink-soft);line-height:1.7;margin:0">La roue des émotions, pour trouver le mot exact quand « ça ne va pas » ne suffit pas.</p></div>
-              <div style="padding:22px 0;border-top:1px solid var(--border-faint)"><p style="font-family:var(--font-body);font-size:clamp(16px,2.4vw,17px);color:var(--ink-soft);line-height:1.7;margin:0">Des phrases prêtes à l'emploi pour dire non, et de la place pour écrire les tiennes.</p></div>
-              <div style="padding:22px 0;border-top:1px solid var(--border-faint)"><p style="font-family:var(--font-body);font-size:clamp(16px,2.4vw,17px);color:var(--ink-soft);line-height:1.7;margin:0">Une boîte à outils à garder pour après : quand c'est trop, tout de suite. Quand l'anxiété monte. Quand tu te sens nulle. Quand tu es vidée. Quand tu dois dire non.</p></div>
-              <div style="padding:22px 0;border-top:1px solid var(--border-faint);border-bottom:1px solid var(--border-faint)"><p style="font-family:var(--font-body);font-size:clamp(16px,2.4vw,17px);color:var(--ink-soft);line-height:1.7;margin:0">Une page pour les jours où tu as pris du retard, parce que ça arrive à tout le monde.</p></div>
-            </div>
-            <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-faint);text-align:center;margin:28px 0 0">Soixante-neuf pages.</p>
-          </div>
-        </div>
-
-        <!-- 7 · Ce que je te promets -->
-        <div style="background:var(--blush);padding:clamp(56px,9vw,88px) min(48px,5vw)">
-          <div style="max-width:34rem;margin:0 auto;text-align:center">
-            <h2 style="font-family:var(--font-display);font-weight:400;font-size:clamp(24px,4vw,30px);letter-spacing:0.04em;color:var(--deep-olive);line-height:1.25;margin:0 0 32px">Ce que je te promets, et ce que je ne te promets pas</h2>
-            <div style="font-family:var(--font-body);font-size:clamp(16px,2.4vw,18px);color:var(--ink);line-height:1.8">
-              <p style="margin:0 0 1.3em">Je ne te promets pas que tu iras mieux. Ce programme ne répare rien, et il n'y a rien à réparer chez toi. Il ne réglera pas ce qui pèse dans ta vie, et il ne demandera pas à ta tête de penser moins.</p>
-              <p style="margin:0 0 1.3em">Il te donne une place où poser ce que tu portes, quelques minutes par jour.</p>
-              <p style="margin:0">Certains soirs tu te sentiras plus légère. D'autres, plus au clair. D'autres soirs, rien de spécial. Ces soirs-là comptent aussi.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Bouton principal (1 / 3) -->
-        <div style="padding:clamp(44px,7vw,60px) min(48px,5vw);display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
-          <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.Button" variant="primary" size="lg" onClick="{{ buyMentalLeger }}" hint-size="240px,52px">Recevoir Mental Léger</x-import>
-          <p style="font-family:var(--font-body);font-size:13px;color:var(--ink-faint);line-height:1.6;margin:0;max-width:40ch">Paiement sécurisé. Le programme arrive dans ta boîte mail juste après.</p>
-        </div>
-
-        <!-- 8 · Pour qui -->
-        <div style="padding:clamp(48px,8vw,80px) min(48px,5vw)">
-          <div style="max-width:34rem;margin:0 auto;text-align:center">
-            <h2 style="font-family:var(--font-display);font-weight:400;font-size:clamp(26px,4.4vw,32px);letter-spacing:0.04em;color:var(--deep-olive);line-height:1.2;margin:0 0 32px">Ce programme est pour toi si</h2>
-            <div style="font-family:var(--font-body);font-size:clamp(16px,2.4vw,18px);color:var(--ink-soft);line-height:1.8">
-              <p style="margin:0 0 1.1em">Tu es hypersensible, introvertie, et ta tête ne s'arrête pas le soir.</p>
-              <p style="margin:0 0 1.1em">Tu préfères écrire seule plutôt que d'avoir à expliquer où tu en es à quelqu'un.</p>
-              <p style="margin:0 0 1.1em">Tu veux te sentir bien comme tu es, sans avoir à devenir quelqu'un d'autre.</p>
-              <p style="margin:0">Tu as besoin de quelque chose que tu peux ouvrir ce soir, sans rendez-vous à prendre.</p>
-            </div>
-            <div style="width:48px;height:1px;background:var(--sage);opacity:0.5;margin:44px auto"></div>
-            <h3 style="font-family:var(--font-display);font-weight:400;font-size:clamp(20px,3.2vw,24px);letter-spacing:0.04em;color:var(--deep-olive);line-height:1.3;margin:0 0 16px">Et si tu traverses quelque chose de lourd</h3>
-            <p style="font-family:var(--font-body);font-size:clamp(15px,2.2vw,17px);color:var(--ink-soft);line-height:1.75;margin:0">Si tu vis une dépression, une anxiété forte, une période vraiment difficile, un professionnel reste la bonne porte. Ce programme peut t'accompagner à côté, jamais à la place. Les numéros d'aide sont dans le programme, et je les redonne en bas de cette page.</p>
-          </div>
-        </div>
-
-        <!-- 9 · Qui je suis -->
-        <div style="background:var(--paper);border-top:1px solid var(--border-faint);border-bottom:1px solid var(--border-faint);padding:clamp(56px,9vw,84px) min(48px,5vw);display:flex;flex-direction:column;align-items:center">
-          <h2 style="font-family:var(--font-display);font-weight:400;font-size:clamp(26px,4.4vw,32px);letter-spacing:0.04em;color:var(--deep-olive);line-height:1.2;text-align:center;margin:0 0 36px">Qui je suis</h2>
-          <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.LetterBlock" align="center" signature="" hint-size="600px,320px">
-            <p style="margin:0 0 1.2em">Je m'appelle Camélia. J'écris pour les femmes hypersensibles et introverties, parce que j'en suis une.</p>
-            <p style="margin:0 0 1.2em">Ce programme vient de mon propre chemin : douze ans de psychanalyse, une dépression sévère, et des années à chercher ce qui aide vraiment quand on ressent tout très fort. L'écriture, un peu chaque jour, est ce qui est resté.</p>
-            <p style="margin:0">Je ne suis pas thérapeute. Je partage ce qui m'a aidée, comme une amie te le raconterait.</p>
-            <div style="margin-top:22px;font-family:'Allison',cursive;font-size:34px;line-height:1.1;color:var(--rose)">Camélia</div>
-          </x-import>
-        </div>
-
-        <!-- 10 · Ce qu'en disent celles qui l'ont rempli -->
-        <div style="padding:clamp(56px,9vw,84px) min(48px,5vw)">
-          <div style="max-width:600px;margin:0 auto">
-            <div class="pp-eyebrow" style="display:block;text-align:center;margin-bottom:32px">Ce qu'en disent celles qui l'ont rempli</div>
-            <div style="background:var(--paper);border:1px solid var(--border-faint);border-radius:14px;padding:32px 36px;text-align:center">
-              <p style="font-family:var(--font-body);font-size:16px;color:var(--ink-soft);line-height:1.75;margin:0 0 18px">J'ai rempli plusieurs pages, sans être pressée par le temps. Je suis à l'après de l'exercice du Jour 1 et je me sens assez soulagée, calme, et je ne pensais pas porter tout ça. Je suis surprise que mes pensées soient si positives, moi qui pensais qu'elles étaient plus négatives qu'autre chose. J'adore écrire et cet exercice est parfait pour moi, c'est une routine que je veux intégrer à mon quotidien. Merci pour cette initiative, j'ai beaucoup apprécié ce moment.</p>
-              <div style="font-family:var(--font-body);font-size:13px;color:var(--rose-deep)">Anne-Sophie</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 11 · Ce que tu reçois -->
-        <div style="background:var(--paper);border-top:1px solid var(--border-faint);border-bottom:1px solid var(--border-faint);padding:clamp(56px,9vw,84px) min(48px,5vw)">
-          <div style="max-width:34rem;margin:0 auto;text-align:center">
-            <h2 style="font-family:var(--font-display);font-weight:400;font-size:clamp(26px,4.4vw,32px);letter-spacing:0.04em;color:var(--deep-olive);line-height:1.2;margin:0 0 28px">Ce que tu reçois</h2>
-            <div style="font-family:var(--font-body);font-size:clamp(16px,2.4vw,18px);color:var(--ink);line-height:1.8">
-              <p style="margin:0 0 1.1em">Un PDF A4 que tu remplis directement sur ton écran, ou que tu imprimes chez toi pour écrire à la main.</p>
-              <p style="margin:0 0 1.1em">Le lien de téléchargement arrive tout de suite par email, et il reste à toi.</p>
-              <p style="margin:0">Le programme est à toi, pour toujours. Tu peux le reprendre dans six mois, ou dans deux ans, et le réimprimer si tu veux recommencer.</p>
-            </div>
-            <sc-if value="{{ showPrices }}" hint-placeholder-val="{{ true }}">
-              <div style="margin-top:32px;font-family:var(--font-body);font-size:16px;color:var(--ink-soft)">Prix : <span style="font-family:var(--font-display);font-size:28px;letter-spacing:0.03em;color:var(--deep-olive)">67 €</span></div>
-            </sc-if>
-          </div>
-        </div>
-
-        <!-- Bouton principal (2 / 3) -->
-        <div style="padding:clamp(44px,7vw,60px) min(48px,5vw);display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
-          <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.Button" variant="primary" size="lg" onClick="{{ buyMentalLeger }}" hint-size="240px,52px">Recevoir Mental Léger</x-import>
-          <p style="font-family:var(--font-body);font-size:13px;color:var(--ink-faint);line-height:1.6;margin:0;max-width:40ch">Paiement sécurisé. Le programme arrive dans ta boîte mail juste après.</p>
-        </div>
-
-        <!-- 13 · Les questions qu'on me pose -->
-        <div style="padding:clamp(48px,8vw,80px) min(48px,5vw)">
-          <div style="max-width:36rem;margin:0 auto">
-            <h2 style="font-family:var(--font-display);font-weight:400;font-size:clamp(26px,4.4vw,32px);letter-spacing:0.04em;color:var(--deep-olive);line-height:1.2;text-align:center;margin:0 0 40px">Les questions qu'on me pose</h2>
-            <div style="display:flex;flex-direction:column">
-              <div style="padding:26px 0;border-top:1px solid var(--border-faint)">
-                <div style="font-family:var(--font-body);font-size:16px;font-weight:500;color:var(--deep-olive);margin-bottom:10px">Je n'ai jamais tenu un journal.</div>
-                <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.7;margin:0">Ça n'a pas d'importance. Il n'y a pas de style à avoir, pas de belles phrases à écrire. Certains jours tu écriras trois lignes, d'autres trois pages. Les deux suffisent.</p>
-              </div>
-              <div style="padding:26px 0;border-top:1px solid var(--border-faint)">
-                <div style="font-family:var(--font-body);font-size:16px;font-weight:500;color:var(--deep-olive);margin-bottom:10px">Je vais abandonner à la deuxième semaine, comme d'habitude.</div>
-                <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.7;margin:0">Peut-être. Et le programme t'attendra. Il ne se périme pas : tu peux reprendre où tu en étais, ou refaire une semaine, ou n'ouvrir que la boîte à outils les soirs difficiles. Il y a même une page pour les jours de retard, parce que je savais que ça arriverait.</p>
-              </div>
-              <div style="padding:26px 0;border-top:1px solid var(--border-faint)">
-                <div style="font-family:var(--font-body);font-size:16px;font-weight:500;color:var(--deep-olive);margin-bottom:10px">Cinq minutes, ça suffit vraiment ?</div>
-                <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.7;margin:0">Les jours où tu as cinq minutes, oui. Les jours où tu en as trente, prends-les. C'est toi qui décides, chaque soir.</p>
-              </div>
-              <div style="padding:26px 0;border-top:1px solid var(--border-faint)">
-                <div style="font-family:var(--font-body);font-size:16px;font-weight:500;color:var(--deep-olive);margin-bottom:10px">Est-ce que ça remplace un psy ?</div>
-                <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.7;margin:0">Non. Un professionnel reste un professionnel, et ce programme ne prend pas sa place. Il est là pour les soirs où tu n'as pas envie d'expliquer, ou pas envie d'attendre le prochain rendez-vous.</p>
-              </div>
-              <div style="padding:26px 0;border-top:1px solid var(--border-faint);border-bottom:1px solid var(--border-faint)">
-                <div style="font-family:var(--font-body);font-size:16px;font-weight:500;color:var(--deep-olive);margin-bottom:10px">Est-ce que quelqu'un lit ce que j'écris ?</div>
-                <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.7;margin:0">Personne. C'est à toi, rien qu'à toi.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Bouton principal (3 / 3) -->
-        <div style="background:var(--blush);padding:clamp(56px,9vw,84px) min(48px,5vw);display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
-          <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.Button" variant="primary" size="lg" onClick="{{ buyMentalLeger }}" hint-size="240px,52px">Recevoir Mental Léger</x-import>
-          <p style="font-family:var(--font-body);font-size:13px;color:var(--ink-faint);line-height:1.6;margin:0;max-width:40ch">Paiement sécurisé. Le programme arrive dans ta boîte mail juste après.</p>
-        </div>
-
-        <!-- 14 · Note de sécurité (propre à cette page) -->
-        <div style="padding:clamp(44px,6vw,60px) min(48px,5vw) clamp(52px,7vw,72px)">
-          <div style="max-width:54ch;margin:0 auto;text-align:center">
-            <div style="width:48px;height:1px;background:var(--sage);opacity:0.5;margin:0 auto 28px"></div>
-            <p style="font-family:var(--font-body);font-size:13px;color:var(--ink-faint);line-height:1.7;margin:0 0 12px">Ce programme propose des exercices d'écriture pour te faire du bien au quotidien. Il ne remplace ni un suivi médical, ni une psychothérapie, ni l'avis d'un professionnel de santé.</p>
-            <p style="font-family:var(--font-body);font-size:13px;color:var(--ink-faint);line-height:1.7;margin:0">Si tu traverses une période difficile : le 3114, numéro national de prévention du suicide, répond 24 h/24 et 7 j/7. SOS Amitié : 09 72 39 40 50.</p>
-          </div>
-        </div>
-
-      </div>
-    </sc-if>
+    
 
     <!-- ═══════════ CARNETS D'ÉCRITURE ═══════════ -->
-    <sc-if value="{{ isEcriture }}" hint-placeholder-val="{{ false }}">
-      <div data-screen-label="Carnets d'écriture">
-
-        <div style="padding:clamp(56px,9vw,88px) min(48px,5vw) 64px;text-align:center">
-          <div class="pp-eyebrow" style="margin-bottom:20px">Écrire pour se sentir mieux</div>
-          <h1 style="font-family:var(--font-display);font-weight:400;font-size:clamp(30px,5.5vw,42px);line-height:1.16;letter-spacing:0.04em;color:var(--deep-olive);max-width:24ch;margin:0 auto 22px">Les carnets d'écriture</h1>
-          <p style="font-family:var(--font-body);font-size:clamp(16px,2.4vw,19px);color:var(--ink-soft);line-height:1.7;max-width:52ch;margin:0 auto">Des carnets guidés pour mettre des mots sur ce qui t'occupe, en listes désordonnées ou en longues lettres, comme ça vient. Chaque carnet existe en livre broché sur Amazon.</p>
-        </div>
-
-        <div style="background:var(--paper);border-top:1px solid var(--border-faint);border-bottom:1px solid var(--border-faint);padding:76px min(48px,5vw)">
-          <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:min(64px,6vw);align-items:center">
-            <div style="background:var(--blush);border-radius:14px;height:440px;display:flex;align-items:center;justify-content:center">
-              <img src="/assets/cover-quand-ma-tete-est-pleine.jpg" alt="Couverture : Quand ma tête est pleine" style="display:block;height:368px;width:auto;border-radius:6px;border:1px solid var(--border-faint);box-shadow:0 16px 32px rgba(101,109,68,0.2)">
-            </div>
-            <div>
-              <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.Tag" tone="rose" hint-size="140px,26px">Le premier carnet</x-import>
-              <h2 style="font-family:var(--font-display);font-weight:400;font-size:clamp(28px,4.5vw,36px);letter-spacing:0.04em;color:var(--deep-olive);margin:16px 0 8px">Quand ma tête est pleine</h2>
-              <p style="font-family:var(--font-body);font-size:15px;font-style:italic;color:var(--rose-deep);margin:0 0 18px">Un carnet d'écriture pour apaiser un esprit qui pense trop · Pour femmes hypersensibles et introverties</p>
-              <p style="font-family:var(--font-body);font-size:16px;color:var(--ink-soft);line-height:1.7;max-width:52ch;margin:0 0 14px">Tu rejoues les conversations, longtemps après. Tu remarques tout, le moindre détail, la moindre tension. Le soir, tu rentres vidée, sans toujours savoir pourquoi. Et la nuit, ton esprit tourne, encore, pendant que tu voudrais juste dormir.</p>
-              <p style="font-family:var(--font-body);font-size:16px;color:var(--ink);font-weight:500;line-height:1.7;max-width:52ch;margin:0 0 24px">Si tu te reconnais, ce carnet est pour toi.</p>
-              <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
-                <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.Button" variant="primary" size="md" onClick="{{ buyTeteAmazon }}" hint-size="230px,46px">Voir la version brochée sur Amazon</x-import>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div style="padding:76px min(48px,5vw)">
-          <div style="max-width:1080px;margin:0 auto">
-            <p style="font-family:var(--font-body);font-size:17px;color:var(--ink-soft);line-height:1.8;max-width:56ch;margin:0 auto 18px;text-align:center">Quand ma tête est pleine est un carnet d'écriture pensé pour les femmes hypersensibles et introverties, celles dont l'esprit ressent fort et ne se repose jamais. C'est un endroit calme, privé, où poser une tête trop pleine, quand tu en as besoin.</p>
-            <p style="font-family:var(--font-body);font-size:17px;color:var(--ink-soft);line-height:1.8;max-width:56ch;margin:0 auto 64px;text-align:center">Ce n'est pas une méthode pour penser moins, ni un programme pour devenir une meilleure version de toi-même. Ton esprit travaille beaucoup parce que tu ressens et remarques tout. Ce n'est pas un défaut. Ce carnet ne cherche pas à te corriger. Il donne simplement à ton esprit fatigué un endroit où se déposer, et te laisse voir ce qui s'apaise.</p>
-            <h2 style="font-family:var(--font-display);font-weight:400;font-size:28px;letter-spacing:0.04em;color:var(--deep-olive);text-align:center;margin:0 0 44px">Sur chaque page, tu trouveras</h2>
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:40px">
-              <div style="border-top:1px solid var(--sage);padding-top:20px">
-                <div style="font-family:var(--font-body);font-size:16px;font-weight:500;color:var(--deep-olive);margin-bottom:8px">Une question douce</div>
-                <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.65;margin:0">Pour t'aider à commencer, quand la page blanche fait peur.</p>
-              </div>
-              <div style="border-top:1px solid var(--sage);padding-top:20px">
-                <div style="font-family:var(--font-body);font-size:16px;font-weight:500;color:var(--deep-olive);margin-bottom:8px">De la place pour écrire comme ça vient</div>
-                <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.65;margin:0">En vrac, sans soigner les phrases.</p>
-              </div>
-              <div style="border-top:1px solid var(--sage);padding-top:20px">
-                <div style="font-family:var(--font-body);font-size:16px;font-weight:500;color:var(--deep-olive);margin-bottom:8px">Une petite ligne, à la fin</div>
-                <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.65;margin:0">Pour remarquer ce qui a changé, même un peu.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div style="background:var(--paper);border-top:1px solid var(--border-faint);border-bottom:1px solid var(--border-faint);padding:76px min(48px,5vw)">
-          <div style="max-width:560px;margin:0 auto 56px">
-            <h2 style="font-family:var(--font-display);font-weight:400;font-size:28px;letter-spacing:0.04em;color:var(--deep-olive);text-align:center;margin:0 0 40px">Un carnet fait pour une tête qui pense trop</h2>
-            <div style="display:flex;flex-direction:column">
-              <div style="padding:20px 0;border-top:1px solid var(--border-faint)">
-                <div style="font-family:var(--font-body);font-size:16px;font-weight:500;color:var(--deep-olive);margin-bottom:6px">Des pages non datées</div>
-                <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.65;margin:0">Pour l'ouvrir quand tu veux, sans jamais être en retard.</p>
-              </div>
-              <div style="padding:20px 0;border-top:1px solid var(--border-faint)">
-                <div style="font-family:var(--font-body);font-size:16px;font-weight:500;color:var(--deep-olive);margin-bottom:6px">Des questions qui suivent ce qui t'encombre</div>
-                <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.65;margin:0">Les pensées qui tournent, les nuits sans sommeil, la charge mentale, le trop-plein du jour.</p>
-              </div>
-              <div style="padding:20px 0;border-top:1px solid var(--border-faint)">
-                <div style="font-family:var(--font-body);font-size:16px;font-weight:500;color:var(--deep-olive);margin-bottom:6px">Quelques lettres, en chemin</div>
-                <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.65;margin:0">D'une femme qui connaît ces nuits-là.</p>
-              </div>
-              <div style="padding:20px 0;border-top:1px solid var(--border-faint);border-bottom:1px solid var(--border-faint)">
-                <div style="font-family:var(--font-body);font-size:16px;font-weight:500;color:var(--deep-olive);margin-bottom:6px">De la place, beaucoup</div>
-                <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.65;margin:0">Parce que le calme commence là.</p>
-              </div>
-            </div>
-          </div>
-          <div style="max-width:56ch;margin:0 auto;text-align:center">
-            <p style="font-family:var(--font-body);font-size:16px;color:var(--ink-soft);line-height:1.75;margin:0 0 14px">Tu peux l'ouvrir trois minutes ou une heure. Le matin, le soir, au milieu de la nuit. Tu écris ce que tu veux, comme tu veux. Personne ne lira ça. C'est à toi.</p>
-            <p style="font-family:var(--font-body);font-size:16px;color:var(--ink-soft);line-height:1.75;margin:0 0 26px">Il n'y a rien à réussir ici. Tu viens, tu poses ce que tu portes, et tu repars un peu plus légère. Ou pas, et c'est bien aussi.</p>
-
-          </div>
-        </div>
-
-        <div style="padding:76px min(48px,5vw) 84px">
-          <div style="max-width:720px;margin:0 auto;background:var(--paper);border:1px solid var(--border-faint);border-radius:14px;padding:44px 48px;text-align:center">
-            <div class="pp-eyebrow" style="margin-bottom:14px">À venir</div>
-            <p style="font-family:var(--font-body);font-size:16px;color:var(--ink-soft);line-height:1.7;max-width:44ch;margin:0 auto 22px">Le deuxième carnet est en cours d'écriture. Si tu veux savoir quand il arrive, la newsletter l'annoncera en premier.</p>
-            <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.Button" variant="ghost" size="md" onClick="{{ goNewsletter }}" hint-size="210px,44px">Recevoir la newsletter</x-import>
-          </div>
-        </div>
-
-      </div>
-    </sc-if>
+    
 
     <!-- ═══════════ CARNETS D'ACTIVITÉS ═══════════ -->
-    <sc-if value="{{ isActivites }}" hint-placeholder-val="{{ false }}">
-      <div data-screen-label="Carnets d'activités">
-
-        <div style="padding:clamp(56px,9vw,88px) min(48px,5vw) 64px;text-align:center">
-          <div class="pp-eyebrow" style="margin-bottom:20px">Se détendre</div>
-          <h1 style="font-family:var(--font-display);font-weight:400;font-size:clamp(30px,5.5vw,42px);line-height:1.16;letter-spacing:0.04em;color:var(--deep-olive);max-width:24ch;margin:0 auto 22px">Les carnets d'activités</h1>
-          <p style="font-family:var(--font-body);font-size:clamp(16px,2.4vw,19px);color:var(--ink-soft);line-height:1.7;max-width:52ch;margin:0 auto">Coloriage, écritures guidées, puzzles, jeux de mots et petits tests, au fil des saisons. De quoi te poser cinq minutes ou une heure entière. Chaque carnet existe en livre broché sur Amazon.</p>
-        </div>
-
-        <div style="background:var(--paper);border-top:1px solid var(--border-faint);border-bottom:1px solid var(--border-faint);padding:72px min(48px,5vw)">
-          <div style="max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:40px;align-items:stretch">
-
-            <div style="display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--border-faint);border-radius:18px;overflow:hidden">
-              <div style="background:var(--sage-soft);padding:30px 24px 24px;display:flex;flex-direction:column;align-items:center;gap:18px">
-                <div style="display:flex;align-items:center;justify-content:center;width:100%">
-                  <div style="display:{{ eteShowCover }}"><img src="/assets/cover-un-ete-800.jpg" alt="Couverture d'Un été à s'émerveiller" style="display:block;height:300px;width:auto;max-width:100%;border-radius:6px;border:1px solid var(--border-faint);box-shadow:0 16px 32px rgba(101,109,68,0.2);background:var(--paper)"></div>
-                  <div style="display:{{ eteShowA }}"><img src="/assets/blog-ete-a.jpg" alt="Page d'écriture guidée d'Un été à s'émerveiller" style="display:block;height:300px;width:auto;max-width:100%;border-radius:6px;border:1px solid var(--border-faint);box-shadow:0 16px 32px rgba(101,109,68,0.2);background:var(--paper)"></div>
-                  <div style="display:{{ eteShowB }}"><img src="/assets/blog-ete-b.jpg" alt="Coloriage d'Un été à s'émerveiller" style="display:block;height:300px;width:auto;max-width:100%;border-radius:6px;border:1px solid var(--border-faint);box-shadow:0 16px 32px rgba(101,109,68,0.2);background:var(--paper)"></div>
-                  <div style="display:{{ eteShowC }}"><img src="/assets/blog-ete-c.jpg" alt="Mots croisés d'Un été à s'émerveiller" style="display:block;height:300px;width:auto;max-width:100%;border-radius:6px;border:1px solid var(--border-faint);box-shadow:0 16px 32px rgba(101,109,68,0.2);background:var(--paper)"></div>
-                  <div style="display:{{ eteShowD }}"><img src="/assets/blog-ete-d.jpg" alt="Page à dessiner d'Un été à s'émerveiller" style="display:block;height:300px;width:auto;max-width:100%;border-radius:6px;border:1px solid var(--border-faint);box-shadow:0 16px 32px rgba(101,109,68,0.2);background:var(--paper)"></div>
-                </div>
-                <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
-                  <div onClick="{{ selectEteCover }}" title="Couverture" style="cursor:pointer;border-radius:5px;overflow:hidden;border:2px solid {{ eteBorderCover }};line-height:0;transition:border-color 160ms ease" style-hover="border-color:var(--rose)"><img src="/assets/cover-un-ete-800.jpg" alt="Couverture d'Un été à s'émerveiller" style="display:block;height:58px;width:auto"></div>
-                  <div onClick="{{ selectEteA }}" title="Écriture guidée" style="cursor:pointer;border-radius:5px;overflow:hidden;border:2px solid {{ eteBorderA }};line-height:0;transition:border-color 160ms ease" style-hover="border-color:var(--rose)"><img src="/assets/blog-ete-a.jpg" alt="Page d'écriture guidée" style="display:block;height:58px;width:auto"></div>
-                  <div onClick="{{ selectEteB }}" title="Coloriage" style="cursor:pointer;border-radius:5px;overflow:hidden;border:2px solid {{ eteBorderB }};line-height:0;transition:border-color 160ms ease" style-hover="border-color:var(--rose)"><img src="/assets/blog-ete-b.jpg" alt="Coloriage" style="display:block;height:58px;width:auto"></div>
-                  <div onClick="{{ selectEteC }}" title="Mots croisés" style="cursor:pointer;border-radius:5px;overflow:hidden;border:2px solid {{ eteBorderC }};line-height:0;transition:border-color 160ms ease" style-hover="border-color:var(--rose)"><img src="/assets/blog-ete-c.jpg" alt="Mots croisés" style="display:block;height:58px;width:auto"></div>
-                  <div onClick="{{ selectEteD }}" title="Page à dessiner" style="cursor:pointer;border-radius:5px;overflow:hidden;border:2px solid {{ eteBorderD }};line-height:0;transition:border-color 160ms ease" style-hover="border-color:var(--rose)"><img src="/assets/blog-ete-d.jpg" alt="Page à dessiner" style="display:block;height:58px;width:auto"></div>
-                </div>
-              </div>
-              <div style="padding:30px 32px 32px;display:flex;flex-direction:column;flex:1">
-                <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.Tag" tone="sage" hint-size="150px,26px">Juillet · disponible</x-import>
-                <h2 style="font-family:var(--font-display);font-weight:400;font-size:clamp(24px,3.4vw,30px);letter-spacing:0.04em;color:var(--deep-olive);margin:16px 0 8px">Un été à s'émerveiller</h2>
-                <p style="font-family:var(--font-body);font-size:15px;font-style:italic;color:var(--rose-deep);margin:0 0 16px">Pour savourer la lumière et la douceur de l'été</p>
-                <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.7;margin:0 0 20px">Des coloriages d'un jardin tropical, des mots mêlés, des mots croisés, une grille de sudoku, des messages à décoder, de petites écritures guidées et des listes à remplir. Aucun ordre à suivre, les solutions t'attendent à la fin.</p>
-                <div style="margin-top:auto">
-                  <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.Button" variant="primary" size="md" onClick="{{ buyEteAmazon }}" hint-size="260px,46px">Feuilleter et commander sur Amazon</x-import>
-                  <p style="font-family:var(--font-body);font-size:13px;color:var(--ink-faint);line-height:1.6;margin:12px 0 0">Sur Amazon, tu peux feuilleter les premières pages avant de choisir.</p>
-                </div>
-              </div>
-            </div>
-
-            <div style="display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--border-faint);border-radius:18px;overflow:hidden">
-              <div style="background:var(--sage-soft);padding:36px 0;display:flex;align-items:center;justify-content:center">
-                <img src="/assets/cover-sieste-800.jpg" alt="Couverture : La sieste au bord de l'eau" style="display:block;height:320px;width:auto;border-radius:6px;border:1px solid var(--border-faint);box-shadow:0 16px 32px rgba(101,109,68,0.2)">
-              </div>
-              <div style="padding:30px 32px 32px;display:flex;flex-direction:column;flex:1">
-                <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.Tag" tone="sage" hint-size="150px,26px">Août · disponible</x-import>
-                <h2 style="font-family:var(--font-display);font-weight:400;font-size:clamp(24px,3.4vw,30px);letter-spacing:0.04em;color:var(--deep-olive);margin:16px 0 8px">La sieste au bord de l'eau</h2>
-                <p style="font-family:var(--font-body);font-size:15px;font-style:italic;color:var(--rose-deep);margin:0 0 16px">Pour se reposer sans culpabiliser, au bord de l'océan</p>
-                <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.7;margin:0 0 20px">Des coloriages de la mer (poissons, tortues, méduses, coquillages, hippocampes), des mots mêlés et mots croisés, des labyrinthes, des anagrammes, du sudoku, des écritures guidées et des listes douces. Ouvre-le où tu veux, saute une page si tu veux. 134 pages, coloriages en recto seul.</p>
-                <div style="margin-top:auto">
-                  <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.Button" variant="primary" size="md" onClick="{{ buySiesteAmazon }}" hint-size="260px,46px">Feuilleter et commander sur Amazon</x-import>
-                  <p style="font-family:var(--font-body);font-size:13px;color:var(--ink-faint);line-height:1.6;margin:12px 0 0">Sur Amazon, tu peux feuilleter une vingtaine de pages avant de choisir.</p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <div style="padding:76px min(48px,5vw)">
-          <div style="max-width:1080px;margin:0 auto">
-            <h2 style="font-family:var(--font-display);font-weight:400;font-size:28px;letter-spacing:0.04em;color:var(--deep-olive);text-align:center;margin:0 0 44px">Ce que tu trouveras dedans</h2>
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:40px">
-              <div style="border-top:1px solid var(--sage);padding-top:20px">
-                <div style="font-family:var(--font-body);font-size:16px;font-weight:500;color:var(--deep-olive);margin-bottom:8px">Des coloriages</div>
-                <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.65;margin:0">Un jardin tropical l'été, l'océan en août. Au trait fin, dépasser est permis.</p>
-              </div>
-              <div style="border-top:1px solid var(--sage);padding-top:20px">
-                <div style="font-family:var(--font-body);font-size:16px;font-weight:500;color:var(--deep-olive);margin-bottom:8px">Des puzzles et des jeux de mots</div>
-                <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.65;margin:0">Mots mêlés, mots croisés, sudoku, messages à décoder. Les solutions t'attendent à la fin.</p>
-              </div>
-              <div style="border-top:1px solid var(--sage);padding-top:20px">
-                <div style="font-family:var(--font-body);font-size:16px;font-weight:500;color:var(--deep-olive);margin-bottom:8px">De petites écritures guidées</div>
-                <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.65;margin:0">Et des listes à remplir à ton rythme.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div style="padding:0 min(48px,5vw) 76px;text-align:center">
-          <p style="font-family:var(--font-body);font-size:17px;color:var(--ink-soft);line-height:1.8;max-width:56ch;margin:0 auto 14px">Une méthode simple traverse ces pages, la méthode pivoine : sept petites permissions, de poser ce que tu portes à t'émerveiller d'un rien.</p>
-          <p style="font-family:var(--font-body);font-size:17px;color:var(--ink-soft);line-height:1.8;max-width:56ch;margin:0 auto">C'est un endroit pour respirer, loin des écrans, sans programme à suivre ni résultat à atteindre. Tu peux le garder pour toi, ou l'offrir à une amie qui en a besoin.</p>
-        </div>
-
-        <div style="padding:0 min(48px,5vw) 84px">
-          <div style="max-width:1080px;margin:0 auto">
-            <h3 style="font-family:var(--font-display);font-weight:400;font-size:24px;letter-spacing:0.04em;color:var(--deep-olive);text-align:center;margin:0 0 32px">La suite de la série</h3>
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px;max-width:880px;margin:0 auto">
-              <div style="background:var(--paper);border:1px solid var(--border-faint);border-radius:14px;overflow:hidden">
-                <div style="height:180px;background:var(--blush);display:flex;align-items:center;justify-content:center;opacity:0.8">
-                  <div style="width:130px;min-height:140px;background:var(--paper);border:1px solid var(--border-faint);border-radius:4px;box-shadow:0 10px 20px rgba(101,109,68,0.12);padding:16px 12px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px">
-                    <div style="font-family:var(--font-body);font-size:8px;letter-spacing:0.16em;text-transform:uppercase;color:var(--deep-olive);font-weight:500">Carnet d'activités</div>
-                    <div style="font-family:var(--font-display);font-size:15px;line-height:1.3;letter-spacing:0.03em;color:var(--deep-olive)">Récolte d'automne</div>
-                  </div>
-                </div>
-                <div style="padding:20px 24px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px">
-                  <div style="font-family:var(--font-body);font-size:15px;font-weight:500;color:var(--deep-olive)">Récolte d'automne</div>
-                  <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.Tag" tone="outline" hint-size="120px,24px">À venir à l'automne</x-import>
-                </div>
-              </div>
-              <div style="background:var(--paper);border:1px solid var(--border-faint);border-radius:14px;overflow:hidden">
-                <div style="height:180px;background:var(--blush);display:flex;align-items:center;justify-content:center;opacity:0.8">
-                  <div style="width:130px;min-height:140px;background:var(--paper);border:1px solid var(--border-faint);border-radius:4px;box-shadow:0 10px 20px rgba(101,109,68,0.12);padding:16px 12px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px">
-                    <div style="font-family:var(--font-body);font-size:8px;letter-spacing:0.16em;text-transform:uppercase;color:var(--deep-olive);font-weight:500">Carnet d'activités</div>
-                    <div style="font-family:var(--font-display);font-size:15px;line-height:1.3;letter-spacing:0.03em;color:var(--deep-olive)">Noël</div>
-                  </div>
-                </div>
-                <div style="padding:20px 24px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px">
-                  <div style="font-family:var(--font-body);font-size:15px;font-weight:500;color:var(--deep-olive)">Noël</div>
-                  <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.Tag" tone="outline" hint-size="130px,24px">À venir en décembre</x-import>
-                </div>
-              </div>
-            </div>
-            <p style="font-family:var(--font-body);font-size:14px;color:var(--ink-faint);text-align:center;margin:28px 0 0">La newsletter annonce chaque nouveau carnet en premier.</p>
-          </div>
-        </div>
-
-      </div>
-    </sc-if>
+    
 
     <!-- ═══════════ LA MÉTHODE ═══════════ -->
-    <sc-if value="{{ isMethode }}" hint-placeholder-val="{{ false }}">
-      <div data-screen-label="La méthode">
-
-        <div style="padding:clamp(56px,9vw,88px) min(48px,5vw) 56px;text-align:center">
-          <div class="pp-eyebrow" style="margin-bottom:20px">La méthode pivoine</div>
-          <h1 style="font-family:var(--font-display);font-weight:400;font-size:clamp(30px,5.5vw,42px);line-height:1.16;letter-spacing:0.04em;color:var(--deep-olive);max-width:22ch;margin:0 auto 22px">Sept petites permissions.</h1>
-          <p style="font-family:var(--font-body);font-size:clamp(16px,2.4vw,19px);color:var(--ink-soft);line-height:1.7;max-width:46ch;margin:0 auto 40px">Tu n'as pas d'étapes à suivre, ni d'ordre à respecter. Ce sont des permissions à prendre quand tu en as besoin, une à la fois.</p>
-          <div style="display:flex;justify-content:center">
-            <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.PivoineBadge" variant="strip" hint-size="560px,64px"></x-import>
-          </div>
-        </div>
-
-        <div style="background:var(--paper);border-top:1px solid var(--border-faint);border-bottom:1px solid var(--border-faint);padding:72px min(48px,5vw);display:flex;justify-content:center">
-          <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.LetterBlock" align="center" signature="" hint-size="620px,280px">
-            <p style="margin:0 0 1.2em">Cette méthode est née à ma table à manger, pendant ma longue pause. Écrire ce qui tournait dans ma tête, remarquer la lumière qui change, colorier un peu, jouer un peu : c'est ce qui m'aidait, un soir après l'autre.</p>
-            <p style="margin:0">Je l'ai rangée en sept mots, pour la retrouver facilement. La voici.</p>
-            <div style="margin-top:22px;font-family:'Allison',cursive;font-size:34px;line-height:1.1;color:var(--rose)">Camélia</div>
-          </x-import>
-        </div>
-
-        <div style="padding:84px min(48px,5vw)">
-          <div style="max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:52px">
-
-            <div style="display:flex;gap:28px;align-items:flex-start">
-              <div style="font-family:var(--font-display);font-size:46px;line-height:1;color:var(--rose);width:64px;flex:none;text-align:center">P</div>
-              <div>
-                <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:10px;flex-wrap:wrap">
-                  <span style="font-family:var(--font-display);font-size:24px;letter-spacing:0.04em;color:var(--deep-olive)">Poser</span>
-                  <span style="font-family:var(--font-body);font-size:14px;font-style:italic;color:var(--rose-deep)">déposer ce que tu portes</span>
-                </div>
-                <p style="font-family:var(--font-body);font-size:16px;color:var(--ink-soft);line-height:1.75;margin:0">Tu poses ton téléphone, le sac de la journée, et tout ce que tu retiens depuis ce matin. Une table, une tasse, une page : ça suffit.</p>
-              </div>
-            </div>
-
-            <div style="display:flex;gap:28px;align-items:flex-start">
-              <div style="font-family:var(--font-display);font-size:46px;line-height:1;color:var(--rose);width:64px;flex:none;text-align:center">I</div>
-              <div>
-                <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:10px;flex-wrap:wrap">
-                  <span style="font-family:var(--font-display);font-size:24px;letter-spacing:0.04em;color:var(--deep-olive)">Intimité</span>
-                  <span style="font-family:var(--font-body);font-size:14px;font-style:italic;color:var(--rose-deep)">rien qu'à toi</span>
-                </div>
-                <p style="font-family:var(--font-body);font-size:16px;color:var(--ink-soft);line-height:1.75;margin:0">Ce que tu écris ici, personne ne le lira. Tu n'as rien à prouver, rien à montrer. C'est ton endroit.</p>
-              </div>
-            </div>
-
-            <div style="display:flex;gap:28px;align-items:flex-start">
-              <div style="font-family:var(--font-display);font-size:46px;line-height:1;color:var(--rose);width:64px;flex:none;text-align:center">V</div>
-              <div>
-                <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:10px;flex-wrap:wrap">
-                  <span style="font-family:var(--font-display);font-size:24px;letter-spacing:0.04em;color:var(--deep-olive)">Vérité</span>
-                  <span style="font-family:var(--font-body);font-size:14px;font-style:italic;color:var(--rose-deep)">sans te juger</span>
-                </div>
-                <p style="font-family:var(--font-body);font-size:16px;color:var(--ink-soft);line-height:1.75;margin:0">Tu écris ce que tu ressens vraiment, même quand ce n'est pas joli. Fatiguée, à vif, soulagée : le mot juste suffit.</p>
-              </div>
-            </div>
-
-            <div style="display:flex;gap:28px;align-items:flex-start">
-              <div style="font-family:var(--font-display);font-size:46px;line-height:1;color:var(--rose);width:64px;flex:none;text-align:center">O</div>
-              <div>
-                <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:10px;flex-wrap:wrap">
-                  <span style="font-family:var(--font-display);font-size:24px;letter-spacing:0.04em;color:var(--deep-olive)">Observer</span>
-                  <span style="font-family:var(--font-body);font-size:14px;font-style:italic;color:var(--rose-deep)">les petites choses</span>
-                </div>
-                <p style="font-family:var(--font-body);font-size:16px;color:var(--ink-soft);line-height:1.75;margin:0">Tu remarques ce qui est là : la lumière qui baisse, le bruit de la rue qui se calme, la couleur de ton thé.</p>
-              </div>
-            </div>
-
-            <div style="display:flex;gap:28px;align-items:flex-start">
-              <div style="font-family:var(--font-display);font-size:46px;line-height:1;color:var(--rose);width:64px;flex:none;text-align:center">I</div>
-              <div>
-                <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:10px;flex-wrap:wrap">
-                  <span style="font-family:var(--font-display);font-size:24px;letter-spacing:0.04em;color:var(--deep-olive)">Imperfection</span>
-                  <span style="font-family:var(--font-body);font-size:14px;font-style:italic;color:var(--rose-deep)">rien à réussir</span>
-                </div>
-                <p style="font-family:var(--font-body);font-size:16px;color:var(--ink-soft);line-height:1.75;margin:0">Tu peux raturer, dépasser, laisser une page à moitié vide. Hors des lignes, c'est très bien aussi.</p>
-              </div>
-            </div>
-
-            <div style="display:flex;gap:28px;align-items:flex-start">
-              <div style="font-family:var(--font-display);font-size:46px;line-height:1;color:var(--rose);width:64px;flex:none;text-align:center">N</div>
-              <div>
-                <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:10px;flex-wrap:wrap">
-                  <span style="font-family:var(--font-display);font-size:24px;letter-spacing:0.04em;color:var(--deep-olive)">Nature</span>
-                  <span style="font-family:var(--font-body);font-size:14px;font-style:italic;color:var(--rose-deep)">laisser entrer la saison</span>
-                </div>
-                <p style="font-family:var(--font-body);font-size:16px;color:var(--ink-soft);line-height:1.75;margin:0">Une fleur sur la table, la pluie derrière la vitre, un fruit du marché. C'est déjà la saison qui entre.</p>
-              </div>
-            </div>
-
-            <div style="display:flex;gap:28px;align-items:flex-start">
-              <div style="font-family:var(--font-display);font-size:46px;line-height:1;color:var(--rose);width:64px;flex:none;text-align:center">E</div>
-              <div>
-                <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:10px;flex-wrap:wrap">
-                  <span style="font-family:var(--font-display);font-size:24px;letter-spacing:0.04em;color:var(--deep-olive)">Émerveillement</span>
-                  <span style="font-family:var(--font-body);font-size:14px;font-style:italic;color:var(--rose-deep)">un peu de douceur</span>
-                </div>
-                <p style="font-family:var(--font-body);font-size:16px;color:var(--ink-soft);line-height:1.75;margin:0">Un détail qui te fait sourire, une couleur que tu aimes, un souvenir simple. C'est petit, et c'est déjà beaucoup.</p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <div style="padding:0 min(48px,5vw) 84px;text-align:center">
-          <div style="width:64px;height:1px;background:var(--sage);opacity:0.5;margin:0 auto 44px"></div>
-          <p style="font-family:var(--font-display);font-size:24px;letter-spacing:0.04em;color:var(--deep-olive);margin:0 0 14px">Jamais une liste à cocher.</p>
-          <p style="font-family:var(--font-body);font-size:16px;color:var(--ink-soft);line-height:1.7;max-width:44ch;margin:0 auto 28px">Tu la retrouveras glissée au fil des carnets, une permission à la fois.</p>
-          <sc-if value="{{ showCarnets }}" hint-placeholder-val="{{ false }}">
-          <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-            <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.Button" variant="soft" size="md" onClick="{{ goEcriture }}" hint-size="220px,46px">Voir les carnets d'écriture</x-import>
-            <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.Button" variant="secondary" size="md" onClick="{{ goActivites }}" hint-size="220px,46px">Voir les carnets d'activités</x-import>
-          </div>
-          </sc-if>
-        </div>
-
-      </div>
-    </sc-if>
+    
 
     <!-- ═══════════ À PROPOS ═══════════ -->
     <sc-if value="{{ isApropos }}" hint-placeholder-val="{{ false }}">
@@ -1018,11 +340,11 @@
             <p style="margin:0">Si tu sens tout très fort et si le monde te fatigue vite, ces carnets sont pensés pour toi. Il n'y a rien qui ne va pas chez toi. Tu ne verras pas mon visage ici, je suis quelqu'un de discret. Mais dans chaque page, il y a beaucoup de moi.</p>
           </x-import>
           <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
-            <img src="/assets/bao.jpg" alt="Bao, chat roux et blanc, allongé sur un plaid rose" style="width:180px;height:180px;border-radius:50%;object-fit:cover;border:1px solid var(--border-faint);box-shadow:0 14px 28px rgba(101,109,68,0.16)">
+            <img src="/assets/bao.jpg" width="400" height="400" loading="lazy" alt="Bao, chat roux et blanc, allongé sur un plaid rose" style="width:180px;height:180px;border-radius:50%;object-fit:cover;border:1px solid var(--border-faint);box-shadow:0 14px 28px rgba(101,109,68,0.16)">
             <span style="font-family:var(--font-body);font-size:13px;font-style:italic;color:var(--ink-faint)">Bao, mon collègue d'écriture.</span>
           </div>
           <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.Button" variant="primary" size="md" onClick="{{ goNewsletter }}" hint-size="180px,46px">Recevoir la lettre</x-import>
-          <div style="font-family:'Allison',cursive;font-size:34px;line-height:1.1;color:var(--rose)">Camélia</div>
+          <div style="font-family:var(--font-accent);font-size:34px;line-height:1.1;color:var(--rose)">Camélia</div>
         </div>
 
         <div style="padding:76px min(48px,5vw) 84px;text-align:center">
@@ -1035,104 +357,7 @@
     </sc-if>
 
     <!-- ═══════════ LA NEWSLETTER ═══════════ -->
-    <sc-if value="{{ isNewsletter }}" hint-placeholder-val="{{ false }}">
-      <div data-screen-label="La newsletter">
-
-        <div style="padding:clamp(56px,9vw,88px) min(48px,5vw) 64px;text-align:center">
-          <div class="pp-eyebrow" style="margin-bottom:20px">La newsletter, gratuite</div>
-          <h1 style="font-family:var(--font-display);font-weight:400;font-size:clamp(30px,5.5vw,42px);line-height:1.16;letter-spacing:0.04em;color:var(--deep-olive);max-width:22ch;margin:0 auto 22px">Une lettre, une fois par mois.</h1>
-          <p style="font-family:var(--font-body);font-size:clamp(16px,2.4vw,19px);color:var(--ink-soft);line-height:1.7;max-width:46ch;margin:0 auto">Une lettre douce, envoyée le premier dimanche du mois. C'est gratuit, et tu peux te désinscrire quand tu veux.</p>
-        </div>
-
-        <div style="background:var(--paper);border-top:1px solid var(--border-faint);border-bottom:1px solid var(--border-faint);padding:76px min(48px,5vw)">
-          <div style="max-width:560px;margin:0 auto">
-            <h2 style="font-family:var(--font-display);font-weight:400;font-size:28px;letter-spacing:0.04em;color:var(--deep-olive);text-align:center;margin:0 0 40px">Dedans, chaque mois</h2>
-            <div style="display:flex;flex-direction:column">
-              <div style="padding:20px 0;border-top:1px solid var(--border-faint)">
-                <div style="font-family:var(--font-body);font-size:16px;font-weight:500;color:var(--deep-olive);margin-bottom:6px">Le thème du mois</div>
-                <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.65;margin:0">Une saison, une humeur, un fil qui traverse toute la lettre.</p>
-              </div>
-              <div style="padding:20px 0;border-top:1px solid var(--border-faint)">
-                <div style="font-family:var(--font-body);font-size:16px;font-weight:500;color:var(--deep-olive);margin-bottom:6px">Mes réflexions personnelles</div>
-                <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.65;margin:0">Ce que le mois m'a fait : les jours lourds comme les bons moments.</p>
-              </div>
-              <div style="padding:20px 0;border-top:1px solid var(--border-faint)">
-                <div style="font-family:var(--font-body);font-size:16px;font-weight:500;color:var(--deep-olive);margin-bottom:6px">Un exercice d'écriture guidé</div>
-                <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.65;margin:0">Une question douce, dix minutes, une page.</p>
-              </div>
-              <div style="padding:20px 0;border-top:1px solid var(--border-faint);border-bottom:1px solid var(--border-faint)">
-                <div style="font-family:var(--font-body);font-size:16px;font-weight:500;color:var(--deep-olive);margin-bottom:6px">Mes nouveautés</div>
-                <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.65;margin:0">Les carnets qui viennent de sortir, et ce que je prépare.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div style="background:var(--paper);border-top:1px solid var(--border-faint);padding:76px min(48px,5vw)">
-          <div style="max-width:1080px;margin:0 auto">
-            <div class="pp-eyebrow" style="display:block;text-align:center;margin-bottom:44px">Elles la reçoivent déjà</div>
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:36px;align-items:start">
-              <div style="border-top:1px solid var(--sage);padding-top:20px">
-                <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.7;margin:0 0 16px">Camélia, ta lettre du mardi est devenue un véritable rendez-vous précieux pour moi. Le travail d'écriture que tu proposes m'apporte énormément dans mon quotidien. Grâce à tes exercices j'apprends à me poser, à réfléchir différemment et à mieux comprendre ce que je ressens. J'avance petit à petit, à mon rythme, et je sens une vraie évolution. Merci pour la douceur, la profondeur et la constance que tu mets dans chacun de tes envois. ☺️✨✨</p>
-                <div style="font-family:var(--font-body);font-size:13px;color:var(--rose-deep)">- Véronique</div>
-              </div>
-              <div style="border-top:1px solid var(--sage);padding-top:20px">
-                <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.7;margin:0 0 16px">Merci pour tes newsletters qui sont de réelles bouffées d'air frais. J'aimais déjà écrire et je tenais mon journal de pensée mais là c'est encore mieux avec les sujets que tu abordes. Merci du fond du cœur.</p>
-                <div style="font-family:var(--font-body);font-size:13px;color:var(--rose-deep)">- Virginie</div>
-              </div>
-              <div style="border-top:1px solid var(--sage);padding-top:20px">
-                <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.7;margin:0 0 16px">J'adore vraiment vos mails et vos écrits, j'en ai déjà réalisé plusieurs et avec un retour en arrière sur mes écrits cela m'a permis de réaliser beaucoup de choses.</p>
-                <div style="font-family:var(--font-body);font-size:13px;color:var(--rose-deep)">- Nathalie</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div style="background:var(--blush)">
-          <div style="max-width:720px;margin:0 auto;padding:80px min(48px,5vw);text-align:center">
-            <div class="pp-eyebrow" style="margin-bottom:16px">Le cadeau de bienvenue</div>
-            <h2 style="font-family:var(--font-display);font-weight:400;font-size:clamp(26px,4.2vw,34px);letter-spacing:0.04em;color:var(--deep-olive);margin:0 0 18px">La première semaine de Mental Léger</h2>
-            <p style="font-family:var(--font-body);font-size:16px;color:var(--ink-soft);line-height:1.7;max-width:50ch;margin:0 auto 30px">Pour t'accueillir, je t'offre le début de Mental Léger, mon programme d'écriture : la semaine pour t'installer, puis cinq jours pour vider ta tête le soir. Vingt-deux pages, à imprimer ou à remplir à l'écran. C'est à toi, à garder.</p>
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:640px;margin:0 auto 36px">
-              <div style="aspect-ratio:210/297;background:var(--paper);border:1px solid var(--border-faint);border-radius:6px;box-shadow:0 2px 12px rgba(101,109,68,0.10);overflow:hidden">
-                <img src="/assets/freebie-ml-cover.jpg" alt="Mental Léger, la couverture du carnet" style="width:100%;height:100%;object-fit:cover;display:block">
-              </div>
-              <div style="aspect-ratio:210/297;background:var(--paper);border:1px solid var(--border-faint);border-radius:6px;box-shadow:0 2px 12px rgba(101,109,68,0.10);overflow:hidden">
-                <img src="/assets/freebie-ml-coin.jpg" alt="Une page : mon coin d'écriture" style="width:100%;height:100%;object-fit:cover;display:block">
-              </div>
-              <div style="aspect-ratio:210/297;background:var(--paper);border:1px solid var(--border-faint);border-radius:6px;box-shadow:0 2px 12px rgba(101,109,68,0.10);overflow:hidden">
-                <img src="/assets/freebie-ml-vidage.jpg" alt="Une page : le vidage, premier jour" style="width:100%;height:100%;object-fit:cover;display:block">
-              </div>
-            </div>
-            <sc-if value="{{ notSubscribed }}" hint-placeholder-val="{{ true }}">
-              <div style="display:flex;justify-content:center">
-                <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.Button" variant="primary" size="lg" onClick="{{ subscribe }}" hint-size="230px,52px">Recevoir la première semaine</x-import>
-              </div>
-              <p style="font-family:var(--font-body);font-size:12px;color:var(--ink-faint);margin:16px 0 0">Gratuit. Ton adresse ne sert qu'à la newsletter, rien d'autre.</p>
-            </sc-if>
-            <sc-if value="{{ subscribed }}" hint-placeholder-val="{{ false }}">
-              <div style="background:var(--paper);border:1px solid var(--border-faint);border-radius:14px;padding:28px 32px;max-width:440px;margin:0 auto">
-                <p style="font-family:var(--font-body);font-size:16px;color:var(--deep-olive);line-height:1.6;margin:0 0 6px">C'est noté. La première semaine de Mental Léger est en route vers ta boîte mail.</p>
-                <p style="font-family:var(--font-body);font-size:13px;color:var(--ink-faint);margin:0">Si tu ne la vois pas, regarde dans les courriers indésirables.</p>
-              </div>
-            </sc-if>
-          </div>
-        </div>
-
-        <div style="padding:84px min(48px,5vw);display:flex;flex-direction:column;align-items:center">
-          <div class="pp-eyebrow" style="margin-bottom:28px">Un extrait · Papier Pivoine n° 88, juillet</div>
-          <x-import component-from-global-scope="PapierPivoineDesignSystem_2e8f20.LetterBlock" align="center" signature="" hint-size="560px,300px">
-            <p style="margin:0 0 1.2em">Le thème de juillet, c'est l'école buissonnière. Ce petit pincement qu'on a parfois, quand la vie s'est refermée autour du travail et des responsabilités, et qu'une pensée traverse l'esprit sans prévenir : est-ce vraiment tout ?</p>
-            <p style="margin:0 0 1.2em">On ne va pas creuser ça sérieusement ce mois-ci. On va plutôt jouer avec l'idée, inventer d'autres vies possibles, sans obligation d'y croire. C'est une pause faite exprès pour rester légère.</p>
-            <p style="margin:0">L'exercice de juillet : une carte postale d'une autre vie.</p>
-            <div style="margin-top:22px;font-family:'Allison',cursive;font-size:34px;line-height:1.1;color:var(--rose)">Camélia</div>
-          </x-import>
-        </div>
-
-
-
-      </div>
-    </sc-if>
+    
 
     <!-- ═══════════ BAND (toutes pages sauf newsletter) ═══════════ -->
     <sc-if value="{{ showBand }}" hint-placeholder-val="{{ true }}">
@@ -1174,10 +399,8 @@
             <div class="pp-eyebrow" style="margin-bottom:14px">Découvrir</div>
             <div style="display:flex;flex-direction:column;gap:9px;font-family:var(--font-body);font-size:14px;color:var(--ink-soft)">
               <span onClick="{{ goProgramme }}" style="cursor:pointer">Programme d'écriture</span>
-              <sc-if value="{{ showCarnets }}" hint-placeholder-val="{{ false }}">
-                <span onClick="{{ goEcriture }}" style="cursor:pointer">Carnets d'écriture</span>
-                <span onClick="{{ goActivites }}" style="cursor:pointer">Carnets d'activités</span>
-              </sc-if>
+              
+              <sc-if value="{{ showActivites }}" hint-placeholder-val="{{ true }}"><span onClick="{{ goActivites }}" style="cursor:pointer">Carnets d'activités</span></sc-if>
               <span onClick="{{ goMethode }}" style="cursor:pointer">La méthode</span>
             </div>
           </div>
@@ -1251,10 +474,10 @@ class Component extends DCLogic {
     try { window.scrollTo(0, 0); } catch (_) {}
     // Chemins propres via History API : /programme/ (accueil -> /). L'adresse partagée
     // pointe alors sur la vraie page, avec ses propres métadonnées pour Pinterest et les réseaux.
-    try {
-      const url = p === 'accueil' ? '/' : '/' + p + '/';
-      history.pushState({ page: p }, '', url);
-    } catch (_) {}
+    const url = p === 'accueil' ? '/' : '/' + p + '/';
+    // Site publié : chaque page ne contient que son propre contenu, on charge donc la vraie page.
+    if (window.__ppStatic) { try { location.assign(url); return; } catch (_) {} }
+    try { history.pushState({ page: p }, '', url); } catch (_) {}
   }
 
   componentDidMount() {
@@ -1345,9 +568,10 @@ class Component extends DCLogic {
         const y = el.getBoundingClientRect().top + window.pageYOffset - offset;
         window.scrollTo({ top: y, behavior: 'smooth' });
       },
-      // Masquage temporaire des pages Carnets d'écriture + Carnets d'activités.
-      // Pour les réafficher : repasser à true.
-      showCarnets: false,
+      // Masquage temporaire : Carnets d'écriture masqué, Carnets d'activités visible.
+      // Pour réafficher l'écriture : showEcriture à true (et vider HIDDEN_PAGES dans tools/build-publish.js).
+      showEcriture: false,
+      showActivites: true,
       goEcriture: () => this.go('ecriture'),
       goActivites: () => this.go('activites'),
       goMethode: () => this.go('methode'),
