@@ -45,7 +45,14 @@
       --font-accent: 'Caveat', cursive;
     }
     /* Saison : automne par défaut (aucun attribut), "neutre" = palette d'origine. Réglage : prop season. */
-    html:not([data-season="neutre"]) { --sage-soft: #F4DDD4; --paper: #FFFCF9; --paper-warm: #F9EFE8; --border-faint: #EBDCD2; }
+    /* Palette d'automne : mêmes rôles que la palette d'origine, teintes terre cuite, ocre et olive brun. */
+    html:not([data-season="neutre"]) {
+      --blush: #F6E6D6; --blush-deep: #EFD3BD; --pale-rose: #E8C3A4;
+      --rose: #A85A3E; --rose-deep: #8C4630;
+      --sage: #B9A56A; --sage-soft: #F1DCC6; --olive-soft: #E8E0CB;
+      --deep-olive: #5C5431;
+      --paper: #FFFCF8; --paper-warm: #FAF1E8; --border-faint: #E9D9C8;
+    }
     body { margin: 0; background: var(--paper-warm, #FCF6F2); }
     a { color: var(--rose); }
     a:hover { color: var(--rose-deep); }
