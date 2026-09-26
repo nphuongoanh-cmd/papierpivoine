@@ -396,14 +396,6 @@ class Component extends DCLogic {
 
       goAccueil: () => this.go('accueil'),
       goProgramme: () => this.go('programme'),
-      scrollToCarnets: () => {
-        const el = document.getElementById('pp-carnets');
-        if (!el) { return; }
-        const header = document.querySelector('header');
-        const offset = (header ? header.offsetHeight : 0) + 16;
-        const y = el.getBoundingClientRect().top + window.pageYOffset - offset;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-      },
       // Masquage temporaire : Carnets d'écriture masqué, Carnets d'activités visible.
       // Pour réafficher l'écriture : showEcriture à true (et vider HIDDEN_PAGES dans tools/build-publish.js).
       saisonAutomne: season === 'automne',

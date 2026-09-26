@@ -74,7 +74,7 @@
     }
   </style>
 <style>#dc-root{display:none}#prerender{min-height:100vh}</style>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://papierpivoine.fr/#organization","name":"Papier Pivoine","url":"https://papierpivoine.fr/","logo":{"@type":"ImageObject","url":"https://papierpivoine.fr/assets/favicon.png"},"founder":{"@id":"https://papierpivoine.fr/#camelia"},"sameAs":["https://fr.pinterest.com/papierpivoine/"]},{"@type":"Person","@id":"https://papierpivoine.fr/#camelia","name":"Camélia Nguyen","alternateName":"Camélia","url":"https://papierpivoine.fr/apropos/","worksFor":{"@id":"https://papierpivoine.fr/#organization"}},{"@type":"WebSite","@id":"https://papierpivoine.fr/#website","name":"Papier Pivoine","url":"https://papierpivoine.fr/","inLanguage":"fr","description":"Carnets d'écriture et d'activités douces pour femmes hypersensibles et introverties. Pour les soirs où la tête est pleine, et les moments rien qu'à toi.","publisher":{"@id":"https://papierpivoine.fr/#organization"}},{"@type":"Book","name":"Le cocon d'automne","image":"https://papierpivoine.fr/assets/cover-cocon-automne.jpg","inLanguage":"fr","author":{"@id":"https://papierpivoine.fr/#camelia"},"publisher":{"@id":"https://papierpivoine.fr/#organization"},"url":"https://papierpivoine.fr/activites/","workExample":[{"@type":"Book","bookFormat":"https://schema.org/Paperback","inLanguage":"fr","url":"https://www.amazon.fr/dp/B0HHLYRWNM"}],"offers":[{"@type":"Offer","url":"https://www.amazon.fr/dp/B0HHLYRWNM","availability":"https://schema.org/InStock"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://papierpivoine.fr/#organization","name":"Papier Pivoine","url":"https://papierpivoine.fr/","logo":{"@type":"ImageObject","url":"https://papierpivoine.fr/assets/favicon.png"},"founder":{"@id":"https://papierpivoine.fr/#camelia"},"sameAs":["https://fr.pinterest.com/papierpivoine/"]},{"@type":"Person","@id":"https://papierpivoine.fr/#camelia","name":"Camélia Nguyen","alternateName":"Camélia","url":"https://papierpivoine.fr/apropos/","worksFor":{"@id":"https://papierpivoine.fr/#organization"}},{"@type":"WebSite","@id":"https://papierpivoine.fr/#website","name":"Papier Pivoine","url":"https://papierpivoine.fr/","inLanguage":"fr","description":"Carnets d'écriture et d'activités douces pour femmes hypersensibles et introverties. Pour les soirs où la tête est pleine, et les moments rien qu'à toi.","publisher":{"@id":"https://papierpivoine.fr/#organization"}},{"@type":"Book","name":"Le cocon d'automne","image":"https://papierpivoine.fr/assets/cover-cocon-automne.jpg","inLanguage":"fr","author":{"@id":"https://papierpivoine.fr/#camelia"},"publisher":{"@id":"https://papierpivoine.fr/#organization"},"url":"https://papierpivoine.fr/activites/#cocon-automne","description":"Un carnet pour les soirs où la tête ne s'éteint pas.","workExample":[{"@type":"Book","bookFormat":"https://schema.org/Paperback","inLanguage":"fr","url":"https://www.amazon.fr/dp/B0HHLYRWNM"}],"offers":[{"@type":"Offer","url":"https://www.amazon.fr/dp/B0HHLYRWNM","availability":"https://schema.org/InStock","price":"14.95","priceCurrency":"EUR"}]}]}</script>
 <script>window.__ppStatic=true;</script>
 <style>x-dc{display:none!important}</style>
 </head>
@@ -444,14 +444,6 @@ class Component extends DCLogic {
 
       goAccueil: () => this.go('accueil'),
       goProgramme: () => this.go('programme'),
-      scrollToCarnets: () => {
-        const el = document.getElementById('pp-carnets');
-        if (!el) { return; }
-        const header = document.querySelector('header');
-        const offset = (header ? header.offsetHeight : 0) + 16;
-        const y = el.getBoundingClientRect().top + window.pageYOffset - offset;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-      },
       // Masquage temporaire : Carnets d'écriture masqué, Carnets d'activités visible.
       // Pour réafficher l'écriture : showEcriture à true (et vider HIDDEN_PAGES dans tools/build-publish.js).
       saisonAutomne: season === 'automne',
