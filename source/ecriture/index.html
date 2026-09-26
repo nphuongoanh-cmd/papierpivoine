@@ -15,6 +15,8 @@
 <meta property="og:description" content="Des carnets pour déposer ce que tu portes le soir. Une question douce, de la place pour écrire, des pages non datées.">
 <meta property="og:url" content="https://papierpivoine.fr/ecriture/">
 <meta property="og:image" content="https://papierpivoine.fr/assets/cover-quand-ma-tete-est-pleine.jpg">
+<meta property="og:image:width" content="533">
+<meta property="og:image:height" content="800">
 <meta property="og:image:alt" content="Le carnet Quand ma tête est pleine">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Carnets d'écriture">
@@ -71,6 +73,13 @@
     }
     @media (min-width: 701px) {
       .pp-nav-mobile { display: none !important; }
+    }
+    /* Mobile : zones cliquables d'au moins 44 px */
+    @media (max-width: 700px) {
+      .pp-nav-mobile > span, .pp-nav-mobile > * > span { min-height: 44px; display: flex; align-items: center; box-sizing: border-box; }
+      header > span:first-child { min-height: 44px; display: inline-flex; align-items: center; }
+      main button, footer button { min-height: 44px; }
+      footer [style*="cursor: pointer"], footer [style*="cursor:pointer"], footer a { min-height: 44px; display: flex; align-items: center; }
     }
   </style>
 <style>#dc-root{display:none}#prerender{min-height:100vh}</style>

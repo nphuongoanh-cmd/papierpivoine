@@ -14,13 +14,15 @@
 <meta property="og:title" content="Carnets d'activités">
 <meta property="og:description" content="Des carnets d'activités douces au fil des saisons. Colorier, observer, respirer. Un moment calme, loin des écrans.">
 <meta property="og:url" content="https://papierpivoine.fr/activites/">
-<meta property="og:image" content="https://papierpivoine.fr/assets/cover-un-ete-800.jpg">
-<meta property="og:image:alt" content="Le carnet d'activités Un été à s'émerveiller">
+<meta property="og:image" content="https://papierpivoine.fr/assets/og/og-cocon-automne.jpg">
+<meta property="og:image:width" content="1000">
+<meta property="og:image:height" content="1500">
+<meta property="og:image:alt" content="Le carnet d'activités Le cocon d'automne">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Carnets d'activités">
 <meta name="twitter:description" content="Des carnets d'activités douces au fil des saisons. Colorier, observer, respirer. Un moment calme, loin des écrans.">
-<meta name="twitter:image" content="https://papierpivoine.fr/assets/cover-un-ete-800.jpg">
-<meta name="twitter:image:alt" content="Le carnet d'activités Un été à s'émerveiller">
+<meta name="twitter:image" content="https://papierpivoine.fr/assets/og/og-cocon-automne.jpg">
+<meta name="twitter:image:alt" content="Le carnet d'activités Le cocon d'automne">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon.png">
 <link rel="apple-touch-icon" href="/assets/favicon.png">
@@ -71,6 +73,13 @@
     }
     @media (min-width: 701px) {
       .pp-nav-mobile { display: none !important; }
+    }
+    /* Mobile : zones cliquables d'au moins 44 px */
+    @media (max-width: 700px) {
+      .pp-nav-mobile > span, .pp-nav-mobile > * > span { min-height: 44px; display: flex; align-items: center; box-sizing: border-box; }
+      header > span:first-child { min-height: 44px; display: inline-flex; align-items: center; }
+      main button, footer button { min-height: 44px; }
+      footer [style*="cursor: pointer"], footer [style*="cursor:pointer"], footer a { min-height: 44px; display: flex; align-items: center; }
     }
   </style>
 <style>#dc-root{display:none}#prerender{min-height:100vh}</style>

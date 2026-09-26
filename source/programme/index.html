@@ -15,6 +15,8 @@
 <meta property="og:description" content="Un programme d'écriture doux pour alléger un mental trop plein. À ton rythme, chez toi, sans rien à réussir.">
 <meta property="og:url" content="https://papierpivoine.fr/programme/">
 <meta property="og:image" content="https://papierpivoine.fr/assets/mental-leger-cover.jpg">
+<meta property="og:image:width" content="566">
+<meta property="og:image:height" content="800">
 <meta property="og:image:alt" content="Le programme d'écriture Mental Léger">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Mental Léger, le programme d'écriture">
@@ -71,6 +73,13 @@
     }
     @media (min-width: 701px) {
       .pp-nav-mobile { display: none !important; }
+    }
+    /* Mobile : zones cliquables d'au moins 44 px */
+    @media (max-width: 700px) {
+      .pp-nav-mobile > span, .pp-nav-mobile > * > span { min-height: 44px; display: flex; align-items: center; box-sizing: border-box; }
+      header > span:first-child { min-height: 44px; display: inline-flex; align-items: center; }
+      main button, footer button { min-height: 44px; }
+      footer [style*="cursor: pointer"], footer [style*="cursor:pointer"], footer a { min-height: 44px; display: flex; align-items: center; }
     }
   </style>
 <style>#dc-root{display:none}#prerender{min-height:100vh}</style>
