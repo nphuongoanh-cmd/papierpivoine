@@ -105,7 +105,7 @@
       <a href="/" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:;border-bottom:1px solid">Accueil</a>
       
       <a href="/activites/" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:;border-bottom:1px solid">Les saisons tranquilles</a>
-      <a href="/programme/" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:;border-bottom:1px solid">Batterie faible</a>
+      <a href="/batterie-faible/" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:;border-bottom:1px solid">Batterie faible</a>
       <a href="/methode/" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:;border-bottom:1px solid">La méthode</a>
       <a href="/apropos/" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:;border-bottom:1px solid">À propos</a>
       <a href="/newsletter/" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:;border-bottom:1px solid">La newsletter</a>
@@ -115,7 +115,7 @@
         <a href="/" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:;border-top:1px solid var(--border-faint)">Accueil</a>
         
         <a href="/activites/" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:;border-top:1px solid var(--border-faint)">Les saisons tranquilles</a>
-        <a href="/programme/" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:;border-top:1px solid var(--border-faint)">Batterie faible</a>
+        <a href="/batterie-faible/" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:;border-top:1px solid var(--border-faint)">Batterie faible</a>
         <a href="/methode/" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:;border-top:1px solid var(--border-faint)">La méthode</a>
         <a href="/apropos/" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:;border-top:1px solid var(--border-faint)">À propos</a>
         <a href="/newsletter/" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:;border-top:1px solid var(--border-faint)">La newsletter</a>
@@ -280,7 +280,7 @@
             <div class="pp-eyebrow" style="margin-bottom:14px">Découvrir</div>
             <div style="display:flex;flex-direction:column;gap:9px;font-family:var(--font-body);font-size:14px;color:var(--ink-soft)">
               <a href="/activites/" style="cursor:pointer">Les saisons tranquilles</a>
-              <a href="/programme/" style="cursor:pointer">Batterie faible</a>
+              <a href="/batterie-faible/" style="cursor:pointer">Batterie faible</a>
               <a href="/methode/" style="cursor:pointer">La méthode</a>
             </div>
           </div>
@@ -348,9 +348,9 @@
   }
 }">
 class Component extends DCLogic {
-  static PAGES = ['accueil', 'programme', 'ecriture', 'activites', 'methode', 'apropos', 'newsletter', 'liens'];
+  static PAGES = ['accueil', 'batterie-faible', 'ecriture', 'activites', 'methode', 'apropos', 'newsletter', 'liens'];
 
-  // Détermine la page depuis le chemin de l'URL (/programme/ -> 'programme', / -> 'accueil').
+  // Détermine la page depuis le chemin de l'URL (/programme/ -> 'batterie-faible', / -> 'accueil').
   // Le site publié sert de vraies pages à ces adresses ; on route donc par chemin propre.
   static pageFromLocation() {
     try {
@@ -458,7 +458,7 @@ class Component extends DCLogic {
     const navU = (k) => (page === k ? 'var(--rose)' : 'transparent');
     return {
       isAccueil: page === 'accueil',
-      isProgramme: page === 'programme',
+      isProgramme: page === 'batterie-faible',
       isEcriture: page === 'ecriture',
       isActivites: page === 'activites',
       isMethode: page === 'methode',
@@ -470,7 +470,7 @@ class Component extends DCLogic {
       showPrices: this.props.afficherPrix ?? true,
 
       goAccueil: () => this.go('accueil'),
-      goProgramme: () => this.go('programme'),
+      goProgramme: () => this.go('batterie-faible'),
       // Masquage temporaire : Carnets d'écriture masqué, Carnets d'activités visible.
       // Pour réafficher l'écriture : showEcriture à true (et vider HIDDEN_PAGES dans tools/build-publish.js).
       saisonAutomne: season === 'automne',
@@ -485,7 +485,7 @@ class Component extends DCLogic {
       goLiens: () => this.go('liens'),
 
       navCAccueil: navC('accueil'), navUAccueil: navU('accueil'),
-      navCProgramme: navC('programme'), navUProgramme: navU('programme'),
+      navCProgramme: navC('batterie-faible'), navUProgramme: navU('batterie-faible'),
       navCEcriture: navC('ecriture'), navUEcriture: navU('ecriture'),
       navCActivites: navC('activites'), navUActivites: navU('activites'),
       navCMethode: navC('methode'), navUMethode: navU('methode'),
