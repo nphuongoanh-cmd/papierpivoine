@@ -23,10 +23,10 @@
 <meta name="twitter:description" content="Des carnets pour déposer ce que tu portes le soir. Une question douce, de la place pour écrire, des pages non datées.">
 <meta name="twitter:image" content="https://papierpivoine.fr/assets/cover-quand-ma-tete-est-pleine.jpg">
 <meta name="twitter:image:alt" content="Le carnet Quand ma tête est pleine">
-<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon.png">
-<link rel="apple-touch-icon" href="/assets/favicon.png">
-<link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/fraunces-800-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 <link rel="preload" href="/assets/fonts/nunito-sans-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 <link rel="stylesheet" href="/_ds/papier-pivoine-design-system-2e8f201d-b7b2-4ba9-95cb-6dcf33a643b1/tokens/colors.css">
 <link rel="stylesheet" href="/_ds/papier-pivoine-design-system-2e8f201d-b7b2-4ba9-95cb-6dcf33a643b1/tokens/typography.css">
@@ -41,6 +41,12 @@
     @font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 300 600; font-display: swap; src: url(/assets/fonts/fraunces-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
     @font-face { font-family: 'Nunito Sans'; font-style: normal; font-weight: 300 700; font-display: swap; src: url(/assets/fonts/nunito-sans-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
     @font-face { font-family: 'Nunito Sans'; font-style: normal; font-weight: 300 700; font-display: swap; src: url(/assets/fonts/nunito-sans-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+    @font-face { font-family: 'Caveat'; font-style: normal; font-weight: 700; font-display: swap; src: url(/assets/fonts/caveat-700-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+    @font-face { font-family: 'Caveat'; font-style: normal; font-weight: 700; font-display: swap; src: url(/assets/fonts/caveat-700-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+    @font-face { font-family: 'Fraunces'; font-style: italic; font-weight: 700; font-display: swap; src: url(/assets/fonts/fraunces-italic-700-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+    @font-face { font-family: 'Fraunces'; font-style: italic; font-weight: 700; font-display: swap; src: url(/assets/fonts/fraunces-italic-700-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+    @font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 800; font-display: swap; src: url(/assets/fonts/fraunces-800-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+    @font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 800; font-display: swap; src: url(/assets/fonts/fraunces-800-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
     :root {
       --font-display: 'Fraunces', Georgia, serif;
       --font-body: 'Nunito Sans', system-ui, sans-serif;
@@ -49,15 +55,17 @@
     /* Saison : automne par défaut (aucun attribut), "neutre" = palette d'origine. Réglage : prop season. */
     /* Palette d'automne : mêmes rôles que la palette d'origine, teintes terre cuite, ocre et olive brun. */
     html:not([data-season="neutre"]) {
-      --blush: #F6E6D6; --blush-deep: #EFD3BD; --pale-rose: #E8C3A4;
-      --rose: #A85A3E; --rose-deep: #8C4630;
-      --sage: #B9A56A; --sage-soft: #F1DCC6; --olive-soft: #E8E0CB;
-      --deep-olive: #5C5431;
-      --paper: #FFFCF8; --paper-warm: #FAF1E8; --border-faint: #E9D9C8;
+      --blush: #F7D9D3; --blush-deep: #F0C7BF; --pale-rose: #DDA9A0;
+      --rose: #E26D5F; --rose-deep: #BF5548;
+      --sage: #B2BD88; --sage-soft: #EEF0DE; --olive-soft: #E9ECD9;
+      --deep-olive: #33321E; --ink: #33321E; --ink-soft: #46452F; --ink-faint: #6B6953;
+      --paper: #FFFCFA; --paper-warm: #FCF6F2; --border-faint: #EDE1D6; --sand: #EAD9AC;
+      --text-on-accent: #FFFCFA;
     }
     body { margin: 0; background: var(--paper-warm, #FCF6F2); }
-    a { color: var(--rose); }
-    a:hover { color: var(--rose-deep); }
+    a { color: var(--rose-deep); }
+    a:hover { color: var(--ink); }
+    mark { -webkit-box-decoration-break: clone; box-decoration-break: clone; }
     ::selection { background: var(--blush); }
     /* Pop-up Kit : autoriser le défilement sur mobile (leur fenêtre dépasse l'écran) */
     @media (max-width: 700px) {
@@ -96,7 +104,7 @@
   <!-- ═══════════ HEADER ═══════════ -->
   
   <header style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px 24px;padding:18px min(48px,5vw);border-bottom:1px solid var(--border-faint);background:var(--paper-warm);position:sticky;top:0;z-index:10">
-    <a href="/" style="cursor:pointer;font-family:var(--font-display);font-size:22px;color:var(--deep-olive);letter-spacing:0.06em">Papier Pivoine</a>
+    <a href="/" style="cursor:pointer;display:inline-flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:800;font-variation-settings:'opsz' 72;font-size:23px;color:var(--deep-olive);letter-spacing:-0.005em"><img src="/assets/logo-papier-pivoine.jpg" width="400" height="400" alt="" aria-hidden="true" style="display:block;width:40px;height:40px;border-radius:50%;border:2px solid var(--ink);box-sizing:border-box;flex:none">Papier Pivoine</a>
     <span class="pp-burger" role="button" aria-label="Menu" style="display:none;align-items:center;justify-content:center;width:44px;height:44px;margin:-8px -10px;cursor:pointer">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--deep-olive)" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M3 8h18"></path><path d="M3 16h18"></path></svg>
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--deep-olive)" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg>
@@ -138,23 +146,23 @@
 
         <div style="padding:clamp(56px,9vw,88px) min(48px,5vw) 64px;text-align:center">
           <div class="pp-eyebrow" style="margin-bottom:20px">Écrire pour se sentir mieux</div>
-          <h1 style="font-family:var(--font-display);font-weight:400;font-size:clamp(30px,5.5vw,42px);line-height:1.16;letter-spacing:0.04em;color:var(--deep-olive);max-width:24ch;margin:0 auto 22px">Les carnets d'écriture</h1>
-          <p style="font-family:var(--font-body);font-size:clamp(16px,2.4vw,19px);color:var(--ink-soft);line-height:1.7;max-width:52ch;margin:0 auto">Des carnets guidés pour mettre des mots sur ce qui t'occupe, en listes désordonnées ou en longues lettres, comme ça vient. Chaque carnet existe en livre broché sur Amazon.</p>
+          <h1 style="font-family:var(--font-display);font-weight:800;font-variation-settings:'opsz' 72;letter-spacing:-0.005em;line-height:1.08;font-size:clamp(36px,6vw,54px);color:var(--deep-olive);max-width:24ch;margin:0 auto 22px">Les carnets <mark style="background:linear-gradient(transparent 55%, #EAD9AC 55%, #EAD9AC 92%, transparent 92%);color:inherit;padding:0 6px">d’écriture</mark></h1>
+          <p style="font-family:var(--font-body);font-size:clamp(18px,2.2vw,19px);color:var(--ink-soft);line-height:1.6;max-width:52ch;margin:0 auto">Des carnets guidés pour mettre des mots sur ce qui t’occupe, en listes désordonnées ou en longues lettres, comme ça vient. Chaque carnet existe en livre broché sur Amazon.</p>
         </div>
 
         <div style="background:var(--paper);border-top:1px solid var(--border-faint);border-bottom:1px solid var(--border-faint);padding:76px min(48px,5vw)">
           <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:min(64px,6vw);align-items:center">
             <div style="background:var(--blush);border-radius:14px;height:440px;display:flex;align-items:center;justify-content:center">
-              <img src="/assets/cover-quand-ma-tete-est-pleine.jpg" width="533" height="800" alt="Couverture : Quand ma tête est pleine" style="display:block;height:368px;width:auto;border-radius:6px;border:1px solid var(--border-faint);box-shadow:0 16px 32px rgba(101,109,68,0.2)">
+              <img src="/assets/cover-quand-ma-tete-est-pleine.jpg" width="533" height="800" alt="Couverture : Quand ma tête est pleine" style="display:block;height:368px;width:auto;border-radius:6px;border:1px solid var(--border-faint);box-shadow:0 16px 32px rgba(101,109,68,0.2)">
             </div>
             <div>
               <div>Le premier carnet</div>
-              <h2 style="font-family:var(--font-display);font-weight:400;font-size:clamp(28px,4.5vw,36px);letter-spacing:0.04em;color:var(--deep-olive);margin:16px 0 8px">Quand ma tête est pleine</h2>
-              <p style="font-family:var(--font-body);font-size:15px;font-style:italic;color:var(--rose-deep);margin:0 0 18px">Un carnet d'écriture pour apaiser un esprit qui pense trop · Pour femmes hypersensibles et introverties</p>
-              <p style="font-family:var(--font-body);font-size:16px;color:var(--ink-soft);line-height:1.7;max-width:52ch;margin:0 0 14px">Tu rejoues les conversations, longtemps après. Tu remarques tout, le moindre détail, la moindre tension. Le soir, tu rentres vidée, sans toujours savoir pourquoi. Et la nuit, ton esprit tourne, encore, pendant que tu voudrais juste dormir.</p>
-              <p style="font-family:var(--font-body);font-size:16px;color:var(--ink);font-weight:500;line-height:1.7;max-width:52ch;margin:0 0 24px">Si tu te reconnais, ce carnet est pour toi.</p>
+              <h2 style="font-family:var(--font-display);font-weight:700;font-style:italic;line-height:1.15;font-size:clamp(30px,4.6vw,40px);color:var(--deep-olive);margin:16px 0 8px">Quand ma tête est pleine</h2>
+              <p style="font-family:var(--font-body);font-size:17px;font-style:italic;color:var(--rose-deep);margin:0 0 18px">Un carnet d’écriture pour apaiser un esprit qui pense trop · Pour femmes hypersensibles et introverties</p>
+              <p style="font-family:var(--font-body);font-size:18px;color:var(--ink-soft);line-height:1.6;max-width:52ch;margin:0 0 14px">Tu rejoues les conversations, longtemps après. Tu remarques tout, le moindre détail, la moindre tension. Le soir, tu rentres vidée, sans toujours savoir pourquoi. Et la nuit, ton esprit tourne, encore, pendant que tu voudrais juste dormir.</p>
+              <p style="font-family:var(--font-body);font-size:18px;color:var(--ink);font-weight:600;line-height:1.6;max-width:52ch;margin:0 0 24px">Si tu te reconnais, ce carnet est pour toi.</p>
               <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
-                <div>Voir la version brochée sur Amazon</div>
+                <a href="https://www.amazon.fr/dp/B0H6BCB9VZ" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;box-sizing:border-box;max-width:100%;text-align:center;padding:8px 26px 10px;border:3px solid var(--rose);border-radius:999px;color:var(--rose);font-family:var(--font-accent);font-weight:700;font-size:26px;line-height:1.1;transform:rotate(-2deg);background:transparent;cursor:pointer;text-decoration:none;transition:background-color 200ms ease,color 200ms ease" style-hover="background:var(--rose);color:var(--paper-warm)" style-focus="outline:2px solid var(--ink);outline-offset:4px">Voir la version brochée sur Amazon</a>
               </div>
             </div>
           </div>
@@ -162,21 +170,21 @@
 
         <div style="padding:76px min(48px,5vw)">
           <div style="max-width:1080px;margin:0 auto">
-            <p style="font-family:var(--font-body);font-size:17px;color:var(--ink-soft);line-height:1.8;max-width:56ch;margin:0 auto 18px;text-align:center">Quand ma tête est pleine est un carnet d'écriture pensé pour les femmes hypersensibles et introverties, celles dont l'esprit ressent fort et ne se repose jamais. C'est un endroit calme, privé, où poser une tête trop pleine, quand tu en as besoin.</p>
-            <p style="font-family:var(--font-body);font-size:17px;color:var(--ink-soft);line-height:1.8;max-width:56ch;margin:0 auto 64px;text-align:center">Ce n'est pas une méthode pour penser moins, ni un programme pour devenir une meilleure version de toi-même. Ton esprit travaille beaucoup parce que tu ressens et remarques tout. Ce n'est pas un défaut. Ce carnet ne cherche pas à te corriger. Il donne simplement à ton esprit fatigué un endroit où se déposer, et te laisse voir ce qui s'apaise.</p>
-            <h2 style="font-family:var(--font-display);font-weight:400;font-size:28px;letter-spacing:0.04em;color:var(--deep-olive);text-align:center;margin:0 0 44px">Sur chaque page, tu trouveras</h2>
+            <p style="font-family:var(--font-body);font-size:18px;color:var(--ink-soft);line-height:1.6;max-width:56ch;margin:0 auto 18px;text-align:center">Quand ma tête est pleine est un carnet d’écriture pensé pour les femmes hypersensibles et introverties, celles dont l’esprit ressent fort et ne se repose jamais. C’est un endroit calme, privé, où poser une tête trop pleine, quand tu en as besoin.</p>
+            <p style="font-family:var(--font-body);font-size:18px;color:var(--ink-soft);line-height:1.6;max-width:56ch;margin:0 auto 64px;text-align:center">Ce n’est pas une méthode pour penser moins, ni un programme pour devenir une meilleure version de toi-même. Ton esprit travaille beaucoup parce que tu ressens et remarques tout. Ce n’est pas un défaut. Ce carnet ne cherche pas à te corriger. Il donne simplement à ton esprit fatigué un endroit où se déposer, et te laisse voir ce qui s’apaise.</p>
+            <h2 style="font-family:var(--font-display);font-weight:800;font-variation-settings:'opsz' 72;letter-spacing:-0.005em;line-height:1.08;font-size:clamp(28px,4.2vw,36px);color:var(--deep-olive);text-align:center;margin:0 0 44px">Sur chaque page, tu trouveras</h2>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:40px">
               <div style="border-top:1px solid var(--sage);padding-top:20px">
-                <div style="font-family:var(--font-body);font-size:16px;font-weight:500;color:var(--deep-olive);margin-bottom:8px">Une question douce</div>
-                <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.65;margin:0">Pour t'aider à commencer, quand la page blanche fait peur.</p>
+                <div style="font-family:var(--font-body);font-size:19px;font-weight:700;color:var(--deep-olive);margin-bottom:8px">Une question douce</div>
+                <p style="font-family:var(--font-body);font-size:18px;color:var(--ink-soft);line-height:1.6;margin:0">Pour t’aider à commencer, quand la page blanche fait peur.</p>
               </div>
               <div style="border-top:1px solid var(--sage);padding-top:20px">
-                <div style="font-family:var(--font-body);font-size:16px;font-weight:500;color:var(--deep-olive);margin-bottom:8px">De la place pour écrire comme ça vient</div>
-                <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.65;margin:0">En vrac, sans soigner les phrases.</p>
+                <div style="font-family:var(--font-body);font-size:19px;font-weight:700;color:var(--deep-olive);margin-bottom:8px">De la place pour écrire comme ça vient</div>
+                <p style="font-family:var(--font-body);font-size:18px;color:var(--ink-soft);line-height:1.6;margin:0">En vrac, sans soigner les phrases.</p>
               </div>
               <div style="border-top:1px solid var(--sage);padding-top:20px">
-                <div style="font-family:var(--font-body);font-size:16px;font-weight:500;color:var(--deep-olive);margin-bottom:8px">Une petite ligne, à la fin</div>
-                <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.65;margin:0">Pour remarquer ce qui a changé, même un peu.</p>
+                <div style="font-family:var(--font-body);font-size:19px;font-weight:700;color:var(--deep-olive);margin-bottom:8px">Une petite ligne, à la fin</div>
+                <p style="font-family:var(--font-body);font-size:18px;color:var(--ink-soft);line-height:1.6;margin:0">Pour remarquer ce qui a changé, même un peu.</p>
               </div>
             </div>
           </div>
@@ -184,29 +192,30 @@
 
         <div style="background:var(--paper);border-top:1px solid var(--border-faint);border-bottom:1px solid var(--border-faint);padding:76px min(48px,5vw)">
           <div style="max-width:560px;margin:0 auto 56px">
-            <h2 style="font-family:var(--font-display);font-weight:400;font-size:28px;letter-spacing:0.04em;color:var(--deep-olive);text-align:center;margin:0 0 40px">Un carnet fait pour une tête qui pense trop</h2>
+            <h2 style="font-family:var(--font-display);font-weight:800;font-variation-settings:'opsz' 72;letter-spacing:-0.005em;line-height:1.08;font-size:clamp(28px,4.2vw,36px);color:var(--deep-olive);text-align:center;margin:0 0 40px">Un carnet fait pour une tête <mark style="background:linear-gradient(transparent 55%, #EAD9AC 55%, #EAD9AC 92%, transparent 92%);color:inherit;padding:0 6px">qui pense trop</mark></h2>
             <div style="display:flex;flex-direction:column">
               <div style="padding:20px 0;border-top:1px solid var(--border-faint)">
-                <div style="font-family:var(--font-body);font-size:16px;font-weight:500;color:var(--deep-olive);margin-bottom:6px">Des pages non datées</div>
-                <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.65;margin:0">Pour l'ouvrir quand tu veux, sans jamais être en retard.</p>
+                <div style="font-family:var(--font-body);font-size:19px;font-weight:700;color:var(--deep-olive);margin-bottom:6px">Des pages non datées</div>
+                <p style="font-family:var(--font-body);font-size:18px;color:var(--ink-soft);line-height:1.6;margin:0">Pour l’ouvrir quand tu veux, sans jamais être en retard.</p>
               </div>
               <div style="padding:20px 0;border-top:1px solid var(--border-faint)">
-                <div style="font-family:var(--font-body);font-size:16px;font-weight:500;color:var(--deep-olive);margin-bottom:6px">Des questions qui suivent ce qui t'encombre</div>
-                <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.65;margin:0">Les pensées qui tournent, les nuits sans sommeil, la charge mentale, le trop-plein du jour.</p>
+                <div style="font-family:var(--font-body);font-size:19px;font-weight:700;color:var(--deep-olive);margin-bottom:6px">Des questions qui suivent ce qui t’encombre</div>
+                <p style="font-family:var(--font-body);font-size:18px;color:var(--ink-soft);line-height:1.6;margin:0">Les pensées qui tournent, les nuits sans sommeil, la charge mentale, le trop-plein du jour.</p>
               </div>
               <div style="padding:20px 0;border-top:1px solid var(--border-faint)">
-                <div style="font-family:var(--font-body);font-size:16px;font-weight:500;color:var(--deep-olive);margin-bottom:6px">Quelques lettres, en chemin</div>
-                <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.65;margin:0">D'une femme qui connaît ces nuits-là.</p>
+                <div style="font-family:var(--font-body);font-size:19px;font-weight:700;color:var(--deep-olive);margin-bottom:6px">Quelques lettres, en chemin</div>
+                <p style="font-family:var(--font-body);font-size:18px;color:var(--ink-soft);line-height:1.6;margin:0">D’une femme qui connaît ces nuits-là.</p>
               </div>
               <div style="padding:20px 0;border-top:1px solid var(--border-faint);border-bottom:1px solid var(--border-faint)">
-                <div style="font-family:var(--font-body);font-size:16px;font-weight:500;color:var(--deep-olive);margin-bottom:6px">De la place, beaucoup</div>
-                <p style="font-family:var(--font-body);font-size:15px;color:var(--ink-soft);line-height:1.65;margin:0">Parce que le calme commence là.</p>
+                <div style="font-family:var(--font-body);font-size:19px;font-weight:700;color:var(--deep-olive);margin-bottom:6px">De la place, beaucoup</div>
+                <p style="font-family:var(--font-body);font-size:18px;color:var(--ink-soft);line-height:1.6;margin:0">Parce que le calme commence là.</p>
               </div>
             </div>
           </div>
           <div style="max-width:56ch;margin:0 auto;text-align:center">
-            <p style="font-family:var(--font-body);font-size:16px;color:var(--ink-soft);line-height:1.75;margin:0 0 14px">Tu peux l'ouvrir trois minutes ou une heure. Le matin, le soir, au milieu de la nuit. Tu écris ce que tu veux, comme tu veux. Personne ne lira ça. C'est à toi.</p>
-            <p style="font-family:var(--font-body);font-size:16px;color:var(--ink-soft);line-height:1.75;margin:0 0 26px">Il n'y a rien à réussir ici. Tu viens, tu poses ce que tu portes, et tu repars un peu plus légère. Ou pas, et c'est bien aussi.</p>
+            <p style="font-family:var(--font-body);font-size:18px;color:var(--ink-soft);line-height:1.6;margin:0 0 14px">Tu peux l’ouvrir trois minutes ou une heure. Le matin, le soir, au milieu de la nuit. Tu écris ce que tu veux, comme tu veux. Personne ne lira ça. C’est à toi.</p>
+            <div style="font-family:var(--font-accent);font-weight:700;font-size:26px;line-height:1.2;color:var(--rose-deep);transform:rotate(-2deg);margin:-4px 0 22px">(promis, personne)</div>
+            <p style="font-family:var(--font-body);font-size:18px;color:var(--ink-soft);line-height:1.6;margin:0 0 26px">Il n’y a rien à réussir ici. Tu viens, tu poses ce que tu portes, et tu repars un peu plus légère. Ou pas, et c’est bien aussi.</p>
 
           </div>
         </div>
@@ -214,8 +223,8 @@
         <div style="padding:76px min(48px,5vw) 84px">
           <div style="max-width:720px;margin:0 auto;background:var(--paper);border:1px solid var(--border-faint);border-radius:14px;padding:44px 48px;text-align:center">
             <div class="pp-eyebrow" style="margin-bottom:14px">À venir</div>
-            <p style="font-family:var(--font-body);font-size:16px;color:var(--ink-soft);line-height:1.7;max-width:44ch;margin:0 auto 22px">Le deuxième carnet est en cours d'écriture. Si tu veux savoir quand il arrive, la newsletter l'annoncera en premier.</p>
-            <a href="/newsletter/">Recevoir la newsletter</a>
+            <p style="font-family:var(--font-body);font-size:18px;color:var(--ink-soft);line-height:1.6;max-width:44ch;margin:0 auto 22px">Le deuxième carnet est en cours d’écriture. Si tu veux savoir quand il arrive, la newsletter l’annoncera en premier.</p>
+            <a href="/newsletter/" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;box-sizing:border-box;max-width:100%;text-align:center;padding:8px 26px 10px;border:3px solid var(--rose);border-radius:999px;color:var(--rose);font-family:var(--font-accent);font-weight:700;font-size:30px;line-height:1.1;transform:rotate(-2deg);background:transparent;cursor:pointer;text-decoration:none;transition:background-color 200ms ease,color 200ms ease">Recevoir la newsletter</a>
           </div>
         </div>
 
@@ -242,23 +251,23 @@
     
       <div style="background:var(--blush)">
         <div style="max-width:720px;margin:0 auto;padding:80px min(48px,5vw);text-align:center">
-          <h2 style="font-family:var(--font-display);font-weight:400;font-size:clamp(26px,4.2vw,34px);letter-spacing:0.04em;color:var(--deep-olive);margin:0 0 18px">Commence par un cadeau</h2>
-          <p style="font-family:var(--font-body);font-size:16px;color:var(--ink-soft);line-height:1.7;max-width:52ch;margin:0 auto 30px">Une fois par mois, je t'écris : le thème de la saison, mes réflexions, un exercice d'écriture guidé, et les nouveaux cahiers en premier. Pour t'accueillir, je t'offre la première semaine de Mental Léger, pour vider ta tête le soir.</p>
-          <p style="font-family:var(--font-body);font-size:15px;font-style:italic;color:var(--ink-soft);line-height:1.6;max-width:46ch;margin:0 auto 28px">« Merci pour tes newsletters qui sont de réelles bouffées d'air frais. » · Virginie</p>
+          <h2 style="font-family:var(--font-display);font-weight:800;font-variation-settings:'opsz' 72;letter-spacing:-0.005em;line-height:1.08;font-size:clamp(30px,4.6vw,40px);color:var(--deep-olive);margin:0 0 18px">Commence par <mark style="background:linear-gradient(transparent 55%, #EAD9AC 55%, #EAD9AC 92%, transparent 92%);color:inherit;padding:0 6px">un cadeau</mark></h2>
+          <p style="font-family:var(--font-body);font-size:18px;color:var(--ink-soft);line-height:1.6;max-width:52ch;margin:0 auto 30px">Une fois par mois, je t’écris : le thème de la saison, mes réflexions, un exercice d’écriture guidé, et les nouveaux cahiers en premier. Pour t’accueillir, je t’offre la première semaine de Mental Léger, pour vider ta tête le soir.</p>
+          <p style="font-family:var(--font-body);font-size:17px;font-style:italic;color:var(--ink-soft);line-height:1.6;max-width:46ch;margin:0 auto 28px">« Merci pour tes newsletters qui sont de réelles bouffées d’air frais. » · Virginie</p>
           
             <div style="display:flex;justify-content:center">
-              <div>Recevoir le cadeau</div>
+              <button type="button" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;box-sizing:border-box;max-width:100%;text-align:center;padding:8px 26px 10px;border:3px solid var(--rose);border-radius:999px;color:var(--rose);font-family:var(--font-accent);font-weight:700;font-size:30px;line-height:1.1;transform:rotate(-2deg);background:transparent;cursor:pointer;text-decoration:none;transition:background-color 200ms ease,color 200ms ease" style-hover="background:var(--rose);color:var(--paper-warm)" style-focus="outline:2px solid var(--ink);outline-offset:4px">Recevoir le cadeau</button>
             </div>
-            <p style="font-family:var(--font-body);font-size:12px;color:var(--ink-faint);margin:16px 0 0">C'est gratuit. Tu peux te désinscrire quand tu veux. <a href="/newsletter/" style="color:var(--rose);cursor:pointer;text-decoration:underline;text-underline-offset:3px">Voir ce qu'il y a dedans</a></p>
+            <p style="font-family:var(--font-body);font-size:12px;color:var(--ink-faint);margin:16px 0 0">C’est gratuit. Tu peux te désinscrire quand tu veux. <a href="/newsletter/" style="color:var(--rose);cursor:pointer;text-decoration:underline;text-underline-offset:3px">Voir ce qu’il y a dedans</a></p>
           
           
             <div style="background:var(--paper);border:1px solid var(--border-faint);border-radius:14px;padding:28px 32px;max-width:440px;margin:0 auto">
-              <p style="font-family:var(--font-body);font-size:16px;color:var(--deep-olive);line-height:1.6;margin:0 0 6px">C'est noté. La première semaine de Mental Léger est en route vers ta boîte mail.</p>
+              <p style="font-family:var(--font-body);font-size:18px;color:var(--deep-olive);line-height:1.6;margin:0 0 6px">C’est noté. La première semaine de Mental Léger est en route vers ta boîte mail.</p>
               <p style="font-family:var(--font-body);font-size:13px;color:var(--ink-faint);margin:0">Si tu ne la vois pas, regarde dans les courriers indésirables.</p>
             </div>
           
         </div>
-        <div style="display:flex;justify-content:center;padding:0 min(48px,5vw)"><img loading="lazy" decoding="async" src="/assets/automne/herbes-sechees.webp" width="1000" height="384" alt="" aria-hidden="true" style="display:block;width:min(900px,100%);height:auto"></div>
+        <div style="display:flex;justify-content:center;padding:0 min(48px,5vw)"><img loading="lazy" decoding="async" src="/assets/automne/herbes-sechees.webp" width="1000" height="384" alt="Une rangée d’herbes séchées et de fleurs des champs" style="display:block;width:min(900px,100%);height:auto"></div>
       </div>
     
 
@@ -272,8 +281,8 @@
     <div style="max-width:1180px;margin:0 auto">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:32px;flex-wrap:wrap">
         <div>
-          <div style="font-family:var(--font-display);font-size:20px;color:var(--deep-olive);letter-spacing:0.06em;margin-bottom:8px">Papier Pivoine</div>
-          <p style="font-family:var(--font-body);font-style:italic;color:var(--rose);margin:0;font-size:14px;max-width:32ch;line-height:1.5">Trop sensible, trop fatiguée, trop bien sous mon plaid.</p>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="font-family:var(--font-display);font-weight:800;font-variation-settings:'opsz' 72;font-size:21px;color:var(--deep-olive);letter-spacing:-0.005em">Papier Pivoine</span><svg width="30" height="30" viewBox="0 0 120 120" fill="none" stroke="#E26D5F" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M62.7,49.8 C66.1,48.3 73.1,61.7 69.5,62.6 C71.8,66.2 60.0,73.3 57.4,69.7 C53.2,71.8 46.4,60.3 50.3,57.4 C49.8,53.3 61.7,47.9 62.7,51.8 M57.1,43.6 C46.3,12.7 80.5,14.0 65.0,44.5 M69.6,46.7 C81.8,18.7 103.5,44.8 74.8,52.4 M77.3,59.3 C107.0,50.6 98.2,86.2 75.1,67.9 M71.5,72.6 C98.7,90.0 68.7,109.6 64.6,76.1 M56.0,75.8 C55.5,106.4 22.2,90.6 49.0,71.4 M46.0,67.6 C19.3,88.3 11.6,52.1 44.5,60.0 M44.9,52.5 C15.6,45.7 36.2,19.9 49.7,47.0"></path></svg></div>
+          <p style="font-family:var(--font-body);font-style:italic;color:var(--rose-deep);margin:0;font-size:15px;max-width:32ch;line-height:1.5">Trop sensible, trop fatiguée, trop bien sous mon plaid.</p>
         </div>
         <div style="display:flex;gap:40px 64px;flex-wrap:wrap">
           <div>
@@ -291,13 +300,16 @@
               <a href="https://fr.pinterest.com/papierpivoine/" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">Pinterest</a>
               <a href="https://www.instagram.com/papierpivoine/" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">Instagram</a>
               <a href="https://www.tiktok.com/@papierpivoine" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">TikTok</a>
+              <a href="https://www.youtube.com/channel/UCGXAZmmLaKEP6ll7voftuNQ" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">YouTube</a>
+              <a href="https://www.facebook.com/share/1Bue8nqYmf/?mibextid=wwXIfr" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">Facebook</a>
+              <a href="https://www.threads.com/@papierpivoine?igshid=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">Threads</a>
               <a href="/apropos/" style="cursor:pointer">À propos</a>
             </div>
           </div>
         </div>
       </div>
       <div style="height:1px;background:var(--border-faint);margin:36px 0"></div>
-      <p style="font-family:var(--font-body);font-size:12px;color:var(--ink-faint);margin:0 0 8px;max-width:70ch;line-height:1.6">Ce que tu trouves ici est une pratique douce, pas un soin. Ce n'est pas un substitut à un accompagnement professionnel. Si tu traverses une période difficile, parles-en à un professionnel de santé.</p>
+      <p style="font-family:var(--font-body);font-size:12px;color:var(--ink-faint);margin:0 0 8px;max-width:70ch;line-height:1.6">Ce que tu trouves ici est une pratique douce, pas un soin. Ce n’est pas un substitut à un accompagnement professionnel. Si tu traverses une période difficile, parles-en à un professionnel de santé.</p>
       <p style="font-family:var(--font-body);font-size:12px;color:var(--ink-faint);margin:0">© 2026 Papier Pivoine · Camélia Nguyen</p>
     </div>
   </footer>
@@ -397,7 +409,7 @@ class Component extends DCLogic {
 
     // Embed Kit (pop-up newsletter) chargé UNE seule fois, hors du <helmet>,
     // pour éviter tout double montage (le loader Kit retire son propre <script>).
-    if (!window.__ppKit27Loaded && !document.querySelector('.formkit-form[data-uid="27c8b8373b"]')) {
+    if ((this.state.page || Component.pageFromLocation()) !== 'liens' && !window.__ppKit27Loaded && !document.querySelector('.formkit-form[data-uid="27c8b8373b"]')) {
       window.__ppKit27Loaded = true;
       const k = document.createElement('script');
       k.async = true;
