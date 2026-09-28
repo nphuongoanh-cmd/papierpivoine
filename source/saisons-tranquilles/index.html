@@ -148,7 +148,7 @@
       <div data-screen-label="Collection Saisons tranquilles">
 
         <div style="padding:clamp(56px,9vw,88px) min(48px,5vw) 64px;text-align:center">
-          <div style="display:flex;justify-content:center;margin-bottom:24px"><img src="/assets/automne/citrouilles.webp" width="600" height="389" alt="Trois petites citrouilles posées côte à côte" style="display:block;width:min(300px,66vw);height:auto"></div>
+          <div style="display:flex;justify-content:center;margin-bottom:24px"><img src="/assets/automne/bouquet-automne.webp" width="880" height="531" alt="Un bouquet de fleurs dans un vase vert, à côté d’une tasse de thé" style="display:block;width:min(340px,72vw);height:auto"></div>
           <div class="pp-eyebrow" style="margin-bottom:20px">Collection</div>
           <h1 style="font-family:var(--font-display);font-weight:800;font-variation-settings:'opsz' 72;letter-spacing:-0.005em;line-height:1.08;font-size:clamp(36px,6vw,54px);color:var(--deep-olive);max-width:24ch;margin:0 auto 22px">Saisons <mark style="background:linear-gradient(transparent 55%, #EAD9AC 55%, #EAD9AC 92%, transparent 92%);color:inherit;padding:0 6px">tranquilles</mark></h1>
           <p style="font-family:var(--font-body);font-size:clamp(18px,2.2vw,19px);color:var(--ink-soft);line-height:1.6;max-width:50ch;margin:0 auto;text-wrap:pretty">Un cahier par saison, pour te poser au chaud. Des pages à écrire, des coloriages, des jeux, des énigmes et des petits tests, au rythme de la lumière qui change. Cinq minutes ou une soirée entière. Chaque cahier existe en livre broché sur Amazon.</p>
@@ -294,9 +294,9 @@
             <div style="display:flex;flex-direction:column;gap:9px;font-family:var(--font-body);font-size:14px;color:var(--ink-soft)">
               <a href="/newsletter/" style="cursor:pointer">Newsletter gratuite</a>
               <a href="https://fr.pinterest.com/papierpivoine/" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">Pinterest</a>
-              <a href="https://www.instagram.com/papierpivoine/" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">Instagram</a>
-              <a href="https://www.tiktok.com/@papierpivoine" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">TikTok</a>
               <a href="https://www.youtube.com/channel/UCGXAZmmLaKEP6ll7voftuNQ" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">YouTube</a>
+              <a href="https://www.tiktok.com/@papierpivoine" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">TikTok</a>
+              <a href="https://www.instagram.com/papierpivoine/" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">Instagram</a>
               <a href="https://www.facebook.com/share/1Bue8nqYmf/?mibextid=wwXIfr" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">Facebook</a>
               <a href="https://www.threads.com/@papierpivoine?igshid=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">Threads</a>
               <a href="/apropos/" style="cursor:pointer">À propos</a>
@@ -397,6 +397,16 @@ class Component extends DCLogic {
 
   componentDidMount() {
     this._applySeason();
+    // Précharge les illustrations des autres pages une fois l'accueil affiché : la navigation les trouve déjà en cache.
+    try {
+      const s = document.querySelector('script[src*="support.js"]');
+      const base = s ? s.src : location.href;
+      const imgs = ['canape-bao','bouquet-automne','the-carnet-fleurs','herbes-sechees','guirlande-eglantier'].map(n => 'assets/automne/' + n + '.webp')
+        .concat(['cover-cocon-automne.jpg','cover-cocon-hiver.jpg','cover-et-si.jpg','cover-quand-ma-tete-est-pleine.jpg','bao.jpg','freebie-ml-cover.jpg','logo-papier-pivoine.jpg'].map(n => 'assets/' + n));
+      const run = () => imgs.forEach(p => { const i = new Image(); i.decoding = 'async'; i.src = new URL(p, base).href; });
+      const later = () => (window.requestIdleCallback ? requestIdleCallback(run, { timeout: 3000 }) : setTimeout(run, 1200));
+      if (document.readyState === 'complete') later(); else window.addEventListener('load', later, { once: true });
+    } catch (_) {}
     this._onPop = () => {
       this.setState({ page: Component.pageFromLocation() || 'accueil', menuOpen: false });
       try { window.scrollTo(0, 0); } catch (e) {}

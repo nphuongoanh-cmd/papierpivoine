@@ -298,9 +298,9 @@
             <div style="display:flex;flex-direction:column;gap:9px;font-family:var(--font-body);font-size:14px;color:var(--ink-soft)">
               <a href="/newsletter/" style="cursor:pointer">Newsletter gratuite</a>
               <a href="https://fr.pinterest.com/papierpivoine/" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">Pinterest</a>
-              <a href="https://www.instagram.com/papierpivoine/" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">Instagram</a>
-              <a href="https://www.tiktok.com/@papierpivoine" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">TikTok</a>
               <a href="https://www.youtube.com/channel/UCGXAZmmLaKEP6ll7voftuNQ" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">YouTube</a>
+              <a href="https://www.tiktok.com/@papierpivoine" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">TikTok</a>
+              <a href="https://www.instagram.com/papierpivoine/" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">Instagram</a>
               <a href="https://www.facebook.com/share/1Bue8nqYmf/?mibextid=wwXIfr" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">Facebook</a>
               <a href="https://www.threads.com/@papierpivoine?igshid=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">Threads</a>
               <a href="/apropos/" style="cursor:pointer">À propos</a>
@@ -401,6 +401,16 @@ class Component extends DCLogic {
 
   componentDidMount() {
     this._applySeason();
+    // Précharge les illustrations des autres pages une fois l'accueil affiché : la navigation les trouve déjà en cache.
+    try {
+      const s = document.querySelector('script[src*="support.js"]');
+      const base = s ? s.src : location.href;
+      const imgs = ['canape-bao','bouquet-automne','the-carnet-fleurs','herbes-sechees','guirlande-eglantier'].map(n => 'assets/automne/' + n + '.webp')
+        .concat(['cover-cocon-automne.jpg','cover-cocon-hiver.jpg','cover-et-si.jpg','cover-quand-ma-tete-est-pleine.jpg','bao.jpg','freebie-ml-cover.jpg','logo-papier-pivoine.jpg'].map(n => 'assets/' + n));
+      const run = () => imgs.forEach(p => { const i = new Image(); i.decoding = 'async'; i.src = new URL(p, base).href; });
+      const later = () => (window.requestIdleCallback ? requestIdleCallback(run, { timeout: 3000 }) : setTimeout(run, 1200));
+      if (document.readyState === 'complete') later(); else window.addEventListener('load', later, { once: true });
+    } catch (_) {}
     this._onPop = () => {
       this.setState({ page: Component.pageFromLocation() || 'accueil', menuOpen: false });
       try { window.scrollTo(0, 0); } catch (e) {}
