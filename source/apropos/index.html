@@ -351,7 +351,7 @@ class Component extends DCLogic {
     try {
       const s = document.querySelector('script[src*="support.js"]');
       const base = s ? s.src : location.href;
-      const imgs = ['canape-bao','bouquet-automne','the-carnet-fleurs','herbes-sechees','guirlande-eglantier'].map(n => 'assets/automne/' + n + '.webp')
+      const imgs = ['canape-bao','plaid-carnet','bouquet-automne','the-carnet-fleurs','herbes-sechees','guirlande-eglantier'].map(n => 'assets/automne/' + n + '.webp')
         .concat(['cover-cocon-automne.jpg','cover-cocon-hiver.jpg','cover-et-si.jpg','cover-quand-ma-tete-est-pleine.jpg','bao.jpg','freebie-ml-cover.jpg','logo-papier-pivoine.jpg'].map(n => 'assets/' + n));
       const run = () => imgs.forEach(p => { const i = new Image(); i.decoding = 'async'; i.src = new URL(p, base).href; });
       const later = () => (window.requestIdleCallback ? requestIdleCallback(run, { timeout: 3000 }) : setTimeout(run, 1200));
