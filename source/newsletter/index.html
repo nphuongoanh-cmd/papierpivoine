@@ -308,7 +308,7 @@
             <div class="pp-eyebrow" style="margin-bottom:14px">Rester en lien</div>
             <div style="display:flex;flex-direction:column;gap:9px;font-family:var(--font-body);font-size:14px;color:var(--ink-soft)">
               <a href="/newsletter/" style="cursor:pointer">Newsletter gratuite</a>
-              <a href="mailto:camelia@camelianguyen.fr" style="color:var(--ink-soft);text-decoration:none">Écrire à Camélia</a>
+              <a style="color:var(--ink-soft);text-decoration:none">Écrire à Camélia</a>
               <a href="https://fr.pinterest.com/papierpivoine/" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">Pinterest</a>
               <a href="https://www.youtube.com/@papierpivoine/shorts" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">YouTube</a>
               <a href="https://www.tiktok.com/@papierpivoine" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">TikTok</a>
@@ -485,11 +485,14 @@ class Component extends DCLogic {
   }
 
   renderVals() {
+    const mailText = ['camelia', 'camelianguyen.fr'].join(String.fromCharCode(64));
+    const mailHref = 'mai' + 'lto:' + mailText;
     const page = this.state.page;
     const season = this.props.season ?? 'automne';
     const navC = (k) => (page === k ? 'var(--rose)' : 'var(--ink-soft)');
     const navU = (k) => (page === k ? 'var(--rose)' : 'transparent');
     return {
+      mailText, mailHref,
       isAccueil: page === 'accueil',
       isProgramme: page === 'batterie-faible',
       isEcriture: page === 'ecriture',

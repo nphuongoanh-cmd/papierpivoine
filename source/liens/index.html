@@ -390,11 +390,14 @@ class Component extends DCLogic {
   }
 
   renderVals() {
+    const mailText = ['camelia', 'camelianguyen.fr'].join(String.fromCharCode(64));
+    const mailHref = 'mai' + 'lto:' + mailText;
     const page = this.state.page;
     const season = this.props.season ?? 'automne';
     const navC = (k) => (page === k ? 'var(--rose)' : 'var(--ink-soft)');
     const navU = (k) => (page === k ? 'var(--rose)' : 'transparent');
     return {
+      mailText, mailHref,
       isAccueil: page === 'accueil',
       isProgramme: page === 'batterie-faible',
       isEcriture: page === 'ecriture',
