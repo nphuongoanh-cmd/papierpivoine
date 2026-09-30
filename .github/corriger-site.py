@@ -42,6 +42,13 @@ PINTEREST_META = '<meta name="p:domain_verify" content="65335738f5dcb1dd57bb33a1
 
 erreurs = []
 
+# Chemin assets/… entre guillemets, parenthèses ou après un « / », tel qu'il
+# apparaît dans le HTML, le CSS ou le code JavaScript des pages.
+ASSET_CITE = re.compile(
+    r"""(?<![\w.-])/?(assets/[\w./-]+?\.(?:jpe?g|png|webp|avif|gif|svg|woff2?|mp4|webm|pdf))(?=["')\s?#,])""",
+    re.IGNORECASE,
+)
+
 
 def copier_le_site():
     if not ENTREE.is_dir():
@@ -96,6 +103,19 @@ def verifier(pages):
             cible = (SORTIE / src.lstrip("/")) if src.startswith("/") else (base / src)
             if not cible.resolve().exists():
                 erreurs.append(f"{page.relative_to(SORTIE)} : image introuvable -> {src}")
+
+    # tout fichier assets/… cité ailleurs (code JavaScript des pages, gabarits
+    # _app/*.json) doit exister aussi. Le contrôle <img> ci-dessus ne voit pas
+    # les images qu'une galerie charge au clic : le 2026-09-30, un paquet citait
+    # 8 aperçus .webp absents, que le build aurait laissé passer.
+    manquants = {}
+    for fichier in pages + sorted((SORTIE / "_app").glob("*.json")):
+        texte = fichier.read_text(encoding="utf-8").replace("\\/", "/")
+        for chemin in set(ASSET_CITE.findall(texte)):
+            if not (SORTIE / chemin).exists():
+                manquants.setdefault(chemin, []).append(str(fichier.relative_to(SORTIE)))
+    for chemin, ou in sorted(manquants.items()):
+        erreurs.append(f"fichier cité introuvable -> /{chemin} (dans {len(ou)} fichier(s), ex. {ou[0]})")
 
     for essentiel in ["CNAME", "index.html", "sitemap.xml", "robots.txt"]:
         if not (SORTIE / essentiel).exists():
