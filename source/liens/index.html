@@ -316,6 +316,7 @@ class Component extends DCLogic {
   componentDidUpdate() { this._applySeason(); }
 
   componentDidMount() {
+    window.addEventListener('keydown', this._hiverKey);
     this._applySeason();
     // Précharge les illustrations des autres pages une fois l'accueil affiché : la navigation les trouve déjà en cache.
     try {
@@ -347,6 +348,8 @@ class Component extends DCLogic {
 
   componentWillUnmount() {
     window.removeEventListener('popstate', this._onPop);
+    window.removeEventListener('keydown', this._hiverKey);
+    document.body.style.overflow = '';
   }
 
   // Rend la pop-up Kit défilable sur mobile : conteneur fixe en overflow-y auto,
@@ -389,6 +392,19 @@ class Component extends DCLogic {
     }, 100);
   }
 
+  static HIVER_IMGS = [["assets/cocon-hiver/mon-cocon-d-hiver-carnet-bien-etre-apercu.jpg","Mon cocon d’hiver : la couverture et deux pages intérieures"],["assets/cocon-hiver/carnet-hypersensible-ouvrir-selon-mon-humeur.jpg","Page « Ouvrir selon mon humeur » : où aller dans le carnet selon ce que tu ressens"],["assets/cocon-hiver/test-personnalite-quel-animal-hiver-es-tu.jpg","Test « Quel animal de l’hiver es-tu ? »"],["assets/cocon-hiver/carnet-hypersensible-page-ecriture-dire-non.jpg","Page d’écriture « Mes petites phrases pour dire non (avec le sourire) »"],["assets/cocon-hiver/sudoku-carnet-bien-etre-hiver.jpg","Sudoku tout doux"],["assets/cocon-hiver/jeu-de-plateau-chemin-du-cocon-hypersensible.jpg","Jeu de plateau « Le chemin du cocon », sur deux pages"],["assets/cocon-hiver/coloriage-hiver-adulte-tasse-mis-en-couleur.jpg","Coloriage d’une grande tasse fumante, mis en couleur"],["assets/cocon-hiver/coloriage-hiver-adulte-renne.jpg","Coloriage d’un renne en écharpe"]];
+  hiverMainRef = React.createRef();
+  hiverZoomRef = React.createRef();
+  _hiverUrl(p) { const s = document.querySelector('script[src*="support.js"]'); return new URL(p, s ? s.src : location.href).href; }
+  _hiverZoomSet(k) { const el = this.hiverZoomRef.current, it = Component.HIVER_IMGS[k]; if (el) { el.src = this._hiverUrl(it[0].replace('.jpg', '-grand.jpg')); el.alt = it[1]; } }
+  _hiverGo(i) {
+    const L = Component.HIVER_IMGS, k = (i + L.length) % L.length, el = this.hiverMainRef.current;
+    if (el) { el.style.opacity = '0'; const s = document.querySelector('script[src*="support.js"]'); const u = new URL(L[k][0], s ? s.src : location.href).href; const pre = new Image(); pre.onload = pre.onerror = () => { el.src = u; el.alt = L[k][1]; el.style.opacity = '1'; }; pre.src = u; }
+    if (this.state.hiverZoom) this._hiverZoomSet(k);
+    this.setState({ hiverI: k });
+  }
+  _hiverClose() { if (this.state.hiverZoom) { this.setState({ hiverZoom: false }); document.body.style.overflow = ''; } }
+  _hiverKey = (e) => { if (!this.state.hiverZoom) return; if (e.key === 'Escape') this._hiverClose(); else if (e.key === 'ArrowLeft') this._hiverGo((this.state.hiverI || 0) - 1); else if (e.key === 'ArrowRight') this._hiverGo((this.state.hiverI || 0) + 1); };
   renderVals() {
     const mailText = ['camelia', 'camelianguyen.fr'].join(String.fromCharCode(64));
     const mailHref = 'mai' + 'lto:' + mailText;
@@ -398,6 +414,19 @@ class Component extends DCLogic {
     const navU = (k) => (page === k ? 'var(--rose)' : 'transparent');
     return {
       mailText, mailHref,
+      hiverMainRef: this.hiverMainRef,
+      hiverZoomRef: this.hiverZoomRef,
+      hiverZoomOpen: () => { this._hiverZoomSet(this.state.hiverI || 0); this.setState({ hiverZoom: true }); document.body.style.overflow = 'hidden'; },
+      hiverZoomClose: () => this._hiverClose(),
+      hiverStop: (e) => e.stopPropagation(),
+      hiverPrevZ: (e) => { e.stopPropagation(); this._hiverGo((this.state.hiverI || 0) - 1); },
+      hiverNextZ: (e) => { e.stopPropagation(); this._hiverGo((this.state.hiverI || 0) + 1); },
+      hiverZoomVis: this.state.hiverZoom ? 'visible' : 'hidden',
+      hiverZoomOp: this.state.hiverZoom ? 1 : 0,
+      hiverPrev: () => this._hiverGo((this.state.hiverI || 0) - 1),
+      hiverNext: () => this._hiverGo((this.state.hiverI || 0) + 1),
+      hiverCount: ((this.state.hiverI || 0) + 1) + ' / ' + Component.HIVER_IMGS.length,
+      ...Object.fromEntries(Component.HIVER_IMGS.flatMap((_, i) => [['hiverShow' + i, () => this._hiverGo(i)], ['hiverB' + i, (this.state.hiverI || 0) === i ? 'var(--rose)' : 'transparent']])),
       isAccueil: page === 'accueil',
       isProgramme: page === 'batterie-faible',
       isEcriture: page === 'ecriture',
