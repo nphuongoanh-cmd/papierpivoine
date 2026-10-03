@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ET SI… ? Papier Pivoine</title>
+<meta name="description" content="ET SI… ?, le cahier d’activités pour apaiser l’anxiété, par Papier Pivoine. Jeux, pages à écrire, coloriages et vraies techniques pour souffler. 152 pages.">
+<link rel="canonical" href="https://papierpivoine.fr/et-si/">
+<meta name="robots" content="noindex,follow">
+<meta name="theme-color" content="#FCF6F2">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Papier Pivoine">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="ET SI… ? Papier Pivoine">
+<meta property="og:description" content="ET SI… ?, le cahier d’activités pour apaiser l’anxiété, par Papier Pivoine. Jeux, pages à écrire, coloriages et vraies techniques pour souffler. 152 pages.">
+<meta property="og:url" content="https://papierpivoine.fr/et-si/">
+<meta property="og:image" content="https://papierpivoine.fr/assets/landing/et-si/img-02.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://papierpivoine.fr/assets/landing/et-si/img-02.webp">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<style>
+@font-face{font-family:'Fraunces';src:url(/assets/landing/fonts/f4a11c4813.woff2) format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:'Fraunces';src:url(/assets/landing/fonts/62fae110ed.woff2) format('woff2');font-weight:100 900;font-style:italic;font-display:swap}
+@font-face{font-family:'Nunito Sans';src:url(/assets/landing/fonts/b191938c68.woff2) format('woff2');font-weight:200 1000;font-display:swap}
+@font-face{font-family:'Caveat';src:url(/assets/landing/fonts/162661f7d2.woff2) format('woff2');font-weight:400 700;font-display:swap}
+/* Layout: blue cover band (hero) → dotted paper sections → blue cover band (final CTA). One idea per section, centred column 1120px. */
+:root{
+  --paper:#FCF6F2; --dot:#E9DCCB; --ink:#2B2521; --ink-soft:#5A514A; --line:#33321E;
+  --blue:#A9D4E6; --blue-pale:#DCEEF6; --peony:#E26D5F; --peony-ink:#B6473A; --mustard:#F2C66D;
+  --sage:#B2BD88; --sand:#EAD9AC; --pink:#DDA9A0; --card:#FFFDF8;
+  --f-head:'Fraunces', Georgia, 'Times New Roman', serif;
+  --f-body:'Nunito Sans', 'Segoe UI', system-ui, sans-serif;
+  --f-hand:'Caveat', 'Comic Sans MS', cursive;
+  --wrap:1120px; --gut:clamp(16px,4vw,40px); --r:18px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.dots{background-color:var(--paper);background-image:radial-gradient(var(--dot) 1.6px,transparent 1.8px);background-size:30px 30px;background-position:15px 15px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-inline:var(--gut)}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--f-head);font-weight:800;font-variation-settings:'opsz' 96;line-height:1.08;letter-spacing:-.01em;margin:0;text-wrap:balance}
+h2{font-size:clamp(2rem,4.2vw,3.1rem)}
+h3{font-size:1.3rem;font-weight:600;font-variation-settings:'opsz' 24;line-height:1.25}
+p{margin:0}
+mark{background:linear-gradient(transparent 55%,var(--mustard) 55%,var(--mustard) 92%,transparent 92%);color:inherit;padding:0 .12em}
+.nw{white-space:nowrap}
+.hand{font-family:var(--f-hand);font-weight:700}
+.it{font-family:var(--f-head);font-style:italic;font-weight:700}
+.eyebrow{font-family:var(--f-body);font-weight:800;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}
+.lede{font-size:1.15rem;color:var(--ink-soft);max-width:60ch}
+section{padding-block:clamp(64px,9vw,112px)}
+.sec-head{display:grid;gap:14px;max-width:760px;margin-bottom:clamp(32px,5vw,52px)}
+
+/* Buttons */
+.cta{display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:var(--paper);text-decoration:none;font-weight:800;font-size:1.08rem;padding:16px 28px 17px;border-radius:999px;box-shadow:0 3px 0 var(--peony);transition:transform .15s ease,box-shadow .15s ease}
+.cta:hover{transform:translateY(-2px);box-shadow:0 5px 0 var(--peony)}
+.cta:focus-visible,.ghost:focus-visible,.row-btn:focus-visible,.shot:focus-visible{outline:3px solid var(--peony);outline-offset:3px}
+.cta svg{width:20px;height:20px;flex:none}
+.ghost{font-weight:800;text-decoration:none;border-bottom:2px solid var(--ink);padding-bottom:2px}
+.cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:18px 26px}
+
+/* Header */
+.top{background:var(--blue)}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:18px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--f-head);font-weight:800;font-size:1.25rem;letter-spacing:.01em}
+.brand .logo{width:44px;height:44px;border-radius:50%;border:2px solid var(--line);flex:none}
+.top .ghost{font-size:.95rem}
+
+/* Hero */
+.hero{background:var(--blue);padding-block:clamp(28px,5vw,56px) clamp(56px,8vw,96px);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,4vw,56px);align-items:center}
+.hero-copy{display:grid;gap:22px;min-width:0}
+.hero h1{font-size:clamp(2.6rem,6vw,4.6rem)}
+.hero .lede{color:#2f3a40}
+.hero .meta{font-size:.92rem;color:#35464f;display:flex;flex-wrap:wrap;gap:6px 18px}
+.hero .meta span::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--peony);margin-right:8px;vertical-align:middle}
+.hero-book{position:relative;justify-self:center;width:min(100%,430px)}
+.hero-book::before{content:'';position:absolute;inset:6% -8% 2% -8%;border-radius:50%;background:var(--blue-pale);opacity:.85}
+.hero-book img{position:relative;filter:drop-shadow(0 26px 30px rgba(40,70,90,.28))}
+.hero-book .note{position:absolute;left:-6%;bottom:6%;transform:rotate(-6deg);font-size:1.6rem;line-height:1.1;color:var(--peony-ink);max-width:9ch}
+.aside{font-family:var(--f-hand);font-weight:700;font-size:1.45rem;color:var(--peony-ink);transform:rotate(-2deg);display:inline-block}
+
+/* Gribouille intro */
+.meet .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(28px,5vw,72px);align-items:center}
+.meet figure{margin:0;justify-self:center;width:min(100%,340px)}
+.meet figure img{mix-blend-mode:multiply}
+.meet figcaption{text-align:center;font-family:var(--f-hand);font-weight:700;font-size:1.4rem;color:var(--ink-soft);margin-top:4px}
+.letter{background:var(--card);border:2.5px solid var(--line);border-radius:22px 26px 20px 24px;padding:26px 28px;font-family:var(--f-hand);font-weight:600;font-size:1.55rem;line-height:1.35;position:relative;margin-top:22px}
+.letter small{display:block;font-family:var(--f-body);font-size:.8rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-top:14px}
+
+/* Inbox */
+.inbox{background:var(--card);border:2.5px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:6px 7px 0 var(--sand)}
+.inbox-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 22px;border-bottom:2px solid var(--line);background:var(--blue-pale);font-weight:800;font-size:.95rem}
+.inbox-bar .count{white-space:nowrap;background:var(--peony);color:#fff;border-radius:999px;padding:2px 11px;font-size:.82rem}
+.mail{display:grid;grid-template-columns:14px 150px 1fr auto;gap:6px 18px;align-items:baseline;padding:18px 22px;border-bottom:1.5px dashed #d9cdbd}
+.mail:last-child{border-bottom:0}
+.mail .dot{width:10px;height:10px;border-radius:50%;background:var(--peony);align-self:center}
+.mail .from{font-weight:800}
+.mail .from small{display:block;font-weight:600;color:var(--ink-soft);font-size:.82rem}
+.mail .subj{min-width:0}
+.mail .page{font-family:var(--f-hand);font-weight:700;font-size:1.3rem;color:var(--peony-ink);white-space:nowrap}
+.mail .page b{font-family:var(--f-body);font-size:.8rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);background:var(--sand);border-radius:6px;padding:2px 7px;margin-left:6px;vertical-align:2px}
+.inbox-after{margin-top:22px;font-size:1.05rem;color:var(--ink-soft)}
+
+/* Translator */
+.trans{background:var(--blue-pale)}
+.ttable{display:grid;gap:14px}
+.trow{display:grid;grid-template-columns:1fr 1.25fr auto;gap:14px 24px;align-items:center;background:var(--card);border:2px solid var(--line);border-radius:16px;padding:18px 22px}
+.trow .said{font-weight:800;font-size:1.1rem}
+.trow .lab{display:block;font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:2px}
+.trow .heard{font-family:var(--f-hand);font-weight:700;font-size:1.6rem;line-height:1.15;color:var(--peony-ink)}
+.trow[data-on="1"] .heard{color:#3f6b4c}
+.row-btn{font:inherit;font-weight:800;font-size:.92rem;border:2px solid var(--line);background:var(--mustard);color:var(--ink);border-radius:999px;padding:9px 16px;cursor:pointer;white-space:nowrap}
+.trow[data-on="1"] .row-btn{background:var(--card)}
+.tnote{margin-top:20px;font-size:1rem;color:var(--ink-soft)}
+
+/* Inside: sommaire + pages */
+.inside .wrap{display:grid;gap:clamp(40px,6vw,64px)}
+.toc{list-style:none;margin:0;padding:0;display:grid;gap:4px;max-width:820px}
+.toc li{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:baseline;padding:10px 0}
+.toc .n{font-family:var(--f-head);font-weight:800;color:var(--peony-ink);font-size:1.05rem;width:1.6em}
+.toc .t{display:flex;align-items:baseline;gap:10px;min-width:0}
+.toc .t span{font-family:var(--f-head);font-weight:600;font-size:1.2rem;font-variation-settings:'opsz' 24}
+.toc .t i{flex:1;border-bottom:2px dotted #bfae98;transform:translateY(-5px);min-width:20px}
+.toc .p{font-variant-numeric:tabular-nums;font-weight:800}
+.toc .d{grid-column:2 / 4;font-size:.98rem;color:var(--ink-soft);margin-top:-2px}
+.shots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,2.4vw,28px)}
+.shot{all:unset;cursor:zoom-in;display:grid;gap:10px;min-width:0}
+.shot img{border:1.5px solid #d6c9b8;border-radius:6px;background:#fff;box-shadow:0 10px 22px rgba(51,50,30,.12);transition:transform .2s ease}
+.shot:nth-child(odd) img{transform:rotate(-1.2deg)}
+.shot:nth-child(even) img{transform:rotate(1deg)}
+.shot:hover img{transform:rotate(0) translateY(-4px)}
+.shot span{font-size:.92rem;line-height:1.35}
+.shot b{display:block;font-family:var(--f-hand);font-size:1.25rem;color:var(--peony-ink)}
+dialog{border:0;padding:0;background:transparent;max-width:min(92vw,620px)}
+dialog::backdrop{background:rgba(43,37,33,.72)}
+dialog img{border-radius:6px;max-height:86vh;width:auto;margin:0 auto}
+dialog button{position:absolute;top:8px;right:8px;font:inherit;font-weight:800;border:0;border-radius:999px;background:var(--ink);color:var(--paper);padding:6px 14px;cursor:pointer}
+
+.mhead{display:grid;grid-template-columns:1fr 240px;gap:24px 48px;align-items:center;margin-bottom:clamp(28px,4vw,44px)}
+.mhead .grib{width:100%}
+.lede .q{font-size:1.45rem;color:var(--ink);white-space:nowrap}
+.objs.objs3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.gift1 .wrap{grid-template-columns:1fr}
+.gift1 .gift-copy{max-width:760px}
+/* Objections */
+.objs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.obj{background:var(--card);border:2px solid var(--line);border-radius:var(--r);padding:26px 26px 24px;display:grid;gap:10px;align-content:start}
+.obj h3{font-family:var(--f-hand);font-weight:700;font-size:1.9rem;line-height:1.05}
+.obj p{color:var(--ink-soft)}
+.obj .pg{font-weight:800;color:var(--ink)}
+
+/* Camélia */
+.me .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center}
+.me figure{margin:0}
+.me figure img{mix-blend-mode:multiply}
+.me figcaption{text-align:right;margin-top:-6px}
+.me-copy{display:grid;gap:18px;min-width:0}
+.collection{border-left:4px solid var(--sage);padding:4px 0 4px 18px;color:var(--ink-soft)}
+.collection em{font-family:var(--f-head);font-weight:700}
+
+/* Gift */
+.gift{background:var(--sand)}
+.gift .wrap{display:grid;grid-template-columns:1.3fr .7fr;gap:clamp(24px,5vw,64px);align-items:center}
+.gift-copy{display:grid;gap:20px;min-width:0}
+.gift ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.gift li{padding-left:30px;position:relative}
+.gift li::before{content:'';position:absolute;left:0;top:.45em;width:16px;height:16px;border:2.5px solid var(--line);border-radius:50%;background:var(--pink)}
+.gift .pair{display:flex;justify-content:center;align-items:flex-end;gap:0}
+.gift .pair img{width:48%;filter:drop-shadow(0 16px 16px rgba(51,50,30,.22))}
+.gift .pair img:first-child{transform:rotate(-5deg) translateX(10%)}
+.gift .pair img:last-child{transform:rotate(4deg) translateX(-10%) translateY(-14px)}
+
+/* Final */
+.final{background:var(--blue);text-align:center}
+.final .wrap{display:grid;justify-items:center;gap:22px}
+.final .cover{width:min(62vw,250px);transform:rotate(-3deg);box-shadow:0 18px 30px rgba(40,70,90,.3);border-radius:3px}
+.final .booktitle{font-size:clamp(1.8rem,4vw,2.6rem)}
+.final .arrow{width:90px;height:66px;margin-bottom:-14px}
+.news{margin-top:26px;background:var(--paper);border:2px solid var(--line);border-radius:var(--r);padding:24px 26px;max-width:640px;text-align:left;display:grid;gap:10px}
+.news h3{font-size:1.35rem}
+.news p{color:var(--ink-soft);font-size:1rem}
+.news a{font-weight:800}
+
+footer{padding-block:36px 110px;font-size:.88rem;color:var(--ink-soft)}
+footer .wrap{display:grid;gap:12px}
+footer .fine{max-width:75ch}
+footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center}
+.peony-s{width:28px;height:28px}
+
+/* Sticky mobile CTA */
+.sticky{display:none}
+
+i.ln{display:none}
+@media (max-width:900px){
+  .mhead{grid-template-columns:1fr}
+  .mhead .grib{width:130px;order:-1}
+  section{padding-block:48px}
+  .final .cover{width:150px}
+  .final .arrow{display:none}
+  .hero{padding-block:24px 48px}
+  .trow{padding:14px 18px;gap:8px}
+  .objs.objs3{grid-template-columns:1fr}
+  .hero .wrap,.meet .wrap,.me .wrap,.gift .wrap{grid-template-columns:1fr}
+  .hero-book{width:min(58%,260px);order:-1}
+  .hero-book .note{font-size:1.3rem;left:-14%}
+  .shots{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .objs{grid-template-columns:1fr}
+  .mail{grid-template-columns:12px 1fr;gap:4px 12px}
+  .mail .dot{grid-row:1 / 4;align-self:start;margin-top:8px}
+  .mail .from small{display:inline;margin-left:8px}
+  .trow{grid-template-columns:1fr}
+  .trow .row-btn{justify-self:start}
+  .gift .pair{max-width:360px;margin:0 auto}
+  .me figure{order:-1}
+  .sticky{display:flex;transition:transform .25s ease;position:fixed;left:0;right:0;bottom:0;z-index:20;justify-content:space-between;align-items:center;gap:12px;background:var(--ink);color:var(--paper);padding:12px var(--gut) calc(12px + env(safe-area-inset-bottom,0px))}
+  .sticky span{font-family:var(--f-head);font-style:italic;font-weight:700;font-size:1.05rem}
+  .sticky a{background:var(--mustard);color:var(--ink);text-decoration:none;font-weight:800;border-radius:999px;padding:9px 16px;font-size:.95rem;white-space:nowrap}
+  .top .ghost{display:none}
+}
+.sticky.away{transform:translateY(110%)}
+@media (max-width:420px){ body{font-size:17px} .toc .t span{font-size:1.05rem} }
+@media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} .cta,.shot img{transition:none} }
+</style>
+</head>
+<body>
+
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="https://www.amazon.fr/dp/B0HL27XDWD" target="_blank" rel="noopener" aria-label="Papier Pivoine, ET SI… ? sur Amazon"><img class="logo" src="/assets/landing/et-si/img-01.webp" width="80" height="80" alt="">Papier Pivoine</a>
+    <a class="ghost" href="https://www.amazon.fr/dp/B0HL27XDWD" target="_blank" rel="noopener">Le cahier sur Amazon</a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <p class="eyebrow">Batterie faible · cahier n° 1</p>
+      <h1>Une page pour sortir les <span class="nw">« et si… ? »</span> <mark>de ta tête</mark>.</h1>
+      <p class="lede">Le mail relu neuf fois avant de l’envoyer à ta N+1. Le dimanche, 19 h, déjà dans la réunion de lundi. <span class="it">ET SI… ?</span> est un cahier d’activités pour apaiser l’anxiété : des jeux, des pages à écrire, des coloriages et de vraies techniques pour souffler.</p>
+      <div class="cta-row">
+        <a class="cta" href="https://www.amazon.fr/dp/B0HL27XDWD" target="_blank" rel="noopener">Je le découvre sur Amazon <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="ghost" href="#dedans">Feuilleter l’intérieur</a>
+      </div>
+      <p class="aside" style="margin-top:-6px">(rien à finir, promis)</p>
+      <p class="meta"><span>152 pages</span><span>15,2 × 22,9 cm</span><span>Broché, en français</span></p>
+    </div>
+    <div class="hero-book">
+      <img src="/assets/landing/et-si/img-02.webp" width="640" height="1027" alt="Le cahier ET SI… ?, couverture bleue : une femme assise sur un tapis avec sa tasse, et Gribouille, un petit monstre, caché dans un sac.">
+    </div>
+  </div>
+</section>
+
+<section class="mails dots">
+  <div class="wrap">
+    <div class="mhead">
+      <div class="sec-head" style="margin-bottom:0">
+        <p class="eyebrow">Le monstre des « et si… ? »</p>
+        <h2>Voici <mark>Gribouille</mark>. Il t’écrit souvent.</h2>
+        <p class="lede">C’est le petit monstre du cahier. Il veut juste te protéger, mais il voit des dangers partout. <span class="hand q">« Même dans un “ok.” avec un point. »</span> Chaque message qu’il t’envoie a sa page.</p>
+      </div>
+      <img class="grib" src="/assets/landing/et-si/img-03.webp" width="420" height="391" alt="Gribouille, le petit monstre poilu du cahier, avec ses deux cornes et ses grands yeux.">
+    </div>
+    <div class="inbox" role="list" aria-label="Messages de Gribouille et pages du cahier">
+      <div class="inbox-bar"><span>Boîte de réception (de ma tête)</span><span class="count">4 non lus</span></div>
+      <div class="mail" role="listitem"><i class="dot"></i><span class="from">Gribouille<small>dim. 19:04</small></span><span class="subj">« Rappel : réunion de 9 h demain. Bon dimanche ! »</span><span class="page">bingo du dimanche soir <b>p. 22</b></span></div>
+      <div class="mail" role="listitem"><i class="dot"></i><span class="from">Ma N+1<small>lun. 9:41</small></span><span class="subj">« Merci pour ton retour. » (Gribouille a déjà traduit : elle est furieuse.)</span><span class="page">traducteur de mails anxieux <b>p. 23</b></span></div>
+      <div class="mail" role="listitem"><i class="dot"></i><span class="from">Gribouille<small>sam. 3:12</small></span><span class="subj">« Et si elle avait mal pris ta blague, à la pause café ? »</span><span class="page">le replay de 3 h du matin <b>p. 54</b></span></div>
+      <div class="mail" role="listitem"><i class="dot"></i><span class="from">Gribouille<small>mar. 18:20</small></span><span class="subj">« Tu as pris le rendez-vous chez le dentiste ? Et l’anniversaire de ta belle-sœur ? Et le linge ? »</span><span class="page">charge mentale : le grand tri <b>p. 107</b></span></div>
+    </div>
+  </div>
+</section>
+
+<section class="trans">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Essaie une page · page 23</p>
+      <h2>Le traducteur de mails <mark>anxieux</mark>.</h2>
+      <p class="lede">Ton monstre lit tes mails avec un dictionnaire un peu spécial. Clique pour avoir la traduction réaliste.</p>
+    </div>
+    <div class="ttable">
+      <div class="trow" data-on="0">
+        <p class="said"><span class="lab">Ce que dit le mail</span>« Merci pour ton retour. »</p>
+        <p class="heard" data-a="« Elle est furieuse. »" data-b="« Merci pour ton retour. »"><span class="lab">Ce que ton monstre entend</span><span class="v">« Elle est furieuse. »</span></p>
+        <button class="row-btn" type="button" id="t1">Traduire en vrai</button>
+      </div>
+      <div class="trow" data-on="0">
+        <p class="said"><span class="lab">Ce que dit le mail</span>« On peut s’appeler 5 min ? »</p>
+        <p class="heard" data-a="« Tu es virée. »" data-b="« J’ai une question trop longue pour un mail. »"><span class="lab">Ce que ton monstre entend</span><span class="v">« Tu es virée. »</span></p>
+        <button class="row-btn" type="button" id="t2">Traduire en vrai</button>
+      </div>
+      <div class="trow" data-on="0">
+        <p class="said"><span class="lab">Ce que dit le mail</span>« Pour rappel… »</p>
+        <p class="heard" data-a="« Tu es nulle et tout le monde le sait. »" data-b="Celle-là, c’est toi qui la traduis, page 23."><span class="lab">Ce que ton monstre entend</span><span class="v">« Tu es nulle et tout le monde le sait. »</span></p>
+        <button class="row-btn" type="button" id="t3">Traduire en vrai</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="inside dots" id="dedans">
+  <div class="wrap">
+    <div>
+      <div class="sec-head">
+        <p class="eyebrow">À l’intérieur</p>
+        <h2>152 pages. Tu commences <mark>où tu veux</mark>.</h2>
+        <p class="lede">Des jeux, des pages à écrire, des coloriages, et un chapitre 5 qui range les vraies techniques pour souffler. Rien à réussir : tu peux le commencer par la fin, sauter des pages, en remplir la moitié. Personne ne va te noter.</p>
+      </div>
+    </div>
+    <div class="shots">
+      <button class="shot" type="button" data-full="/assets/landing/et-si/img-04.webp"><img src="/assets/landing/et-si/img-04.webp" loading="lazy" width="760" height="1140" alt="Page 22, le bingo du dimanche soir"><span><b>page 22</b>Le bingo du dimanche soir</span></button>
+      <button class="shot" type="button" data-full="/assets/landing/et-si/img-05.webp"><img src="/assets/landing/et-si/img-05.webp" loading="lazy" width="760" height="1140" alt="Page 23, le traducteur de mails anxieux"><span><b>page 23</b>Le traducteur de mails anxieux</span></button>
+      <button class="shot" type="button" data-full="/assets/landing/et-si/img-06.webp"><img src="/assets/landing/et-si/img-06.webp" loading="lazy" width="760" height="1140" alt="Page 107, charge mentale : le grand tri"><span><b>page 107</b>Charge mentale : le grand tri</span></button>
+      <button class="shot" type="button" data-full="/assets/landing/et-si/img-07.webp"><img src="/assets/landing/et-si/img-07.webp" loading="lazy" width="760" height="1140" alt="Page 9, dessine ton monstre"><span><b>page 9</b>À quoi ressemble ton monstre ?</span></button>
+    </div>
+  </div>
+</section>
+
+<section class="objections">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Ce que tu te dis peut-être</p>
+      <h2>Les petites voix, <mark>avant</mark> d’ouvrir le cahier.</h2>
+    </div>
+    <div class="objs objs3">
+      <div class="obj"><h3>« Je ne sais pas dessiner. »</h3><p>Les coloriages sont déjà dessinés. Et pour ton monstre à toi, la consigne de la <span class="pg">page 9</span> le dit : un gribouillis, c’est parfait.</p></div>
+      <div class="obj"><h3>« Je ne vais jamais le finir. »</h3><p>Tant mieux. Au <span class="pg">contrat de douceur, page 19</span>, tu t’engages à ne pas le finir parfaitement et à sauter les pages qui ne te parlent pas.</p></div>
+      <div class="obj"><h3>« Je n’ai pas le temps. »</h3><p>Une page prend quelques minutes. La <span class="pg">pause de 2 minutes, page 41</span>, se fait avant une réunion, sans que personne ne voie rien.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="me dots">
+  <div class="wrap">
+    <div class="me-copy">
+      <p class="eyebrow">Derrière Papier Pivoine</p>
+      <h2>Gribouille, c’est le <mark>mien</mark>.</h2>
+      <p>Je m’appelle Camélia. Mon Gribouille à moi relit mes mails avant de les envoyer et rejoue mes conversations la nuit. J’ai fait ce cahier pour les moments où il parle trop fort : des pages pour rire de lui, écrire, colorier, et respirer un peu.</p>
+      <p class="collection"><span class="it">ET SI… ?</span> ouvre <em>Batterie faible</em>, ma collection de cahiers pour les jours où la batterie clignote. Tu t’y reconnais, tu en ris, et tu souffles un peu.</p>
+    </div>
+    <figure>
+      <img src="/assets/landing/et-si/img-08.webp" width="900" height="643" alt="Dessin de Camélia à son bureau avec sa tasse de thé, son chat Bao endormi à côté d’elle.">
+      <figcaption><span class="aside">(Bao dort, lui.)</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="gift gift1">
+  <div class="wrap">
+    <div class="gift-copy">
+      <p class="eyebrow">À offrir</p>
+      <h2>Un pour toi, un pour celle qui relit ses <mark>messages</mark>.</h2>
+      <ul>
+        <li>Ta sœur, qui prépare la réponse à un mail qui n’existe pas encore.</li>
+        <li>Ta collègue, qui dort mal la veille de l’entretien annuel.</li>
+        <li>Ton amie, qui pense à l’anniversaire de tout le monde.</li>
+        <li>Le cadeau qui ne finira pas dans un placard.</li>
+      </ul>
+            <div class="cta-row"><a class="cta" href="https://www.amazon.fr/dp/B0HL27XDWD" target="_blank" rel="noopener">L’offrir, via Amazon <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <img class="cover" src="/assets/landing/et-si/img-09.webp" width="500" height="750" alt="Couverture du cahier ET SI… ?">
+    <p class="booktitle it">ET SI… ?</p>
+    <p class="lede" style="color:#2f3a40">Le cahier d’activités pour apaiser l’anxiété. Une page quand tu veux, même trois semaines après la dernière.</p>
+    <svg class="arrow" viewBox="0 0 300 220" aria-hidden="true"><g fill="none" stroke="#2B2521" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"><path d="M60,30 C150,20 200,70 210,170"/><path d="M176,148 L210,180 L236,136"/></g></svg>
+    <a class="cta" href="https://www.amazon.fr/dp/B0HL27XDWD" target="_blank" rel="noopener">Je le découvre sur Amazon <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  </div>
+</section>
+</main>
+
+<footer class="dots">
+  <div class="wrap">
+    <p class="fine">Ce cahier propose des activités de détente et des techniques simples. Il accompagne, sans remplacer l’avis d’un professionnel de santé. La page 151 te dit quand demander de l’aide, et à qui.</p>
+    <div class="row"><svg class="peony-s" viewBox="0 0 120 120" aria-hidden="true"><path d="M62.7,49.8 C66.1,48.3 73.1,61.7 69.5,62.6 C71.8,66.2 60.0,73.3 57.4,69.7 C53.2,71.8 46.4,60.3 50.3,57.4 C49.8,53.3 61.7,47.9 62.7,51.8 M57.1,43.6 C46.3,12.7 80.5,14.0 65.0,44.5 M69.6,46.7 C81.8,18.7 103.5,44.8 74.8,52.4 M77.3,59.3 C107.0,50.6 98.2,86.2 75.1,67.9 M71.5,72.6 C98.7,90.0 68.7,109.6 64.6,76.1 M56.0,75.8 C55.5,106.4 22.2,90.6 49.0,71.4 M46.0,67.6 C19.3,88.3 11.6,52.1 44.5,60.0 M44.9,52.5 C15.6,45.7 36.2,19.9 49.7,47.0" fill="none" stroke="#E26D5F" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>© 2026 Papier Pivoine · Camélia Nguyen</span><span>papierpivoine.fr</span><span>@papierpivoine</span></div>
+  </div>
+</footer>
+
+<div class="sticky away" id="sticky"><span>ET SI… ?</span><a href="https://www.amazon.fr/dp/B0HL27XDWD" target="_blank" rel="noopener">Voir sur Amazon</a></div>
+
+<dialog id="zoom"><button type="button" id="zoom-close">Fermer</button><img id="zoom-img" alt=""></dialog>
+
+<script>
+document.querySelectorAll('.trow').forEach(function(row){
+  var btn=row.querySelector('.row-btn'), h=row.querySelector('.heard'), v=h.querySelector('.v'), lab=h.querySelector('.lab');
+  btn.addEventListener('click',function(){
+    var on=row.getAttribute('data-on')==='1';
+    row.setAttribute('data-on',on?'0':'1');
+    v.textContent=on?h.getAttribute('data-a'):h.getAttribute('data-b');
+    lab.textContent=on?'Ce que ton monstre entend':'Ce que ça veut vraiment dire';
+    btn.textContent=on?'Traduire en vrai':'Revenir à Gribouille';
+  });
+});
+var dlg=document.getElementById('zoom'), zi=document.getElementById('zoom-img');
+document.querySelectorAll('.shot').forEach(function(b){
+  b.addEventListener('click',function(){zi.src=b.getAttribute('data-full');zi.alt=b.querySelector('img').alt;if(dlg.showModal)dlg.showModal();});
+});
+document.getElementById('zoom-close').addEventListener('click',function(){dlg.close();});
+dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close();});
+var st=document.getElementById('sticky'),seen={};
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){seen[e.target.dataset.k]=e.isIntersecting;});st.classList.toggle('away',!!(seen.h||seen.f));});
+var hc=document.querySelector('.hero .cta'),fc=document.querySelector('.final');hc.dataset.k='h';fc.dataset.k='f';io.observe(hc);io.observe(fc);}else{st.classList.remove('away');}
+</script>
+
+</body>
+</html>
