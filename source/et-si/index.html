@@ -21,18 +21,18 @@
 <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 <style>
-@font-face{font-family:'Fraunces';src:url(/assets/landing/fonts/f4a11c4813.woff2) format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
-@font-face{font-family:'Fraunces';src:url(/assets/landing/fonts/62fae110ed.woff2) format('woff2');font-weight:100 900;font-style:italic;font-display:swap}
-@font-face{font-family:'Nunito Sans';src:url(/assets/landing/fonts/b191938c68.woff2) format('woff2');font-weight:200 1000;font-display:swap}
-@font-face{font-family:'Caveat';src:url(/assets/landing/fonts/162661f7d2.woff2) format('woff2');font-weight:400 700;font-display:swap}
+@font-face{font-family:'Fraunces';src:url(../assets/landing/fonts/f4a11c4813.woff2) format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:'Fraunces';src:url(../assets/landing/fonts/62fae110ed.woff2) format('woff2');font-weight:100 900;font-style:italic;font-display:swap}
+@font-face{font-family:'Nunito Sans';src:url(../assets/landing/fonts/b191938c68.woff2) format('woff2');font-weight:200 1000;font-display:swap}
+@font-face{font-family:'Caveat';src:url(../assets/landing/fonts/162661f7d2.woff2) format('woff2');font-weight:400 700;font-display:swap}
 /* Layout: blue cover band (hero) → dotted paper sections → blue cover band (final CTA). One idea per section, centred column 1120px. */
 :root{
   --paper:#FCF6F2; --dot:#E9DCCB; --ink:#2B2521; --ink-soft:#5A514A; --line:#33321E;
   --blue:#A9D4E6; --blue-pale:#DCEEF6; --peony:#E26D5F; --peony-ink:#B6473A; --mustard:#F2C66D;
   --sage:#B2BD88; --sand:#EAD9AC; --pink:#DDA9A0; --card:#FFFDF8;
-  --f-head:'Fraunces', Georgia, 'Times New Roman', serif;
-  --f-body:'Nunito Sans', 'Segoe UI', system-ui, sans-serif;
-  --f-hand:'Caveat', 'Comic Sans MS', cursive;
+  --f-head:'Fraunces',serif;
+  --f-body:'Nunito Sans',sans-serif;
+  --f-hand:'Caveat',cursive;
   --wrap:1120px; --gut:clamp(16px,4vw,40px); --r:18px;
   color-scheme:light;
 }
@@ -233,7 +233,7 @@ i.ln{display:none}
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="https://www.amazon.fr/dp/B0HL27XDWD" target="_blank" rel="noopener" aria-label="Papier Pivoine, ET SI… ? sur Amazon"><img class="logo" src="/assets/landing/et-si/img-01.webp" width="80" height="80" alt="">Papier Pivoine</a>
+    <a class="brand" href="https://www.amazon.fr/dp/B0HL27XDWD" target="_blank" rel="noopener" aria-label="Papier Pivoine, ET SI… ? sur Amazon"><img class="logo" src="../assets/landing/et-si/img-01.webp" width="80" height="80" alt="">Papier Pivoine</a>
     <a class="ghost" href="https://www.amazon.fr/dp/B0HL27XDWD" target="_blank" rel="noopener">Le cahier sur Amazon</a>
   </div>
 </header>
@@ -253,7 +253,7 @@ i.ln{display:none}
       <p class="meta"><span>152 pages</span><span>15,2 × 22,9 cm</span><span>Broché, en français</span></p>
     </div>
     <div class="hero-book">
-      <img src="/assets/landing/et-si/img-02.webp" width="640" height="1027" alt="Le cahier ET SI… ?, couverture bleue : une femme assise sur un tapis avec sa tasse, et Gribouille, un petit monstre, caché dans un sac.">
+      <img src="../assets/landing/et-si/img-02.webp" width="640" height="1027" alt="Le cahier ET SI… ?, couverture bleue : une femme assise sur un tapis avec sa tasse, et Gribouille, un petit monstre, caché dans un sac.">
     </div>
   </div>
 </section>
@@ -266,7 +266,7 @@ i.ln{display:none}
         <h2>Voici <mark>Gribouille</mark>. Il t’écrit souvent.</h2>
         <p class="lede">C’est le petit monstre du cahier. Il veut juste te protéger, mais il voit des dangers partout. <span class="hand q">« Même dans un “ok.” avec un point. »</span> Chaque message qu’il t’envoie a sa page.</p>
       </div>
-      <img class="grib" src="/assets/landing/et-si/img-03.webp" width="420" height="391" alt="Gribouille, le petit monstre poilu du cahier, avec ses deux cornes et ses grands yeux.">
+      <img class="grib" src="../assets/landing/et-si/img-03.webp" width="420" height="391" alt="Gribouille, le petit monstre poilu du cahier, avec ses deux cornes et ses grands yeux.">
     </div>
     <div class="inbox" role="list" aria-label="Messages de Gribouille et pages du cahier">
       <div class="inbox-bar"><span>Boîte de réception (de ma tête)</span><span class="count">4 non lus</span></div>
@@ -315,10 +315,10 @@ i.ln{display:none}
       </div>
     </div>
     <div class="shots">
-      <button class="shot" type="button" data-full="/assets/landing/et-si/img-04.webp"><img src="/assets/landing/et-si/img-04.webp" loading="lazy" width="760" height="1140" alt="Page 22, le bingo du dimanche soir"><span><b>page 22</b>Le bingo du dimanche soir</span></button>
-      <button class="shot" type="button" data-full="/assets/landing/et-si/img-05.webp"><img src="/assets/landing/et-si/img-05.webp" loading="lazy" width="760" height="1140" alt="Page 23, le traducteur de mails anxieux"><span><b>page 23</b>Le traducteur de mails anxieux</span></button>
-      <button class="shot" type="button" data-full="/assets/landing/et-si/img-06.webp"><img src="/assets/landing/et-si/img-06.webp" loading="lazy" width="760" height="1140" alt="Page 107, charge mentale : le grand tri"><span><b>page 107</b>Charge mentale : le grand tri</span></button>
-      <button class="shot" type="button" data-full="/assets/landing/et-si/img-07.webp"><img src="/assets/landing/et-si/img-07.webp" loading="lazy" width="760" height="1140" alt="Page 9, dessine ton monstre"><span><b>page 9</b>À quoi ressemble ton monstre ?</span></button>
+      <button class="shot" type="button" data-full="../assets/landing/et-si/img-04.webp"><img src="../assets/landing/et-si/img-04.webp" loading="lazy" width="760" height="1140" alt="Page 22, le bingo du dimanche soir"><span><b>page 22</b>Le bingo du dimanche soir</span></button>
+      <button class="shot" type="button" data-full="../assets/landing/et-si/img-05.webp"><img src="../assets/landing/et-si/img-05.webp" loading="lazy" width="760" height="1140" alt="Page 23, le traducteur de mails anxieux"><span><b>page 23</b>Le traducteur de mails anxieux</span></button>
+      <button class="shot" type="button" data-full="../assets/landing/et-si/img-06.webp"><img src="../assets/landing/et-si/img-06.webp" loading="lazy" width="760" height="1140" alt="Page 107, charge mentale : le grand tri"><span><b>page 107</b>Charge mentale : le grand tri</span></button>
+      <button class="shot" type="button" data-full="../assets/landing/et-si/img-07.webp"><img src="../assets/landing/et-si/img-07.webp" loading="lazy" width="760" height="1140" alt="Page 9, dessine ton monstre"><span><b>page 9</b>À quoi ressemble ton monstre ?</span></button>
     </div>
   </div>
 </section>
@@ -346,7 +346,7 @@ i.ln{display:none}
       <p class="collection"><span class="it">ET SI… ?</span> ouvre <em>Batterie faible</em>, ma collection de cahiers pour les jours où la batterie clignote. Tu t’y reconnais, tu en ris, et tu souffles un peu.</p>
     </div>
     <figure>
-      <img src="/assets/landing/et-si/img-08.webp" width="900" height="643" alt="Dessin de Camélia à son bureau avec sa tasse de thé, son chat Bao endormi à côté d’elle.">
+      <img src="../assets/landing/et-si/img-08.webp" width="900" height="643" alt="Dessin de Camélia à son bureau avec sa tasse de thé, son chat Bao endormi à côté d’elle.">
       <figcaption><span class="aside">(Bao dort, lui.)</span></figcaption>
     </figure>
   </div>
@@ -370,7 +370,7 @@ i.ln{display:none}
 
 <section class="final">
   <div class="wrap">
-    <img class="cover" src="/assets/landing/et-si/img-09.webp" width="500" height="750" alt="Couverture du cahier ET SI… ?">
+    <img class="cover" src="../assets/landing/et-si/img-09.webp" width="500" height="750" alt="Couverture du cahier ET SI… ?">
     <p class="booktitle it">ET SI… ?</p>
     <p class="lede" style="color:#2f3a40">Le cahier d’activités pour apaiser l’anxiété. Une page quand tu veux, même trois semaines après la dernière.</p>
     <svg class="arrow" viewBox="0 0 300 220" aria-hidden="true"><g fill="none" stroke="#2B2521" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"><path d="M60,30 C150,20 200,70 210,170"/><path d="M176,148 L210,180 L236,136"/></g></svg>
