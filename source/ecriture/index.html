@@ -1,629 +1,757 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!doctype html>
+<!--
+  Mental Léger · page de vente · papierpivoine.fr/mental-leger/
+  ─────────────────────────────────────────────────────────────
+  DEUX RÉGLAGES, ICI EN HAUT :
+  1. data-mots="ecrit"  → aujourd'hui (les mots de la semaine sont écrits).
+     Quand tes mots enregistrés avec ta voix sont dans l'appli, remplace par data-mots="audio"
+     et dépose ton extrait dans assets/audio/mot-semaine-1.mp3. Rien d'autre à changer.
+  2. Le lien de paiement Kit : constante CHECKOUT dans le petit script en bas de page
+     (et la même adresse dans les href des boutons, au cas où le script ne se charge pas).
+-->
+<html lang="fr" data-mots="ecrit">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Carnets d'écriture · Papier Pivoine</title>
-<meta name="description" content="Des carnets pour déposer ce que tu portes le soir. Une question douce, de la place pour écrire, des pages non datées.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mental Léger · programme d'écriture douce pour femmes hypersensibles · Papier Pivoine</title>
+<meta name="description" content="Six semaines d'écriture pour alléger ton esprit. Cinq à dix minutes par jour, sur papier ou à l'écran, pour les femmes hypersensibles et introverties qui ont la tête pleine. PDF de 79 pages et appli compagnon incluse. 67 €.">
+<meta name="robots" content="index,follow">
 <link rel="canonical" href="https://papierpivoine.fr/ecriture/">
-<meta name="robots" content="noindex,follow">
 <meta name="theme-color" content="#FCF6F2">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Papier Pivoine">
+<meta property="og:type" content="product">
 <meta property="og:locale" content="fr_FR">
-<meta property="og:title" content="Carnets d'écriture">
-<meta property="og:description" content="Des carnets pour déposer ce que tu portes le soir. Une question douce, de la place pour écrire, des pages non datées.">
+<meta property="og:site_name" content="Papier Pivoine">
+<meta property="og:title" content="Mental Léger · six semaines d'écriture pour alléger ton esprit">
+<meta property="og:description" content="Un programme d'écriture douce pour les femmes hypersensibles et introverties. Cinq à dix minutes par jour, à ton rythme.">
 <meta property="og:url" content="https://papierpivoine.fr/ecriture/">
-<meta property="og:image" content="https://papierpivoine.fr/assets/cover-quand-ma-tete-est-pleine.jpg">
-<meta property="og:image:width" content="533">
-<meta property="og:image:height" content="800">
-<meta property="og:image:alt" content="Le carnet Quand ma tête est pleine">
+<meta property="og:image" content="https://papierpivoine.fr/assets/landing/mental-leger/og-mental-leger.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Carnets d'écriture">
-<meta name="twitter:description" content="Des carnets pour déposer ce que tu portes le soir. Une question douce, de la place pour écrire, des pages non datées.">
-<meta name="twitter:image" content="https://papierpivoine.fr/assets/cover-quand-ma-tete-est-pleine.jpg">
-<meta name="twitter:image:alt" content="Le carnet Quand ma tête est pleine">
+<meta name="twitter:image" content="https://papierpivoine.fr/assets/landing/mental-leger/og-mental-leger.jpg">
 <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
-<link rel="preload" href="/assets/fonts/fraunces-800-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-<link rel="preload" href="/assets/fonts/nunito-sans-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-<link rel="stylesheet" href="/_ds/papier-pivoine-design-system-2e8f201d-b7b2-4ba9-95cb-6dcf33a643b1/tokens/colors.css">
-<link rel="stylesheet" href="/_ds/papier-pivoine-design-system-2e8f201d-b7b2-4ba9-95cb-6dcf33a643b1/tokens/typography.css">
-<link rel="stylesheet" href="/_ds/papier-pivoine-design-system-2e8f201d-b7b2-4ba9-95cb-6dcf33a643b1/tokens/spacing.css">
-<link rel="stylesheet" href="/_ds/papier-pivoine-design-system-2e8f201d-b7b2-4ba9-95cb-6dcf33a643b1/tokens/effects.css">
-<link rel="stylesheet" href="/_ds/papier-pivoine-design-system-2e8f201d-b7b2-4ba9-95cb-6dcf33a643b1/tokens/base.css">
-<link rel="stylesheet" href="/_ds/papier-pivoine-design-system-2e8f201d-b7b2-4ba9-95cb-6dcf33a643b1/styles.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Product","name":"Mental Léger","description":"Programme d'écriture douce en six semaines pour femmes hypersensibles et introverties. PDF de 79 pages à imprimer ou à remplir à l'écran, et appli compagnon.","brand":{"@type":"Brand","name":"Papier Pivoine"},"image":"https://papierpivoine.fr/assets/landing/mental-leger/og-mental-leger.jpg","offers":{"@type":"Offer","price":"67","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://papierpivoine.fr/ecriture/"}}
+</script>
 <style>
-    @font-face { font-family: 'Caveat'; font-style: normal; font-weight: 400 600; font-display: swap; src: url(/assets/fonts/caveat-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
-    @font-face { font-family: 'Caveat'; font-style: normal; font-weight: 400 600; font-display: swap; src: url(/assets/fonts/caveat-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
-    @font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 300 600; font-display: swap; src: url(/assets/fonts/fraunces-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
-    @font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 300 600; font-display: swap; src: url(/assets/fonts/fraunces-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
-    @font-face { font-family: 'Nunito Sans'; font-style: normal; font-weight: 300 700; font-display: swap; src: url(/assets/fonts/nunito-sans-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
-    @font-face { font-family: 'Nunito Sans'; font-style: normal; font-weight: 300 700; font-display: swap; src: url(/assets/fonts/nunito-sans-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
-    @font-face { font-family: 'Caveat'; font-style: normal; font-weight: 700; font-display: swap; src: url(/assets/fonts/caveat-700-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
-    @font-face { font-family: 'Caveat'; font-style: normal; font-weight: 700; font-display: swap; src: url(/assets/fonts/caveat-700-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
-    @font-face { font-family: 'Fraunces'; font-style: italic; font-weight: 700; font-display: swap; src: url(/assets/fonts/fraunces-italic-700-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
-    @font-face { font-family: 'Fraunces'; font-style: italic; font-weight: 700; font-display: swap; src: url(/assets/fonts/fraunces-italic-700-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
-    @font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 800; font-display: swap; src: url(/assets/fonts/fraunces-800-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
-    @font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 800; font-display: swap; src: url(/assets/fonts/fraunces-800-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
-    :root {
-      --font-display: 'Fraunces', Georgia, serif;
-      --font-body: 'Nunito Sans', system-ui, sans-serif;
-      --font-accent: 'Caveat', cursive;
-    }
-    /* Saison : automne par défaut (aucun attribut), "neutre" = palette d'origine. Réglage : prop season. */
-    /* Palette d'automne : mêmes rôles que la palette d'origine, teintes terre cuite, ocre et olive brun. */
-    html:not([data-season="neutre"]) {
-      --blush: #F7D9D3; --blush-deep: #F0C7BF; --pale-rose: #DDA9A0;
-      --rose: #E26D5F; --rose-deep: #BF5548;
-      --sage: #B2BD88; --sage-soft: #EEF0DE; --olive-soft: #E9ECD9;
-      --deep-olive: #33321E; --ink: #33321E; --ink-soft: #46452F; --ink-faint: #6B6953;
-      --paper: #FFFCFA; --paper-warm: #FCF6F2; --border-faint: #EDE1D6; --sand: #EAD9AC;
-      --text-on-accent: #FFFCFA;
-    }
-    body { margin: 0; background: var(--paper-warm, #FCF6F2); }
-    a { color: var(--rose-deep); }
-    a:hover { color: var(--ink); }
-    mark { -webkit-box-decoration-break: clone; box-decoration-break: clone; }
-    ::selection { background: var(--blush); }
-    /* Pop-up Kit : autoriser le défilement sur mobile (leur fenêtre dépasse l'écran) */
-    @media (max-width: 700px) {
-      .formkit-overlay, .formkit-modal { overflow-y: auto !important; -webkit-overflow-scrolling: touch !important; align-items: flex-start !important; }
-      .formkit-modal { max-height: 100dvh !important; }
-      .formkit-modal .formkit-form, .formkit-modal > div { max-height: none !important; }
-    }
-    /* Navigation : liens en ligne sur ordinateur, menu replié sur mobile */
-    .pp-burger { display: none; }
-    @media (max-width: 700px) {
-      .pp-nav-desktop { display: none !important; }
-      .pp-burger { display: inline-flex !important; }
-    }
-    @media (min-width: 701px) {
-      .pp-nav-mobile { display: none !important; }
-    }
-    /* Mobile : zones cliquables d'au moins 44 px */
-    @media (max-width: 700px) {
-      .pp-nav-mobile > span, .pp-nav-mobile > * > span { min-height: 44px; display: flex; align-items: center; box-sizing: border-box; }
-      header > span:first-child { min-height: 44px; display: inline-flex; align-items: center; }
-      main button, footer button { min-height: 44px; }
-      footer [style*="cursor: pointer"], footer [style*="cursor:pointer"], footer a { min-height: 44px; display: flex; align-items: center; }
-    }
-  </style>
-<style>#dc-root{display:none}#prerender{min-height:100vh}</style>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://papierpivoine.fr/#organization","name":"Papier Pivoine","url":"https://papierpivoine.fr/","logo":{"@type":"ImageObject","url":"https://papierpivoine.fr/assets/favicon.png"},"founder":{"@id":"https://papierpivoine.fr/#camelia"},"sameAs":["https://fr.pinterest.com/papierpivoine/"]},{"@type":"Person","@id":"https://papierpivoine.fr/#camelia","name":"Camélia Nguyen","alternateName":"Camélia","url":"https://papierpivoine.fr/apropos/","worksFor":{"@id":"https://papierpivoine.fr/#organization"}},{"@type":"WebPage","@id":"https://papierpivoine.fr/ecriture/","name":"Carnets d'écriture","description":"Des carnets pour déposer ce que tu portes le soir. Une question douce, de la place pour écrire, des pages non datées.","url":"https://papierpivoine.fr/ecriture/","inLanguage":"fr","isPartOf":{"@id":"https://papierpivoine.fr/#website"},"publisher":{"@id":"https://papierpivoine.fr/#organization"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://papierpivoine.fr/"},{"@type":"ListItem","position":2,"name":"Carnets d'écriture","item":"https://papierpivoine.fr/ecriture/"}]}]}</script>
-<script>window.__ppStatic=true;</script>
-<style>x-dc{display:none!important}</style>
+@font-face{font-family:Fraunces;src:url(/assets/landing/fonts/0aa54d0a1a.woff2) format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:Fraunces;src:url(/assets/landing/fonts/c8764d9369.woff2) format("woff2");font-weight:100 900;font-style:italic;font-display:swap}
+@font-face{font-family:"Nunito Sans";src:url(/assets/landing/fonts/ef3d2e1a05.woff2) format("woff2");font-weight:200 1000;font-display:swap}
+@font-face{font-family:Caveat;src:url(/assets/landing/fonts/c84dc2546b.woff2) format("woff2");font-weight:400 700;font-display:swap}
+
+:root{
+  --cream:#FCF6F2; --paper:#FFFDF8; --ink:#33321E; --ink2:#4A463A; --soft:#7A7263; --line:#E8DED3;
+  --peony:#E26D5F; --peony-d:#B5483B; --rose:#F7D9D3; --rose-l:#FBEDEA;
+  --sand:#EAD9AC; --sand-l:#F7F0DE; --blue:#AFC2D8; --blue-l:#E8EEF5; --apri:#EDBB85; --apri-l:#FBEDDD;
+  --sage:#B2BD88; --sage-l:#EDF0E0; --dusty:#DDA9A0; --grey:#9AA8B8; --grey-l:#E9ECF0; --pv:#E9968B;
+  --r:22px; --wrap:1080px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--cream);color:var(--ink);font:400 17.5px/1.6 "Nunito Sans",system-ui,sans-serif;font-variant-ligatures:none}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--peony-d)}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;line-height:1.12;letter-spacing:-.01em;margin:0;text-wrap:balance}
+h2{font-size:clamp(30px,4.6vw,44px)}
+h3{font-size:21px;line-height:1.25}
+p{margin:0 0 .9em;text-wrap:pretty}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 20px}
+.narrow{max-width:700px;margin:0 auto}
+section{padding:84px 0}
+.kick{font:800 12.5px/1.3 "Nunito Sans",sans-serif;letter-spacing:.17em;text-transform:uppercase;color:var(--peony-d);margin-bottom:14px}
+.cav{font-family:Caveat,cursive;font-weight:600}
+.aside{font-family:Caveat,cursive;font-size:22px;line-height:1.2;color:var(--peony-d)}
+.lead{font-size:19.5px;color:var(--ink2)}
+.center{text-align:center}
+.muted{color:var(--soft)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* audio switch */
+[data-mots="ecrit"] .si-audio{display:none!important}
+[data-mots="audio"] .si-ecrit{display:none!important}
+
+/* header */
+.top{position:sticky;top:0;z-index:20;background:rgba(252,246,242,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid transparent;transition:border-color .2s}
+.top.scrolled{border-color:var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font:600 19px Fraunces,serif}
+.brand svg{width:30px;height:30px}
+.nav{display:flex;gap:22px;font-size:15px}
+.nav a{color:var(--ink2);text-decoration:none}
+.nav a:hover{color:var(--peony-d)}
+.nav a[aria-current]{color:var(--ink);font-weight:800}
+.top .btn{padding:10px 18px;font-size:15px}
+@media (max-width:920px){.nav{display:none}}
+@media (max-width:860px){.top .btn{display:none}}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--peony-d);color:#fff;text-decoration:none;font:800 17px/1.2 "Nunito Sans",sans-serif;padding:17px 30px;border-radius:999px;box-shadow:0 6px 18px -8px rgba(181,72,59,.6);transition:transform .15s,background .15s}
+.btn:hover{background:#A23F33;transform:translateY(-1px)}
+.btn:focus-visible,.link:focus-visible,a:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.btn .pv{width:20px;height:20px;flex:none}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+.btn.ghost:hover{background:var(--paper)}
+.link{color:var(--ink);font-weight:700;text-decoration:underline;text-decoration-color:var(--peony);text-underline-offset:4px;text-decoration-thickness:2px}
+
+/* hero */
+.hero{padding:44px 0 70px;position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(52px,8.6vw,92px);letter-spacing:-.02em}
+.hero h1 .hl{background:linear-gradient(transparent 62%,var(--sand) 62%,var(--sand) 92%,transparent 92%)}
+.hero .sub{font:italic 400 clamp(21px,2.6vw,27px)/1.3 Fraunces,serif;margin:10px 0 22px;color:var(--ink2)}
+.hero .for{font-size:18.5px;max-width:30em}
+.cta{display:flex;flex-direction:column;align-items:flex-start;gap:12px;margin-top:26px}
+.cta small{font-size:14px;color:var(--soft)}
+.cta .alt{font-size:16px}
+.stage{position:relative;min-height:520px}
+.stage .cover{position:absolute;left:4%;top:2%;width:66%;transform:rotate(-4deg);border-radius:6px;box-shadow:0 30px 50px -28px rgba(51,50,30,.45),0 0 0 1px rgba(51,50,30,.06)}
+.stage .phone{position:absolute;right:2%;bottom:0;width:41%}
+.stage .tag{position:absolute;left:0;bottom:6%;transform:rotate(-3deg);font-size:24px}
+.stage .bao{position:absolute;right:38%;top:-2%;width:90px;transform:rotate(4deg)}
+@media (max-width:860px){
+  .hero .wrap{grid-template-columns:1fr}
+  .stage{min-height:0;height:min(112vw,520px);margin-top:10px}
+}
+
+/* phone frame */
+.phone{border-radius:34px;background:#fff;padding:9px;box-shadow:0 30px 60px -30px rgba(51,50,30,.5),0 0 0 1px rgba(51,50,30,.1)}
+.phone img{border-radius:26px;width:100%}
+
+/* letter scene */
+.letter{background:var(--paper);border-radius:var(--r);padding:44px clamp(24px,5vw,56px);box-shadow:0 1px 0 var(--line),0 20px 50px -40px rgba(51,50,30,.4);position:relative}
+.letter p{font:400 clamp(20px,2.4vw,24px)/1.5 Fraunces,serif;color:var(--ink)}
+.letter .sign{font-family:Caveat,cursive;font-size:30px;color:var(--peony-d);text-align:right;margin-top:6px}
+.letter .ill{position:absolute;right:-18px;top:-46px;width:150px;transform:rotate(6deg)}
+@media (max-width:640px){.letter .ill{width:110px;top:-56px;right:-6px}}
+
+/* recognition */
+.recog{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:34px}
+.recog li{list-style:none;display:flex;gap:14px;align-items:flex-start;background:var(--paper);border-radius:18px;padding:18px 20px;font-size:17.5px}
+.recog li img{width:26px;flex:none;margin-top:1px}
+.recog{padding:0}
+@media (max-width:720px){.recog{grid-template-columns:1fr}}
+.closing{font:italic 500 clamp(22px,2.8vw,28px)/1.35 Fraunces,serif;text-align:center;margin-top:38px}
+
+/* gestures */
+.bg-sand{background:var(--sand-l)}
+.bg-rose{background:var(--rose-l)}
+.bg-blue{background:var(--blue-l)}
+.bg-sage{background:var(--sage-l)}
+.facts{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:26px 0 40px;padding:0}
+.facts li{list-style:none;background:#fff;border-radius:999px;padding:9px 18px;font-weight:700;font-size:15.5px}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.g{background:#fff;border-radius:var(--r);padding:26px 24px}
+.g .n{font:600 15px Fraunces,serif;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--sand);margin-bottom:14px}
+.g h3{margin-bottom:8px}
+.g p{font-size:16.5px;color:var(--ink2);margin:0}
+.meteo{display:flex;gap:10px;margin-top:14px}
+.meteo img{width:30px}
+@media (max-width:820px){.three{grid-template-columns:1fr}}
+
+/* path */
+.path-ill{margin:10px auto 30px;width:100%;max-width:820px}
+.weeks{display:grid;gap:12px;padding:0;margin:0}
+.weeks li{list-style:none;display:grid;grid-template-columns:52px 1fr auto;gap:18px;align-items:center;background:#fff;border-radius:20px;padding:18px 22px;border-left:8px solid var(--c)}
+.weeks .num{font:600 26px Fraunces,serif;width:46px;height:46px;border-radius:50%;background:var(--c);display:grid;place-items:center}
+.weeks b{font:600 19.5px/1.25 Fraunces,serif;display:block}
+.weeks span.d{color:var(--ink2);font-size:16px}
+.weeks .ex{font-family:Caveat,cursive;font-size:20px;color:var(--soft);text-align:right;max-width:16em;line-height:1.15}
+@media (max-width:720px){.weeks li{grid-template-columns:46px 1fr}.weeks .ex{grid-column:2;text-align:left}}
+
+/* page gallery */
+.gallery{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px 20px 26px;margin:30px -20px 0;scrollbar-width:thin}
+.gallery figure{flex:0 0 min(300px,72vw);scroll-snap-align:center;margin:0}
+.gallery img{border-radius:6px;box-shadow:0 18px 34px -22px rgba(51,50,30,.5),0 0 0 1px rgba(51,50,30,.07);background:#fff}
+.gallery figcaption{margin-top:12px;font-size:15.5px}
+.gallery figcaption b{font-family:Fraunces,serif;font-size:17.5px;display:block}
+.hint{font-size:14px;color:var(--soft);text-align:center}
+
+/* ways */
+.ways{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:6px}
+.ways div{background:#fff;border-radius:var(--r);padding:22px}
+.ways h3{font-size:19px;margin-bottom:6px}
+.ways p{font-size:16px;color:var(--ink2);margin:0}
+@media (max-width:820px){.ways{grid-template-columns:1fr}}
+
+/* app */
+.app .appgrid{display:grid;grid-template-columns:1fr 1.05fr;gap:50px;align-items:center}
+.phones{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:start}
+.phones .phone:nth-child(2){margin-top:46px}
+.phones .phone{padding:6px;border-radius:26px}
+.phones .phone img{border-radius:21px}
+.feat{padding:0;margin:22px 0 0;display:grid;gap:14px}
+.feat li{list-style:none;display:flex;gap:14px;align-items:flex-start}
+.feat li img{width:28px;flex:none;margin-top:2px}
+.feat b{font-weight:800}
+.pill{display:inline-block;background:var(--peony-d);color:#fff;font:800 12px/1 "Nunito Sans";letter-spacing:.12em;text-transform:uppercase;padding:7px 11px;border-radius:999px;vertical-align:middle;margin-left:8px;position:relative;top:-4px}
+.ai{font-size:14px;color:var(--soft)}
+@media (max-width:900px){.app .appgrid{grid-template-columns:1fr}.phones{max-width:520px;margin:0 auto}}
+
+/* mot */
+.mot{background:var(--apri-l);border-radius:var(--r);padding:34px clamp(22px,4vw,44px);display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;margin-top:40px}
+.mot img{width:190px}
+.mot q{display:block;font:italic 500 21px/1.4 Fraunces,serif;quotes:none}
+.mot .who{font-family:Caveat,cursive;font-size:24px;color:var(--peony-d);margin-top:4px}
+.player{display:flex;align-items:center;gap:14px;background:#fff;border-radius:18px;padding:12px 16px;margin-top:16px}
+.player button{width:46px;height:46px;border-radius:50%;border:0;background:var(--peony-d);color:#fff;display:grid;place-items:center;cursor:pointer;flex:none}
+.player small{display:block;color:var(--soft);font-size:13px}
+@media (max-width:640px){.mot{grid-template-columns:1fr}.mot img{width:110px}}
+
+/* included */
+.incl{display:grid;grid-template-columns:1fr 1fr;gap:12px 34px;padding:0;margin:30px 0 0}
+.incl li{list-style:none;display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line)}
+.incl li img{width:28px;flex:none}
+@media (max-width:760px){.incl{grid-template-columns:1fr}}
+
+/* promise */
+.promise{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:30px}
+.promise > div{border-radius:var(--r);padding:28px}
+.promise h3{margin-bottom:12px}
+.promise ul{margin:0;padding-left:20px}
+.promise li{margin-bottom:8px}
+@media (max-width:760px){.promise{grid-template-columns:1fr}}
+
+/* about */
+.about .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:46px;align-items:center}
+.about .pic{background:var(--paper);border-radius:var(--r);padding:28px}
+@media (max-width:820px){.about .wrap{grid-template-columns:1fr}}
+
+/* testimonial */
+.quote{background:#fff;border-radius:var(--r);padding:36px clamp(22px,5vw,48px);text-align:center;position:relative}
+.quote blockquote{margin:0;font:italic 400 clamp(21px,2.6vw,26px)/1.45 Fraunces,serif}
+.quote cite{display:block;font:normal 600 26px Caveat,cursive;color:var(--peony-d);margin-top:12px}
+.quote .pv{width:40px;margin:0 auto 14px}
+
+/* price */
+.price{background:var(--paper);border-radius:28px;padding:44px clamp(22px,5vw,56px);display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;box-shadow:0 30px 70px -50px rgba(51,50,30,.5)}
+.amount{font:600 76px/1 Fraunces,serif}
+.amount small{font:400 18px "Nunito Sans";color:var(--soft);margin-left:6px}
+.price ul{padding:0;margin:20px 0 0}
+.price li{list-style:none;padding-left:30px;position:relative;margin-bottom:9px}
+.price li::before{content:"";position:absolute;left:0;top:5px;width:18px;height:18px;background:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii02IC02IDExMiAxMTIiIG92ZXJmbG93PSJ2aXNpYmxlIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiMzMzMyMUUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1LjQ0IiBkPSJNMTQsMTYgQzQwLDEyIDY0LDEzIDg2LDE1IEM4OCw0MCA4Nyw2NCA4NSw4NiBDNjAsODggMzYsODggMTYsODYgQzEyLDYyIDEzLDM4IDE0LDE2IFoiLz48cGF0aCBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iOC43MCIgc3Ryb2tlPSIjRTI2RDVGIiBkPSJNMjIsNTIgTDQyLDc0IEw5MCw4Ii8+PC9zdmc+) center/contain no-repeat}
+.price .side{text-align:center}
+.price .side img{width:100%;max-width:250px;margin:0 auto 18px}
+@media (max-width:820px){.price{grid-template-columns:1fr}}
+
+/* faq */
+.faq details{background:#fff;border-radius:18px;margin-bottom:12px;padding:0 22px}
+.faq summary{cursor:pointer;list-style:none;padding:20px 30px 20px 0;font:600 19px/1.3 Fraunces,serif;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:0;top:16px;font:400 28px "Nunito Sans";color:var(--peony-d);transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{color:var(--ink2);padding-bottom:6px}
+
+/* help */
+.help{border:2px dashed var(--dusty);border-radius:var(--r);padding:24px 26px;font-size:16px;color:var(--ink2)}
+.help b{color:var(--ink)}
+.help a{color:var(--ink);font-weight:800}
+
+/* final */
+.final{text-align:center;padding-bottom:120px}
+.final img{width:100%;max-width:440px;margin:0 auto 10px}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:34px 0 120px;font-size:14.5px;color:var(--soft)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:space-between}
+footer a{color:var(--ink2);text-decoration:none}
+footer nav{display:flex;flex-wrap:wrap;gap:8px 18px}
+
+/* sticky buy bar (mobile) */
+.bar{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:30;background:var(--ink);color:#fff;border-radius:999px;display:flex;align-items:center;justify-content:space-between;padding:8px 8px 8px 22px;box-shadow:0 14px 30px -12px rgba(51,50,30,.6);transform:translateY(140%);transition:transform .3s}
+.bar.on{transform:none}
+.bar b{font:600 17px Fraunces,serif}
+.bar span{font-size:14px;opacity:.8;margin-left:6px}
+.bar .btn{padding:12px 20px;font-size:15.5px;box-shadow:none}
+@media (min-width:861px){.bar{display:none}}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+
+/* ── Harmonisation avec papierpivoine.fr (palette, titres, boutons, en-tête, pied de page) ── */
+:root{
+  --paper:#FFFCFA; --ink2:#46452F; --soft:#6B6953; --line:#EDE1D6;
+  --peony:#E26D5F; --peony-d:#BF5548; --rose:#F7D9D3; --rose-l:#FBEDEA;
+  --blue:#B2BD88; --blue-l:#EEF0DE; --apri:#EAD9AC; --apri-l:#F7F0DE; --grey:#6B6953; --grey-l:#E9ECD9; --dusty:#DDA9A0;
+  --paper-warm:#FCF6F2; --border-faint:#EDE1D6; --deep-olive:#33321E; --ink-soft:#46452F; --ink-faint:#6B6953; --rose-deep:#BF5548; --blush:#F7D9D3;
+  --font-display:Fraunces,Georgia,serif; --font-body:"Nunito Sans",system-ui,sans-serif; --font-accent:Caveat,cursive;
+}
+a{color:var(--peony-d)} a:hover{color:var(--ink)}
+h1,h2{font-weight:800;font-variation-settings:'opsz' 72;letter-spacing:-.005em;color:var(--deep-olive)}
+.hero h1{letter-spacing:-.005em}
+.hero h1 .hl,.hl{background:linear-gradient(transparent 55%,var(--sand) 55%,var(--sand) 92%,transparent 92%);padding:0 6px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.kick,.pp-eyebrow{font:500 12px/1.3 var(--font-body);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.btn{background:transparent;color:var(--peony);border:3px solid var(--peony);box-shadow:none;font:700 30px/1.1 var(--font-accent);padding:8px 26px 10px;transform:rotate(-2deg);transition:background-color .2s ease,color .2s ease}
+.btn:hover{background:var(--peony);color:var(--paper);transform:rotate(-2deg)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink);box-shadow:none}
+.btn.ghost:hover{background:var(--ink);color:var(--paper)}
+.bar .btn{background:var(--peony);color:var(--paper);border:0;font-size:24px;padding:8px 20px 10px;transform:none}
+.bar .btn:hover{background:var(--peony-d);transform:none}
+.pill{background:var(--peony)}
+.player button{background:var(--peony)}
+/* en-tête du site */
+.top{background:var(--paper-warm);backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom:1px solid var(--border-faint)}
+.top .wrap{max-width:none;height:auto;padding:18px min(48px,5vw);flex-wrap:wrap;gap:10px 24px}
+.brand{font:800 23px var(--font-display);font-variation-settings:'opsz' 72;letter-spacing:-.005em;color:var(--deep-olive);gap:10px}
+.brand img{width:40px;height:40px;border-radius:50%;border:2px solid var(--ink);box-sizing:border-box;flex:none}
+.nav{gap:6px 24px;flex-wrap:wrap;font-size:14px}
+.nav a{color:var(--ink-soft);padding:4px 0;border-bottom:1px solid transparent}
+.nav a:hover{color:var(--peony)}
+.nav a[aria-current]{color:var(--peony);font-weight:400;border-bottom-color:var(--peony)}
+.burger{display:none;align-items:center;justify-content:center;width:44px;height:44px;margin:-8px -10px;border:0;background:none;color:var(--deep-olive);cursor:pointer}
+.burger .i-close,.top.open .burger .i-open{display:none}
+.top.open .burger .i-close{display:block}
+.mnav{display:none}
+@media (max-width:920px){.nav{display:flex}}
+@media (max-width:700px){
+  .nav{display:none}
+  .burger{display:inline-flex}
+  .top.open .mnav{display:flex;flex-direction:column;flex-basis:100%;padding:2px 0 8px}
+  .mnav a{font-size:16px;padding:13px 2px;min-height:44px;display:flex;align-items:center;box-sizing:border-box;color:var(--ink-soft);text-decoration:none;border-top:1px solid var(--border-faint)}
+  .mnav a[aria-current]{color:var(--peony)}
+}
+/* pied de page du site */
+footer.site{background:var(--paper-warm);border-top:1px solid var(--border-faint);padding:56px min(48px,5vw) 40px;font-size:inherit;color:inherit}
+footer.site .fcol{display:flex;flex-direction:column;gap:9px;font-family:var(--font-body);font-size:14px;color:var(--ink-soft)}
+footer.site a:hover{color:var(--peony-d)!important}
+@media (max-width:860px){footer.site{padding-bottom:120px}}
+@media (max-width:700px){footer.site .fcol a{min-height:44px;display:flex;align-items:center}}
+</style>
 </head>
 <body>
-<div id="prerender">
 
-
-<div style="min-height:100vh;display:flex;flex-direction:column;background:var(--paper-warm)">
-
-  <!-- ═══════════ HEADER ═══════════ -->
-  
-  <header style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px 24px;padding:18px min(48px,5vw);border-bottom:1px solid var(--border-faint);background:var(--paper-warm);position:sticky;top:0;z-index:10">
-    <a href="/" style="cursor:pointer;display:inline-flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:800;font-variation-settings:'opsz' 72;font-size:23px;color:var(--deep-olive);letter-spacing:-0.005em"><img src="/assets/logo-papier-pivoine.jpg" width="400" height="400" alt="" aria-hidden="true" style="display:block;width:40px;height:40px;border-radius:50%;border:2px solid var(--ink);box-sizing:border-box;flex:none">Papier Pivoine</a>
-    <span class="pp-burger" role="button" aria-label="Menu" style="display:none;align-items:center;justify-content:center;width:44px;height:44px;margin:-8px -10px;cursor:pointer">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--deep-olive)" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M3 8h18"></path><path d="M3 16h18"></path></svg>
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--deep-olive)" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg>
-    </span>
-    <nav class="pp-nav-desktop" style="display:flex;gap:6px 24px;align-items:center;flex-wrap:wrap">
-      <a href="/" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:;border-bottom:1px solid">Accueil</a>
-      
-      <a href="/saisons-tranquilles/" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:;border-bottom:1px solid">Saisons tranquilles</a>
-      <a href="/batterie-faible/" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:;border-bottom:1px solid">Batterie faible</a>
-      <a href="/7-permissions-pivoine/" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:;border-bottom:1px solid">7 permissions PIVOINE</a>
-      <a href="/apropos/" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:;border-bottom:1px solid">À propos</a>
-      <a href="/newsletter/" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:;border-bottom:1px solid">Newsletter</a>
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Papier Pivoine, accueil"><img src="/assets/logo-papier-pivoine.jpg" width="400" height="400" alt="">Papier Pivoine</a>
+    <button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mnav" onclick="var h=document.getElementById('top');var o=h.classList.toggle('open');this.setAttribute('aria-expanded',o)"><svg class="i-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M3 8h18"></path><path d="M3 16h18"></path></svg><svg class="i-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg></button>
+    <nav class="nav" aria-label="Navigation">
+      <a href="/">Accueil</a>
+      <a href="/ecriture/" aria-current="page">Programme d’écriture</a>
+      <a href="/activites/">Carnets d’activités douces</a>
+      <a href="/7-permissions-pivoine/">7 permissions PIVOINE</a>
+      <a href="/apropos/">À propos</a>
+      <a href="/newsletter/">Newsletter</a>
     </nav>
-    
-      <nav class="pp-nav-mobile" style="flex-basis:100%;display:flex;flex-direction:column;padding:2px 0 8px">
-        <a href="/" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:;border-top:1px solid var(--border-faint)">Accueil</a>
-        
-        <a href="/saisons-tranquilles/" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:;border-top:1px solid var(--border-faint)">Saisons tranquilles</a>
-        <a href="/batterie-faible/" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:;border-top:1px solid var(--border-faint)">Batterie faible</a>
-        <a href="/7-permissions-pivoine/" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:;border-top:1px solid var(--border-faint)">7 permissions PIVOINE</a>
-        <a href="/apropos/" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:;border-top:1px solid var(--border-faint)">À propos</a>
-        <a href="/newsletter/" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:;border-top:1px solid var(--border-faint)">Newsletter</a>
-      </nav>
-    
-  </header>
-  
+    <nav class="mnav" id="mnav" aria-label="Navigation mobile">
+      <a href="/">Accueil</a>
+      <a href="/ecriture/" aria-current="page">Programme d’écriture</a>
+      <a href="/activites/">Carnets d’activités douces</a>
+      <a href="/7-permissions-pivoine/">7 permissions PIVOINE</a>
+      <a href="/apropos/">À propos</a>
+      <a href="/newsletter/">Newsletter</a>
+    </nav>
+  </div>
+</header>
 
-  <main style="flex:1">
+<main>
 
-    <!-- ═══════════ ACCUEIL ═══════════ -->
-    
-
-    <!-- ═══════════ COLLECTION BATTERIE FAIBLE (route /programme/) ═══════════ -->
-    
-
-    <!-- ═══════════ CARNETS D'ÉCRITURE ═══════════ -->
-    
-      <div data-screen-label="Carnets d'écriture">
-
-        <div style="padding:clamp(56px,9vw,88px) min(48px,5vw) 64px;text-align:center">
-          <div class="pp-eyebrow" style="margin-bottom:20px">Écrire pour se sentir mieux</div>
-          <h1 style="font-family:var(--font-display);font-weight:800;font-variation-settings:'opsz' 72;letter-spacing:-0.005em;line-height:1.08;font-size:clamp(36px,6vw,54px);color:var(--deep-olive);max-width:24ch;margin:0 auto 22px">Les carnets <mark style="background:linear-gradient(transparent 55%, #EAD9AC 55%, #EAD9AC 92%, transparent 92%);color:inherit;padding:0 6px">d’écriture</mark></h1>
-          <p style="font-family:var(--font-body);font-size:clamp(18px,2.2vw,19px);color:var(--ink-soft);line-height:1.6;max-width:52ch;margin:0 auto">Des carnets guidés pour mettre des mots sur ce qui t’occupe, en listes désordonnées ou en longues lettres, comme ça vient. Chaque carnet existe en livre broché sur Amazon.</p>
-        </div>
-
-        <div style="background:var(--paper);border-top:1px solid var(--border-faint);border-bottom:1px solid var(--border-faint);padding:76px min(48px,5vw)">
-          <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:min(64px,6vw);align-items:center">
-            <div style="background:var(--blush);border-radius:14px;height:440px;display:flex;align-items:center;justify-content:center">
-              <img src="/assets/cover-quand-ma-tete-est-pleine.jpg" width="533" height="800" alt="Couverture : Quand ma tête est pleine" style="display:block;height:368px;width:auto;border-radius:6px;border:1px solid var(--border-faint);box-shadow:0 16px 32px rgba(101,109,68,0.2)">
-            </div>
-            <div>
-              <div>Le premier carnet</div>
-              <h2 style="font-family:var(--font-display);font-weight:700;font-style:italic;line-height:1.15;font-size:clamp(30px,4.6vw,40px);color:var(--deep-olive);margin:16px 0 8px">Quand ma tête est pleine</h2>
-              <p style="font-family:var(--font-body);font-size:17px;font-style:italic;color:var(--rose-deep);margin:0 0 18px">Un carnet d’écriture pour apaiser un esprit qui pense trop · Pour femmes hypersensibles et introverties</p>
-              <p style="font-family:var(--font-body);font-size:18px;color:var(--ink-soft);line-height:1.6;max-width:52ch;margin:0 0 14px">Tu rejoues les conversations, longtemps après. Tu remarques tout, le moindre détail, la moindre tension. Le soir, tu rentres vidée, sans toujours savoir pourquoi. Et la nuit, ton esprit tourne, encore, pendant que tu voudrais juste dormir.</p>
-              <p style="font-family:var(--font-body);font-size:18px;color:var(--ink);font-weight:600;line-height:1.6;max-width:52ch;margin:0 0 24px">Si tu te reconnais, ce carnet est pour toi.</p>
-              <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
-                <a href="https://www.amazon.fr/dp/B0H6BCB9VZ" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;box-sizing:border-box;max-width:100%;text-align:center;padding:8px 26px 10px;border:3px solid var(--rose);border-radius:999px;color:var(--rose);font-family:var(--font-accent);font-weight:700;font-size:26px;line-height:1.1;transform:rotate(-2deg);background:transparent;cursor:pointer;text-decoration:none;transition:background-color 200ms ease,color 200ms ease" style-hover="background:var(--rose);color:var(--paper-warm)" style-focus="outline:2px solid var(--ink);outline-offset:4px">Voir la version brochée sur Amazon</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div style="padding:76px min(48px,5vw)">
-          <div style="max-width:1080px;margin:0 auto">
-            <p style="font-family:var(--font-body);font-size:18px;color:var(--ink-soft);line-height:1.6;max-width:56ch;margin:0 auto 18px;text-align:center">Quand ma tête est pleine est un carnet d’écriture pensé pour les femmes hypersensibles et introverties, celles dont l’esprit ressent fort et ne se repose jamais. C’est un endroit calme, privé, où poser une tête trop pleine, quand tu en as besoin.</p>
-            <p style="font-family:var(--font-body);font-size:18px;color:var(--ink-soft);line-height:1.6;max-width:56ch;margin:0 auto 64px;text-align:center">Ce n’est pas une méthode pour penser moins, ni un programme pour devenir une meilleure version de toi-même. Ton esprit travaille beaucoup parce que tu ressens et remarques tout. Ce n’est pas un défaut. Ce carnet ne cherche pas à te corriger. Il donne simplement à ton esprit fatigué un endroit où se déposer, et te laisse voir ce qui s’apaise.</p>
-            <h2 style="font-family:var(--font-display);font-weight:800;font-variation-settings:'opsz' 72;letter-spacing:-0.005em;line-height:1.08;font-size:clamp(28px,4.2vw,36px);color:var(--deep-olive);text-align:center;margin:0 0 44px">Sur chaque page, tu trouveras</h2>
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:40px">
-              <div style="border-top:1px solid var(--sage);padding-top:20px">
-                <div style="font-family:var(--font-body);font-size:19px;font-weight:700;color:var(--deep-olive);margin-bottom:8px">Une question douce</div>
-                <p style="font-family:var(--font-body);font-size:18px;color:var(--ink-soft);line-height:1.6;margin:0">Pour t’aider à commencer, quand la page blanche fait peur.</p>
-              </div>
-              <div style="border-top:1px solid var(--sage);padding-top:20px">
-                <div style="font-family:var(--font-body);font-size:19px;font-weight:700;color:var(--deep-olive);margin-bottom:8px">De la place pour écrire comme ça vient</div>
-                <p style="font-family:var(--font-body);font-size:18px;color:var(--ink-soft);line-height:1.6;margin:0">En vrac, sans soigner les phrases.</p>
-              </div>
-              <div style="border-top:1px solid var(--sage);padding-top:20px">
-                <div style="font-family:var(--font-body);font-size:19px;font-weight:700;color:var(--deep-olive);margin-bottom:8px">Une petite ligne, à la fin</div>
-                <p style="font-family:var(--font-body);font-size:18px;color:var(--ink-soft);line-height:1.6;margin:0">Pour remarquer ce qui a changé, même un peu.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div style="background:var(--paper);border-top:1px solid var(--border-faint);border-bottom:1px solid var(--border-faint);padding:76px min(48px,5vw)">
-          <div style="max-width:560px;margin:0 auto 56px">
-            <h2 style="font-family:var(--font-display);font-weight:800;font-variation-settings:'opsz' 72;letter-spacing:-0.005em;line-height:1.08;font-size:clamp(28px,4.2vw,36px);color:var(--deep-olive);text-align:center;margin:0 0 40px">Un carnet fait pour une tête <mark style="background:linear-gradient(transparent 55%, #EAD9AC 55%, #EAD9AC 92%, transparent 92%);color:inherit;padding:0 6px">qui pense trop</mark></h2>
-            <div style="display:flex;flex-direction:column">
-              <div style="padding:20px 0;border-top:1px solid var(--border-faint)">
-                <div style="font-family:var(--font-body);font-size:19px;font-weight:700;color:var(--deep-olive);margin-bottom:6px">Des pages non datées</div>
-                <p style="font-family:var(--font-body);font-size:18px;color:var(--ink-soft);line-height:1.6;margin:0">Pour l’ouvrir quand tu veux, sans jamais être en retard.</p>
-              </div>
-              <div style="padding:20px 0;border-top:1px solid var(--border-faint)">
-                <div style="font-family:var(--font-body);font-size:19px;font-weight:700;color:var(--deep-olive);margin-bottom:6px">Des questions qui suivent ce qui t’encombre</div>
-                <p style="font-family:var(--font-body);font-size:18px;color:var(--ink-soft);line-height:1.6;margin:0">Les pensées qui tournent, les nuits sans sommeil, la charge mentale, le trop-plein du jour.</p>
-              </div>
-              <div style="padding:20px 0;border-top:1px solid var(--border-faint)">
-                <div style="font-family:var(--font-body);font-size:19px;font-weight:700;color:var(--deep-olive);margin-bottom:6px">Quelques lettres, en chemin</div>
-                <p style="font-family:var(--font-body);font-size:18px;color:var(--ink-soft);line-height:1.6;margin:0">D’une femme qui connaît ces nuits-là.</p>
-              </div>
-              <div style="padding:20px 0;border-top:1px solid var(--border-faint);border-bottom:1px solid var(--border-faint)">
-                <div style="font-family:var(--font-body);font-size:19px;font-weight:700;color:var(--deep-olive);margin-bottom:6px">De la place, beaucoup</div>
-                <p style="font-family:var(--font-body);font-size:18px;color:var(--ink-soft);line-height:1.6;margin:0">Parce que le calme commence là.</p>
-              </div>
-            </div>
-          </div>
-          <div style="max-width:56ch;margin:0 auto;text-align:center">
-            <p style="font-family:var(--font-body);font-size:18px;color:var(--ink-soft);line-height:1.6;margin:0 0 14px">Tu peux l’ouvrir trois minutes ou une heure. Le matin, le soir, au milieu de la nuit. Tu écris ce que tu veux, comme tu veux. Personne ne lira ça. C’est à toi.</p>
-            <div style="font-family:var(--font-accent);font-weight:700;font-size:26px;line-height:1.2;color:var(--rose-deep);transform:rotate(-2deg);margin:-4px 0 22px">(promis, personne)</div>
-            <p style="font-family:var(--font-body);font-size:18px;color:var(--ink-soft);line-height:1.6;margin:0 0 26px">Il n’y a rien à réussir ici. Tu viens, tu poses ce que tu portes, et tu repars un peu plus légère. Ou pas, et c’est bien aussi.</p>
-
-          </div>
-        </div>
-
-        <div style="padding:76px min(48px,5vw) 84px">
-          <div style="max-width:720px;margin:0 auto;background:var(--paper);border:1px solid var(--border-faint);border-radius:14px;padding:44px 48px;text-align:center">
-            <div class="pp-eyebrow" style="margin-bottom:14px">À venir</div>
-            <p style="font-family:var(--font-body);font-size:18px;color:var(--ink-soft);line-height:1.6;max-width:44ch;margin:0 auto 22px">Le deuxième carnet est en cours d’écriture. Si tu veux savoir quand il arrive, la newsletter l’annoncera en premier.</p>
-            <a href="/newsletter/" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;box-sizing:border-box;max-width:100%;text-align:center;padding:8px 26px 10px;border:3px solid var(--rose);border-radius:999px;color:var(--rose);font-family:var(--font-accent);font-weight:700;font-size:30px;line-height:1.1;transform:rotate(-2deg);background:transparent;cursor:pointer;text-decoration:none;transition:background-color 200ms ease,color 200ms ease">Recevoir la newsletter</a>
-          </div>
-        </div>
-
+<!-- ───────── HERO ───────── -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="kick">Programme d’écriture douce · six semaines</div>
+      <h1><span class="hl">Mental</span> Léger</h1>
+      <p class="sub">Six semaines d’écriture pour alléger ton esprit</p>
+      <p class="for">Pour les femmes hypersensibles et introverties qui ont la tête pleine. Cinq à dix minutes par jour, du lundi au vendredi, sur papier ou à l’écran.</p>
+      <div class="cta">
+        <a class="btn" data-buy href="https://www.camelianguyen.fr/products/de-l-epuisement-mental-a-la-legerete?step=checkout">
+          <svg class="pv" viewBox="8 8 104 104" aria-hidden="true"><path d="M62.7,49.8 C66.1,48.3 73.1,61.7 69.5,62.6 C71.8,66.2 60.0,73.3 57.4,69.7 C53.2,71.8 46.4,60.3 50.3,57.4 C49.8,53.3 61.7,47.9 62.7,51.8 M57.1,43.6 C46.3,12.7 80.5,14.0 65.0,44.5 M69.6,46.7 C81.8,18.7 103.5,44.8 74.8,52.4 M77.3,59.3 C107.0,50.6 98.2,86.2 75.1,67.9 M71.5,72.6 C98.7,90.0 68.7,109.6 64.6,76.1 M56.0,75.8 C55.5,106.4 22.2,90.6 49.0,71.4 M46.0,67.6 C19.3,88.3 11.6,52.1 44.5,60.0 M44.9,52.5 C15.6,45.7 36.2,19.9 49.7,47.0" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Recevoir Mental Léger · 67 €
+        </a>
+        <small>Le PDF de 79 pages et l’appli compagnon, dans ta boîte mail tout de suite.</small>
+        <a class="alt link" href="#offerte">Pas encore sûre ? La première semaine est offerte.</a>
       </div>
-    
-
-    <!-- ═══════════ COLLECTION SAISONS TRANQUILLES (route /saisons-tranquilles/) ═══════════ -->
-    
-
-    <!-- ═══════════ 7 PERMISSIONS PIVOINE ═══════════ -->
-    
-
-    <!-- ═══════════ À PROPOS ═══════════ -->
-    
-
-    <!-- ═══════════ NEWSLETTER ═══════════ -->
-    
-
-
-    <!-- ═══════════ LIENS ═══════════ -->
-    
-
-    <!-- ═══════════ BAND (toutes pages sauf newsletter) ═══════════ -->
-    
-      <div style="background:var(--blush)">
-        <div style="max-width:720px;margin:0 auto;padding:80px min(48px,5vw);text-align:center">
-          <h2 style="font-family:var(--font-display);font-weight:800;font-variation-settings:'opsz' 72;letter-spacing:-0.005em;line-height:1.08;font-size:clamp(30px,4.6vw,40px);color:var(--deep-olive);margin:0 0 18px">Commence par <mark style="background:linear-gradient(transparent 55%, #EAD9AC 55%, #EAD9AC 92%, transparent 92%);color:inherit;padding:0 6px">un cadeau</mark></h2>
-          <p style="font-family:var(--font-body);font-size:18px;color:var(--ink-soft);line-height:1.6;max-width:52ch;margin:0 auto 30px">Une fois par mois, je t’écris : le thème de la saison, mes réflexions, un exercice d’écriture guidé, et les nouveaux cahiers en premier. Pour t’accueillir, je t’offre la première semaine de Mental Léger, pour vider ta tête le soir.</p>
-          <p style="font-family:var(--font-body);font-size:17px;font-style:italic;color:var(--ink-soft);line-height:1.6;max-width:46ch;margin:0 auto 28px">« Merci pour tes newsletters qui sont de réelles bouffées d’air frais. » · Virginie</p>
-          
-            <div style="display:flex;justify-content:center">
-              <button type="button" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;box-sizing:border-box;max-width:100%;text-align:center;padding:8px 26px 10px;border:3px solid var(--rose);border-radius:999px;color:var(--rose);font-family:var(--font-accent);font-weight:700;font-size:30px;line-height:1.1;transform:rotate(-2deg);background:transparent;cursor:pointer;text-decoration:none;transition:background-color 200ms ease,color 200ms ease" style-hover="background:var(--rose);color:var(--paper-warm)" style-focus="outline:2px solid var(--ink);outline-offset:4px">Recevoir le cadeau</button>
-            </div>
-            <p style="font-family:var(--font-body);font-size:12px;color:var(--ink-faint);margin:16px 0 0">C’est gratuit. Tu peux te désinscrire quand tu veux. <a href="/newsletter/" style="color:var(--rose);cursor:pointer;text-decoration:underline;text-underline-offset:3px">Voir ce qu’il y a dedans</a></p>
-          
-          
-            <div style="background:var(--paper);border:1px solid var(--border-faint);border-radius:14px;padding:28px 32px;max-width:440px;margin:0 auto">
-              <p style="font-family:var(--font-body);font-size:18px;color:var(--deep-olive);line-height:1.6;margin:0 0 6px">C’est noté. La première semaine de Mental Léger est en route vers ta boîte mail.</p>
-              <p style="font-family:var(--font-body);font-size:13px;color:var(--ink-faint);margin:0">Si tu ne la vois pas, regarde dans les courriers indésirables.</p>
-            </div>
-          
-        </div>
-        <div style="display:flex;justify-content:center;padding:0 min(48px,5vw)"><img loading="lazy" decoding="async" src="/assets/automne/herbes-sechees.webp" width="1000" height="384" alt="Une rangée d’herbes séchées et de fleurs des champs" style="display:block;width:min(900px,100%);height:auto"></div>
-      </div>
-    
-
-  </main>
-
-  <a data-formkit-toggle="638990c016" href="https://camelianguyen.kit.com/638990c016" style="display:none" aria-hidden="true">La newsletter</a>
-
-  <!-- ═══════════ FOOTER ═══════════ -->
-  
-  <footer style="background:var(--paper-warm);border-top:1px solid var(--border-faint);padding:56px min(48px,5vw) 40px">
-    <div style="max-width:1180px;margin:0 auto">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:32px;flex-wrap:wrap">
-        <div>
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="font-family:var(--font-display);font-weight:800;font-variation-settings:'opsz' 72;font-size:21px;color:var(--deep-olive);letter-spacing:-0.005em">Papier Pivoine</span><svg width="30" height="30" viewBox="0 0 120 120" fill="none" stroke="#E26D5F" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M62.7,49.8 C66.1,48.3 73.1,61.7 69.5,62.6 C71.8,66.2 60.0,73.3 57.4,69.7 C53.2,71.8 46.4,60.3 50.3,57.4 C49.8,53.3 61.7,47.9 62.7,51.8 M57.1,43.6 C46.3,12.7 80.5,14.0 65.0,44.5 M69.6,46.7 C81.8,18.7 103.5,44.8 74.8,52.4 M77.3,59.3 C107.0,50.6 98.2,86.2 75.1,67.9 M71.5,72.6 C98.7,90.0 68.7,109.6 64.6,76.1 M56.0,75.8 C55.5,106.4 22.2,90.6 49.0,71.4 M46.0,67.6 C19.3,88.3 11.6,52.1 44.5,60.0 M44.9,52.5 C15.6,45.7 36.2,19.9 49.7,47.0"></path></svg></div>
-          <p style="font-family:var(--font-body);font-style:italic;color:var(--rose-deep);margin:0;font-size:15px;max-width:32ch;line-height:1.5">Trop sensible, trop fatiguée, trop bien sous mon plaid.</p>
-        </div>
-        <div style="display:flex;gap:40px 64px;flex-wrap:wrap">
-          <div>
-            <div class="pp-eyebrow" style="margin-bottom:14px">Découvrir</div>
-            <div style="display:flex;flex-direction:column;gap:9px;font-family:var(--font-body);font-size:14px;color:var(--ink-soft)">
-              <a href="/saisons-tranquilles/" style="cursor:pointer">Saisons tranquilles</a>
-              <a href="/batterie-faible/" style="cursor:pointer">Batterie faible</a>
-              <a href="/7-permissions-pivoine/" style="cursor:pointer">7 permissions PIVOINE</a>
-              <a href="/apropos/" style="cursor:pointer">À propos</a>
-            </div>
-          </div>
-          <div>
-            <div class="pp-eyebrow" style="margin-bottom:14px">Rester en lien</div>
-            <div style="display:flex;flex-direction:column;gap:9px;font-family:var(--font-body);font-size:14px;color:var(--ink-soft)">
-              <a href="/newsletter/" style="cursor:pointer">Newsletter gratuite</a>
-              <a style="color:var(--ink-soft);text-decoration:none">Écrire à Camélia</a>
-              <a href="https://fr.pinterest.com/papierpivoine/" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">Pinterest</a>
-              <a href="https://www.youtube.com/@papierpivoine/shorts" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">YouTube</a>
-              <a href="https://www.tiktok.com/@papierpivoine" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">TikTok</a>
-              <a href="https://www.instagram.com/papierpivoine/" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">Instagram</a>
-              <a href="https://www.facebook.com/share/1Bue8nqYmf/?mibextid=wwXIfr" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">Facebook</a>
-              <a href="https://www.threads.com/@papierpivoine?igshid=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">Threads</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div style="height:1px;background:var(--border-faint);margin:36px 0"></div>
-      <p style="font-family:var(--font-body);font-size:12px;color:var(--ink-faint);margin:0 0 8px;max-width:70ch;line-height:1.6">Ce que tu trouves ici est une pratique douce, pas un soin. Ce n’est pas un substitut à un accompagnement professionnel. Si tu traverses une période difficile, parles-en à un professionnel de santé.</p>
-      <p style="font-family:var(--font-body);font-size:12px;color:var(--ink-faint);margin:0">© 2026 Papier Pivoine · Camélia Nguyen</p>
     </div>
-  </footer>
-  
+    <div class="stage" aria-hidden="true">
+      <img class="cover" src="/assets/landing/mental-leger/0cba7a9373.webp" width="760" height="1076" alt="">
+      <div class="phone"><img src="/assets/landing/mental-leger/742bf722d8.webp" width="780" height="1688" alt=""></div>
+      <span class="tag aside">(appli incluse)</span>
+    </div>
+  </div>
+</section>
 
-  
+<!-- ───────── SCÈNE ───────── -->
+<section style="padding-top:30px">
+  <div class="wrap narrow">
+    <div class="letter rv">
+      <img class="ill" src="/assets/landing/mental-leger/c7f2d766a9.svg" width="150" height="150" alt="">
+      <p>Il est trois heures du matin et je repense à une phrase entendue au bureau. Une remarque de rien du tout, dite sur un ton un peu bizarre.</p>
+      <p>Alors je me lève, et je l’écris. Une fois sur le papier, elle tourne un peu moins fort.</p>
+      <p>Mental Léger, c’est ce geste-là, cinq jours par semaine, avec un chemin tout tracé. Tu n’as pas à te demander quoi écrire ce soir : la page t’attend.</p>
+      <div class="sign">Camélia <span class="muted" style="font-size:22px">(Bao dort, lui.)</span></div>
+    </div>
+  </div>
+</section>
 
+<!-- ───────── RECONNAISSANCE ───────── -->
+<section class="bg-rose">
+  <div class="wrap narrow" style="max-width:860px">
+    <div class="center">
+      <div class="kick">Peut-être que toi aussi</div>
+      <h2>Tu te reconnais ?</h2>
+    </div>
+    <ul class="recog rv">
+      <li><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii02IC02IDExMiAxMTIiIG92ZXJmbG93PSJ2aXNpYmxlIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiMzMzMyMUUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1LjQ0IiBkPSJNMTQsMTYgQzQwLDEyIDY0LDEzIDg2LDE1IEM4OCw0MCA4Nyw2NCA4NSw4NiBDNjAsODggMzYsODggMTYsODYgQzEyLDYyIDEzLDM4IDE0LDE2IFoiLz48cGF0aCBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iOC43MCIgc3Ryb2tlPSIjRTI2RDVGIiBkPSJNMjIsNTIgTDQyLDc0IEw5MCw4Ii8+PC9zdmc+" alt="">Tu rentres vidée d’une journée ordinaire, et tu culpabilises d’avoir besoin d’autant de calme.</li>
+      <li><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii02IC02IDExMiAxMTIiIG92ZXJmbG93PSJ2aXNpYmxlIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiMzMzMyMUUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1LjQ0IiBkPSJNMTQsMTYgQzQwLDEyIDY0LDEzIDg2LDE1IEM4OCw0MCA4Nyw2NCA4NSw4NiBDNjAsODggMzYsODggMTYsODYgQzEyLDYyIDEzLDM4IDE0LDE2IFoiLz48cGF0aCBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iOC43MCIgc3Ryb2tlPSIjRTI2RDVGIiBkPSJNMjIsNTIgTDQyLDc0IEw5MCw4Ii8+PC9zdmc+" alt="">Tu rejoues une conversation de deux minutes pendant toute une soirée.</li>
+      <li><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii02IC02IDExMiAxMTIiIG92ZXJmbG93PSJ2aXNpYmxlIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiMzMzMyMUUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1LjQ0IiBkPSJNMTQsMTYgQzQwLDEyIDY0LDEzIDg2LDE1IEM4OCw0MCA4Nyw2NCA4NSw4NiBDNjAsODggMzYsODggMTYsODYgQzEyLDYyIDEzLDM4IDE0LDE2IFoiLz48cGF0aCBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iOC43MCIgc3Ryb2tlPSIjRTI2RDVGIiBkPSJNMjIsNTIgTDQyLDc0IEw5MCw4Ii8+PC9zdmc+" alt="">Tu absorbes l’humeur des autres et tu la portes jusqu’au soir.</li>
+      <li><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii02IC02IDExMiAxMTIiIG92ZXJmbG93PSJ2aXNpYmxlIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiMzMzMyMUUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1LjQ0IiBkPSJNMTQsMTYgQzQwLDEyIDY0LDEzIDg2LDE1IEM4OCw0MCA4Nyw2NCA4NSw4NiBDNjAsODggMzYsODggMTYsODYgQzEyLDYyIDEzLDM4IDE0LDE2IFoiLz48cGF0aCBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iOC43MCIgc3Ryb2tlPSIjRTI2RDVGIiBkPSJNMjIsNTIgTDQyLDc0IEw5MCw4Ii8+PC9zdmc+" alt="">Tu dis oui alors que tu voulais dire non, et tu t’en veux après.</li>
+      <li><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii02IC02IDExMiAxMTIiIG92ZXJmbG93PSJ2aXNpYmxlIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiMzMzMyMUUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1LjQ0IiBkPSJNMTQsMTYgQzQwLDEyIDY0LDEzIDg2LDE1IEM4OCw0MCA4Nyw2NCA4NSw4NiBDNjAsODggMzYsODggMTYsODYgQzEyLDYyIDEzLDM4IDE0LDE2IFoiLz48cGF0aCBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iOC43MCIgc3Ryb2tlPSIjRTI2RDVGIiBkPSJNMjIsNTIgTDQyLDc0IEw5MCw4Ii8+PC9zdmc+" alt="">Tu te sens à la fois trop et pas assez.</li>
+      <li><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii02IC02IDExMiAxMTIiIG92ZXJmbG93PSJ2aXNpYmxlIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiMzMzMyMUUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1LjQ0IiBkPSJNMTQsMTYgQzQwLDEyIDY0LDEzIDg2LDE1IEM4OCw0MCA4Nyw2NCA4NSw4NiBDNjAsODggMzYsODggMTYsODYgQzEyLDYyIDEzLDM4IDE0LDE2IFoiLz48cGF0aCBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iOC43MCIgc3Ryb2tlPSIjRTI2RDVGIiBkPSJNMjIsNTIgTDQyLDc0IEw5MCw4Ii8+PC9zdmc+" alt="">Tu passes tes soirées sur le canapé, devant un écran que tu n’as pas vraiment choisi.</li>
+    </ul>
+    <p class="closing rv">Il n’y a rien qui ne va pas chez toi.<br><span class="aside" style="font-size:26px">(Ta tête a juste besoin d’un endroit où poser tout ça.)</span></p>
+  </div>
+</section>
+
+<!-- ───────── COMMENT ÇA SE PASSE ───────── -->
+<section>
+  <div class="wrap">
+    <div class="center narrow">
+      <div class="kick">Comment ça se passe</div>
+      <h2>Chaque jour, la même chose simple</h2>
+    </div>
+    <ul class="facts">
+      <li>Une semaine pour t’installer</li>
+      <li>Puis six semaines</li>
+      <li>Du lundi au vendredi</li>
+      <li>5 à 10 minutes</li>
+      <li>Le weekend pour souffler</li>
+    </ul>
+    <div class="three rv">
+      <div class="g">
+        <div class="n">1</div>
+        <h3>Ta météo</h3>
+        <p>Avant d’écrire, tu entoures le temps qu’il fait en toi. Deux secondes, sans réfléchir.</p>
+        <div class="meteo" aria-hidden="true"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii02IC02IDExMiAxMTIiIG92ZXJmbG93PSJ2aXNpYmxlIj48cGF0aCAgZmlsbD0iI0VBRDlBQyIgZD0iTTUwLDMwIEM2MiwzMCA3MCwzOCA3MCw1MCBDNzAsNjIgNjIsNzAgNTAsNzAgQzM4LDcwIDMwLDYyIDMwLDUwIEMzMCwzOCAzOCwzMCA1MCwzMCBaIi8+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzMzMjFFIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iNS40NCIgZD0iTTUwLDMwIEM2MiwzMCA3MCwzOCA3MCw1MCBDNzAsNjIgNjIsNzAgNTAsNzAgQzM4LDcwIDMwLDYyIDMwLDUwIEMzMCwzOCAzOCwzMCA1MCwzMCBaIi8+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzMzMjFFIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iNC4zNSIgZD0iTTUwLDggTDUwLDIwIE01MCw4MCBMNTAsOTIgTTgsNTAgTDIwLDUwIE04MCw1MCBMOTIsNTAgTTIwLDIwIEwyOCwyOCBNNzIsNzIgTDgwLDgwIE04MCwyMCBMNzIsMjggTTI4LDcyIEwyMCw4MCIvPjwvc3ZnPg==" alt=""><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii02IC02IDExMiAxMTIiIG92ZXJmbG93PSJ2aXNpYmxlIj48cGF0aCAgZmlsbD0iI0ZGRkRGOCIgZD0iTTIyLDY2IEM4LDY2IDYsNDYgMjAsNDQgQzE4LDI2IDQwLDIwIDQ4LDM0IEM1NCwxOCA3OCwyMCA3OCw0MCBDOTIsNDAgOTQsNjQgODAsNjYgWiIvPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzMzMzIxRSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjUuNDQiIGQ9Ik0yMiw2NiBDOCw2NiA2LDQ2IDIwLDQ0IEMxOCwyNiA0MCwyMCA0OCwzNCBDNTQsMTggNzgsMjAgNzgsNDAgQzkyLDQwIDk0LDY0IDgwLDY2IFoiLz48L3N2Zz4=" alt=""><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii02IC02IDExMiAxMTIiIG92ZXJmbG93PSJ2aXNpYmxlIj48cGF0aCAgZmlsbD0iI0IyQkQ4OCIgZD0iTTE2LDEwIEw4NCwxMCBMODQsOTAgTDE2LDkwIFoiLz48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiMzMzMyMUUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1LjQ0IiBkPSJNMTYsMTAgTDg0LDEwIEw4NCw5MCBMMTYsOTAgWiIvPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzMzMzIxRSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjUuNDQiIGQ9Ik01MCwxMCBMNTAsOTAgTTE2LDUwIEw4NCw1MCIvPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIzLjI2IiBzdHJva2U9IiNGRkZERjgiIGQ9Ik0yOCwyMCBMMjQsMzAgTTQwLDI4IEwzNiwzOCBNNjQsMjAgTDYwLDMwIE03NCwzMiBMNzAsNDIgTTMwLDYwIEwyNiw3MCBNNjgsNjIgTDY0LDcyIi8+PC9zdmc+" alt=""><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii02IC02IDExMiAxMTIiIG92ZXJmbG93PSJ2aXNpYmxlIj48cGF0aCAgZmlsbD0iI0ZGRkRGOCIgZD0iTTI4LDU4IEMxNCw1OCAxMiw0MCAyNiwzOCBDMjQsMjIgNDQsMTggNTIsMzAgQzU4LDE2IDgwLDE4IDgwLDM2IEM5NCwzNiA5Niw1OCA4Miw1OCBaIi8+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzMzMjFFIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iNS40NCIgZD0iTTI4LDU4IEMxNCw1OCAxMiw0MCAyNiwzOCBDMjQsMjIgNDQsMTggNTIsMzAgQzU4LDE2IDgwLDE4IDgwLDM2IEM5NCwzNiA5Niw1OCA4Miw1OCBaIi8+PHBhdGggIGZpbGw9IiNGRkZERjgiIGQ9Ik0yNiw3MiBDMjYsNjYgMzQsNjYgMzQsNzIgQzM0LDc4IDI2LDc4IDI2LDcyIFoiLz48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiMzMzMyMUUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIzLjI2IiBkPSJNMjYsNzIgQzI2LDY2IDM0LDY2IDM0LDcyIEMzNCw3OCAyNiw3OCAyNiw3MiBaIi8+PHBhdGggIGZpbGw9IiNGRkZERjgiIGQ9Ik0xNCw4NCBDMTQsODAgMjAsODAgMjAsODQgQzIwLDg4IDE0LDg4IDE0LDg0IFoiLz48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiMzMzMyMUUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIzLjI2IiBkPSJNMTQsODQgQzE0LDgwIDIwLDgwIDIwLDg0IEMyMCw4OCAxNCw4OCAxNCw4NCBaIi8+PC9zdmc+" alt=""><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii02IC02IDExMiAxMTIiIG92ZXJmbG93PSJ2aXNpYmxlIj48cGF0aCAgZmlsbD0iI0VBRDlBQyIgZD0iTTcwLDEwIEMzOCwxNCAyMCw0MCAyNCw2MiBDMjgsODQgNTYsOTQgODIsODQgQzU2LDgyIDQwLDY2IDQ0LDQ0IEM0NiwyOCA1NiwxNiA3MCwxMCBaIi8+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzMzMjFFIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iNS40NCIgZD0iTTcwLDEwIEMzOCwxNCAyMCw0MCAyNCw2MiBDMjgsODQgNTYsOTQgODIsODQgQzU2LDgyIDQwLDY2IDQ0LDQ0IEM0NiwyOCA1NiwxNiA3MCwxMCBaIi8+PC9zdmc+" alt=""></div>
+      </div>
+      <div class="g">
+        <div class="n" style="background:var(--blue)">2</div>
+        <h3>L’exercice du jour</h3>
+        <p>Une page guidée, une seule. Les jours pressés, la ligne « Si tu n’as que 5 minutes » te propose une version courte. Elle suffit.</p>
+      </div>
+      <div class="g">
+        <div class="n" style="background:var(--rose)">3</div>
+        <h3>La petite ligne de la fin</h3>
+        <p>« Ce qui s’est apaisé, même un peu. » Puis tu colories une pivoine dans ton jardin. Les jours sautés restent blancs, et c’est très bien.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── LE CHEMIN ───────── -->
+<section class="bg-sand" id="chemin">
+  <div class="wrap" style="max-width:920px">
+    <div class="center">
+      <div class="kick">Le chemin</div>
+      <h2>Six semaines, une marche à la fois</h2>
+      <p class="lead" style="margin-top:14px">Tu ne choisis pas quoi faire chaque soir. Tu ouvres la page du jour.</p>
+    </div>
+    <img class="path-ill rv" src="/assets/landing/mental-leger/3c90950525.webp" width="1170" height="237" alt="Un chemin de sept pierres numérotées de 0 à 6, qui mène à une pivoine.">
+    <ol class="weeks rv">
+      <li style="--c:var(--sand)"><span class="num">0</span><div><b>S’installer</b><span class="d">Te préparer une place : ton coin, ton petit kit, ce que tu portes en arrivant.</span></div><span class="ex">un thé, un stylo, et c’est déjà bien</span></li>
+      <li style="--c:var(--blue)"><span class="num">1</span><div><b>Vider pour respirer</b><span class="d">Poser sur la page ce qui tourne dans ta tête.</span></div><span class="ex">jour 1 : le vidage, dix minutes</span></li>
+      <li style="--c:var(--apri)"><span class="num">2</span><div><b>Comprendre mon mental hypersensible</b><span class="d">Regarder tes pensées de plus près, sans te juger.</span></div><span class="ex">tu donnes un nom à ta critique intérieure</span></li>
+      <li style="--c:var(--sage)"><span class="num">3</span><div><b>Protéger mon énergie</b><span class="d">Remarquer ce qui te vide, et ce qui te fait du bien.</span></div><span class="ex">tes phrases prêtes, pour la visio de 18 h</span></li>
+      <li style="--c:var(--dusty)"><span class="num">4</span><div><b>Cultiver l’auto-compassion</b><span class="d">Te parler comme tu parlerais à une amie.</span></div><span class="ex">une lettre, signée « Ton amie intérieure »</span></li>
+      <li style="--c:var(--grey)"><span class="num">5</span><div><b>Poser mes limites</b><span class="d">Dire non sans culpabilité.</span></div><span class="ex">« J’ai le droit. »</span></li>
+      <li style="--c:var(--pv)"><span class="num">6</span><div><b>Ce que je garde</b><span class="d">Relire tes semaines, et choisir ce que tu emportes.</span></div><span class="ex">la lettre pour un soir difficile</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ───────── LES PAGES ───────── -->
+<section>
+  <div class="wrap">
+    <div class="center narrow">
+      <div class="kick">À l’intérieur</div>
+      <h2>Quelques vraies pages</h2>
+      <p class="lead" style="margin-top:14px">Des pages aérées, des lignes pour écrire, et rien à réussir.</p>
+    </div>
+    <div class="gallery" tabindex="0" aria-label="Aperçu des pages, fais défiler">
+      <figure><img loading="lazy" src="/assets/landing/mental-leger/14531cce39.webp" width="760" height="1076" alt="Page du jour 1, Le vidage : ta météo, la consigne et des lignes pour écrire."><figcaption><b>Le vidage</b>Jour 1 · tout ce qui tourne, sur la page</figcaption></figure>
+      <figure><img loading="lazy" src="/assets/landing/mental-leger/0e845c6405.webp" width="760" height="1076" alt="Page de la roue des émotions, avec des cases pour noter le mot exact."><figcaption><b>La roue des émotions</b>108 mots pour dire ce que tu ressens</figcaption></figure>
+      <figure><img loading="lazy" src="/assets/landing/mental-leger/75a8dac27d.webp" width="760" height="1076" alt="Page Mes phrases prêtes, avec des exemples et des lignes pour écrire les tiennes."><figcaption><b>Mes phrases prêtes</b>Jour 14 · pour répondre sans te justifier</figcaption></figure>
+      <figure><img loading="lazy" src="/assets/landing/mental-leger/424cfb20ac.webp" width="760" height="1076" alt="Page La lettre pour un soir difficile."><figcaption><b>La lettre pour un soir difficile</b>Jour 28 · une page à corner</figcaption></figure>
+      <figure><img loading="lazy" src="/assets/landing/mental-leger/b5b591db90.webp" width="760" height="1076" alt="Huit cartes à découper, avec des phrases pour dire non et pour les moments où c’est trop."><figcaption><b>Mes cartes à garder sur moi</b>8 cartes à glisser dans ton portefeuille</figcaption></figure>
+      <figure><img loading="lazy" src="/assets/landing/mental-leger/bcaba3ef55.webp" width="760" height="1076" alt="Mon jardin de pivoines : trente pivoines à colorier, une par jour écrit."><figcaption><b>Mon jardin de pivoines</b>Une pivoine par jour écrit</figcaption></figure>
+    </div>
+    <p class="hint">Fais défiler pour voir les pages →</p>
+  </div>
+</section>
+
+<!-- ───────── 3 FAÇONS ───────── -->
+<section class="bg-blue">
+  <div class="wrap" style="max-width:980px">
+    <div class="center">
+      <div class="kick">À ta façon</div>
+      <h2>Sur papier, sur tablette ou au clavier</h2>
+    </div>
+    <img class="rv" src="/assets/landing/mental-leger/cd5cb8e3e3.webp" width="1104" height="318" alt="Des pages imprimées avec un crayon, une tablette avec son stylet, et un ordinateur portable." style="width:100%;max-width:620px;margin:20px auto 24px">
+    <div class="ways rv">
+      <div><h3>Sur papier</h3><p>Tu imprimes les pages chez toi, toutes ou au fur et à mesure. Les onglets colorés sur le bord t’aident à retrouver ta semaine.</p></div>
+      <div><h3>Sur tablette, au stylet</h3><p>Ouvre le PDF dans GoodNotes ou Notability et écris à la main. Le sommaire et les numéros de page sont cliquables.</p></div>
+      <div><h3>Au clavier</h3><p>Chaque ligne est une case où taper. Tu coches ta météo et tes pivoines d’un clic, et tu enregistres.</p></div>
+    </div>
+    <p class="center aside" style="margin-top:22px">(Tu peux aussi écrire dans ton carnet préféré, avec le PDF ouvert à côté.)</p>
+  </div>
+</section>
+
+<!-- ───────── APPLI ───────── -->
+<section class="app" id="appli">
+  <div class="wrap appgrid">
+    <div>
+      <div class="kick">Dans ta poche</div>
+      <h2>L’appli compagnon <span class="pill">incluse</span></h2>
+      <p class="lead" style="margin-top:16px">Tes pages restent sur papier ou dans ton PDF. L’appli garde le reste : où tu en es, ta météo, ton jardin de pivoines, et ta boîte à outils pour les moments où ça déborde.</p>
+      <ul class="feat">
+        <li><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii02IC02IDExMiAxMTIiIG92ZXJmbG93PSJ2aXNpYmxlIj48cGF0aCAgZmlsbD0iI0ZGRkRGOCIgZD0iTTI0LDEwIEM0NCw4IDYyLDggODAsMTAgQzgyLDM2IDgyLDY0IDgwLDkwIEM2Miw5MiA0NCw5MiAyNCw5MCBDMjIsNjQgMjIsMzYgMjQsMTAgWiIvPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzMzMzIxRSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjUuNDQiIGQ9Ik0yNCwxMCBDNDQsOCA2Miw4IDgwLDEwIEM4MiwzNiA4Miw2NCA4MCw5MCBDNjIsOTIgNDQsOTIgMjQsOTAgQzIyLDY0IDIyLDM2IDI0LDEwIFoiLz48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiMzMzMyMUUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIzLjgxIiBkPSJNMzIsMTAgTDMxLDkwIi8+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjYuNTMiIHN0cm9rZT0iI0UyNkQ1RiIgZD0iTTcwLDggTDcxLDkyIi8+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzMzMjFFIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMy4yNiIgZD0iTTQwLDM0IEM1MCwzMiA1OCwzMiA2NCwzNCBNNDAsNDYgQzQ4LDQ0IDU0LDQ0IDYwLDQ2Ii8+PC9zdmc+" alt=""><div><b>Aujourd’hui.</b> La page à ouvrir, à ton rythme et pas à celui du calendrier. Trois jours sans l’ouvrir ? Elle t’accueille avec un mot gentil.</div></li>
+        <li><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii02IC02IDExMiAxMTIiIG92ZXJmbG93PSJ2aXNpYmxlIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgtNiA1MCA1MCkiPjxwYXRoICBmaWxsPSIjRkZGREY4IiBkPSJNMTgsMTIgTDgwLDEwIEw4NCw4OCBMMjIsOTAgWiIvPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzMzMzIxRSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjUuNDQiIGQ9Ik0xOCwxMiBMODAsMTAgTDg0LDg4IEwyMiw5MCBaIi8+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzMzMjFFIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMy4yNiIgZD0iTTMwLDI4IEM0NiwyNiA2MCwyNiA3MiwyNiBNMzAsNDAgQzQ2LDM4IDYwLDM4IDcyLDM4IE0zMCw1MiBDNDQsNTAgNTYsNTAgNjYsNTAgTTMwLDcwIEMzOCw3MiA0NCw2OCA0OCw3MiIvPjwvZz48L3N2Zz4=" alt=""><div><b>Le mot de Camélia.</b> <span class="si-ecrit">Chaque nouvelle semaine s’ouvre avec un petit mot de moi, à lire en une minute.</span><span class="si-audio">Chaque nouvelle semaine s’ouvre avec un petit mot de moi, à lire, ou à écouter avec ma voix.</span></div></li>
+        <li><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii02IC02IDExMiAxMTIiIG92ZXJmbG93PSJ2aXNpYmxlIj48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMTAsLTEwKSBzY2FsZSgxLjApIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMy40OSIgc3Ryb2tlPSIjRTI2RDVGIiBkPSJNNjIuNyw0OS44IEM2Ni4xLDQ4LjMgNzMuMSw2MS43IDY5LjUsNjIuNiBDNzEuOCw2Ni4yIDYwLjAsNzMuMyA1Ny40LDY5LjcgQzUzLjIsNzEuOCA0Ni40LDYwLjMgNTAuMyw1Ny40IEM0OS44LDUzLjMgNjEuNyw0Ny45IDYyLjcsNTEuOCBNNTcuMSw0My42IEM0Ni4zLDEyLjcgODAuNSwxNC4wIDY1LjAsNDQuNSBNNjkuNiw0Ni43IEM4MS44LDE4LjcgMTAzLjUsNDQuOCA3NC44LDUyLjQgTTc3LjMsNTkuMyBDMTA3LjAsNTAuNiA5OC4yLDg2LjIgNzUuMSw2Ny45IE03MS41LDcyLjYgQzk4LjcsOTAuMCA2OC43LDEwOS42IDY0LjYsNzYuMSBNNTYuMCw3NS44IEM1NS41LDEwNi40IDIyLjIsOTAuNiA0OS4wLDcxLjQgTTQ2LjAsNjcuNiBDMTkuMyw4OC4zIDExLjYsNTIuMSA0NC41LDYwLjAgTTQ0LjksNTIuNSBDMTUuNiw0NS43IDM2LjIsMTkuOSA0OS43LDQ3LjAiLz48L2c+PC9zdmc+" alt=""><div><b>Mon jardin.</b> Une pivoine se colorie chaque fois que tu as écrit. Et tes six semaines en météo, d’un coup d’œil.</div></li>
+        <li><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii02IC02IDExMiAxMTIiIG92ZXJmbG93PSJ2aXNpYmxlIj48cGF0aCAgZmlsbD0iI0UyNkQ1RiIgZD0iTTIwLDQwIEMyMCwyMCA0NCwxNiA1MCwzNCBDNTYsMTYgODAsMjAgODAsNDAgQzgwLDYyIDUwLDc4IDUwLDg4IEM1MCw3OCAyMCw2MiAyMCw0MCBaIi8+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzMzMjFFIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iNS40NCIgZD0iTTIwLDQwIEMyMCwyMCA0NCwxNiA1MCwzNCBDNTYsMTYgODAsMjAgODAsNDAgQzgwLDYyIDUwLDc4IDUwLDg4IEM1MCw3OCAyMCw2MiAyMCw0MCBaIi8+PC9zdmc+" alt=""><div><b>La boîte à outils.</b> Quand c’est trop, quand tu es vidée, quand tu dois dire non. Avec deux exercices guidés à écouter : « Revenir par les sens » et « La pause douceur ».</div></li>
+        <li><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii02IC02IDExMiAxMTIiIG92ZXJmbG93PSJ2aXNpYmxlIj48cGF0aCAgZmlsbD0iI0ZGRkRGOCIgZD0iTTMwLDYgQzI2LDYgMjQsOSAyNCwxMyBMMjQsODcgQzI0LDkxIDI2LDk0IDMwLDk0IEw3MCw5NCBDNzQsOTQgNzYsOTEgNzYsODcgTDc2LDEzIEM3Niw5IDc0LDYgNzAsNiBaIi8+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzMzMjFFIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iNS40NCIgZD0iTTMwLDYgQzI2LDYgMjQsOSAyNCwxMyBMMjQsODcgQzI0LDkxIDI2LDk0IDMwLDk0IEw3MCw5NCBDNzQsOTQgNzYsOTEgNzYsODcgTDc2LDEzIEM3Niw5IDc0LDYgNzAsNiBaIi8+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzMzMjFFIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMy44MSIgZD0iTTQ0LDEyIEM0OCwxMSA1MiwxMSA1NiwxMiIvPjwvc3ZnPg==" alt=""><div><b>Sans compte, sans store.</b> Elle s’installe sur ton écran d’accueil, marche hors connexion, et tout reste sur ton téléphone.</div></li>
+      </ul>
+      <p class="ai" style="margin-top:18px">Les deux exercices guidés utilisent ma voix, recréée avec un outil d’IA à partir de mes enregistrements.</p>
+    </div>
+    <div class="phones rv" aria-hidden="true">
+      <div class="phone"><img loading="lazy" src="/assets/landing/mental-leger/742bf722d8.webp" width="780" height="1688" alt=""></div>
+      <div class="phone"><img loading="lazy" src="/assets/landing/mental-leger/2ed6df99b2.webp" width="780" height="1688" alt=""></div>
+      <div class="phone"><img loading="lazy" src="/assets/landing/mental-leger/f082c4395b.webp" width="780" height="1688" alt=""></div>
+    </div>
+  </div>
+  <div class="wrap narrow" style="max-width:860px">
+    <div class="mot rv">
+      <img src="/assets/landing/mental-leger/4284a55daa.webp" width="1024" height="636" alt="">
+      <div>
+        <div class="kick" style="margin-bottom:8px">Le mot de la semaine 2, dans l’appli</div>
+        <q>« Une remarque de rien du tout peut m’occuper toute une soirée. Si ça t’arrive aussi, cette semaine est pour toi. »</q>
+        <div class="who">Camélia</div>
+        <div class="player si-audio">
+          <button type="button" id="motPlay" aria-label="Écouter le mot"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+          <div><b>Écouter ce mot, avec ma voix</b><small>un extrait d’une minute</small></div>
+          <audio id="motAudio" preload="none" src="assets/audio/mot-semaine-1.mp3"></audio>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── CE QUE TU REÇOIS ───────── -->
+<section class="bg-sage">
+  <div class="wrap" style="max-width:960px">
+    <div class="center">
+      <div class="kick">Ce que tu reçois</div>
+      <h2>Tout ce qu’il y a dedans</h2>
+    </div>
+    <ul class="incl rv">
+      <li><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii02IC02IDExMiAxMTIiIG92ZXJmbG93PSJ2aXNpYmxlIj48cGF0aCAgZmlsbD0iI0ZGRkRGOCIgZD0iTTI0LDEwIEM0NCw4IDYyLDggODAsMTAgQzgyLDM2IDgyLDY0IDgwLDkwIEM2Miw5MiA0NCw5MiAyNCw5MCBDMjIsNjQgMjIsMzYgMjQsMTAgWiIvPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzMzMzIxRSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjUuNDQiIGQ9Ik0yNCwxMCBDNDQsOCA2Miw4IDgwLDEwIEM4MiwzNiA4Miw2NCA4MCw5MCBDNjIsOTIgNDQsOTIgMjQsOTAgQzIyLDY0IDIyLDM2IDI0LDEwIFoiLz48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiMzMzMyMUUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIzLjgxIiBkPSJNMzIsMTAgTDMxLDkwIi8+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjYuNTMiIHN0cm9rZT0iI0UyNkQ1RiIgZD0iTTcwLDggTDcxLDkyIi8+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzMzMjFFIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMy4yNiIgZD0iTTQwLDM0IEM1MCwzMiA1OCwzMiA2NCwzNCBNNDAsNDYgQzQ4LDQ0IDU0LDQ0IDYwLDQ2Ii8+PC9zdmc+" alt=""><div><b>Le programme en PDF, 79 pages A4.</b> À imprimer, à remplir sur tablette ou à l’écran.</div></li>
+      <li><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii02IC02IDExMiAxMTIiIG92ZXJmbG93PSJ2aXNpYmxlIj48cGF0aCAgZmlsbD0iI0ZGRkRGOCIgZD0iTTMwLDYgQzI2LDYgMjQsOSAyNCwxMyBMMjQsODcgQzI0LDkxIDI2LDk0IDMwLDk0IEw3MCw5NCBDNzQsOTQgNzYsOTEgNzYsODcgTDc2LDEzIEM3Niw5IDc0LDYgNzAsNiBaIi8+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzMzMjFFIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iNS40NCIgZD0iTTMwLDYgQzI2LDYgMjQsOSAyNCwxMyBMMjQsODcgQzI0LDkxIDI2LDk0IDMwLDk0IEw3MCw5NCBDNzQsOTQgNzYsOTEgNzYsODcgTDc2LDEzIEM3Niw5IDc0LDYgNzAsNiBaIi8+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzMzMjFFIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMy44MSIgZD0iTTQ0LDEyIEM0OCwxMSA1MiwxMSA1NiwxMiIvPjwvc3ZnPg==" alt=""><div><b>L’appli compagnon,</b> sur ton téléphone.</div></li>
+      <li><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii02IC02IDExMiAxMTIiIG92ZXJmbG93PSJ2aXNpYmxlIj48cGF0aCAgZmlsbD0iI0ZGRkRGOCIgZD0iTTEyLDIwIEw4OCwyMCBMODgsOTAgTDEyLDkwIFoiLz48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiMzMzMyMUUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1LjQ0IiBkPSJNMTIsMjAgTDg4LDIwIEw4OCw5MCBMMTIsOTAgWiIvPjxwYXRoICBmaWxsPSIjRTI2RDVGIiBkPSJNMTIsMjAgTDg4LDIwIEw4OCwzNiBMMTIsMzYgWiIvPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzMzMzIxRSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjUuNDQiIGQ9Ik0xMiwyMCBMODgsMjAgTDg4LDM2IEwxMiwzNiBaIi8+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzMzMjFFIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iNS40NCIgZD0iTTMwLDEyIEwzMCwyOCBNNzAsMTIgTDcwLDI4Ii8+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzMzMjFFIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iNC4zNSIgZD0iTTI2LDUyIEwzNCw1MiBNNDYsNTIgTDU0LDUyIE02Niw1MiBMNzQsNTIgTTI2LDcwIEwzNCw3MCBNNDYsNzAgTDU0LDcwIi8+PC9zdmc+" alt=""><div><b>30 journées guidées,</b> chacune avec sa version 5 minutes.</div></li>
+      <li><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii02IC02IDExMiAxMTIiIG92ZXJmbG93PSJ2aXNpYmxlIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgtNiA1MCA1MCkiPjxwYXRoICBmaWxsPSIjRkZGREY4IiBkPSJNMTgsMTIgTDgwLDEwIEw4NCw4OCBMMjIsOTAgWiIvPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzMzMzIxRSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjUuNDQiIGQ9Ik0xOCwxMiBMODAsMTAgTDg0LDg4IEwyMiw5MCBaIi8+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzMzMjFFIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMy4yNiIgZD0iTTMwLDI4IEM0NiwyNiA2MCwyNiA3MiwyNiBNMzAsNDAgQzQ2LDM4IDYwLDM4IDcyLDM4IE0zMCw1MiBDNDQsNTAgNTYsNTAgNjYsNTAgTTMwLDcwIEMzOCw3MiA0NCw2OCA0OCw3MiIvPjwvZz48L3N2Zz4=" alt=""><div><b>Un mot de moi</b> au début de chaque semaine<span class="si-audio">, à lire ou à écouter</span>.</div></li>
+      <li><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii02IC02IDExMiAxMTIiIG92ZXJmbG93PSJ2aXNpYmxlIj48cGF0aCAgZmlsbD0iI0VBRDlBQyIgZD0iTTUwLDMwIEM2MiwzMCA3MCwzOCA3MCw1MCBDNzAsNjIgNjIsNzAgNTAsNzAgQzM4LDcwIDMwLDYyIDMwLDUwIEMzMCwzOCAzOCwzMCA1MCwzMCBaIi8+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzMzMjFFIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iNS40NCIgZD0iTTUwLDMwIEM2MiwzMCA3MCwzOCA3MCw1MCBDNzAsNjIgNjIsNzAgNTAsNzAgQzM4LDcwIDMwLDYyIDMwLDUwIEMzMCwzOCAzOCwzMCA1MCwzMCBaIi8+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzMzMjFFIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iNC4zNSIgZD0iTTUwLDggTDUwLDIwIE01MCw4MCBMNTAsOTIgTTgsNTAgTDIwLDUwIE04MCw1MCBMOTIsNTAgTTIwLDIwIEwyOCwyOCBNNzIsNzIgTDgwLDgwIE04MCwyMCBMNzIsMjggTTI4LDcyIEwyMCw4MCIvPjwvc3ZnPg==" alt=""><div><b>La roue des émotions,</b> 108 mots pour trouver le mot exact.</div></li>
+      <li><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii02IC02IDExMiAxMTIiIG92ZXJmbG93PSJ2aXNpYmxlIj48cGF0aCAgZmlsbD0iI0UyNkQ1RiIgZD0iTTIwLDQwIEMyMCwyMCA0NCwxNiA1MCwzNCBDNTYsMTYgODAsMjAgODAsNDAgQzgwLDYyIDUwLDc4IDUwLDg4IEM1MCw3OCAyMCw2MiAyMCw0MCBaIi8+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzMzMjFFIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iNS40NCIgZD0iTTIwLDQwIEMyMCwyMCA0NCwxNiA1MCwzNCBDNTYsMTYgODAsMjAgODAsNDAgQzgwLDYyIDUwLDc4IDUwLDg4IEM1MCw3OCAyMCw2MiAyMCw0MCBaIi8+PC9zdmc+" alt=""><div><b>La boîte à outils :</b> quand ça déborde, quand ça pèse.</div></li>
+      <li><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii02IC02IDExMiAxMTIiIG92ZXJmbG93PSJ2aXNpYmxlIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiMzMzMyMUUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1LjQ0IiBkPSJNMTQsMTYgQzQwLDEyIDY0LDEzIDg2LDE1IEM4OCw0MCA4Nyw2NCA4NSw4NiBDNjAsODggMzYsODggMTYsODYgQzEyLDYyIDEzLDM4IDE0LDE2IFoiLz48cGF0aCBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iOC43MCIgc3Ryb2tlPSIjRTI2RDVGIiBkPSJNMjIsNTIgTDQyLDc0IEw5MCw4Ii8+PC9zdmc+" alt=""><div><b>8 cartes à découper,</b> pour ton portefeuille ou ta pochette d’ordi.</div></li>
+      <li><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii02IC02IDExMiAxMTIiIG92ZXJmbG93PSJ2aXNpYmxlIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMy44MSIgc3Ryb2tlPSIjOUFBOEI4IiBkPSJNNDAsMzAgQzM0LDIwIDQ2LDE1IDQwLDUgTTU2LDMwIEM1MCwyMCA2MiwxNSA1Niw1Ii8+PHBhdGggIGZpbGw9IiNGRkZERjgiIGQ9Ik0yNCwzOCBMMjgsODYgQzM4LDk0IDYyLDk0IDcyLDg2IEw3NiwzOCBDNjIsNDYgMzgsNDYgMjQsMzggWiIvPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzMzMzIxRSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjUuNDQiIGQ9Ik0yNCwzOCBMMjgsODYgQzM4LDk0IDYyLDk0IDcyLDg2IEw3NiwzOCBDNjIsNDYgMzgsNDYgMjQsMzggWiIvPjxwYXRoICBmaWxsPSIjQTlCOTdGIiBkPSJNMjQsMzggQzM4LDMwIDYyLDMwIDc2LDM4IEM2Miw0NiAzOCw0NiAyNCwzOCBaIi8+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzMzMjFFIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iNS40NCIgZD0iTTI0LDM4IEMzOCwzMCA2MiwzMCA3NiwzOCBDNjIsNDYgMzgsNDYgMjQsMzggWiIvPjwvc3ZnPg==" alt=""><div><b>2 exercices guidés à écouter,</b> dans l’appli.</div></li>
+      <li><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii02IC02IDExMiAxMTIiIG92ZXJmbG93PSJ2aXNpYmxlIj48ZyB0cmFuc2Zvcm09InJvdGF0ZSgzNSA1MCA1MCkiPjxwYXRoICBmaWxsPSIjRUFEOUFDIiBkPSJNNDIsNiBMNTgsNiBMNTgsNzQgTDUwLDkyIEw0Miw3NCBaIi8+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzMzMjFFIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iNS40NCIgZD0iTTQyLDYgTDU4LDYgTDU4LDc0IEw1MCw5MiBMNDIsNzQgWiIvPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzMzMzIxRSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjMuMjYiIGQ9Ik00Miw3NCBMNTgsNzQgTTQ2LDg0IEw1NCw4NCIvPjxwYXRoICBmaWxsPSIjRTI2RDVGIiBkPSJNNDIsNiBMNTgsNiBMNTgsMTYgTDQyLDE2IFoiLz48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiMzMzMyMUUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIzLjI2IiBkPSJNNDIsNiBMNTgsNiBMNTgsMTYgTDQyLDE2IFoiLz48L2c+PC9zdmc+" alt=""><div><b>Des pages en plus,</b> pour tes notes et tes dessins, à imprimer autant que tu veux.</div></li>
+      <li><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii02IC02IDExMiAxMTIiIG92ZXJmbG93PSJ2aXNpYmxlIj48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMTAsLTEwKSBzY2FsZSgxLjApIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMy40OSIgc3Ryb2tlPSIjRTI2RDVGIiBkPSJNNjIuNyw0OS44IEM2Ni4xLDQ4LjMgNzMuMSw2MS43IDY5LjUsNjIuNiBDNzEuOCw2Ni4yIDYwLjAsNzMuMyA1Ny40LDY5LjcgQzUzLjIsNzEuOCA0Ni40LDYwLjMgNTAuMyw1Ny40IEM0OS44LDUzLjMgNjEuNyw0Ny45IDYyLjcsNTEuOCBNNTcuMSw0My42IEM0Ni4zLDEyLjcgODAuNSwxNC4wIDY1LjAsNDQuNSBNNjkuNiw0Ni43IEM4MS44LDE4LjcgMTAzLjUsNDQuOCA3NC44LDUyLjQgTTc3LjMsNTkuMyBDMTA3LjAsNTAuNiA5OC4yLDg2LjIgNzUuMSw2Ny45IE03MS41LDcyLjYgQzk4LjcsOTAuMCA2OC43LDEwOS42IDY0LjYsNzYuMSBNNTYuMCw3NS44IEM1NS41LDEwNi40IDIyLjIsOTAuNiA0OS4wLDcxLjQgTTQ2LjAsNjcuNiBDMTkuMyw4OC4zIDExLjYsNTIuMSA0NC41LDYwLjAgTTQ0LjksNTIuNSBDMTUuNiw0NS43IDM2LjIsMTkuOSA0OS43LDQ3LjAiLz48L2c+PC9zdmc+" alt=""><div><b>À toi pour toujours.</b> Le fichier ne se périme pas. Tu le reprends quand tu veux.</div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ───────── PROMESSES ───────── -->
+<section>
+  <div class="wrap" style="max-width:960px">
+    <div class="center">
+      <div class="kick">En toute honnêteté</div>
+      <h2>Ce que je te promets, et ce que je ne te promets pas</h2>
+    </div>
+    <div class="promise rv">
+      <div class="bg-sand">
+        <h3>Je te promets</h3>
+        <ul>
+          <li>Une page qui t’attend chaque jour, pour ne pas te demander quoi écrire.</li>
+          <li>Des exercices courts, pensés pour une vie avec un travail, une boîte mail et des dimanches déjà pleins.</li>
+          <li>Aucun jour en retard. Le programme reprend où tu l’as laissé.</li>
+        </ul>
+      </div>
+      <div class="bg-rose">
+        <h3>Je ne te promets pas</h3>
+        <p style="font-size:18px">Je ne te promets pas que tu iras mieux. Ce programme ne répare rien, et il n’y a rien à réparer chez toi.</p>
+        <p class="muted" style="font-size:16px;margin:0">Il ne remplace pas un professionnel, et je ne suis pas thérapeute.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── TÉMOIGNAGE ───────── -->
+<section class="bg-rose" style="padding:70px 0">
+  <div class="wrap narrow">
+    <figure class="quote rv" style="margin:0">
+      <img class="pv" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii02IC02IDExMiAxMTIiIG92ZXJmbG93PSJ2aXNpYmxlIj48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMTAsLTEwKSBzY2FsZSgxLjApIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMy40OSIgc3Ryb2tlPSIjRTI2RDVGIiBkPSJNNjIuNyw0OS44IEM2Ni4xLDQ4LjMgNzMuMSw2MS43IDY5LjUsNjIuNiBDNzEuOCw2Ni4yIDYwLjAsNzMuMyA1Ny40LDY5LjcgQzUzLjIsNzEuOCA0Ni40LDYwLjMgNTAuMyw1Ny40IEM0OS44LDUzLjMgNjEuNyw0Ny45IDYyLjcsNTEuOCBNNTcuMSw0My42IEM0Ni4zLDEyLjcgODAuNSwxNC4wIDY1LjAsNDQuNSBNNjkuNiw0Ni43IEM4MS44LDE4LjcgMTAzLjUsNDQuOCA3NC44LDUyLjQgTTc3LjMsNTkuMyBDMTA3LjAsNTAuNiA5OC4yLDg2LjIgNzUuMSw2Ny45IE03MS41LDcyLjYgQzk4LjcsOTAuMCA2OC43LDEwOS42IDY0LjYsNzYuMSBNNTYuMCw3NS44IEM1NS41LDEwNi40IDIyLjIsOTAuNiA0OS4wLDcxLjQgTTQ2LjAsNjcuNiBDMTkuMyw4OC4zIDExLjYsNTIuMSA0NC41LDYwLjAgTTQ0LjksNTIuNSBDMTUuNiw0NS43IDM2LjIsMTkuOSA0OS43LDQ3LjAiLz48L2c+PC9zdmc+" alt="">
+      <blockquote>« J’ai rempli plusieurs pages, sans être pressée par le temps… je me sens assez soulagée, calme… J’adore cet exercice. »</blockquote>
+      <cite>Anne-Sophie, après le jour 1</cite>
+    </figure>
+  </div>
+</section>
+
+<!-- ───────── À PROPOS ───────── -->
+<section class="about">
+  <div class="wrap">
+    <div class="pic rv"><img loading="lazy" src="/assets/landing/mental-leger/a126a8babc.webp" width="700" height="455" alt="Camélia à son bureau avec Bao."></div>
+    <div>
+      <div class="kick">Qui écrit</div>
+      <h2>Moi, c’est Camélia</h2>
+      <p class="lead" style="margin-top:16px">J’écris pour les femmes hypersensibles et introverties, parce que j’en suis une.</p>
+      <p>Il y a eu une année plus dure, dont je ne parle pas facilement. On m’a accompagnée pendant des années.</p>
+      <p>J’écris le plus souvent à mon bureau, dans le salon. Un thé vert le matin, une tisane le soir. Bao dort à côté de mon carnet. <span class="aside" style="font-size:21px">(Quand il ne gratte pas sa couverture.)</span></p>
+      <p>Cet été, j’ai refait ce programme. J’ai surtout enlevé tout ce qui ressemblait à des devoirs.</p>
+      <p class="muted" style="font-size:16px">Je ne suis pas thérapeute.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── PRIX ───────── -->
+<section class="bg-sand" id="recevoir">
+  <div class="wrap" style="max-width:980px">
+    <div class="price rv">
+      <div>
+        <div class="kick">Mental Léger</div>
+        <div class="amount">67 €<small>une seule fois</small></div>
+        <p style="margin-top:14px">Le fichier est à toi. L’appli aussi.</p>
+        <ul>
+          <li>Le PDF de 79 pages, à imprimer ou à remplir à l’écran</li>
+          <li>L’appli compagnon, hors connexion</li>
+          <li>Un mot de moi chaque semaine<span class="si-audio">, à lire ou à écouter</span></li>
+          <li>Tu le reprends quand tu veux, autant de fois que tu veux</li>
+        </ul>
+      </div>
+      <div class="side">
+        <img src="/assets/landing/mental-leger/17daf566ce.webp" width="1026" height="489" alt="" loading="lazy">
+        <a class="btn" data-buy href="https://www.camelianguyen.fr/products/de-l-epuisement-mental-a-la-legerete?step=checkout">Recevoir Mental Léger</a>
+        <p class="muted" style="font-size:14.5px;margin-top:14px">Paiement par carte sur la page sécurisée de Kit.<br>Le PDF et le lien de l’appli arrivent par e-mail, tout de suite.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── SEMAINE OFFERTE ───────── -->
+<section id="offerte" style="padding:70px 0">
+  <div class="wrap narrow center">
+    <img src="/assets/landing/mental-leger/719e8009c2.webp" width="1012" height="550" alt="" loading="lazy" style="width:100%;max-width:300px;margin:0 auto 10px">
+    <h2 style="font-size:clamp(26px,3.6vw,36px)">Pas encore sûre ?</h2>
+    <p class="lead" style="margin-top:12px">Commence par la première semaine. Elle est offerte quand tu t’inscris à ma lettre, chaque premier dimanche du mois. Si elle te va, le programme reprend à la semaine 2, sans rien recommencer.</p>
+    <a class="btn ghost" href="https://papierpivoine.fr/newsletter/">Recevoir la première semaine</a>
+  </div>
+</section>
+
+<!-- ───────── FAQ ───────── -->
+<section class="faq" style="padding-top:20px">
+  <div class="wrap narrow">
+    <div class="center" style="margin-bottom:28px">
+      <div class="kick">Tes questions</div>
+      <h2>Ce qu’on me demande souvent</h2>
+    </div>
+    <details><summary>Je n’ai jamais tenu un journal.</summary><p>Ça n’a pas d’importance. Il n’y a pas de style à avoir, pas de belles phrases à écrire.</p></details>
+    <details><summary>Je vais abandonner à la deuxième semaine, comme d’habitude.</summary><p>Peut-être. Et le programme t’attendra. Il ne se périme pas.</p></details>
+    <details><summary>Cinq minutes, ça suffit vraiment ?</summary><p>Les jours où tu as cinq minutes, oui. Les jours où tu en as trente, prends-les.</p></details>
+    <details><summary>Je n’ai pas d’imprimante.</summary><p>Tu peux tout remplir sur ta tablette ou à ton clavier, directement dans le PDF. Ou écrire dans ton carnet préféré, avec le PDF ouvert à côté.</p></details>
+    <details><summary>C’est quoi, l’appli ?</summary><p>Un petit compagnon pour ton téléphone : la page du jour, ta météo, ton jardin de pivoines, ta boîte à outils<span class="si-audio"> et mes mots de la semaine à écouter</span>. Tu écris toujours sur papier ou dans le PDF. Elle s’installe depuis ton navigateur, sans compte, et rien de ce que tu fais n’est envoyé nulle part.</p></details>
+    <details class="si-audio"><summary>Les mots de la semaine, je les lis ou je les écoute ?</summary><p>Comme tu préfères. Ils sont écrits dans l’appli, et tu peux aussi les écouter, avec ma vraie voix.</p></details>
+    <details><summary>Est-ce que ça remplace un psy ?</summary><p>Non. Un professionnel reste un professionnel, et ce programme ne prend pas sa place.</p></details>
+    <details><summary>Est-ce que quelqu’un lit ce que j’écris ?</summary><p>Personne. C’est à toi, rien qu’à toi.</p></details>
+    <details><summary>Je ne suis pas sûre que ce soit pour moi.</summary><p>Commence par <a href="#offerte">la première semaine, offerte</a>. Tu verras vite si le rythme te va.</p></details>
+
+    <div class="help" style="margin-top:34px">
+      <b>Si c’est trop lourd en ce moment.</b> Ce programme ne remplace pas un professionnel. Si tu as des idées noires, appelle le <a href="tel:3114">3114</a>, numéro national de prévention du suicide, jour et nuit. SOS Amitié : <a href="tel:+33972394050">09 72 39 40 50</a>.
+    </div>
+  </div>
+</section>
+
+<!-- ───────── FIN ───────── -->
+<section class="final" style="padding-top:30px">
+  <div class="wrap narrow">
+    <img loading="lazy" src="/assets/landing/mental-leger/d8b80bc6bb.webp" width="1312" height="691" alt="Bao endormi sur le canapé, sous un plaid.">
+    <h2>Six semaines, à ton rythme.</h2>
+    <p class="lead" style="margin-top:12px">Et s’il en faut huit, le programme t’attend.</p>
+    <a class="btn" data-buy href="https://www.camelianguyen.fr/products/de-l-epuisement-mental-a-la-legerete?step=checkout" style="margin-top:14px">Recevoir Mental Léger · 67 €</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="site">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:32px;flex-wrap:wrap">
+      <div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="font-family:var(--font-display);font-weight:800;font-variation-settings:'opsz' 72;font-size:21px;color:var(--deep-olive);letter-spacing:-0.005em">Papier Pivoine</span><svg width="30" height="30" viewBox="0 0 120 120" fill="none" stroke="#E26D5F" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M62.7,49.8 C66.1,48.3 73.1,61.7 69.5,62.6 C71.8,66.2 60.0,73.3 57.4,69.7 C53.2,71.8 46.4,60.3 50.3,57.4 C49.8,53.3 61.7,47.9 62.7,51.8 M57.1,43.6 C46.3,12.7 80.5,14.0 65.0,44.5 M69.6,46.7 C81.8,18.7 103.5,44.8 74.8,52.4 M77.3,59.3 C107.0,50.6 98.2,86.2 75.1,67.9 M71.5,72.6 C98.7,90.0 68.7,109.6 64.6,76.1 M56.0,75.8 C55.5,106.4 22.2,90.6 49.0,71.4 M46.0,67.6 C19.3,88.3 11.6,52.1 44.5,60.0 M44.9,52.5 C15.6,45.7 36.2,19.9 49.7,47.0"></path></svg></div>
+        <p style="font-family:var(--font-body);font-style:italic;color:var(--rose-deep);margin:0;font-size:15px;max-width:32ch;line-height:1.5">Trop sensible, trop fatiguée, trop bien sous mon plaid.</p>
+      </div>
+      <div style="display:flex;gap:40px 64px;flex-wrap:wrap">
+        <div>
+          <div class="pp-eyebrow" style="margin-bottom:14px">Découvrir</div>
+          <div class="fcol">
+            <a href="/activites/" style="color:var(--ink-soft);text-decoration:none">Carnets d’activités douces</a>
+            <a href="/ecriture/" style="color:var(--ink-soft);text-decoration:none">Programme d’écriture</a>
+            <a href="/7-permissions-pivoine/" style="color:var(--ink-soft);text-decoration:none">7 permissions PIVOINE</a>
+            <a href="/apropos/" style="color:var(--ink-soft);text-decoration:none">À propos</a>
+          </div>
+        </div>
+        <div>
+          <div class="pp-eyebrow" style="margin-bottom:14px">Rester en lien</div>
+          <div class="fcol">
+            <a href="/newsletter/" style="color:var(--ink-soft);text-decoration:none">Newsletter gratuite</a>
+            <a href="mailto:camelia@camelianguyen.fr" style="color:var(--ink-soft);text-decoration:none">Écrire à Camélia</a>
+            <a href="https://fr.pinterest.com/papierpivoine/" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">Pinterest</a>
+            <a href="https://www.youtube.com/@papierpivoine/shorts" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">YouTube</a>
+            <a href="https://www.tiktok.com/@papierpivoine" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">TikTok</a>
+            <a href="https://www.instagram.com/papierpivoine/" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">Instagram</a>
+            <a href="https://www.facebook.com/share/1Bue8nqYmf/?mibextid=wwXIfr" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">Facebook</a>
+            <a href="https://www.threads.com/@papierpivoine?igshid=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">Threads</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="height:1px;background:var(--border-faint);margin:36px 0"></div>
+    <p style="font-family:var(--font-body);font-size:12px;color:var(--ink-faint);margin:0 0 8px;max-width:70ch;line-height:1.6">Ce que tu trouves ici est une pratique douce, pas un soin. Ce n’est pas un substitut à un accompagnement professionnel. Si tu traverses une période difficile, parles-en à un professionnel de santé.</p>
+    <p style="font-family:var(--font-body);font-size:12px;color:var(--ink-faint);margin:0">© 2026 Papier Pivoine · Camélia Nguyen</p>
+  </div>
+</footer>
+
+<div class="bar" id="bar" aria-hidden="true">
+  <div><b>Mental Léger</b><span>67 €</span></div>
+  <a class="btn" data-buy href="https://www.camelianguyen.fr/products/de-l-epuisement-mental-a-la-legerete?step=checkout" tabindex="-1">Recevoir</a>
 </div>
 
-</div>
-<script type="text/x-dc" data-dc-script data-props="{
-  &quot;pageInitiale&quot;: {
-    &quot;editor&quot;: &quot;enum&quot;,
-    &quot;options&quot;: [
-      &quot;accueil&quot;,
-      &quot;programme&quot;,
-      &quot;ecriture&quot;,
-      &quot;saisons-tranquilles&quot;,
-      &quot;7-permissions-pivoine&quot;,
-      &quot;apropos&quot;,
-      &quot;newsletter&quot;
-    ],
-    &quot;default&quot;: &quot;accueil&quot;,
-    &quot;tsType&quot;: &quot;string&quot;,
-    &quot;section&quot;: &quot;Navigation&quot;
-  },
-  &quot;afficherPrix&quot;: {
-    &quot;editor&quot;: &quot;boolean&quot;,
-    &quot;default&quot;: true,
-    &quot;tsType&quot;: &quot;boolean&quot;,
-    &quot;section&quot;: &quot;Contenu&quot;
-  },
-  &quot;kitUrl&quot;: {
-    &quot;editor&quot;: &quot;text&quot;,
-    &quot;default&quot;: &quot;https://www.camelianguyen.fr/papier-pivoine-mensuel&quot;,
-    &quot;tsType&quot;: &quot;string&quot;,
-    &quot;section&quot;: &quot;Newsletter&quot;
-  },
-  &quot;season&quot;: {
-    &quot;editor&quot;: &quot;enum&quot;,
-    &quot;options&quot;: [
-      &quot;automne&quot;,
-      &quot;neutre&quot;
-    ],
-    &quot;default&quot;: &quot;automne&quot;,
-    &quot;tsType&quot;: &quot;'automne' | 'neutre'&quot;,
-    &quot;section&quot;: &quot;Saison&quot;
-  }
-}">
-class Component extends DCLogic {
-  static PAGES = ['accueil', 'batterie-faible', 'ecriture', 'saisons-tranquilles', '7-permissions-pivoine', 'apropos', 'newsletter', 'liens'];
-
-  // Détermine la page depuis le chemin de l'URL (/programme/ -> 'batterie-faible', / -> 'accueil').
-  // Le site publié sert de vraies pages à ces adresses ; on route donc par chemin propre.
-  static pageFromLocation() {
-    try {
-      const seg = (location.pathname || '/').replace(/^\/+|\/+$/g, '').split('/')[0];
-      if (!seg) return 'accueil';
-      if (Component.PAGES.includes(seg)) return seg;
-    } catch (e) {}
-    return null;
-  }
-
-  state = {
-    page: Component.pageFromLocation() || (this.props && this.props.pageInitiale) || 'accueil',
-    email: '',
-    subscribed: false,
-    menuOpen: false,
-    eteSel: 'cover',
-    mlSel: 'cover',
-  };
-
-  go(p) {
-    this.setState({ page: p, menuOpen: false });
-    try { window.scrollTo(0, 0); } catch (_) {}
-    // Chemins propres via History API : /programme/ (accueil -> /). L'adresse partagée
-    // pointe alors sur la vraie page, avec ses propres métadonnées pour Pinterest et les réseaux.
-    const url = p === 'accueil' ? '/' : '/' + p + '/';
-    // Site publié : chaque page ne contient que son propre contenu, on charge donc la vraie page.
-    if (window.__ppStatic) { try { location.assign(url); return; } catch (_) {} }
-    try { history.pushState({ page: p }, '', url); } catch (_) {}
-  }
-
-  _applySeason() {
-    try { document.documentElement.dataset.season = this.props.season ?? 'automne'; } catch (_) {}
-  }
-
-  componentDidUpdate() { this._applySeason(); }
-
-  componentDidMount() {
-    window.addEventListener('keydown', this._hiverKey);
-    this._applySeason();
-    // Précharge les illustrations des autres pages une fois l'accueil affiché : la navigation les trouve déjà en cache.
-    try {
-      const s = document.querySelector('script[src*="support.js"]');
-      const base = s ? s.src : location.href;
-      const imgs = ['canape-bao','plaid-carnet','bouquet-automne','the-carnet-fleurs','herbes-sechees','guirlande-eglantier'].map(n => 'assets/automne/' + n + '.webp')
-        .concat(['cover-cocon-automne.jpg','cover-cocon-hiver.jpg','cover-et-si.jpg','cover-quand-ma-tete-est-pleine.jpg','bao.jpg','freebie-ml-cover.jpg','logo-papier-pivoine.jpg'].map(n => 'assets/' + n));
-      const run = () => imgs.forEach(p => { const i = new Image(); i.decoding = 'async'; i.src = new URL(p, base).href; });
-      const later = () => (window.requestIdleCallback ? requestIdleCallback(run, { timeout: 3000 }) : setTimeout(run, 1200));
-      if (document.readyState === 'complete') later(); else window.addEventListener('load', later, { once: true });
-    } catch (_) {}
-    this._onPop = () => {
-      this.setState({ page: Component.pageFromLocation() || 'accueil', menuOpen: false });
-      try { window.scrollTo(0, 0); } catch (e) {}
-    };
-    window.addEventListener('popstate', this._onPop);
-
-    // Embed Kit (pop-up newsletter) chargé UNE seule fois, hors du <helmet>,
-    // pour éviter tout double montage (le loader Kit retire son propre <script>).
-    if ((this.state.page || Component.pageFromLocation()) !== 'liens' && !window.__ppKit27Loaded && !document.querySelector('.formkit-form[data-uid="27c8b8373b"]')) {
-      window.__ppKit27Loaded = true;
-      const k = document.createElement('script');
-      k.async = true;
-      k.setAttribute('data-uid', '27c8b8373b');
-      k.src = 'https://camelianguyen.kit.com/27c8b8373b/index.js';
-      document.head.appendChild(k);
-    }
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('popstate', this._onPop);
-    window.removeEventListener('keydown', this._hiverKey);
-    document.body.style.overflow = '';
-  }
-
-  // Rend la pop-up Kit défilable sur mobile : conteneur fixe en overflow-y auto,
-  // hauteurs internes libérées, arrière-plan verrouillé tant que la pop-up est ouverte.
-  fixKitModal() {
-    if (!window.matchMedia('(max-width: 700px)').matches) { return; }
-    let tries = 0;
-    const finder = setInterval(() => {
-      tries++;
-      const els = Array.prototype.slice.call(document.querySelectorAll('[class*="formkit"]'));
-      const fixedEls = els.filter((el) => {
-        if (el.offsetWidth === 0 || el.offsetHeight === 0) { return false; }
-        return getComputedStyle(el).position === 'fixed';
-      });
-      if (fixedEls.length) {
-        clearInterval(finder);
-        fixedEls.forEach((el) => {
-          el.style.setProperty('overflow-y', 'auto', 'important');
-          el.style.setProperty('-webkit-overflow-scrolling', 'touch');
-          el.style.setProperty('align-items', 'flex-start', 'important');
-          el.style.setProperty('max-height', '100dvh', 'important');
-          el.querySelectorAll('div, form, iframe').forEach((inner) => {
-            inner.style.setProperty('max-height', 'none', 'important');
-          });
-        });
-        // Verrouiller le défilement de la page derrière
-        document.documentElement.style.overflow = 'hidden';
-        document.body.style.overflow = 'hidden';
-        const watcher = setInterval(() => {
-          const stillVisible = fixedEls.some((el) => document.contains(el) && el.offsetWidth > 0 && el.offsetHeight > 0);
-          if (!stillVisible) {
-            clearInterval(watcher);
-            document.documentElement.style.overflow = '';
-            document.body.style.overflow = '';
-          }
-        }, 300);
-      } else if (tries > 30) {
-        clearInterval(finder);
-      }
-    }, 100);
-  }
-
-  static HIVER_IMGS = [["assets/cocon-hiver/couverture.jpg","Couverture : Mon cocon d’hiver"],["assets/cocon-hiver/mon-cocon-d-hiver-carnet-bien-etre-apercu.webp","Mon cocon d’hiver : la couverture et deux pages intérieures"],["assets/cocon-hiver/carnet-hypersensible-ouvrir-selon-mon-humeur.webp","Page « Ouvrir selon mon humeur » : où aller dans le carnet selon ce que tu ressens"],["assets/cocon-hiver/test-personnalite-quel-animal-hiver-es-tu.webp","Test « Quel animal de l’hiver es-tu ? »"],["assets/cocon-hiver/carnet-hypersensible-page-ecriture-dire-non.webp","Page d’écriture « Mes petites phrases pour dire non (avec le sourire) »"],["assets/cocon-hiver/sudoku-carnet-bien-etre-hiver.webp","Sudoku tout doux"],["assets/cocon-hiver/jeu-de-plateau-chemin-du-cocon-hypersensible.webp","Jeu de plateau « Le chemin du cocon », sur deux pages"],["assets/cocon-hiver/coloriage-hiver-adulte-tasse-mis-en-couleur.webp","Coloriage d’une grande tasse fumante, mis en couleur"],["assets/cocon-hiver/coloriage-hiver-adulte-renne.webp","Coloriage d’un renne en écharpe"]];
-  hiverMainRef = React.createRef();
-  hiverZoomRef = React.createRef();
-  _hiverUrl(p) { const s = document.querySelector('script[src*="support.js"]'); return new URL(p, s ? s.src : location.href).href; }
-  _hiverZoomSet(k) { const el = this.hiverZoomRef.current, it = Component.HIVER_IMGS[k]; if (el) { el.src = this._hiverUrl(it[0]); el.alt = it[1]; } }
-  _hiverGo(i) {
-    const L = Component.HIVER_IMGS, k = (i + L.length) % L.length, el = this.hiverMainRef.current;
-    if (el) { el.style.opacity = '0'; const s = document.querySelector('script[src*="support.js"]'); const u = new URL(L[k][0], s ? s.src : location.href).href; const pre = new Image(); pre.onload = pre.onerror = () => { el.src = u; el.alt = L[k][1]; el.style.opacity = '1'; }; pre.src = u; }
-    if (this.state.hiverZoom) this._hiverZoomSet(k);
-    this.setState({ hiverI: k });
-  }
-  _hiverClose() { if (this.state.hiverZoom) { this.setState({ hiverZoom: false }); document.body.style.overflow = ''; } }
-  _hiverKey = (e) => { if (!this.state.hiverZoom) return; if (e.key === 'Escape') this._hiverClose(); else if (e.key === 'ArrowLeft') this._hiverGo((this.state.hiverI || 0) - 1); else if (e.key === 'ArrowRight') this._hiverGo((this.state.hiverI || 0) + 1); };
-  renderVals() {
-    const mailText = ['camelia', 'camelianguyen.fr'].join(String.fromCharCode(64));
-    const mailHref = 'mai' + 'lto:' + mailText;
-    const page = this.state.page;
-    const season = this.props.season ?? 'automne';
-    const navC = (k) => (page === k ? 'var(--rose)' : 'var(--ink-soft)');
-    const navU = (k) => (page === k ? 'var(--rose)' : 'transparent');
-    return {
-      mailText, mailHref,
-      hiverMainRef: this.hiverMainRef,
-      hiverZoomRef: this.hiverZoomRef,
-      hiverZoomOpen: () => { this._hiverZoomSet(this.state.hiverI || 0); this.setState({ hiverZoom: true }); document.body.style.overflow = 'hidden'; },
-      hiverZoomClose: () => this._hiverClose(),
-      hiverStop: (e) => e.stopPropagation(),
-      hiverPrevZ: (e) => { e.stopPropagation(); this._hiverGo((this.state.hiverI || 0) - 1); },
-      hiverNextZ: (e) => { e.stopPropagation(); this._hiverGo((this.state.hiverI || 0) + 1); },
-      hiverZoomVis: this.state.hiverZoom ? 'visible' : 'hidden',
-      hiverZoomOp: this.state.hiverZoom ? 1 : 0,
-      hiverPrev: () => this._hiverGo((this.state.hiverI || 0) - 1),
-      hiverNext: () => this._hiverGo((this.state.hiverI || 0) + 1),
-      hiverCount: ((this.state.hiverI || 0) + 1) + ' / ' + Component.HIVER_IMGS.length,
-      ...Object.fromEntries(Component.HIVER_IMGS.flatMap((_, i) => [['hiverShow' + i, () => this._hiverGo(i)], ['hiverB' + i, (this.state.hiverI || 0) === i ? 'var(--rose)' : 'transparent']])),
-      isAccueil: page === 'accueil',
-      isProgramme: page === 'batterie-faible',
-      isEcriture: page === 'ecriture',
-      isActivites: page === 'saisons-tranquilles',
-      isMethode: page === '7-permissions-pivoine',
-      isApropos: page === 'apropos',
-      isNewsletter: page === 'newsletter',
-      isLiens: page === 'liens',
-      showChrome: page !== 'liens',
-      showBand: page !== 'newsletter' && page !== 'liens',
-      showPrices: this.props.afficherPrix ?? true,
-
-      goAccueil: () => this.go('accueil'),
-      goProgramme: () => this.go('batterie-faible'),
-      // Masquage temporaire : Carnets d'écriture masqué, Carnets d'activités visible.
-      // Pour réafficher l'écriture : showEcriture à true (et vider HIDDEN_PAGES dans tools/build-publish.js).
-      saisonAutomne: season === 'automne',
-      saisonNeutre: season === 'neutre',
-      showEcriture: false,
-      showActivites: true,
-      goEcriture: () => this.go('ecriture'),
-      goActivites: () => this.go('saisons-tranquilles'),
-      goMethode: () => this.go('7-permissions-pivoine'),
-      goApropos: () => this.go('apropos'),
-      goNewsletter: () => this.go('newsletter'),
-      goLiens: () => this.go('liens'),
-
-      navCAccueil: navC('accueil'), navUAccueil: navU('accueil'),
-      navCProgramme: navC('batterie-faible'), navUProgramme: navU('batterie-faible'),
-      navCEcriture: navC('ecriture'), navUEcriture: navU('ecriture'),
-      navCActivites: navC('saisons-tranquilles'), navUActivites: navU('saisons-tranquilles'),
-      navCMethode: navC('7-permissions-pivoine'), navUMethode: navU('7-permissions-pivoine'),
-      navCApropos: navC('apropos'), navUApropos: navU('apropos'),
-      navCNewsletter: navC('newsletter'), navUNewsletter: navU('newsletter'),
-
-      menuOpen: this.state.menuOpen,
-      menuClosed: !this.state.menuOpen,
-      toggleMenu: () => this.setState((s) => ({ menuOpen: !s.menuOpen })),
-
-      email: this.state.email,
-      onEmailChange: (e) => this.setState({ email: e.target.value }),
-      subscribed: this.state.subscribed,
-      notSubscribed: !this.state.subscribed,
-      subscribe: () => {
-        const uid = '638990c016';
-        // Le formulaire simple n'est PAS chargé au démarrage (sinon il s'ouvrirait tout seul).
-        // On l'injecte au premier clic, puis on l'ouvre.
-        const openIt = () => {
-          const kitVisible = Array.prototype.slice
-            .call(document.querySelectorAll('[class*="formkit"]'))
-            .some((el) => el.offsetWidth > 0 && el.offsetHeight > 0);
-          if (!kitVisible) {
-            const t = document.querySelector('[data-formkit-toggle="' + uid + '"]');
-            if (t) { try { t.click(); } catch (e) {} }
-          }
-          this.fixKitModal();
-        };
-        if (window.__ppKitSimpleLoaded) { openIt(); return; }
-        window.__ppKitSimpleLoaded = true;
-        const s = document.createElement('script');
-        s.async = true;
-        s.setAttribute('data-uid', uid);
-        s.src = 'https://camelianguyen.kit.com/' + uid + '/index.js';
-        s.onload = () => { setTimeout(openIt, 350); };
-        document.head.appendChild(s);
-      },
-
-      buyTeteAmazon: () => window.open('https://www.amazon.fr/dp/B0H6BCB9VZ', '_blank'),
-      buyEteAmazon: () => window.open('https://www.amazon.fr/dp/B0H7QKL2GJ', '_blank'),
-      buySiesteAmazon: () => window.open('https://www.amazon.fr/dp/B0H96F151L', '_blank'),
-      buyCoconAutomneAmazon: () => window.open('https://www.amazon.fr/dp/B0HHLYRWNM', '_blank'),
-      buyCoconHiverAmazon: () => window.open('https://www.amazon.fr/dp/B0HL6VVS5X', '_blank'),
-      buyEtSiAmazon: () => window.open('https://www.amazon.fr/dp/B0HL27XDWD', '_blank'),
-
-      eteShowCover: (this.state.eteSel || 'cover') === 'cover' ? 'block' : 'none',
-      eteShowA: this.state.eteSel === 'a' ? 'block' : 'none',
-      eteShowB: this.state.eteSel === 'b' ? 'block' : 'none',
-      eteShowC: this.state.eteSel === 'c' ? 'block' : 'none',
-      eteShowD: this.state.eteSel === 'd' ? 'block' : 'none',
-      eteBorderCover: (this.state.eteSel || 'cover') === 'cover' ? 'var(--rose)' : 'transparent',
-      eteBorderA: this.state.eteSel === 'a' ? 'var(--rose)' : 'transparent',
-      eteBorderB: this.state.eteSel === 'b' ? 'var(--rose)' : 'transparent',
-      eteBorderC: this.state.eteSel === 'c' ? 'var(--rose)' : 'transparent',
-      eteBorderD: this.state.eteSel === 'd' ? 'var(--rose)' : 'transparent',
-      selectEteCover: () => this.setState({ eteSel: 'cover' }),
-      selectEteA: () => this.setState({ eteSel: 'a' }),
-      selectEteB: () => this.setState({ eteSel: 'b' }),
-      selectEteC: () => this.setState({ eteSel: 'c' }),
-      selectEteD: () => this.setState({ eteSel: 'd' }),
-
-      mlShowCover: (this.state.mlSel || 'cover') === 'cover' ? 'block' : 'none',
-      mlShowA: this.state.mlSel === 'a' ? 'block' : 'none',
-      mlShowB: this.state.mlSel === 'b' ? 'block' : 'none',
-      mlShowC: this.state.mlSel === 'c' ? 'block' : 'none',
-      mlBorderCover: (this.state.mlSel || 'cover') === 'cover' ? 'var(--rose)' : 'transparent',
-      mlBorderA: this.state.mlSel === 'a' ? 'var(--rose)' : 'transparent',
-      mlBorderB: this.state.mlSel === 'b' ? 'var(--rose)' : 'transparent',
-      mlBorderC: this.state.mlSel === 'c' ? 'var(--rose)' : 'transparent',
-      selectMlCover: () => this.setState({ mlSel: 'cover' }),
-      selectMlA: () => this.setState({ mlSel: 'a' }),
-      selectMlB: () => this.setState({ mlSel: 'b' }),
-      selectMlC: () => this.setState({ mlSel: 'c' }),
-      buyMentalLeger: () => window.open('https://www.camelianguyen.fr/products/de-l-epuisement-mental-a-la-legerete?step=checkout', '_blank'),
-    };
-  }
-}
-</script>
 <script>
-// Une seule copie du contenu dans le HTML : le gabarit de l'appli live est chargé à part
-// (/_app/<page>.json), puis support.js démarre et remplace #prerender.
-(function(){fetch('/_app/ecriture.json').then(function(r){return r.json();}).then(function(d){window.__ppRawTpl=d.tpl;var x=document.createElement('x-dc');x.innerHTML=d.tpl;document.body.appendChild(x);var s=document.createElement('script');s.src='/support.js';document.head.appendChild(s);}).catch(function(){});})();
-(function(){var t=0;function r(){var d=document.getElementById('dc-root');if(d&&d.childElementCount>0){d.style.display='block';var p=document.getElementById('prerender');if(p&&p.parentNode)p.parentNode.removeChild(p);return;}if(t++<900)requestAnimationFrame(r);}requestAnimationFrame(r);})();
+/* Lien de paiement Kit : change-le ici, une seule fois. */
+var CHECKOUT = 'https://www.camelianguyen.fr/products/de-l-epuisement-mental-a-la-legerete?step=checkout';
+document.querySelectorAll('[data-buy]').forEach(function (a) { a.href = CHECKOUT; });
+
+/* en-tête et barre d'achat (mobile) */
+var hdr = document.getElementById('top'), bar = document.getElementById('bar'), hero = document.querySelector('.hero'), price = document.getElementById('recevoir');
+function onScroll() {
+  var y = window.scrollY;
+  hdr.classList.toggle('scrolled', y > 8);
+  var past = y > hero.offsetTop + hero.offsetHeight - 80;
+  var r = price.getBoundingClientRect(), atPrice = r.top < innerHeight && r.bottom > 0;
+  var on = past && !atPrice;
+  bar.classList.toggle('on', on);
+  bar.setAttribute('aria-hidden', on ? 'false' : 'true');
+  bar.querySelector('a').tabIndex = on ? 0 : -1;
+}
+addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+/* apparition douce */
+if ('IntersectionObserver' in window) {
+  var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.rv').forEach(function (el) { io.observe(el); });
+} else { document.querySelectorAll('.rv').forEach(function (el) { el.classList.add('in'); }); }
+
+/* extrait audio (visible seulement avec data-mots="audio") */
+var mp = document.getElementById('motPlay'), ma = document.getElementById('motAudio');
+if (mp && ma) mp.addEventListener('click', function () { if (ma.paused) ma.play(); else ma.pause(); });
 </script>
 </body>
 </html>
