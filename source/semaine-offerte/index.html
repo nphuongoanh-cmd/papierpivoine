@@ -1,0 +1,343 @@
+<!doctype html>
+<!-- Papier Pivoine · La première semaine de Mental Léger, offerte · variante A (tete-pleine)
+     Formulaire Kit : remplace 10001703 (une seule fois par page) par l'identifiant de ton formulaire Kit.
+     Le champ caché fields[source] = "a" dit à Kit quelle variante a converti (champ personnalisé « source » à créer dans Kit). -->
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>La première semaine de Mental Léger, offerte · Papier Pivoine</title>
+<meta name="description" content="Cinq soirs, cinq ou dix minutes, une page pour poser ce qui tourne dans ta tête. La première semaine de Mental Léger, offerte.">
+<link rel="canonical" href="https://papierpivoine.fr/semaine-offerte/">
+<meta name="theme-color" content="#FCF6F2">
+<meta property="og:type" content="website"><meta property="og:locale" content="fr_FR"><meta property="og:site_name" content="Papier Pivoine">
+<meta property="og:title" content="La première semaine de Mental Léger, offerte">
+<meta property="og:description" content="Cinq soirs, cinq ou dix minutes, une page pour poser ce qui tourne dans ta tête. La première semaine de Mental Léger, offerte.">
+<meta property="og:image" content="https://papierpivoine.fr/assets/landing/semaine-offerte/premiere-semaine-mental-leger-offerte.webp">
+<link rel="preload" href="/assets/landing/fonts/fraunces-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/landing/fonts/nunito-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:Fraunces;src:url(/assets/landing/fonts/fraunces-latin-800-normal.woff2) format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:Fraunces;src:url(/assets/landing/fonts/fraunces-latin-400-italic.woff2) format("woff2");font-weight:100 900;font-style:italic;font-display:swap}
+@font-face{font-family:"Nunito Sans";src:url(/assets/landing/fonts/nunito-sans-latin-400-normal.woff2) format("woff2");font-weight:200 1000;font-display:swap}
+@font-face{font-family:Caveat;src:url(/assets/landing/fonts/caveat-latin-700-normal.woff2) format("woff2");font-weight:400 700;font-display:swap}
+:root{--cream:#FCF6F2;--paper:#FFFDF8;--ink:#33321E;--ink2:#4A463A;--soft:#6B6953;--line:#E8DED3;--peony:#E26D5F;--peony-d:#BF5548;--rose:#F7D9D3;--rose-l:#FBEDEA;--sand:#EAD9AC;--sand-l:#F7F0DE;--sage:#B2BD88}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font:400 18px/1.65 "Nunito Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--peony-d)}
+h1,h2{font-family:Fraunces,Georgia,serif;font-weight:800;line-height:1.12;margin:0 0 18px;text-wrap:balance}
+h1{font-size:clamp(36px,6.2vw,62px)}
+h2{font-size:clamp(28px,4vw,40px)}
+p{margin:0 0 14px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 min(48px,6vw)}
+.narrow{max-width:760px}
+.center{text-align:center}
+.sec{padding:clamp(56px,9vw,104px) 0}
+.bg-sand{background:var(--sand-l)}
+.bg-rose{background:var(--rose-l)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center}
+.two>*{min-width:0}
+.lead{font-size:20px;color:var(--ink2)}
+.kick{font:600 12px/1.3 "Nunito Sans";letter-spacing:.14em;text-transform:uppercase;color:var(--soft);margin-bottom:12px}
+.hl{background:linear-gradient(transparent 55%,var(--sand) 55%,var(--sand) 92%,transparent 92%);padding:0 6px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.aside{font:600 23px/1.2 Caveat,cursive;color:var(--peony-d)}
+/* site header base (same as the sales page; the harmonisation block below restyles it) */
+.top{position:sticky;top:0;z-index:20;background:rgba(252,246,242,.92);border-bottom:1px solid transparent}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font:600 19px Fraunces,serif}
+.nav{display:flex;gap:22px;font-size:15px}
+.nav a{color:var(--ink2);text-decoration:none}
+footer a{text-decoration:none}
+/* hero */
+.hero{padding:clamp(36px,6vw,76px) 0 clamp(48px,7vw,88px)}
+.hero .two{grid-template-columns:1.05fr .95fr}
+.hero .lead{max-width:34ch}
+.badge{display:inline-block;font:700 13px "Nunito Sans";letter-spacing:.08em;text-transform:uppercase;background:var(--rose);color:var(--peony-d);padding:6px 12px;border-radius:999px;margin-bottom:18px}
+.hero-art{position:relative}
+.hero-art .note{position:absolute;font:700 26px/1.1 Caveat,cursive;color:var(--peony-d);transform:rotate(-4deg)}
+/* form */
+form.sub{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:22px;margin:22px 0 6px;box-shadow:0 10px 30px rgba(51,50,30,.07);text-align:left}
+form.sub .fields{display:grid;grid-template-columns:1fr 1.4fr;gap:12px}
+form.sub label span{display:block;font:700 13px "Nunito Sans";color:var(--ink2);margin:0 0 6px 4px}
+form.sub input{width:100%;font:400 17px "Nunito Sans";padding:13px 16px;border:1.5px solid #E8C9C0;border-radius:14px;background:#fff;color:var(--ink)}
+form.sub input:focus{outline:none;border-color:var(--peony);box-shadow:0 0 0 3px rgba(226,109,95,.18)}
+form.sub .btn{width:100%;margin-top:14px}
+.fine{font-size:13px;line-height:1.5;color:var(--soft);margin:12px 4px 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--peony);color:#fff;border:0;border-radius:999px;font:700 28px/1.1 Caveat,cursive;padding:12px 28px 14px;cursor:pointer;text-decoration:none;transition:background .2s}
+.btn:hover{background:var(--peony-d);color:#fff}
+.btn .pv{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:5;stroke-linecap:round}
+.btn:disabled{opacity:.7}
+/* lists */
+.ticks{list-style:none;padding:0;margin:8px 0 0}
+.ticks li{position:relative;padding-left:34px;margin:0 0 14px}
+.ticks li:before{content:"";position:absolute;left:0;top:5px;width:20px;height:20px;border-radius:6px;background:var(--rose) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 10.5l3.2 3L15 6.5' fill='none' stroke='%23BF5548' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat}
+.steps{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:14px}
+.steps li{display:grid;grid-template-columns:44px 1fr;column-gap:16px;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px 20px}
+.steps .num{grid-row:span 2;width:40px;height:40px;border-radius:50%;background:var(--sand);display:grid;place-items:center;font:700 18px Fraunces,serif}
+.steps b{font-family:Fraunces,serif;font-size:20px}
+.steps li>span:last-child{color:var(--ink2)}
+/* days */
+.days{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px 4px 18px;margin:18px -4px 0}
+.day{flex:0 0 min(240px,70vw);margin:0;scroll-snap-align:start}
+.day img{border-radius:6px;box-shadow:0 8px 22px rgba(51,50,30,.13);background:#fff}
+.day figcaption{padding:12px 4px 0;display:flex;flex-direction:column;gap:2px}
+.day .n{font:700 13px "Nunito Sans";letter-spacing:.08em;color:var(--peony-d)}
+.day b{font-family:Fraunces,serif;font-size:19px;line-height:1.2}
+.day figcaption span:last-child{font-size:15px;color:var(--soft)}
+.hint{font-size:14px;color:var(--soft);margin:0}
+/* quote */
+.quote{margin:0;font:italic 500 clamp(22px,3vw,30px)/1.45 Fraunces,serif}
+.quote cite{display:block;font:400 15px "Nunito Sans";font-style:normal;color:var(--soft);margin-top:14px}
+/* faq */
+.faq details{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px 20px;margin:0 0 12px}
+.faq summary{cursor:pointer;font:700 19px/1.35 Fraunces,serif;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";float:right;color:var(--peony);font-weight:400}
+.faq details[open] summary:after{content:"–"}
+.faq p{margin:10px 0 0;color:var(--ink2)}
+/* final */
+.final .deco{width:min(320px,70%);margin:0 auto 18px}
+.help{font-size:14px;color:var(--soft);margin-top:18px}
+/* poll (variante E) */
+.poll{display:grid;gap:10px;margin:22px 0 0}
+.poll button{display:flex;align-items:center;gap:12px;width:100%;text-align:left;font:600 17px/1.35 "Nunito Sans";color:var(--ink);background:#fff;border:1.5px solid #E8C9C0;border-radius:999px;padding:13px 18px;cursor:pointer;transition:border-color .2s,background .2s}
+.poll button:before{content:"";flex:none;width:16px;height:16px;border-radius:50%;border:2px solid var(--peony)}
+.poll button:hover,.poll button[aria-pressed=true]{border-color:var(--peony);background:var(--rose-l)}
+.poll button[aria-pressed=true]:before{background:var(--peony);box-shadow:inset 0 0 0 3px #fff}
+.answer{display:none;margin-top:22px;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:22px}
+.answer.on{display:block;animation:up .4s ease}
+.answer h3{font:800 24px/1.25 Fraunces,serif;margin:0 0 10px}
+@keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+/* sticky bar */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;align-items:center;justify-content:center;gap:16px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(252,246,242,.96);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .3s}
+.bar.on{transform:none}
+.bar span{font:700 16px "Nunito Sans"}
+.bar .btn{font-size:24px;padding:6px 20px 8px}
+/* reveal */
+.rv{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+@media (max-width:860px){.two,.hero .two{grid-template-columns:1fr}.hero-art{order:-1;max-width:520px;margin:0 auto}.hero-art img{max-height:190px;width:auto;margin:0 auto}.hero-art .note{font-size:21px}.hero{padding-top:20px}}
+@media (max-width:560px){body{font-size:17px}form.sub .fields{grid-template-columns:1fr}.btn{font-size:24px}.bar span{display:none}.lead{font-size:18px}}
+
+/* ── Harmonisation avec papierpivoine.fr (palette, titres, boutons, en-tête, pied de page) ── */
+:root{
+  --paper:#FFFCFA; --ink2:#46452F; --soft:#6B6953; --line:#EDE1D6;
+  --peony:#E26D5F; --peony-d:#BF5548; --rose:#F7D9D3; --rose-l:#FBEDEA;
+  --blue:#B2BD88; --blue-l:#EEF0DE; --apri:#EAD9AC; --apri-l:#F7F0DE; --grey:#6B6953; --grey-l:#E9ECD9; --dusty:#DDA9A0;
+  --paper-warm:#FCF6F2; --border-faint:#EDE1D6; --deep-olive:#33321E; --ink-soft:#46452F; --ink-faint:#6B6953; --rose-deep:#BF5548; --blush:#F7D9D3;
+  --font-display:Fraunces,Georgia,serif; --font-body:"Nunito Sans",system-ui,sans-serif; --font-accent:Caveat,cursive;
+}
+a{color:var(--peony-d)} a:hover{color:var(--ink)}
+h1,h2{font-weight:800;font-variation-settings:'opsz' 72;letter-spacing:-.005em;color:var(--deep-olive)}
+.hero h1{letter-spacing:-.005em}
+.hero h1 .hl,.hl{background:linear-gradient(transparent 55%,var(--sand) 55%,var(--sand) 92%,transparent 92%);padding:0 6px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.kick,.pp-eyebrow{font:500 12px/1.3 var(--font-body);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.btn{background:transparent;color:var(--peony);border:3px solid var(--peony);box-shadow:none;font:700 30px/1.1 var(--font-accent);padding:8px 26px 10px;transform:rotate(-2deg);transition:background-color .2s ease,color .2s ease}
+.btn:hover{background:var(--peony);color:var(--paper);transform:rotate(-2deg)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink);box-shadow:none}
+.btn.ghost:hover{background:var(--ink);color:var(--paper)}
+.bar .btn{background:var(--peony);color:var(--paper);border:0;font-size:24px;padding:8px 20px 10px;transform:none}
+.bar .btn:hover{background:var(--peony-d);transform:none}
+.pill{background:var(--peony)}
+.player button{background:var(--peony)}
+/* en-tête du site */
+.top{background:var(--paper-warm);backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom:1px solid var(--border-faint)}
+.top .wrap{max-width:none;height:auto;padding:18px min(48px,5vw);flex-wrap:wrap;gap:10px 24px}
+.brand{font:800 23px var(--font-display);font-variation-settings:'opsz' 72;letter-spacing:-.005em;color:var(--deep-olive);gap:10px}
+.brand img{width:40px;height:40px;border-radius:50%;border:2px solid var(--ink);box-sizing:border-box;flex:none}
+.nav{gap:6px 24px;flex-wrap:wrap;font-size:14px}
+.nav a{color:var(--ink-soft);padding:4px 0;border-bottom:1px solid transparent}
+.nav a:hover{color:var(--peony)}
+.nav a[aria-current]{color:var(--peony);font-weight:400;border-bottom-color:var(--peony)}
+.burger{display:none;align-items:center;justify-content:center;width:44px;height:44px;margin:-8px -10px;border:0;background:none;color:var(--deep-olive);cursor:pointer}
+.burger .i-close,.top.open .burger .i-open{display:none}
+.top.open .burger .i-close{display:block}
+.mnav{display:none}
+@media (max-width:920px){.nav{display:flex}}
+@media (max-width:700px){
+  .nav{display:none}
+  .burger{display:inline-flex}
+  .top.open .mnav{display:flex;flex-direction:column;flex-basis:100%;padding:2px 0 8px}
+  .mnav a{font-size:16px;padding:13px 2px;min-height:44px;display:flex;align-items:center;box-sizing:border-box;color:var(--ink-soft);text-decoration:none;border-top:1px solid var(--border-faint)}
+  .mnav a[aria-current]{color:var(--peony)}
+}
+/* pied de page du site */
+footer.site{background:var(--paper-warm);border-top:1px solid var(--border-faint);padding:56px min(48px,5vw) 40px;font-size:inherit;color:inherit}
+footer.site .fcol{display:flex;flex-direction:column;gap:9px;font-family:var(--font-body);font-size:14px;color:var(--ink-soft)}
+footer.site a:hover{color:var(--peony-d)!important}
+@media (max-width:860px){footer.site{padding-bottom:120px}}
+@media (max-width:700px){footer.site .fcol a{min-height:44px;display:flex;align-items:center}}
+
+/* the site's harmonisation CSS restyles .btn as an outline: keep this page's filled button */
+.btn{background:var(--peony);color:#fff;border:0;transform:none;font:700 28px/1.1 Caveat,cursive;padding:12px 28px 14px}
+.btn:hover{background:var(--peony-d);color:#fff;transform:none}
+@media (max-width:560px){.btn{font-size:22px;padding:12px 16px 13px;white-space:nowrap}}
+.bar .btn{font-size:24px;padding:6px 20px 8px}
+</style>
+</head>
+<body>
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Papier Pivoine, accueil"><img src="/assets/logo-papier-pivoine.jpg" width="400" height="400" alt="">Papier Pivoine</a>
+    <button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mnav" onclick="var h=document.getElementById('top');var o=h.classList.toggle('open');this.setAttribute('aria-expanded',o)"><svg class="i-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M3 8h18"></path><path d="M3 16h18"></path></svg><svg class="i-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg></button>
+    <nav class="nav" aria-label="Navigation">
+      <a href="/">Accueil</a>
+      <a href="/ecriture/">Programme d’écriture</a>
+      <a href="/activites/">Carnets d’activités douces</a>
+      <a href="/7-permissions-pivoine/">7 permissions PIVOINE</a>
+      <a href="/apropos/">À propos</a>
+      <a href="/newsletter/">Newsletter</a>
+    </nav>
+    <nav class="mnav" id="mnav" aria-label="Navigation mobile">
+      <a href="/">Accueil</a>
+      <a href="/ecriture/">Programme d’écriture</a>
+      <a href="/activites/">Carnets d’activités douces</a>
+      <a href="/7-permissions-pivoine/">7 permissions PIVOINE</a>
+      <a href="/apropos/">À propos</a>
+      <a href="/newsletter/">Newsletter</a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="hero" id="recevoir">
+  <div class="wrap two">
+    <div>
+      <span class="badge">La première semaine, offerte</span>
+      <h1>Ta journée est finie. Ta tête, <span class='hl'>pas encore</span>.</h1>
+      <p class="lead">La réunion de demain, le linge, ce qu’a dit ta sœur. Cinq soirs, cinq ou dix minutes, une page pour poser tout ça. La première semaine de mon programme d’écriture, offerte.</p>
+      
+      <form class="sub" action="https://app.kit.com/forms/10001703/subscriptions" method="post" data-src="a">
+  <input type="hidden" name="fields[source]" value="a">
+  <div class="fields">
+    <label><span>Ton prénom</span><input name="fields[first_name]" autocomplete="given-name" required placeholder="Clémence"></label>
+    <label><span>Ton adresse e-mail</span><input type="email" name="email_address" autocomplete="email" required placeholder="toi@exemple.fr"></label>
+  </div>
+  <button class="btn" type="submit">Recevoir ma première semaine <svg class="pv" viewBox="0 0 120 120" aria-hidden="true"><path d="M62.7,49.8 C66.1,48.3 73.1,61.7 69.5,62.6 C71.8,66.2 60.0,73.3 57.4,69.7 C53.2,71.8 46.4,60.3 50.3,57.4 C49.8,53.3 61.7,47.9 62.7,51.8 M57.1,43.6 C46.3,12.7 80.5,14.0 65.0,44.5 M69.6,46.7 C81.8,18.7 103.5,44.8 74.8,52.4 M77.3,59.3 C107.0,50.6 98.2,86.2 75.1,67.9 M71.5,72.6 C98.7,90.0 68.7,109.6 64.6,76.1 M56.0,75.8 C55.5,106.4 22.2,90.6 49.0,71.4 M46.0,67.6 C19.3,88.3 11.6,52.1 44.5,60.0 M44.9,52.5 C15.6,45.7 36.2,19.9 49.7,47.0"/></svg></button>
+  <p class="fine">Gratuit. Tu reçois aussi ma lettre du premier dimanche, et parfois quelques mots entre deux lettres. Désinscription en un clic. Ton adresse reste entre nous.</p>
+</form>
+    </div>
+    <div class="hero-art"><span class="note" style="left:6%;bottom:-6px">(et si tu la vidais sur papier ?)</span><img src="/assets/landing/semaine-offerte/tete-pleine.webp" alt="Un nuage de pensées qui déborde, dessiné à la main" fetchpriority="high"></div>
+  </div>
+</section>
+<section class="sec">
+  <div class="wrap two">
+    <div class="pic rv"><img loading="lazy" src="/assets/landing/semaine-offerte/premiere-semaine-mental-leger-offerte.webp" width="1032" height="660" alt="La première semaine de Mental Léger : la couverture et deux pages intérieures"></div>
+    <div>
+      <div class="kick">Ce que tu reçois</div>
+      <h2>La première semaine de Mental Léger, <span class='hl'>en entier</span></h2>
+      <ul class="ticks">
+        <li><b>22 pages</b>, à imprimer ou à remplir directement à l’écran : chaque ligne se tape.</li>
+        <li><b>Cinq jours d’écriture</b>, cinq ou dix minutes chacun. Et une version en cinq minutes, pour les soirs à cinq minutes.</li>
+        <li><b>Chaque jour, trois gestes</b> : ta météo à entourer, l’exercice, et la ligne « Ce qui s’est apaisé, même un peu ».</li>
+        <li><b>Ma lettre du premier dimanche</b> : un thème, un exercice d’écriture douce, et mes nouvelles.</li>
+      </ul>
+    </div>
+  </div>
+</section><section class="sec bg-sand">
+  <div class="wrap">
+    <div class="kick">Dans ta semaine offerte</div>
+    <h2>Ta semaine, jour par jour</h2>
+    <div class="days"><figure class="day rv"><img loading="lazy" src="/assets/landing/semaine-offerte/pourquoi-je-commence-p7.webp" width="620" height="878" alt="Page 7 : Pourquoi je commence"><figcaption><span class="n">S0</span><b>Pourquoi je commence</b><span>six petites cases à cocher, et tes mots à toi</span></figcaption></figure><figure class="day rv"><img loading="lazy" src="/assets/landing/semaine-offerte/jour-1-le-vidage-p9.webp" width="620" height="878" alt="Page 9 : Le vidage"><figcaption><span class="n">J1</span><b>Le vidage</b><span>dix minutes, tout ce qui passe par ta tête</span></figcaption></figure><figure class="day rv"><img loading="lazy" src="/assets/landing/semaine-offerte/jour-2-le-tri-p10.webp" width="620" height="878" alt="Page 10 : Le tri"><figcaption><span class="n">J2</span><b>Le tri</b><span>quatre cases pour ranger ce qui tourne</span></figcaption></figure><figure class="day rv"><img loading="lazy" src="/assets/landing/semaine-offerte/jour-3-ce-qui-depend-de-moi-p11.webp" width="620" height="878" alt="Page 11 : Ce qui dépend de moi"><figcaption><span class="n">J3</span><b>Ce qui dépend de moi</b><span>« est-ce que je peux agir dessus ? »</span></figcaption></figure><figure class="day rv"><img loading="lazy" src="/assets/landing/semaine-offerte/jour-4-revenir-par-les-sens-p12.webp" width="620" height="878" alt="Page 12 : Revenir par les sens"><figcaption><span class="n">J4</span><b>Revenir par les sens</b><span>le 5-4-3-2-1, quand ça déborde</span></figcaption></figure><figure class="day rv"><img loading="lazy" src="/assets/landing/semaine-offerte/jour-5-la-gratitude-p13.webp" width="620" height="878" alt="Page 13 : La gratitude"><figcaption><span class="n">J5</span><b>La gratitude</b><span>trois petites choses, même minuscules</span></figcaption></figure></div>
+    <p class="hint">Fais défiler pour voir les pages →</p>
+  </div>
+</section><section class="sec bg-rose">
+  <div class="wrap narrow center">
+    <blockquote class="quote rv">« J’ai rempli plusieurs pages, sans être pressée par le temps… je me sens assez soulagée, calme… J’adore cet exercice. »<cite>Anne-Sophie, après le jour 1</cite></blockquote>
+  </div>
+</section><section class="sec">
+  <div class="wrap narrow">
+    <div class="kick">Comment ça se passe</div>
+    <h2>Trois petits pas, <span class='hl'>c’est tout</span></h2>
+    <ol class="steps"><li class="rv"><span class="num">1</span><b>Tu laisses ton prénom et ton e-mail</b><span>Ta semaine arrive dans ta boîte mail, tout de suite.</span></li><li class="rv"><span class="num">2</span><b>Tu choisis ton coin</b><span>Le bout du canapé, la table de la cuisine, ton lit avec un plaid. Ton téléphone, un peu plus loin.</span></li><li class="rv"><span class="num">3</span><b>Tu écris cinq ou dix minutes</b><span>Un soir, puis un autre. Sauter un jour n’est pas une faute : la semaine t’attend.</span></li></ol>
+  </div>
+</section><section class="sec">
+  <div class="wrap two">
+    <div class="pic rv"><img loading="lazy" src="/assets/landing/semaine-offerte/camelia-bureau-bao.webp" width="700" height="455" alt="Camélia à son bureau, avec Bao endormi à côté de son carnet"></div>
+    <div>
+      <div class="kick">Qui t’écrit</div>
+      <h2>Moi, c’est Camélia</h2>
+      <p class="lead">J’écris pour les femmes hypersensibles et introverties, parce que j’en suis une.</p>
+      
+      <p>Le soir, je rentre du bureau vidée. Ce qui m’aide : écrire cinq minutes avant d’allumer l’écran.</p>
+      <p>J’écris le plus souvent à mon bureau, dans le salon. Un thé vert le matin, une tisane le soir. Bao dort à côté de mon carnet. <span class="aside" >(Quand il ne gratte pas sa couverture.)</span></p>
+    </div>
+  </div>
+</section><section class="sec bg-sand">
+  <div class="wrap narrow">
+    <div class="kick">Avant de te lancer</div>
+    <h2>Tes questions</h2>
+    <div class="faq"><details><summary>C’est vraiment gratuit ?</summary><p>Oui. La semaine est à toi, même si tu n’achètes jamais rien. Si un jour tu as envie de continuer, le programme complet existe : six semaines, une appli compagnon, 67 €. Je t’en parlerai à la fin de ta semaine, pas avant.</p></details><details><summary>Je n’ai jamais tenu de journal.</summary><p>Ça n’a pas d’importance. Pas de style à avoir, pas de belles phrases. Certains jours tu écriras trois lignes, d’autres trois pages. Les deux suffisent.</p></details><details><summary>Je n’ai pas d’imprimante.</summary><p>Tu peux tout remplir à l’écran, sur ton ordinateur ou ta tablette. Chaque ligne se tape.</p></details><details><summary>Je n’ai pas le temps.</summary><p>Chaque jour a sa version en cinq minutes. Et le weekend, tu souffles.</p></details><details><summary>Qu’est-ce que tu fais de mon adresse ?</summary><p>Je t’envoie ta semaine, ma lettre du premier dimanche, et parfois quelques mots entre deux lettres. Je ne la partage avec personne. Un clic en bas de chaque e-mail, et tu pars.</p></details></div>
+  </div>
+</section><section class="sec final" id="recevoir-bas">
+  <div class="wrap narrow center">
+    <img class="deco rv" loading="lazy" src="/assets/landing/semaine-offerte/plaid-carnet.webp" width="1280" height="844" alt="">
+    <h2>Ce soir, <span class='hl'>dix minutes</span> rien qu’à toi</h2>
+    <p class="lead">Ou cinq. C’est écrit en bas de la page.</p>
+    <form class="sub" action="https://app.kit.com/forms/10001703/subscriptions" method="post" data-src="a">
+  <input type="hidden" name="fields[source]" value="a">
+  <div class="fields">
+    <label><span>Ton prénom</span><input name="fields[first_name]" autocomplete="given-name" required placeholder="Clémence"></label>
+    <label><span>Ton adresse e-mail</span><input type="email" name="email_address" autocomplete="email" required placeholder="toi@exemple.fr"></label>
+  </div>
+  <button class="btn" type="submit">Recevoir ma première semaine <svg class="pv" viewBox="0 0 120 120" aria-hidden="true"><path d="M62.7,49.8 C66.1,48.3 73.1,61.7 69.5,62.6 C71.8,66.2 60.0,73.3 57.4,69.7 C53.2,71.8 46.4,60.3 50.3,57.4 C49.8,53.3 61.7,47.9 62.7,51.8 M57.1,43.6 C46.3,12.7 80.5,14.0 65.0,44.5 M69.6,46.7 C81.8,18.7 103.5,44.8 74.8,52.4 M77.3,59.3 C107.0,50.6 98.2,86.2 75.1,67.9 M71.5,72.6 C98.7,90.0 68.7,109.6 64.6,76.1 M56.0,75.8 C55.5,106.4 22.2,90.6 49.0,71.4 M46.0,67.6 C19.3,88.3 11.6,52.1 44.5,60.0 M44.9,52.5 C15.6,45.7 36.2,19.9 49.7,47.0"/></svg></button>
+  <p class="fine">Gratuit. Tu reçois aussi ma lettre du premier dimanche, et parfois quelques mots entre deux lettres. Désinscription en un clic. Ton adresse reste entre nous.</p>
+</form>
+  </div>
+</section>
+</main>
+<footer class="site">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:32px;flex-wrap:wrap">
+      <div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="font-family:var(--font-display);font-weight:800;font-variation-settings:'opsz' 72;font-size:21px;color:var(--deep-olive);letter-spacing:-0.005em">Papier Pivoine</span><svg width="30" height="30" viewBox="0 0 120 120" fill="none" stroke="#E26D5F" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M62.7,49.8 C66.1,48.3 73.1,61.7 69.5,62.6 C71.8,66.2 60.0,73.3 57.4,69.7 C53.2,71.8 46.4,60.3 50.3,57.4 C49.8,53.3 61.7,47.9 62.7,51.8 M57.1,43.6 C46.3,12.7 80.5,14.0 65.0,44.5 M69.6,46.7 C81.8,18.7 103.5,44.8 74.8,52.4 M77.3,59.3 C107.0,50.6 98.2,86.2 75.1,67.9 M71.5,72.6 C98.7,90.0 68.7,109.6 64.6,76.1 M56.0,75.8 C55.5,106.4 22.2,90.6 49.0,71.4 M46.0,67.6 C19.3,88.3 11.6,52.1 44.5,60.0 M44.9,52.5 C15.6,45.7 36.2,19.9 49.7,47.0"></path></svg></div>
+        <p style="font-family:var(--font-body);font-style:italic;color:var(--rose-deep);margin:0;font-size:15px;max-width:32ch;line-height:1.5">Trop sensible, trop fatiguée, trop bien sous mon plaid.</p>
+      </div>
+      <div style="display:flex;gap:40px 64px;flex-wrap:wrap">
+        <div>
+          <div class="pp-eyebrow" style="margin-bottom:14px">Découvrir</div>
+          <div class="fcol">
+            <a href="/activites/" style="color:var(--ink-soft);text-decoration:none">Carnets d’activités douces</a>
+            <a href="/ecriture/" style="color:var(--ink-soft);text-decoration:none">Programme d’écriture</a>
+            <a href="/7-permissions-pivoine/" style="color:var(--ink-soft);text-decoration:none">7 permissions PIVOINE</a>
+            <a href="/apropos/" style="color:var(--ink-soft);text-decoration:none">À propos</a>
+          </div>
+        </div>
+        <div>
+          <div class="pp-eyebrow" style="margin-bottom:14px">Rester en lien</div>
+          <div class="fcol">
+            <a href="/newsletter/" style="color:var(--ink-soft);text-decoration:none">Newsletter gratuite</a>
+            <a href="mailto:camelia@camelianguyen.fr" style="color:var(--ink-soft);text-decoration:none">Écrire à Camélia</a>
+            <a href="https://fr.pinterest.com/papierpivoine/" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">Pinterest</a>
+            <a href="https://www.youtube.com/@papierpivoine/shorts" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">YouTube</a>
+            <a href="https://www.tiktok.com/@papierpivoine" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">TikTok</a>
+            <a href="https://www.instagram.com/papierpivoine/" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">Instagram</a>
+            <a href="https://www.facebook.com/share/1Bue8nqYmf/?mibextid=wwXIfr" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">Facebook</a>
+            <a href="https://www.threads.com/@papierpivoine?igshid=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">Threads</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="height:1px;background:var(--border-faint);margin:36px 0"></div>
+    <p style="font-family:var(--font-body);font-size:12px;color:var(--ink-faint);margin:0 0 8px;max-width:70ch;line-height:1.6">Ce que tu trouves ici est une pratique douce, pas un soin. Ce n’est pas un substitut à un accompagnement professionnel. Si tu traverses une période difficile, parles-en à un professionnel de santé.</p>
+    <p style="font-family:var(--font-body);font-size:12px;color:var(--ink-faint);margin:0">© 2026 Papier Pivoine · Camélia Nguyen</p>
+  </div>
+</footer>
+<div class="bar" id="bar"><span>Ta première semaine, offerte</span><a class="btn" href="#recevoir">Je la veux</a></div>
+<script>
+(function(){
+  var io=('IntersectionObserver' in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'}):null;
+  document.querySelectorAll('.rv').forEach(function(el){io?io.observe(el):el.classList.add('in');});
+  var bar=document.getElementById('bar'), forms=document.querySelectorAll('form.sub');
+  function vis(el){var r=el.getBoundingClientRect();return r.top<innerHeight&&r.bottom>0;}
+  addEventListener('scroll',function(){var any=false;forms.forEach(function(f){if(vis(f))any=true;});bar.classList.toggle('on',scrollY>600&&!any);},{passive:true});
+  forms.forEach(function(f){f.addEventListener('submit',function(){var b=f.querySelector('button');b.disabled=true;b.firstChild.nodeValue='Envoi… ';});});
+})();
+
+</script>
+</body>
+</html>
