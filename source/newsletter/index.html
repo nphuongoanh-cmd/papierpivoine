@@ -1,650 +1,428 @@
-<!DOCTYPE html>
+<!doctype html>
+<!-- Papier Pivoine · La lettre de Papier Pivoine, le premier dimanche du mois · variante NEWSLETTER (newsletter)
+     Formulaire Kit : 9685937 (le formulaire de la séquence de bienvenue).
+     Le champ caché fields[source] = "newsletter" dit à Kit quelle variante a converti (champ personnalisé « source » à créer dans Kit). -->
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Newsletter · Papier Pivoine</title>
-<meta name="description" content="Une fois par mois, je t'écris : le thème de la saison, mes réflexions, un exercice d'écriture. Gratuit, avec la première semaine de Mental Léger offerte.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Newsletter écriture douce gratuite · La lettre de Papier Pivoine</title>
+<meta name="description" content="Une lettre douce le premier dimanche du mois : un thème de saison, un exercice d’écriture, et les nouvelles de Camélia. Et en cadeau, la première semaine de Mental Léger.">
 <link rel="canonical" href="https://papierpivoine.fr/newsletter/">
-<meta name="robots" content="index,follow">
 <meta name="theme-color" content="#FCF6F2">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Papier Pivoine">
-<meta property="og:locale" content="fr_FR">
-<meta property="og:title" content="Newsletter Papier Pivoine">
-<meta property="og:description" content="Une fois par mois, je t'écris : le thème de la saison, mes réflexions, un exercice d'écriture. Gratuit, avec la première semaine de Mental Léger offerte.">
-<meta property="og:url" content="https://papierpivoine.fr/newsletter/">
-<meta property="og:image" content="https://papierpivoine.fr/assets/freebie-ml-cover.jpg">
-<meta property="og:image:width" content="551">
-<meta property="og:image:height" content="780">
-<meta property="og:image:alt" content="La première semaine de Mental Léger, à imprimer, offerte">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Newsletter Papier Pivoine">
-<meta name="twitter:description" content="Une fois par mois, je t'écris : le thème de la saison, mes réflexions, un exercice d'écriture. Gratuit, avec la première semaine de Mental Léger offerte.">
-<meta name="twitter:image" content="https://papierpivoine.fr/assets/freebie-ml-cover.jpg">
-<meta name="twitter:image:alt" content="La première semaine de Mental Léger, à imprimer, offerte">
-<link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
-<link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
-<link rel="preload" href="/assets/fonts/fraunces-800-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-<link rel="preload" href="/assets/fonts/nunito-sans-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-<link rel="stylesheet" href="/_ds/papier-pivoine-design-system-2e8f201d-b7b2-4ba9-95cb-6dcf33a643b1/tokens/colors.css">
-<link rel="stylesheet" href="/_ds/papier-pivoine-design-system-2e8f201d-b7b2-4ba9-95cb-6dcf33a643b1/tokens/typography.css">
-<link rel="stylesheet" href="/_ds/papier-pivoine-design-system-2e8f201d-b7b2-4ba9-95cb-6dcf33a643b1/tokens/spacing.css">
-<link rel="stylesheet" href="/_ds/papier-pivoine-design-system-2e8f201d-b7b2-4ba9-95cb-6dcf33a643b1/tokens/effects.css">
-<link rel="stylesheet" href="/_ds/papier-pivoine-design-system-2e8f201d-b7b2-4ba9-95cb-6dcf33a643b1/tokens/base.css">
-<link rel="stylesheet" href="/_ds/papier-pivoine-design-system-2e8f201d-b7b2-4ba9-95cb-6dcf33a643b1/styles.css">
+<meta property="og:type" content="website"><meta property="og:locale" content="fr_FR"><meta property="og:site_name" content="Papier Pivoine">
+<meta property="og:title" content="La première semaine de Mental Léger, offerte">
+<meta property="og:description" content="Une lettre douce le premier dimanche du mois : un thème de saison, un exercice d’écriture, et les nouvelles de Camélia. Et en cadeau, la première semaine de Mental Léger.">
+<meta property="og:image" content="https://papierpivoine.fr/assets/landing/newsletter/img/premiere-semaine-mental-leger-offerte.webp">
+<link rel="preload" href="/assets/landing/newsletter/fonts/Fraunces.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/landing/newsletter/fonts/NunitoSans.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-    @font-face { font-family: 'Caveat'; font-style: normal; font-weight: 400 600; font-display: swap; src: url(/assets/fonts/caveat-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
-    @font-face { font-family: 'Caveat'; font-style: normal; font-weight: 400 600; font-display: swap; src: url(/assets/fonts/caveat-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
-    @font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 300 600; font-display: swap; src: url(/assets/fonts/fraunces-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
-    @font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 300 600; font-display: swap; src: url(/assets/fonts/fraunces-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
-    @font-face { font-family: 'Nunito Sans'; font-style: normal; font-weight: 300 700; font-display: swap; src: url(/assets/fonts/nunito-sans-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
-    @font-face { font-family: 'Nunito Sans'; font-style: normal; font-weight: 300 700; font-display: swap; src: url(/assets/fonts/nunito-sans-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
-    @font-face { font-family: 'Caveat'; font-style: normal; font-weight: 700; font-display: swap; src: url(/assets/fonts/caveat-700-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
-    @font-face { font-family: 'Caveat'; font-style: normal; font-weight: 700; font-display: swap; src: url(/assets/fonts/caveat-700-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
-    @font-face { font-family: 'Fraunces'; font-style: italic; font-weight: 700; font-display: swap; src: url(/assets/fonts/fraunces-italic-700-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
-    @font-face { font-family: 'Fraunces'; font-style: italic; font-weight: 700; font-display: swap; src: url(/assets/fonts/fraunces-italic-700-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
-    @font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 800; font-display: swap; src: url(/assets/fonts/fraunces-800-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
-    @font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 800; font-display: swap; src: url(/assets/fonts/fraunces-800-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
-    :root {
-      --font-display: 'Fraunces', Georgia, serif;
-      --font-body: 'Nunito Sans', system-ui, sans-serif;
-      --font-accent: 'Caveat', cursive;
-    }
-    /* Saison : automne par défaut (aucun attribut), "neutre" = palette d'origine. Réglage : prop season. */
-    /* Palette d'automne : mêmes rôles que la palette d'origine, teintes terre cuite, ocre et olive brun. */
-    html:not([data-season="neutre"]) {
-      --blush: #F7D9D3; --blush-deep: #F0C7BF; --pale-rose: #DDA9A0;
-      --rose: #E26D5F; --rose-deep: #BF5548;
-      --sage: #B2BD88; --sage-soft: #EEF0DE; --olive-soft: #E9ECD9;
-      --deep-olive: #33321E; --ink: #33321E; --ink-soft: #46452F; --ink-faint: #6B6953;
-      --paper: #FFFCFA; --paper-warm: #FCF6F2; --border-faint: #EDE1D6; --sand: #EAD9AC;
-      --text-on-accent: #FFFCFA;
-    }
-    body { margin: 0; background: var(--paper-warm, #FCF6F2); }
-    a { color: var(--rose-deep); }
-    a:hover { color: var(--ink); }
-    mark { -webkit-box-decoration-break: clone; box-decoration-break: clone; }
-    ::selection { background: var(--blush); }
-    /* Pop-up Kit : autoriser le défilement sur mobile (leur fenêtre dépasse l'écran) */
-    @media (max-width: 700px) {
-      .formkit-overlay, .formkit-modal { overflow-y: auto !important; -webkit-overflow-scrolling: touch !important; align-items: flex-start !important; }
-      .formkit-modal { max-height: 100dvh !important; }
-      .formkit-modal .formkit-form, .formkit-modal > div { max-height: none !important; }
-    }
-    /* Navigation : liens en ligne sur ordinateur, menu replié sur mobile */
-    .pp-burger { display: none; }
-    @media (max-width: 700px) {
-      .pp-nav-desktop { display: none !important; }
-      .pp-burger { display: inline-flex !important; }
-    }
-    @media (min-width: 701px) {
-      .pp-nav-mobile { display: none !important; }
-    }
-    /* Mobile : zones cliquables d'au moins 44 px */
-    @media (max-width: 700px) {
-      .pp-nav-mobile > span, .pp-nav-mobile > * > span { min-height: 44px; display: flex; align-items: center; box-sizing: border-box; }
-      header > span:first-child { min-height: 44px; display: inline-flex; align-items: center; }
-      main button, footer button { min-height: 44px; }
-      footer [style*="cursor: pointer"], footer [style*="cursor:pointer"], footer a { min-height: 44px; display: flex; align-items: center; }
-    }
-  </style>
-<style>#dc-root{display:none}#prerender{min-height:100vh}</style>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://papierpivoine.fr/#organization","name":"Papier Pivoine","url":"https://papierpivoine.fr/","logo":{"@type":"ImageObject","url":"https://papierpivoine.fr/assets/favicon.png"},"founder":{"@id":"https://papierpivoine.fr/#camelia"},"sameAs":["https://fr.pinterest.com/papierpivoine/"]},{"@type":"Person","@id":"https://papierpivoine.fr/#camelia","name":"Camélia Nguyen","alternateName":"Camélia","url":"https://papierpivoine.fr/apropos/","worksFor":{"@id":"https://papierpivoine.fr/#organization"}},{"@type":"WebPage","@id":"https://papierpivoine.fr/newsletter/","name":"Newsletter Papier Pivoine","description":"Une fois par mois, je t'écris : le thème de la saison, mes réflexions, un exercice d'écriture. Gratuit, avec la première semaine de Mental Léger offerte.","url":"https://papierpivoine.fr/newsletter/","inLanguage":"fr","isPartOf":{"@id":"https://papierpivoine.fr/#website"},"publisher":{"@id":"https://papierpivoine.fr/#organization"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://papierpivoine.fr/"},{"@type":"ListItem","position":2,"name":"Newsletter","item":"https://papierpivoine.fr/newsletter/"}]}]}</script>
-<script>window.__ppStatic=true;</script>
-<style>x-dc{display:none!important}</style>
+@font-face{font-family:Fraunces;src:url(/assets/landing/newsletter/fonts/Fraunces.woff2) format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:Fraunces;src:url(/assets/landing/newsletter/fonts/Fraunces-Italic.woff2) format("woff2");font-weight:100 900;font-style:italic;font-display:swap}
+@font-face{font-family:"Nunito Sans";src:url(/assets/landing/newsletter/fonts/NunitoSans.woff2) format("woff2");font-weight:200 1000;font-display:swap}
+@font-face{font-family:Caveat;src:url(/assets/landing/newsletter/fonts/Caveat.woff2) format("woff2");font-weight:400 700;font-display:swap}
+:root{--cream:#FCF6F2;--paper:#FFFDF8;--ink:#33321E;--ink2:#4A463A;--soft:#6B6953;--line:#E8DED3;--peony:#E26D5F;--peony-d:#BF5548;--rose:#F7D9D3;--rose-l:#FBEDEA;--sand:#EAD9AC;--sand-l:#F7F0DE;--sage:#B2BD88}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font:400 18px/1.65 "Nunito Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--peony-d)}
+h1,h2{font-family:Fraunces,Georgia,serif;font-weight:800;line-height:1.12;margin:0 0 18px;text-wrap:balance}
+h1{font-size:clamp(36px,6.2vw,62px)}
+h2{font-size:clamp(28px,4vw,40px)}
+p{margin:0 0 14px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 min(48px,6vw)}
+.narrow{max-width:760px}
+.center{text-align:center}
+.sec{padding:clamp(56px,9vw,104px) 0}
+.bg-sand{background:var(--sand-l)}
+.bg-rose{background:var(--rose-l)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center}
+.two>*{min-width:0}
+.lead{font-size:20px;color:var(--ink2)}
+.kick{font:600 12px/1.3 "Nunito Sans";letter-spacing:.14em;text-transform:uppercase;color:var(--soft);margin-bottom:12px}
+.hl{background:linear-gradient(transparent 55%,var(--sand) 55%,var(--sand) 92%,transparent 92%);padding:0 6px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.aside{font:600 23px/1.2 Caveat,cursive;color:var(--peony-d)}
+/* site header base (same as the sales page; the harmonisation block below restyles it) */
+.top{position:sticky;top:0;z-index:20;background:rgba(252,246,242,.92);border-bottom:1px solid transparent}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font:600 19px Fraunces,serif}
+.nav{display:flex;gap:22px;font-size:15px}
+.nav a{color:var(--ink2);text-decoration:none}
+footer a{text-decoration:none}
+/* hero */
+.hero{padding:clamp(36px,6vw,76px) 0 clamp(48px,7vw,88px)}
+.hero .two{grid-template-columns:1.05fr .95fr}
+.hero .lead{max-width:34ch}
+.badge{display:inline-block;font:700 13px "Nunito Sans";letter-spacing:.08em;text-transform:uppercase;background:var(--rose);color:var(--peony-d);padding:6px 12px;border-radius:999px;margin-bottom:18px}
+.hero-art{position:relative}
+.hero-art .note{position:absolute;font:700 26px/1.1 Caveat,cursive;color:var(--peony-d);transform:rotate(-4deg)}
+/* form */
+form.sub{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:22px;margin:22px 0 6px;box-shadow:0 10px 30px rgba(51,50,30,.07);text-align:left}
+form.sub .fields{display:grid;grid-template-columns:1fr 1.4fr;gap:12px}
+form.sub label span{display:block;font:700 13px "Nunito Sans";color:var(--ink2);margin:0 0 6px 4px}
+form.sub input{width:100%;font:400 17px "Nunito Sans";padding:13px 16px;border:1.5px solid #E8C9C0;border-radius:14px;background:#fff;color:var(--ink)}
+form.sub input:focus{outline:none;border-color:var(--peony);box-shadow:0 0 0 3px rgba(226,109,95,.18)}
+form.sub .btn{width:100%;margin-top:14px}
+.fine{font-size:13px;line-height:1.5;color:var(--soft);margin:12px 4px 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--peony);color:#fff;border:0;border-radius:999px;font:700 28px/1.1 Caveat,cursive;padding:12px 28px 14px;cursor:pointer;text-decoration:none;transition:background .2s}
+.btn:hover{background:var(--peony-d);color:#fff}
+.btn .pv{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:5;stroke-linecap:round}
+.btn:disabled{opacity:.7}
+/* lists */
+.ticks{list-style:none;padding:0;margin:8px 0 0}
+.ticks li{position:relative;padding-left:34px;margin:0 0 14px}
+.ticks li:before{content:"";position:absolute;left:0;top:5px;width:20px;height:20px;border-radius:6px;background:var(--rose) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 10.5l3.2 3L15 6.5' fill='none' stroke='%23BF5548' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat}
+.steps{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:14px}
+.steps li{display:grid;grid-template-columns:44px 1fr;column-gap:16px;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px 20px}
+.steps .num{grid-row:span 2;width:40px;height:40px;border-radius:50%;background:var(--sand);display:grid;place-items:center;font:700 18px Fraunces,serif}
+.steps b{font-family:Fraunces,serif;font-size:20px}
+.steps li>span:last-child{color:var(--ink2)}
+/* days */
+.days{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px 4px 18px;margin:18px -4px 0}
+.day{flex:0 0 min(240px,70vw);margin:0;scroll-snap-align:start}
+.day img{border-radius:6px;box-shadow:0 8px 22px rgba(51,50,30,.13);background:#fff}
+.day figcaption{padding:12px 4px 0;display:flex;flex-direction:column;gap:2px}
+.day .n{font:700 13px "Nunito Sans";letter-spacing:.08em;color:var(--peony-d)}
+.day b{font-family:Fraunces,serif;font-size:19px;line-height:1.2}
+.day figcaption span:last-child{font-size:15px;color:var(--soft)}
+.hint{font-size:14px;color:var(--soft);margin:0}
+/* quote */
+.quote{margin:0;font:italic 500 clamp(22px,3vw,30px)/1.45 Fraunces,serif}
+.quote cite{display:block;font:400 15px "Nunito Sans";font-style:normal;color:var(--soft);margin-top:14px}
+/* faq */
+.faq details{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px 20px;margin:0 0 12px}
+.faq summary{cursor:pointer;font:700 19px/1.35 Fraunces,serif;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";float:right;color:var(--peony);font-weight:400}
+.faq details[open] summary:after{content:"–"}
+.faq p{margin:10px 0 0;color:var(--ink2)}
+/* final */
+.final .deco{width:min(320px,70%);margin:0 auto 18px}
+.help{font-size:14px;color:var(--soft);margin-top:18px}
+/* poll (variante E) */
+.poll{display:grid;gap:10px;margin:22px 0 0}
+.poll button{display:flex;align-items:center;gap:12px;width:100%;text-align:left;font:600 17px/1.35 "Nunito Sans";color:var(--ink);background:#fff;border:1.5px solid #E8C9C0;border-radius:999px;padding:13px 18px;cursor:pointer;transition:border-color .2s,background .2s}
+.poll button:before{content:"";flex:none;width:16px;height:16px;border-radius:50%;border:2px solid var(--peony)}
+.poll button:hover,.poll button[aria-pressed=true]{border-color:var(--peony);background:var(--rose-l)}
+.poll button[aria-pressed=true]:before{background:var(--peony);box-shadow:inset 0 0 0 3px #fff}
+.answer{display:none;margin-top:22px;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:22px}
+.answer.on{display:block;animation:up .4s ease}
+.answer h3{font:800 24px/1.25 Fraunces,serif;margin:0 0 10px}
+@keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+/* sticky bar */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;align-items:center;justify-content:center;gap:16px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(252,246,242,.96);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .3s}
+.bar.on{transform:none}
+.bar span{font:700 16px "Nunito Sans"}
+.bar .btn{font-size:24px;padding:6px 20px 8px}
+/* reveal */
+.rv{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+@media (max-width:860px){.two,.hero .two{grid-template-columns:1fr}.hero-art{order:-1;max-width:520px;margin:0 auto}.hero-art img{max-height:190px;width:auto;margin:0 auto}.hero-art .note{font-size:21px}.hero{padding-top:20px}}
+@media (max-width:560px){body{font-size:17px}form.sub .fields{grid-template-columns:1fr}.btn{font-size:24px}.bar span{display:none}.lead{font-size:18px}}
+
+/* ── Harmonisation avec papierpivoine.fr (palette, titres, boutons, en-tête, pied de page) ── */
+:root{
+  --paper:#FFFCFA; --ink2:#46452F; --soft:#6B6953; --line:#EDE1D6;
+  --peony:#E26D5F; --peony-d:#BF5548; --rose:#F7D9D3; --rose-l:#FBEDEA;
+  --blue:#B2BD88; --blue-l:#EEF0DE; --apri:#EAD9AC; --apri-l:#F7F0DE; --grey:#6B6953; --grey-l:#E9ECD9; --dusty:#DDA9A0;
+  --paper-warm:#FCF6F2; --border-faint:#EDE1D6; --deep-olive:#33321E; --ink-soft:#46452F; --ink-faint:#6B6953; --rose-deep:#BF5548; --blush:#F7D9D3;
+  --font-display:Fraunces,Georgia,serif; --font-body:"Nunito Sans",system-ui,sans-serif; --font-accent:Caveat,cursive;
+}
+a{color:var(--peony-d)} a:hover{color:var(--ink)}
+h1,h2{font-weight:800;font-variation-settings:'opsz' 72;letter-spacing:-.005em;color:var(--deep-olive)}
+.hero h1{letter-spacing:-.005em}
+.hero h1 .hl,.hl{background:linear-gradient(transparent 55%,var(--sand) 55%,var(--sand) 92%,transparent 92%);padding:0 6px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.kick,.pp-eyebrow{font:500 12px/1.3 var(--font-body);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.btn{background:transparent;color:var(--peony);border:3px solid var(--peony);box-shadow:none;font:700 30px/1.1 var(--font-accent);padding:8px 26px 10px;transform:rotate(-2deg);transition:background-color .2s ease,color .2s ease}
+.btn:hover{background:var(--peony);color:var(--paper);transform:rotate(-2deg)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink);box-shadow:none}
+.btn.ghost:hover{background:var(--ink);color:var(--paper)}
+.bar .btn{background:var(--peony);color:var(--paper);border:0;font-size:24px;padding:8px 20px 10px;transform:none}
+.bar .btn:hover{background:var(--peony-d);transform:none}
+.pill{background:var(--peony)}
+.player button{background:var(--peony)}
+/* en-tête du site */
+.top{background:var(--paper-warm);backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom:1px solid var(--border-faint)}
+.top .wrap{max-width:none;height:auto;padding:18px min(48px,5vw);flex-wrap:wrap;gap:10px 24px}
+.brand{font:800 23px var(--font-display);font-variation-settings:'opsz' 72;letter-spacing:-.005em;color:var(--deep-olive);gap:10px}
+.brand img{width:40px;height:40px;border-radius:50%;border:2px solid var(--ink);box-sizing:border-box;flex:none}
+.nav{gap:6px 24px;flex-wrap:wrap;font-size:14px}
+.nav a{color:var(--ink-soft);padding:4px 0;border-bottom:1px solid transparent}
+.nav a:hover{color:var(--peony)}
+.nav a[aria-current]{color:var(--peony);font-weight:400;border-bottom-color:var(--peony)}
+.burger{display:none;align-items:center;justify-content:center;width:44px;height:44px;margin:-8px -10px;border:0;background:none;color:var(--deep-olive);cursor:pointer}
+.burger .i-close,.top.open .burger .i-open{display:none}
+.top.open .burger .i-close{display:block}
+.mnav{display:none}
+@media (max-width:920px){.nav{display:flex}}
+@media (max-width:700px){
+  .nav{display:none}
+  .burger{display:inline-flex}
+  .top.open .mnav{display:flex;flex-direction:column;flex-basis:100%;padding:2px 0 8px}
+  .mnav a{font-size:16px;padding:13px 2px;min-height:44px;display:flex;align-items:center;box-sizing:border-box;color:var(--ink-soft);text-decoration:none;border-top:1px solid var(--border-faint)}
+  .mnav a[aria-current]{color:var(--peony)}
+}
+/* pied de page du site */
+footer.site{background:var(--paper-warm);border-top:1px solid var(--border-faint);padding:56px min(48px,5vw) 40px;font-size:inherit;color:inherit}
+footer.site .fcol{display:flex;flex-direction:column;gap:9px;font-family:var(--font-body);font-size:14px;color:var(--ink-soft)}
+footer.site a:hover{color:var(--peony-d)!important}
+@media (max-width:860px){footer.site{padding-bottom:120px}}
+@media (max-width:700px){footer.site .fcol a{min-height:44px;display:flex;align-items:center}}
+
+/* the site's harmonisation CSS restyles .btn as an outline: keep this page's filled button */
+.btn{background:var(--peony);color:#fff;border:0;transform:none;font:700 28px/1.1 Caveat,cursive;padding:12px 28px 14px}
+.btn:hover{background:var(--peony-d);color:#fff;transform:none}
+@media (max-width:560px){.btn{font-size:22px;padding:12px 16px 13px;white-space:nowrap}}
+.bar .btn{font-size:24px;padding:6px 20px 8px}
+
+@media (min-width:861px){.hero .two{grid-template-columns:1.2fr .8fr}}.hero h1{font-size:clamp(34px,5vw,56px)}
+.next{display:inline-flex;align-items:center;gap:10px;font-size:15px;color:var(--ink2);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:6px 14px;margin:4px 0 0}
+.next .dot{width:8px;height:8px;border-radius:50%;background:var(--sage);box-shadow:0 0 0 4px rgba(178,189,136,.25)}
+.cards{list-style:none;padding:0;margin:26px 0 0;display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:22px 20px;display:flex;flex-direction:column;gap:8px}
+.card img{align-self:flex-start;width:auto;height:58px;max-width:none;margin-bottom:6px}
+.card b{font:700 20px/1.25 Fraunces,serif}
+.card span{font-size:16px;line-height:1.55;color:var(--ink2)}
+.also{margin:22px 0 0;text-align:center}
+.paper{position:relative;background:#FFFDF8;border-radius:6px;padding:40px 34px 30px;box-shadow:0 18px 40px rgba(51,50,30,.14);transform:rotate(-1.6deg);max-width:500px;margin:0 auto;font-size:16.5px;line-height:1.75}
+.paper p{margin:0 0 12px}
+.paper .tape{position:absolute;top:-14px;left:50%;width:120px;height:30px;margin-left:-60px;background:rgba(242,198,109,.55);transform:rotate(3deg);border-radius:2px}
+.paper .ph{font:700 11px "Nunito Sans";letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
+.paper .hi{font:700 22px Fraunces,serif}
+.paper .sep{text-align:center;color:var(--peony)}
+.paper .ex{font:700 17px Fraunces,serif}
+.paper .blank{display:inline-block;width:120px;border-bottom:1.5px solid var(--ink);transform:translateY(-4px)}
+.paper .sg{margin-top:18px}
+.paper .sg span{font:700 34px/1 Caveat,cursive;color:var(--peony-d)}
+.past{list-style:none;padding:0;margin:26px 0 0;display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.past li{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:6px}
+.past .m{font:700 24px/1 Caveat,cursive;color:var(--peony-d)}
+.past b{font:700 19px/1.25 Fraunces,serif}
+.past .x{font-size:15px;color:var(--soft)}
+.past .nx{background:var(--rose-l);border:1.5px dashed var(--peony)}
+.qs{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-top:10px}.qs .quote{font-size:clamp(20px,2.2vw,25px)}
+.mini{margin-top:18px;padding-left:16px;border-left:3px solid var(--rose);font:italic 500 17px/1.5 Fraunces,serif;color:var(--ink2)}
+.mini span{display:block;font:400 14px "Nunito Sans";font-style:normal;color:var(--soft);margin-top:6px}
+.final .deco{width:min(420px,80%)}
+.swipe{display:none}
+@media (max-width:1000px){.cards{grid-template-columns:repeat(2,1fr)}.past{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:860px){.qs{grid-template-columns:1fr;gap:28px}.paper{transform:none}}
+@media (max-width:560px){
+.cards{grid-template-columns:1fr;gap:10px}
+.card{display:grid;grid-template-columns:44px 1fr;column-gap:14px;row-gap:2px;padding:14px 16px;border-radius:16px}
+.card img{grid-row:span 2;height:40px;margin:2px 0 0;justify-self:center}
+.card b{font-size:18px}.card span{font-size:15px;line-height:1.5}
+.past{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;margin:20px calc(-1*min(48px,6vw)) 0;padding:0 min(48px,6vw) 8px;scroll-padding-left:min(48px,6vw)}
+.past li{flex:0 0 72%;scroll-snap-align:start}
+.swipe{display:block;margin-top:6px}
+.paper{padding:34px 22px 24px;font-size:15.5px}
+.qs{gap:22px}.qs .quote{font-size:20px}
+.hero-art img{max-height:84px}.hero-art .note{display:none}.hero{padding-top:12px!important}.next{margin:0}.hero h1{font-size:34px;margin-bottom:12px}.hero .lead{font-size:17px;margin-bottom:10px}
+.sec{padding:52px 0}
+}
+</style>
 </head>
 <body>
-<div id="prerender">
-
-
-<div style="min-height:100vh;display:flex;flex-direction:column;background:var(--paper-warm)">
-
-  <!-- ═══════════ HEADER ═══════════ -->
-  
-  <header style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px 24px;padding:18px min(48px,5vw);border-bottom:1px solid var(--border-faint);background:var(--paper-warm);position:sticky;top:0;z-index:10">
-    <a href="/" style="cursor:pointer;display:inline-flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:800;font-variation-settings:'opsz' 72;font-size:23px;color:var(--deep-olive);letter-spacing:-0.005em"><img src="/assets/logo-papier-pivoine.jpg" width="400" height="400" alt="" aria-hidden="true" style="display:block;width:40px;height:40px;border-radius:50%;border:2px solid var(--ink);box-sizing:border-box;flex:none">Papier Pivoine</a>
-    <span class="pp-burger" role="button" aria-label="Menu" style="display:none;align-items:center;justify-content:center;width:44px;height:44px;margin:-8px -10px;cursor:pointer">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--deep-olive)" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M3 8h18"></path><path d="M3 16h18"></path></svg>
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--deep-olive)" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg>
-    </span>
-    <nav class="pp-nav-desktop" style="display:flex;gap:6px 24px;align-items:center;flex-wrap:wrap">
-      <a href="/" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:;border-bottom:1px solid">Accueil</a>
-      <a href="/ecriture/" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:;border-bottom:1px solid">Programme d’écriture</a>
-      <a href="/activites/" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:;border-bottom:1px solid">Carnets d’activités douces</a>
-      <a href="/7-permissions-pivoine/" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:;border-bottom:1px solid">7 permissions PIVOINE</a>
-      <a href="/apropos/" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:;border-bottom:1px solid">À propos</a>
-      <a href="/newsletter/" style="cursor:pointer;font-family:var(--font-body);font-size:14px;padding:4px 0;color:;border-bottom:1px solid">Newsletter</a>
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Papier Pivoine, accueil"><img src="/assets/logo-papier-pivoine.jpg" width="400" height="400" alt="">Papier Pivoine</a>
+    <button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mnav" onclick="var h=document.getElementById('top');var o=h.classList.toggle('open');this.setAttribute('aria-expanded',o)"><svg class="i-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M3 8h18"></path><path d="M3 16h18"></path></svg><svg class="i-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg></button>
+    <nav class="nav" aria-label="Navigation">
+      <a href="/">Accueil</a>
+      <a href="/ecriture/">Programme d’écriture</a>
+      <a href="/activites/">Carnets d’activités douces</a>
+      <a href="/7-permissions-pivoine/">7 permissions PIVOINE</a>
+      <a href="/apropos/">À propos</a>
+      <a href="/newsletter/" aria-current="page">Newsletter</a>
     </nav>
-    
-      <nav class="pp-nav-mobile" style="flex-basis:100%;display:flex;flex-direction:column;padding:2px 0 8px">
-        <a href="/" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:;border-top:1px solid var(--border-faint)">Accueil</a>
-        <a href="/ecriture/" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:;border-top:1px solid var(--border-faint)">Programme d’écriture</a>
-        <a href="/activites/" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:;border-top:1px solid var(--border-faint)">Carnets d’activités douces</a>
-        <a href="/7-permissions-pivoine/" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:;border-top:1px solid var(--border-faint)">7 permissions PIVOINE</a>
-        <a href="/apropos/" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:;border-top:1px solid var(--border-faint)">À propos</a>
-        <a href="/newsletter/" style="cursor:pointer;font-family:var(--font-body);font-size:16px;padding:13px 2px;color:;border-top:1px solid var(--border-faint)">Newsletter</a>
-      </nav>
-    
-  </header>
-  
-
-  <main style="flex:1">
-
-    <!-- ═══════════ ACCUEIL ═══════════ -->
-    
-
-    <!-- ═══════════ CARNETS D'ÉCRITURE ═══════════ -->
-    
-
-    <!-- ═══════════ CARNETS D’ACTIVITÉS DOUCES (route /activites/ : Saisons tranquilles puis Batterie faible) ═══════════ -->
-    
-
-    <!-- ═══════════ 7 PERMISSIONS PIVOINE ═══════════ -->
-    
-
-    <!-- ═══════════ À PROPOS ═══════════ -->
-    
-
-    <!-- ═══════════ NEWSLETTER ═══════════ -->
-    
-      <div data-screen-label="Newsletter">
-
-        <div style="padding:clamp(56px,9vw,88px) min(48px,5vw) 64px;background-color:#FCF6F2;background-image:radial-gradient(#E9DCCB 1.6px, transparent 1.8px);background-size:32px 32px;text-align:center">
-          <div style="display:flex;justify-content:center;margin-bottom:24px"><img src="/assets/automne/the-carnet-fleurs.webp" width="680" height="327" alt="Un carnet ouvert, une tasse de thé fumante et une petite fleur" style="display:block;width:min(340px,74vw);height:auto"></div>
-          <div class="pp-eyebrow" style="margin-bottom:20px">Newsletter gratuite</div>
-          <h1 style="font-family:var(--font-display);font-weight:800;font-variation-settings:'opsz' 72;letter-spacing:-0.005em;line-height:1.08;font-size:clamp(36px,6vw,54px);color:var(--deep-olive);max-width:22ch;margin:0 auto 22px">Une lettre, <mark style="background:linear-gradient(transparent 55%, #EAD9AC 55%, #EAD9AC 92%, transparent 92%);color:inherit;padding:0 6px">une fois par mois</mark>.</h1>
-          <p style="font-family:var(--font-body);font-size:clamp(18px,2.2vw,19px);color:var(--ink-soft);line-height:1.6;max-width:46ch;margin:0 auto">Une lettre douce, envoyée le premier dimanche du mois. C’est gratuit, et tu peux te désinscrire quand tu veux.</p>
-          <div style="font-family:var(--font-accent);font-weight:700;font-size:26px;line-height:1.2;color:var(--rose-deep);transform:rotate(-2deg);margin:18px 0 0">(une seule lettre, promis)</div>
-        </div>
-
-        <div style="background:var(--paper);border-top:1px solid var(--border-faint);border-bottom:1px solid var(--border-faint);padding:76px min(48px,5vw)">
-          <div style="max-width:560px;margin:0 auto">
-            <h2 style="font-family:var(--font-display);font-weight:800;font-variation-settings:'opsz' 72;letter-spacing:-0.005em;line-height:1.08;font-size:clamp(28px,4.2vw,36px);color:var(--deep-olive);text-align:center;margin:0 0 40px">Dedans, chaque mois</h2>
-            <div style="display:flex;flex-direction:column">
-              <div style="padding:20px 0;border-top:1px solid var(--border-faint)">
-                <div style="font-family:var(--font-body);font-size:19px;font-weight:700;color:var(--deep-olive);margin-bottom:6px">Le thème du mois</div>
-                <p style="font-family:var(--font-body);font-size:18px;color:var(--ink-soft);line-height:1.6;margin:0">Une saison, une humeur, un fil qui traverse toute la lettre.</p>
-              </div>
-              <div style="padding:20px 0;border-top:1px solid var(--border-faint)">
-                <div style="font-family:var(--font-body);font-size:19px;font-weight:700;color:var(--deep-olive);margin-bottom:6px">Mes réflexions personnelles</div>
-                <p style="font-family:var(--font-body);font-size:18px;color:var(--ink-soft);line-height:1.6;margin:0">Ce que le mois m’a fait : les jours lourds comme les bons moments.</p>
-              </div>
-              <div style="padding:20px 0;border-top:1px solid var(--border-faint)">
-                <div style="font-family:var(--font-body);font-size:19px;font-weight:700;color:var(--deep-olive);margin-bottom:6px">Un exercice d’écriture guidé</div>
-                <p style="font-family:var(--font-body);font-size:18px;color:var(--ink-soft);line-height:1.6;margin:0">Une question douce, dix minutes, une page.</p>
-              </div>
-              <div style="padding:20px 0;border-top:1px solid var(--border-faint);border-bottom:1px solid var(--border-faint)">
-                <div style="font-family:var(--font-body);font-size:19px;font-weight:700;color:var(--deep-olive);margin-bottom:6px">Mes nouveautés</div>
-                <p style="font-family:var(--font-body);font-size:18px;color:var(--ink-soft);line-height:1.6;margin:0">Les carnets qui viennent de sortir et les nouvelles du programme, en premier, et ce que je prépare.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div style="background:var(--paper);border-top:1px solid var(--border-faint);padding:76px min(48px,5vw)">
-          <div style="max-width:1080px;margin:0 auto">
-            <div class="pp-eyebrow" style="display:block;text-align:center;margin-bottom:44px">Ce qu’elles en disent</div>
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:36px;align-items:start">
-              <div style="border-top:1px solid var(--sage);padding-top:20px">
-                <p style="font-family:var(--font-body);font-size:18px;color:var(--ink-soft);line-height:1.6;margin:0 0 16px">Camélia, ta lettre du mardi est devenue un véritable rendez-vous précieux pour moi. Le travail d’écriture que tu proposes m’apporte énormément dans mon quotidien. Grâce à tes exercices j’apprends à me poser, à réfléchir différemment et à mieux comprendre ce que je ressens. J’avance petit à petit, à mon rythme, et je sens une vraie évolution. Merci pour la douceur, la profondeur et la constance que tu mets dans chacun de tes envois. ☺️✨✨</p>
-                <div style="font-family:var(--font-accent);font-size:21px;line-height:1.2;color:var(--rose-deep)">- Véronique</div>
-              </div>
-              <div style="border-top:1px solid var(--sage);padding-top:20px">
-                <p style="font-family:var(--font-body);font-size:18px;color:var(--ink-soft);line-height:1.6;margin:0 0 16px">Merci pour tes newsletters qui sont de réelles bouffées d’air frais. J’aimais déjà écrire et je tenais mon journal de pensée mais là c’est encore mieux avec les sujets que tu abordes. Merci du fond du cœur.</p>
-                <div style="font-family:var(--font-accent);font-size:21px;line-height:1.2;color:var(--rose-deep)">- Virginie</div>
-              </div>
-              <div style="border-top:1px solid var(--sage);padding-top:20px">
-                <p style="font-family:var(--font-body);font-size:18px;color:var(--ink-soft);line-height:1.6;margin:0 0 16px">J’adore vraiment vos mails et vos écrits, j’en ai déjà réalisé plusieurs et avec un retour en arrière sur mes écrits cela m’a permis de réaliser beaucoup de choses.</p>
-                <div style="font-family:var(--font-accent);font-size:21px;line-height:1.2;color:var(--rose-deep)">- Nathalie</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div style="background:var(--blush)">
-          <div style="max-width:720px;margin:0 auto;padding:80px min(48px,5vw);text-align:center">
-            <div class="pp-eyebrow" style="margin-bottom:16px">Le cadeau de bienvenue</div>
-            <h2 style="font-family:var(--font-display);font-weight:800;font-variation-settings:'opsz' 72;letter-spacing:-0.005em;line-height:1.08;font-size:clamp(30px,4.6vw,40px);color:var(--deep-olive);margin:0 0 18px">La première semaine de <mark style="background:linear-gradient(transparent 55%, #EAD9AC 55%, #EAD9AC 92%, transparent 92%);color:inherit;padding:0 6px">Mental Léger</mark></h2>
-            <p style="font-family:var(--font-body);font-size:18px;color:var(--ink-soft);line-height:1.6;max-width:50ch;margin:0 auto 30px">Pour t’accueillir, je t’offre le début de Mental Léger, mon programme d’écriture : la semaine pour t’installer, puis cinq jours pour vider ta tête le soir. Vingt-deux pages, à imprimer ou à remplir à l’écran. C’est à toi, à garder.</p>
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:640px;margin:0 auto 36px">
-              <div style="aspect-ratio:210/297;background:var(--paper);border:1px solid var(--border-faint);border-radius:6px;box-shadow:0 2px 12px rgba(101,109,68,0.10);overflow:hidden">
-                <img src="/assets/freebie-ml-cover.jpg" width="551" height="780" alt="Mental Léger, la couverture du carnet" style="width:100%;height:100%;object-fit:cover;display:block">
-              </div>
-              <div style="aspect-ratio:210/297;background:var(--paper);border:1px solid var(--border-faint);border-radius:6px;box-shadow:0 2px 12px rgba(101,109,68,0.10);overflow:hidden">
-                <img src="/assets/freebie-ml-coin.jpg" width="552" height="780" loading="lazy" alt="Une page : mon coin d’écriture" style="width:100%;height:100%;object-fit:cover;display:block">
-              </div>
-              <div style="aspect-ratio:210/297;background:var(--paper);border:1px solid var(--border-faint);border-radius:6px;box-shadow:0 2px 12px rgba(101,109,68,0.10);overflow:hidden">
-                <img src="/assets/freebie-ml-vidage.jpg" width="552" height="780" loading="lazy" alt="Une page : le vidage, premier jour" style="width:100%;height:100%;object-fit:cover;display:block">
-              </div>
-            </div>
-            
-              <div style="display:flex;justify-content:center">
-                <button type="button" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;box-sizing:border-box;max-width:100%;text-align:center;padding:8px 26px 10px;border:3px solid var(--rose);border-radius:999px;color:var(--rose);font-family:var(--font-accent);font-weight:700;font-size:30px;line-height:1.1;transform:rotate(-2deg);background:transparent;cursor:pointer;text-decoration:none;transition:background-color 200ms ease,color 200ms ease" style-hover="background:var(--rose);color:var(--paper-warm)" style-focus="outline:2px solid var(--ink);outline-offset:4px">Recevoir la première semaine</button>
-              </div>
-              <p style="font-family:var(--font-body);font-size:12px;color:var(--ink-faint);margin:16px 0 0">Gratuit. Ton adresse ne sert qu’à la newsletter, rien d’autre.</p>
-            
-            
-              <div style="background:var(--paper);border:1px solid var(--border-faint);border-radius:14px;padding:28px 32px;max-width:440px;margin:0 auto">
-                <p style="font-family:var(--font-body);font-size:18px;color:var(--deep-olive);line-height:1.6;margin:0 0 6px">C’est noté. La première semaine de Mental Léger est en route vers ta boîte mail.</p>
-                <p style="font-family:var(--font-body);font-size:13px;color:var(--ink-faint);margin:0">Si tu ne la vois pas, regarde dans les courriers indésirables.</p>
-              </div>
-            
-          </div>
-        </div>
-
-        <div style="padding:84px min(48px,5vw);display:flex;flex-direction:column;align-items:center">
-          <div class="pp-eyebrow" style="margin-bottom:28px">Un extrait · Papier Pivoine n° 88, juillet</div>
-          <div>
-            <p style="margin:0 0 1.2em">Le thème de juillet, c’est l’école buissonnière. Ce petit pincement qu’on a parfois, quand la vie s’est refermée autour du travail et des responsabilités, et qu’une pensée traverse l’esprit sans prévenir : est-ce vraiment tout ?</p>
-            <p style="margin:0 0 1.2em">On ne va pas creuser ça sérieusement ce mois-ci. On va plutôt jouer avec l’idée, inventer d’autres vies possibles, sans obligation d’y croire. C’est une pause faite exprès pour rester légère.</p>
-            <p style="margin:0">L’exercice de juillet : une carte postale d’une autre vie.</p>
-            <div style="margin-top:22px;font-family:var(--font-accent);font-size:34px;line-height:1.1;color:var(--rose)">Camélia</div>
-          </div>
-        </div>
-
-
-
-      </div>
-    
-
-
-    <!-- ═══════════ LIENS ═══════════ -->
-    
-
-    <!-- ═══════════ BAND (toutes pages sauf newsletter) ═══════════ -->
-    
-      <div style="background:var(--blush)">
-        <div style="max-width:720px;margin:0 auto;padding:80px min(48px,5vw);text-align:center">
-          <h2 style="font-family:var(--font-display);font-weight:800;font-variation-settings:'opsz' 72;letter-spacing:-0.005em;line-height:1.08;font-size:clamp(30px,4.6vw,40px);color:var(--deep-olive);margin:0 0 18px">Commence par <mark style="background:linear-gradient(transparent 55%, #EAD9AC 55%, #EAD9AC 92%, transparent 92%);color:inherit;padding:0 6px">un cadeau</mark></h2>
-          <p style="font-family:var(--font-body);font-size:18px;color:var(--ink-soft);line-height:1.6;max-width:52ch;margin:0 auto 30px">Une fois par mois, je t’écris : le thème de la saison, mes réflexions, un exercice d’écriture guidé, et les nouveaux carnets en premier. Pour t’accueillir, je t’offre la première semaine de Mental Léger, pour vider ta tête le soir.</p>
-          <p style="font-family:var(--font-body);font-size:17px;font-style:italic;color:var(--ink-soft);line-height:1.6;max-width:46ch;margin:0 auto 28px">« Merci pour tes newsletters qui sont de réelles bouffées d’air frais. » · Virginie</p>
-          
-            <div style="display:flex;justify-content:center">
-              <button type="button" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;box-sizing:border-box;max-width:100%;text-align:center;padding:8px 26px 10px;border:3px solid var(--rose);border-radius:999px;color:var(--rose);font-family:var(--font-accent);font-weight:700;font-size:30px;line-height:1.1;transform:rotate(-2deg);background:transparent;cursor:pointer;text-decoration:none;transition:background-color 200ms ease,color 200ms ease" style-hover="background:var(--rose);color:var(--paper-warm)" style-focus="outline:2px solid var(--ink);outline-offset:4px">Recevoir le cadeau</button>
-            </div>
-            <p style="font-family:var(--font-body);font-size:12px;color:var(--ink-faint);margin:16px 0 0">C’est gratuit. Tu peux te désinscrire quand tu veux. <a href="/newsletter/" style="color:var(--rose);cursor:pointer;text-decoration:underline;text-underline-offset:3px">Voir ce qu’il y a dedans</a></p>
-          
-          
-            <div style="background:var(--paper);border:1px solid var(--border-faint);border-radius:14px;padding:28px 32px;max-width:440px;margin:0 auto">
-              <p style="font-family:var(--font-body);font-size:18px;color:var(--deep-olive);line-height:1.6;margin:0 0 6px">C’est noté. La première semaine de Mental Léger est en route vers ta boîte mail.</p>
-              <p style="font-family:var(--font-body);font-size:13px;color:var(--ink-faint);margin:0">Si tu ne la vois pas, regarde dans les courriers indésirables.</p>
-            </div>
-          
-        </div>
-        <div style="display:flex;justify-content:center;padding:0 min(48px,5vw)"><img loading="lazy" decoding="async" src="/assets/automne/herbes-sechees.webp" width="1000" height="384" alt="Une rangée d’herbes séchées et de fleurs des champs" style="display:block;width:min(900px,100%);height:auto"></div>
-      </div>
-    
-
-  </main>
-
-  <a data-formkit-toggle="638990c016" href="https://camelianguyen.kit.com/638990c016" style="display:none" aria-hidden="true">La newsletter</a>
-
-  <!-- ═══════════ FOOTER ═══════════ -->
-  
-  <footer style="background:var(--paper-warm);border-top:1px solid var(--border-faint);padding:56px min(48px,5vw) 40px">
-    <div style="max-width:1180px;margin:0 auto">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:32px;flex-wrap:wrap">
-        <div>
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="font-family:var(--font-display);font-weight:800;font-variation-settings:'opsz' 72;font-size:21px;color:var(--deep-olive);letter-spacing:-0.005em">Papier Pivoine</span><svg width="30" height="30" viewBox="0 0 120 120" fill="none" stroke="#E26D5F" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M62.7,49.8 C66.1,48.3 73.1,61.7 69.5,62.6 C71.8,66.2 60.0,73.3 57.4,69.7 C53.2,71.8 46.4,60.3 50.3,57.4 C49.8,53.3 61.7,47.9 62.7,51.8 M57.1,43.6 C46.3,12.7 80.5,14.0 65.0,44.5 M69.6,46.7 C81.8,18.7 103.5,44.8 74.8,52.4 M77.3,59.3 C107.0,50.6 98.2,86.2 75.1,67.9 M71.5,72.6 C98.7,90.0 68.7,109.6 64.6,76.1 M56.0,75.8 C55.5,106.4 22.2,90.6 49.0,71.4 M46.0,67.6 C19.3,88.3 11.6,52.1 44.5,60.0 M44.9,52.5 C15.6,45.7 36.2,19.9 49.7,47.0"></path></svg></div>
-          <p style="font-family:var(--font-body);font-style:italic;color:var(--rose-deep);margin:0;font-size:15px;max-width:32ch;line-height:1.5">Trop sensible, trop fatiguée, trop bien sous mon plaid.</p>
-        </div>
-        <div style="display:flex;gap:40px 64px;flex-wrap:wrap">
-          <div>
-            <div class="pp-eyebrow" style="margin-bottom:14px">Découvrir</div>
-            <div style="display:flex;flex-direction:column;gap:9px;font-family:var(--font-body);font-size:14px;color:var(--ink-soft)">
-              <a href="/ecriture/" style="cursor:pointer">Programme d’écriture</a>
-              <a href="/activites/" style="cursor:pointer">Carnets d’activités douces</a>
-              <a href="/7-permissions-pivoine/" style="cursor:pointer">7 permissions PIVOINE</a>
-              <a href="/apropos/" style="cursor:pointer">À propos</a>
-            </div>
-          </div>
-          <div>
-            <div class="pp-eyebrow" style="margin-bottom:14px">Rester en lien</div>
-            <div style="display:flex;flex-direction:column;gap:9px;font-family:var(--font-body);font-size:14px;color:var(--ink-soft)">
-              <a href="/newsletter/" style="cursor:pointer">Newsletter gratuite</a>
-              <a style="color:var(--ink-soft);text-decoration:none">Écrire à Camélia</a>
-              <a href="https://fr.pinterest.com/papierpivoine/" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">Pinterest</a>
-              <a href="https://www.youtube.com/@papierpivoine/shorts" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">YouTube</a>
-              <a href="https://www.tiktok.com/@papierpivoine" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">TikTok</a>
-              <a href="https://www.instagram.com/papierpivoine/" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">Instagram</a>
-              <a href="https://www.facebook.com/share/1Bue8nqYmf/?mibextid=wwXIfr" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">Facebook</a>
-              <a href="https://www.threads.com/@papierpivoine?igshid=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">Threads</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div style="height:1px;background:var(--border-faint);margin:36px 0"></div>
-      <p style="font-family:var(--font-body);font-size:12px;color:var(--ink-faint);margin:0 0 8px;max-width:70ch;line-height:1.6">Ce que tu trouves ici est une pratique douce, pas un soin. Ce n’est pas un substitut à un accompagnement professionnel. Si tu traverses une période difficile, parles-en à un professionnel de santé.</p>
-      <p style="font-family:var(--font-body);font-size:12px;color:var(--ink-faint);margin:0">© 2026 Papier Pivoine · Camélia Nguyen</p>
+    <nav class="mnav" id="mnav" aria-label="Navigation mobile">
+      <a href="/">Accueil</a>
+      <a href="/ecriture/">Programme d’écriture</a>
+      <a href="/activites/">Carnets d’activités douces</a>
+      <a href="/7-permissions-pivoine/">7 permissions PIVOINE</a>
+      <a href="/apropos/">À propos</a>
+      <a href="/newsletter/" aria-current="page">Newsletter</a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="hero" id="recevoir">
+  <div class="wrap two">
+    <div>
+      <span class="badge">La lettre · gratuite</span>
+      <h1>Une lettre douce, <span class='hl'>le premier dimanche</span> du mois.</h1>
+      <p class="lead">Je t’écris comme à une amie : un thème de saison, un exercice d’écriture rien que pour toi, et mes nouvelles. Pour t’accueillir, je t’offre la première semaine de Mental Léger, mon programme d’écriture.</p>
+      <span class="next"><span class="dot"></span>Prochaine lettre : <b data-next>le premier dimanche du mois</b></span>
+      <form class="sub" action="https://app.kit.com/forms/9685937/subscriptions" method="post">
+  <input type="hidden" name="fields[source]" value="newsletter">
+  <div class="fields">
+    <label><span>Ton prénom</span><input name="fields[first_name]" autocomplete="given-name" required placeholder="Clémence"></label>
+    <label><span>Ton adresse e-mail</span><input type="email" name="email_address" autocomplete="email" required placeholder="toi@exemple.fr"></label>
+  </div>
+  <button class="btn" type="submit">Recevoir la lettre et mon cadeau <svg class="pv" viewBox="0 0 120 120" aria-hidden="true"><path d="M62.7,49.8 C66.1,48.3 73.1,61.7 69.5,62.6 C71.8,66.2 60.0,73.3 57.4,69.7 C53.2,71.8 46.4,60.3 50.3,57.4 C49.8,53.3 61.7,47.9 62.7,51.8 M57.1,43.6 C46.3,12.7 80.5,14.0 65.0,44.5 M69.6,46.7 C81.8,18.7 103.5,44.8 74.8,52.4 M77.3,59.3 C107.0,50.6 98.2,86.2 75.1,67.9 M71.5,72.6 C98.7,90.0 68.7,109.6 64.6,76.1 M56.0,75.8 C55.5,106.4 22.2,90.6 49.0,71.4 M46.0,67.6 C19.3,88.3 11.6,52.1 44.5,60.0 M44.9,52.5 C15.6,45.7 36.2,19.9 49.7,47.0"/></svg></button>
+  <p class="fine">Gratuit. Ta semaine offerte arrive tout de suite, puis ma lettre chaque premier dimanche, et parfois quelques mots entre deux lettres. Désinscription en un clic. Ton adresse reste entre nous.</p>
+</form>
     </div>
-  </footer>
-  
-
-  
-
-</div>
-
-</div>
-<script type="text/x-dc" data-dc-script data-props="{
-  &quot;pageInitiale&quot;: {
-    &quot;editor&quot;: &quot;enum&quot;,
-    &quot;options&quot;: [
-      &quot;accueil&quot;,
-      &quot;programme&quot;,
-      &quot;ecriture&quot;,
-      &quot;saisons-tranquilles&quot;,
-      &quot;7-permissions-pivoine&quot;,
-      &quot;apropos&quot;,
-      &quot;newsletter&quot;
-    ],
-    &quot;default&quot;: &quot;accueil&quot;,
-    &quot;tsType&quot;: &quot;string&quot;,
-    &quot;section&quot;: &quot;Navigation&quot;
-  },
-  &quot;afficherPrix&quot;: {
-    &quot;editor&quot;: &quot;boolean&quot;,
-    &quot;default&quot;: true,
-    &quot;tsType&quot;: &quot;boolean&quot;,
-    &quot;section&quot;: &quot;Contenu&quot;
-  },
-  &quot;kitUrl&quot;: {
-    &quot;editor&quot;: &quot;text&quot;,
-    &quot;default&quot;: &quot;https://www.camelianguyen.fr/papier-pivoine-mensuel&quot;,
-    &quot;tsType&quot;: &quot;string&quot;,
-    &quot;section&quot;: &quot;Newsletter&quot;
-  },
-  &quot;season&quot;: {
-    &quot;editor&quot;: &quot;enum&quot;,
-    &quot;options&quot;: [
-      &quot;automne&quot;,
-      &quot;neutre&quot;
-    ],
-    &quot;default&quot;: &quot;automne&quot;,
-    &quot;tsType&quot;: &quot;'automne' | 'neutre'&quot;,
-    &quot;section&quot;: &quot;Saison&quot;
-  }
-}">
-class Component extends DCLogic {
-  static PAGES = ['accueil', 'activites', 'ecriture', '7-permissions-pivoine', 'apropos', 'newsletter', 'liens'];
-
-  // Détermine la page depuis le chemin de l'URL (/programme/ -> 'batterie-faible', / -> 'accueil').
-  // Le site publié sert de vraies pages à ces adresses ; on route donc par chemin propre.
-  static pageFromLocation() {
-    try {
-      const seg = (location.pathname || '/').replace(/^\/+|\/+$/g, '').split('/')[0];
-      if (!seg) return 'accueil';
-      if (seg === 'saisons-tranquilles' || seg === 'batterie-faible' || seg === 'programme') return 'activites';
-      if (Component.PAGES.includes(seg)) return seg;
-    } catch (e) {}
-    return null;
-  }
-
-  state = {
-    page: Component.pageFromLocation() || (this.props && this.props.pageInitiale) || 'accueil',
-    email: '',
-    subscribed: false,
-    menuOpen: false,
-    eteSel: 'cover',
-    mlSel: 'cover',
-  };
-
-  _scrollToId(id) {
-    try { const el = document.getElementById(id); if (!el) return; const y = el.getBoundingClientRect().top + window.pageYOffset - 84; window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' }); } catch (_) {}
-  }
-
-  // Lien vers une partie de la page Carnets (ex. Batterie faible).
-  _goSection(id) {
-    if (this.state.page === 'activites') { this._scrollToId(id); return; }
-    if (window.__ppStatic) { try { location.assign('/activites/#' + id); return; } catch (_) {} }
-    this.go('activites'); setTimeout(() => this._scrollToId(id), 120);
-  }
-
-  go(p) {
-    this.setState({ page: p, menuOpen: false });
-    try { window.scrollTo(0, 0); } catch (_) {}
-    // Chemins propres via History API : /programme/ (accueil -> /). L'adresse partagée
-    // pointe alors sur la vraie page, avec ses propres métadonnées pour Pinterest et les réseaux.
-    const url = p === 'accueil' ? '/' : '/' + p + '/';
-    // Site publié : chaque page ne contient que son propre contenu, on charge donc la vraie page.
-    if (window.__ppStatic) { try { location.assign(url); return; } catch (_) {} }
-    try { history.pushState({ page: p }, '', url); } catch (_) {}
-  }
-
-  _applySeason() {
-    try { document.documentElement.dataset.season = this.props.season ?? 'automne'; } catch (_) {}
-  }
-
-  componentDidUpdate() { this._applySeason(); }
-
-  componentDidMount() {
-    window.addEventListener('keydown', this._hiverKey);
-    this._applySeason();
-    // Précharge les illustrations des autres pages une fois l'accueil affiché : la navigation les trouve déjà en cache.
-    try {
-      const s = document.querySelector('script[src*="support.js"]');
-      const base = s ? s.src : location.href;
-      const imgs = ['canape-bao','plaid-carnet','bouquet-automne','the-carnet-fleurs','herbes-sechees','guirlande-eglantier'].map(n => 'assets/automne/' + n + '.webp')
-        .concat(['cover-cocon-automne.jpg','cover-cocon-hiver.jpg','cover-et-si.jpg','cover-quand-ma-tete-est-pleine.jpg','bao.jpg','freebie-ml-cover.jpg','logo-papier-pivoine.jpg'].map(n => 'assets/' + n));
-      const run = () => imgs.forEach(p => { const i = new Image(); i.decoding = 'async'; i.src = new URL(p, base).href; });
-      const later = () => (window.requestIdleCallback ? requestIdleCallback(run, { timeout: 3000 }) : setTimeout(run, 1200));
-      if (document.readyState === 'complete') later(); else window.addEventListener('load', later, { once: true });
-    } catch (_) {}
-    this._onPop = () => {
-      this.setState({ page: Component.pageFromLocation() || 'accueil', menuOpen: false });
-      try { window.scrollTo(0, 0); } catch (e) {}
-    };
-    window.addEventListener('popstate', this._onPop);
-    // Arrivée sur /activites/#batterie-faible : on descend à la bonne partie une fois la page montée.
-    try { const h = decodeURIComponent((location.hash || '').slice(1)); if (h && /^[a-z0-9-]+$/.test(h)) setTimeout(() => this._scrollToId(h), 350); } catch (_) {}
-
-    // Embed Kit (pop-up newsletter) chargé UNE seule fois, hors du <helmet>,
-    // pour éviter tout double montage (le loader Kit retire son propre <script>).
-    if ((this.state.page || Component.pageFromLocation()) !== 'liens' && !window.__ppKit27Loaded && !document.querySelector('.formkit-form[data-uid="27c8b8373b"]')) {
-      window.__ppKit27Loaded = true;
-      const k = document.createElement('script');
-      k.async = true;
-      k.setAttribute('data-uid', '27c8b8373b');
-      k.src = 'https://camelianguyen.kit.com/27c8b8373b/index.js';
-      document.head.appendChild(k);
-    }
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('popstate', this._onPop);
-    window.removeEventListener('keydown', this._hiverKey);
-    document.body.style.overflow = '';
-  }
-
-  // Rend la pop-up Kit défilable sur mobile : conteneur fixe en overflow-y auto,
-  // hauteurs internes libérées, arrière-plan verrouillé tant que la pop-up est ouverte.
-  fixKitModal() {
-    if (!window.matchMedia('(max-width: 700px)').matches) { return; }
-    let tries = 0;
-    const finder = setInterval(() => {
-      tries++;
-      const els = Array.prototype.slice.call(document.querySelectorAll('[class*="formkit"]'));
-      const fixedEls = els.filter((el) => {
-        if (el.offsetWidth === 0 || el.offsetHeight === 0) { return false; }
-        return getComputedStyle(el).position === 'fixed';
-      });
-      if (fixedEls.length) {
-        clearInterval(finder);
-        fixedEls.forEach((el) => {
-          el.style.setProperty('overflow-y', 'auto', 'important');
-          el.style.setProperty('-webkit-overflow-scrolling', 'touch');
-          el.style.setProperty('align-items', 'flex-start', 'important');
-          el.style.setProperty('max-height', '100dvh', 'important');
-          el.querySelectorAll('div, form, iframe').forEach((inner) => {
-            inner.style.setProperty('max-height', 'none', 'important');
-          });
-        });
-        // Verrouiller le défilement de la page derrière
-        document.documentElement.style.overflow = 'hidden';
-        document.body.style.overflow = 'hidden';
-        const watcher = setInterval(() => {
-          const stillVisible = fixedEls.some((el) => document.contains(el) && el.offsetWidth > 0 && el.offsetHeight > 0);
-          if (!stillVisible) {
-            clearInterval(watcher);
-            document.documentElement.style.overflow = '';
-            document.body.style.overflow = '';
-          }
-        }, 300);
-      } else if (tries > 30) {
-        clearInterval(finder);
-      }
-    }, 100);
-  }
-
-  static HIVER_IMGS = [["assets/cocon-hiver/couverture.jpg","Couverture : Mon cocon d’hiver"],["assets/cocon-hiver/mon-cocon-d-hiver-carnet-bien-etre-apercu.webp","Mon cocon d’hiver : la couverture et deux pages intérieures"],["assets/cocon-hiver/carnet-hypersensible-ouvrir-selon-mon-humeur.webp","Page « Ouvrir selon mon humeur » : où aller dans le carnet selon ce que tu ressens"],["assets/cocon-hiver/test-personnalite-quel-animal-hiver-es-tu.webp","Test « Quel animal de l’hiver es-tu ? »"],["assets/cocon-hiver/carnet-hypersensible-page-ecriture-dire-non.webp","Page d’écriture « Mes petites phrases pour dire non (avec le sourire) »"],["assets/cocon-hiver/sudoku-carnet-bien-etre-hiver.webp","Sudoku tout doux"],["assets/cocon-hiver/jeu-de-plateau-chemin-du-cocon-hypersensible.webp","Jeu de plateau « Le chemin du cocon », sur deux pages"],["assets/cocon-hiver/coloriage-hiver-adulte-tasse-mis-en-couleur.webp","Coloriage d’une grande tasse fumante, mis en couleur"],["assets/cocon-hiver/coloriage-hiver-adulte-renne.webp","Coloriage d’un renne en écharpe"]];
-  hiverMainRef = React.createRef();
-  hiverZoomRef = React.createRef();
-  _hiverUrl(p) { const s = document.querySelector('script[src*="support.js"]'); return new URL(p, s ? s.src : location.href).href; }
-  _hiverZoomSet(k) { const el = this.hiverZoomRef.current, it = Component.HIVER_IMGS[k]; if (el) { el.src = this._hiverUrl(it[0]); el.alt = it[1]; } }
-  _hiverGo(i) {
-    const L = Component.HIVER_IMGS, k = (i + L.length) % L.length, el = this.hiverMainRef.current;
-    if (el) { el.style.opacity = '0'; const s = document.querySelector('script[src*="support.js"]'); const u = new URL(L[k][0], s ? s.src : location.href).href; const pre = new Image(); pre.onload = pre.onerror = () => { el.src = u; el.alt = L[k][1]; el.style.opacity = '1'; }; pre.src = u; }
-    if (this.state.hiverZoom) this._hiverZoomSet(k);
-    this.setState({ hiverI: k });
-  }
-  _hiverClose() { if (this.state.hiverZoom) { this.setState({ hiverZoom: false }); document.body.style.overflow = ''; } }
-  _hiverKey = (e) => { if (!this.state.hiverZoom) return; if (e.key === 'Escape') this._hiverClose(); else if (e.key === 'ArrowLeft') this._hiverGo((this.state.hiverI || 0) - 1); else if (e.key === 'ArrowRight') this._hiverGo((this.state.hiverI || 0) + 1); };
-  renderVals() {
-    const mailText = ['camelia', 'camelianguyen.fr'].join(String.fromCharCode(64));
-    const mailHref = 'mai' + 'lto:' + mailText;
-    const page = this.state.page;
-    const season = this.props.season ?? 'automne';
-    const navC = (k) => (page === k ? 'var(--rose)' : 'var(--ink-soft)');
-    const navU = (k) => (page === k ? 'var(--rose)' : 'transparent');
-    return {
-      mailText, mailHref,
-      hiverMainRef: this.hiverMainRef,
-      hiverZoomRef: this.hiverZoomRef,
-      hiverZoomOpen: () => { this._hiverZoomSet(this.state.hiverI || 0); this.setState({ hiverZoom: true }); document.body.style.overflow = 'hidden'; },
-      hiverZoomClose: () => this._hiverClose(),
-      hiverStop: (e) => e.stopPropagation(),
-      hiverPrevZ: (e) => { e.stopPropagation(); this._hiverGo((this.state.hiverI || 0) - 1); },
-      hiverNextZ: (e) => { e.stopPropagation(); this._hiverGo((this.state.hiverI || 0) + 1); },
-      hiverZoomVis: this.state.hiverZoom ? 'visible' : 'hidden',
-      hiverZoomOp: this.state.hiverZoom ? 1 : 0,
-      hiverPrev: () => this._hiverGo((this.state.hiverI || 0) - 1),
-      hiverNext: () => this._hiverGo((this.state.hiverI || 0) + 1),
-      hiverCount: ((this.state.hiverI || 0) + 1) + ' / ' + Component.HIVER_IMGS.length,
-      ...Object.fromEntries(Component.HIVER_IMGS.flatMap((_, i) => [['hiverShow' + i, () => this._hiverGo(i)], ['hiverB' + i, (this.state.hiverI || 0) === i ? 'var(--rose)' : 'transparent']])),
-      isAccueil: page === 'accueil',
-      isProgramme: false,
-      isEcriture: page === 'ecriture',
-      isActivites: page === 'activites',
-      isMethode: page === '7-permissions-pivoine',
-      isApropos: page === 'apropos',
-      isNewsletter: page === 'newsletter',
-      isLiens: page === 'liens',
-      showChrome: page !== 'liens',
-      showBand: page !== 'newsletter' && page !== 'liens',
-      showPrices: this.props.afficherPrix ?? true,
-
-      goAccueil: () => this.go('accueil'),
-      goProgramme: () => this._goSection('batterie-faible'),
-      goToSaisons: () => this._scrollToId('saisons-tranquilles'),
-      goToBatterie: () => this._scrollToId('batterie-faible'),
-      // Masquage temporaire : Carnets d'écriture masqué, Carnets d'activités visible.
-      // « Programme d'écriture » mène à la page de vente autonome /ecriture/ (landings/mental-leger.html).
-      saisonAutomne: season === 'automne',
-      saisonNeutre: season === 'neutre',
-      showEcriture: true,
-      showActivites: true,
-      goEcriture: () => { try { if (window.__ppStatic) location.assign('/ecriture/'); else window.open('https://papierpivoine.fr/ecriture/', '_blank', 'noopener'); } catch (_) {} },
-      goActivites: () => this.go('activites'),
-      goMethode: () => this.go('7-permissions-pivoine'),
-      goApropos: () => this.go('apropos'),
-      goNewsletter: () => this.go('newsletter'),
-      goLiens: () => this.go('liens'),
-
-      navCAccueil: navC('accueil'), navUAccueil: navU('accueil'),
-      navCProgramme: navC('batterie-faible'), navUProgramme: navU('batterie-faible'),
-      navCEcriture: navC('ecriture'), navUEcriture: navU('ecriture'),
-      navCActivites: navC('activites'), navUActivites: navU('activites'),
-      navCMethode: navC('7-permissions-pivoine'), navUMethode: navU('7-permissions-pivoine'),
-      navCApropos: navC('apropos'), navUApropos: navU('apropos'),
-      navCNewsletter: navC('newsletter'), navUNewsletter: navU('newsletter'),
-
-      menuOpen: this.state.menuOpen,
-      menuClosed: !this.state.menuOpen,
-      toggleMenu: () => this.setState((s) => ({ menuOpen: !s.menuOpen })),
-
-      email: this.state.email,
-      onEmailChange: (e) => this.setState({ email: e.target.value }),
-      subscribed: this.state.subscribed,
-      notSubscribed: !this.state.subscribed,
-      subscribe: () => {
-        const uid = '638990c016';
-        // Le formulaire simple n'est PAS chargé au démarrage (sinon il s'ouvrirait tout seul).
-        // On l'injecte au premier clic, puis on l'ouvre.
-        const openIt = () => {
-          const kitVisible = Array.prototype.slice
-            .call(document.querySelectorAll('[class*="formkit"]'))
-            .some((el) => el.offsetWidth > 0 && el.offsetHeight > 0);
-          if (!kitVisible) {
-            const t = document.querySelector('[data-formkit-toggle="' + uid + '"]');
-            if (t) { try { t.click(); } catch (e) {} }
-          }
-          this.fixKitModal();
-        };
-        if (window.__ppKitSimpleLoaded) { openIt(); return; }
-        window.__ppKitSimpleLoaded = true;
-        const s = document.createElement('script');
-        s.async = true;
-        s.setAttribute('data-uid', uid);
-        s.src = 'https://camelianguyen.kit.com/' + uid + '/index.js';
-        s.onload = () => { setTimeout(openIt, 350); };
-        document.head.appendChild(s);
-      },
-
-      buyTeteAmazon: () => window.open('https://www.amazon.fr/dp/B0H6BCB9VZ', '_blank'),
-      buyEteAmazon: () => window.open('https://www.amazon.fr/dp/B0H7QKL2GJ', '_blank'),
-      buySiesteAmazon: () => window.open('https://www.amazon.fr/dp/B0H96F151L', '_blank'),
-      buyCoconAutomneAmazon: () => window.open('https://www.amazon.fr/dp/B0HHLYRWNM', '_blank'),
-      buyCoconHiverAmazon: () => window.open('https://www.amazon.fr/dp/B0HL6VVS5X', '_blank'),
-      buyEtSiAmazon: () => window.open('https://www.amazon.fr/dp/B0HL27XDWD', '_blank'),
-
-      eteShowCover: (this.state.eteSel || 'cover') === 'cover' ? 'block' : 'none',
-      eteShowA: this.state.eteSel === 'a' ? 'block' : 'none',
-      eteShowB: this.state.eteSel === 'b' ? 'block' : 'none',
-      eteShowC: this.state.eteSel === 'c' ? 'block' : 'none',
-      eteShowD: this.state.eteSel === 'd' ? 'block' : 'none',
-      eteBorderCover: (this.state.eteSel || 'cover') === 'cover' ? 'var(--rose)' : 'transparent',
-      eteBorderA: this.state.eteSel === 'a' ? 'var(--rose)' : 'transparent',
-      eteBorderB: this.state.eteSel === 'b' ? 'var(--rose)' : 'transparent',
-      eteBorderC: this.state.eteSel === 'c' ? 'var(--rose)' : 'transparent',
-      eteBorderD: this.state.eteSel === 'd' ? 'var(--rose)' : 'transparent',
-      selectEteCover: () => this.setState({ eteSel: 'cover' }),
-      selectEteA: () => this.setState({ eteSel: 'a' }),
-      selectEteB: () => this.setState({ eteSel: 'b' }),
-      selectEteC: () => this.setState({ eteSel: 'c' }),
-      selectEteD: () => this.setState({ eteSel: 'd' }),
-
-      mlShowCover: (this.state.mlSel || 'cover') === 'cover' ? 'block' : 'none',
-      mlShowA: this.state.mlSel === 'a' ? 'block' : 'none',
-      mlShowB: this.state.mlSel === 'b' ? 'block' : 'none',
-      mlShowC: this.state.mlSel === 'c' ? 'block' : 'none',
-      mlBorderCover: (this.state.mlSel || 'cover') === 'cover' ? 'var(--rose)' : 'transparent',
-      mlBorderA: this.state.mlSel === 'a' ? 'var(--rose)' : 'transparent',
-      mlBorderB: this.state.mlSel === 'b' ? 'var(--rose)' : 'transparent',
-      mlBorderC: this.state.mlSel === 'c' ? 'var(--rose)' : 'transparent',
-      selectMlCover: () => this.setState({ mlSel: 'cover' }),
-      selectMlA: () => this.setState({ mlSel: 'a' }),
-      selectMlB: () => this.setState({ mlSel: 'b' }),
-      selectMlC: () => this.setState({ mlSel: 'c' }),
-      buyMentalLeger: () => window.open('https://www.camelianguyen.fr/products/de-l-epuisement-mental-a-la-legerete?step=checkout', '_blank'),
-    };
-  }
-}
-</script>
+    <div class="hero-art"><img src="/assets/landing/newsletter/img/lettre-the-vert.webp" width="1208" height="521" alt="Une enveloppe rose avec une lettre, et une tasse de thé vert fumante" fetchpriority="high"><span class="note" style="left:4%;top:-4px">(à lire sous le plaid)</span></div>
+  </div>
+</section>
+<section class="sec">
+  <div class="wrap">
+    <div class="kick">Dedans, chaque mois</div>
+    <h2>Ce que tu trouves <span class='hl'>dans chaque lettre</span></h2>
+    <ul class="cards"><li class="card rv"><img src="/assets/landing/newsletter/img/icone-feuille.webp" alt="" loading="lazy"><b>Le thème de la saison</b><span>En octobre, se faire une tanière. En septembre, une rentrée plus légère. Un thème qui suit ce que tu vis déjà.</span></li><li class="card rv"><img src="/assets/landing/newsletter/img/icone-tasse.webp" alt="" loading="lazy"><b>Un vrai moment de ma vie</b><span>Pas de leçon. Le petit gilet sorti en octobre, l’open space qui remonte d’un cran à la rentrée, des nouvelles de Bao, mon chat.</span></li><li class="card rv"><img src="/assets/landing/newsletter/img/icone-crayon.webp" alt="" loading="lazy"><b>Un exercice d’écriture douce</b><span>Pas à pas, avec ton carnet et un stylo. Rien à réussir, rien à relire. Et souvent, ma propre réponse.</span></li><li class="card rv"><img src="/assets/landing/newsletter/img/icone-case-cochee.webp" alt="" loading="lazy"><b>Une question, un clic</b><span>Un petit sondage anonyme. Tes réponses décident de la suite de la lettre.</span></li><li class="card rv"><img src="/assets/landing/newsletter/img/icone-carnet.webp" alt="" loading="lazy"><b>Mes nouveautés, en premier</b><span>Un nouveau carnet, une nouvelle version de mon programme : tu le sais avant les autres.</span></li></ul>
+    <p class="also"><span class="aside" >(Et parfois, entre deux lettres, quelques mots quand j’ai quelque chose de nouveau à te montrer. Jamais un mail par jour.)</span></p>
+  </div>
+</section><section class="sec bg-sand">
+  <div class="wrap two">
+    <div class="paper rv" aria-label="Un extrait de la lettre d’octobre">
+      <span class="tape"></span>
+      <p class="ph">Papier Pivoine · la lettre · octobre</p>
+      <p class="hi">Coucou toi,</p>
+      <p>Comment vas-tu depuis la dernière fois ? Le mois de la rentrée s’est bien passé pour toi ? Pas trop fatiguée ?</p>
+      <p>Ça y est, on est en octobre, en automne. J’ai sorti mon petit gilet.</p>
+      <p class="sep">✦</p>
+      <p class="ex">✍️ L’exercice : la tanière · 4. La trêve</p>
+      <p>Une exigence que je laisse tomber jusqu’au printemps : <span class='blank'></span></p>
+      <p>Jusqu’au printemps, pas pour toujours. Par exemple : une maison présentable en permanence, répondre aux messages le jour même, recevoir avant janvier.</p>
+      <p class="sg">Je t’embrasse,<br><span>Camélia</span></p>
+    </div>
+    <div>
+      <div class="kick">Un extrait</div>
+      <h2>Voilà à quoi <span class='hl'>elle ressemble</span></h2>
+      <p class="lead">Pas une newsletter pleine de liens. Une vraie lettre, qu’on lit avec un thé.</p>
+      <p>Elle commence par prendre de tes nouvelles. Ensuite, le thème du mois, et un exercice en quelques étapes, à faire le soir même ou à garder pour plus tard. Ou simplement à lire.</p>
+      <p>À la fin, je te demande ce que tu en as pensé. Tu peux me répondre : je lis tout, et je réponds moi-même.</p>
+    </div>
+  </div>
+</section><section class="sec">
+  <div class="wrap">
+    <div class="kick">Les dernières lettres</div>
+    <h2>Un thème par mois, <span class='hl'>au rythme des saisons</span></h2>
+    <ol class="past"><li class="rv"><span class="m">juillet</span><b>L’école buissonnière</b><span class="x">✍️ Une carte postale d’une autre vie</span></li><li class="rv"><span class="m">août</span><b>Le droit de ne rien faire</b><span class="x">✍️ Des bons pour ne rien faire</span></li><li class="rv"><span class="m">septembre</span><b>Une rentrée plus légère</b><span class="x">✍️ Ta colonne de droite</span></li><li class="rv"><span class="m">octobre</span><b>Se faire une tanière</b><span class="x">✍️ La tanière</span></li><li class="nx rv"><span class="m">la prochaine</span><b data-next-short>le premier dimanche</b><span class="x">si tu t’inscris avant, elle est pour toi</span></li></ol>
+    <p class="hint swipe">Fais défiler →</p>
+  </div>
+</section><section class="sec bg-rose">
+  <div class="wrap">
+    <div class="kick">Ce qu’elles en disent</div>
+    <div class="qs">
+      <blockquote class="quote rv">« Camélia, ta lettre du mardi est devenue un véritable rendez-vous précieux pour moi. »<cite>Véronique</cite></blockquote>
+      <blockquote class="quote rv">« Merci pour tes newsletters qui sont de réelles bouffées d’air frais. »<cite>Virginie</cite></blockquote>
+      <blockquote class="quote rv">« J’adore vraiment vos mails et vos écrits, j’en ai déjà réalisé plusieurs. »<cite>Nathalie</cite></blockquote>
+    </div>
+    <p class="center" style="margin:34px 0 0"><a class="btn" href="#recevoir">Je veux la recevoir aussi</a></p>
+  </div>
+</section><section class="sec">
+  <div class="wrap two">
+    <div class="pic rv"><img loading="lazy" src="/assets/landing/newsletter/img/premiere-semaine-mental-leger-offerte.webp" width="1032" height="660" alt="La première semaine de Mental Léger : la couverture et deux pages intérieures"></div>
+    <div>
+      <div class="kick">Pour t’accueillir</div>
+      <h2>La première semaine de Mental Léger, <span class='hl'>offerte</span></h2>
+      <ul class="ticks">
+        <li><b>22 pages</b>, à imprimer ou à remplir directement à l’écran.</li>
+        <li><b>Cinq soirs d’écriture</b>, cinq ou dix minutes chacun, pour vider ta tête avant de dormir.</li>
+        <li><b>Le vidage, le tri, le 5-4-3-2-1</b> : les vraies pages du programme, pas un résumé.</li>
+        <li><b>C’est à toi</b>, à garder, même si tu n’achètes jamais rien.</li>
+      </ul>
+      <p class="mini">« J’ai rempli plusieurs pages, sans être pressée par le temps… je me sens assez soulagée, calme… J’adore cet exercice. » <span>Anne-Sophie, après le jour 1</span></p>
+    </div>
+  </div>
+</section><section class="sec">
+  <div class="wrap two">
+    <div class="pic rv"><img loading="lazy" src="/assets/landing/newsletter/img/camelia-bureau-bao.webp" width="700" height="455" alt="Camélia à son bureau, avec Bao endormi à côté de son carnet"></div>
+    <div>
+      <div class="kick">Qui t’écrit</div>
+      <h2>Moi, c’est Camélia</h2>
+      <p class="lead">J’écris pour les femmes hypersensibles et introverties, parce que j’en suis une.</p>
+      
+      <p>Le soir, je rentre du bureau vidée. Ce qui m’aide : écrire cinq minutes avant d’allumer l’écran.</p>
+      <p>J’écris le plus souvent à mon bureau, dans le salon. Un thé vert le matin, une tisane le soir. Bao dort à côté de mon carnet. <span class="aside" >(Quand il ne gratte pas sa couverture.)</span></p>
+    </div>
+  </div>
+</section><section class="sec bg-sand">
+  <div class="wrap narrow">
+    <div class="kick">Avant de t’inscrire</div>
+    <h2>Tes questions</h2>
+    <div class="faq"><details><summary>C’est vraiment gratuit ?</summary><p>Oui, la lettre et la semaine offerte. Si un jour tu as envie d’aller plus loin, je te parlerai de mes carnets et de mon programme. Tu n’es jamais obligée de rien.</p></details><details><summary>Combien de mails je vais recevoir ?</summary><p>Les premières semaines, ta semaine offerte et quelques mots pour t’accompagner pendant que tu l’essaies. Ensuite, une lettre le premier dimanche du mois, et parfois quelques mots entre deux lettres, quand j’ai quelque chose de nouveau à te montrer. Jamais un mail par jour.</p></details><details><summary>Je dois faire l’exercice ?</summary><p>Non. Tu peux le faire le soir même, le garder pour plus tard, ou simplement lire. La lettre est là pour toi, pas l’inverse.</p></details><details><summary>Je peux te répondre ?</summary><p>Oui, c’est même ce que je préfère. Réponds simplement au mail, une ligne suffit. Je lis tout, et je réponds moi-même.</p></details><details><summary>Qu’est-ce que tu fais de mon adresse ?</summary><p>Je t’envoie ta semaine, ma lettre et parfois quelques mots entre deux lettres. Je ne la partage avec personne. Un clic en bas de chaque mail, et tu pars.</p></details></div>
+  </div>
+</section><section class="sec final" id="recevoir-bas">
+  <div class="wrap narrow center">
+    <img class="deco rv" loading="lazy" src="/assets/landing/newsletter/img/canape-bao.webp" width="900" height="466" alt="Bao endormi sur un canapé, à côté d’un plaid">
+    <h2>Le premier dimanche, <span class='hl'>une lettre pour toi</span></h2>
+    <p class="lead">Et ta première semaine d’écriture, tout de suite.</p>
+    <form class="sub" action="https://app.kit.com/forms/9685937/subscriptions" method="post">
+  <input type="hidden" name="fields[source]" value="newsletter-bas">
+  <div class="fields">
+    <label><span>Ton prénom</span><input name="fields[first_name]" autocomplete="given-name" required placeholder="Clémence"></label>
+    <label><span>Ton adresse e-mail</span><input type="email" name="email_address" autocomplete="email" required placeholder="toi@exemple.fr"></label>
+  </div>
+  <button class="btn" type="submit">Recevoir la lettre et mon cadeau <svg class="pv" viewBox="0 0 120 120" aria-hidden="true"><path d="M62.7,49.8 C66.1,48.3 73.1,61.7 69.5,62.6 C71.8,66.2 60.0,73.3 57.4,69.7 C53.2,71.8 46.4,60.3 50.3,57.4 C49.8,53.3 61.7,47.9 62.7,51.8 M57.1,43.6 C46.3,12.7 80.5,14.0 65.0,44.5 M69.6,46.7 C81.8,18.7 103.5,44.8 74.8,52.4 M77.3,59.3 C107.0,50.6 98.2,86.2 75.1,67.9 M71.5,72.6 C98.7,90.0 68.7,109.6 64.6,76.1 M56.0,75.8 C55.5,106.4 22.2,90.6 49.0,71.4 M46.0,67.6 C19.3,88.3 11.6,52.1 44.5,60.0 M44.9,52.5 C15.6,45.7 36.2,19.9 49.7,47.0"/></svg></button>
+  <p class="fine">Gratuit. Ta semaine offerte arrive tout de suite, puis ma lettre chaque premier dimanche, et parfois quelques mots entre deux lettres. Désinscription en un clic. Ton adresse reste entre nous.</p>
+</form>
+  </div>
+</section>
+</main>
+<footer class="site">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:32px;flex-wrap:wrap">
+      <div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="font-family:var(--font-display);font-weight:800;font-variation-settings:'opsz' 72;font-size:21px;color:var(--deep-olive);letter-spacing:-0.005em">Papier Pivoine</span><svg width="30" height="30" viewBox="0 0 120 120" fill="none" stroke="#E26D5F" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M62.7,49.8 C66.1,48.3 73.1,61.7 69.5,62.6 C71.8,66.2 60.0,73.3 57.4,69.7 C53.2,71.8 46.4,60.3 50.3,57.4 C49.8,53.3 61.7,47.9 62.7,51.8 M57.1,43.6 C46.3,12.7 80.5,14.0 65.0,44.5 M69.6,46.7 C81.8,18.7 103.5,44.8 74.8,52.4 M77.3,59.3 C107.0,50.6 98.2,86.2 75.1,67.9 M71.5,72.6 C98.7,90.0 68.7,109.6 64.6,76.1 M56.0,75.8 C55.5,106.4 22.2,90.6 49.0,71.4 M46.0,67.6 C19.3,88.3 11.6,52.1 44.5,60.0 M44.9,52.5 C15.6,45.7 36.2,19.9 49.7,47.0"></path></svg></div>
+        <p style="font-family:var(--font-body);font-style:italic;color:var(--rose-deep);margin:0;font-size:15px;max-width:32ch;line-height:1.5">Trop sensible, trop fatiguée, trop bien sous mon plaid.</p>
+      </div>
+      <div style="display:flex;gap:40px 64px;flex-wrap:wrap">
+        <div>
+          <div class="pp-eyebrow" style="margin-bottom:14px">Découvrir</div>
+          <div class="fcol">
+            <a href="/activites/" style="color:var(--ink-soft);text-decoration:none">Carnets d’activités douces</a>
+            <a href="/ecriture/" style="color:var(--ink-soft);text-decoration:none">Programme d’écriture</a>
+            <a href="/7-permissions-pivoine/" style="color:var(--ink-soft);text-decoration:none">7 permissions PIVOINE</a>
+            <a href="/apropos/" style="color:var(--ink-soft);text-decoration:none">À propos</a>
+          </div>
+        </div>
+        <div>
+          <div class="pp-eyebrow" style="margin-bottom:14px">Rester en lien</div>
+          <div class="fcol">
+            <a href="/newsletter/" style="color:var(--ink-soft);text-decoration:none">Newsletter gratuite</a>
+            <a href="mailto:camelia@camelianguyen.fr" style="color:var(--ink-soft);text-decoration:none">Écrire à Camélia</a>
+            <a href="https://fr.pinterest.com/papierpivoine/" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">Pinterest</a>
+            <a href="https://www.youtube.com/@papierpivoine/shorts" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">YouTube</a>
+            <a href="https://www.tiktok.com/@papierpivoine" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">TikTok</a>
+            <a href="https://www.instagram.com/papierpivoine/" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">Instagram</a>
+            <a href="https://www.facebook.com/share/1Bue8nqYmf/?mibextid=wwXIfr" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">Facebook</a>
+            <a href="https://www.threads.com/@papierpivoine?igshid=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener" style="color:var(--ink-soft);text-decoration:none">Threads</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="height:1px;background:var(--border-faint);margin:36px 0"></div>
+    <p style="font-family:var(--font-body);font-size:12px;color:var(--ink-faint);margin:0 0 8px;max-width:70ch;line-height:1.6">Ce que tu trouves ici est une pratique douce, pas un soin. Ce n’est pas un substitut à un accompagnement professionnel. Si tu traverses une période difficile, parles-en à un professionnel de santé.</p>
+    <p style="font-family:var(--font-body);font-size:12px;color:var(--ink-faint);margin:0">© 2026 Papier Pivoine · Camélia Nguyen</p>
+  </div>
+</footer>
+<div class="bar" id="bar"><span>La lettre du premier dimanche</span><a class="btn" href="#recevoir">Je m’inscris</a></div>
 <script>
-// Une seule copie du contenu dans le HTML : le gabarit de l'appli live est chargé à part
-// (/_app/<page>.json), puis support.js démarre et remplace #prerender.
-(function(){fetch('/_app/newsletter.json').then(function(r){return r.json();}).then(function(d){window.__ppRawTpl=d.tpl;var x=document.createElement('x-dc');x.innerHTML=d.tpl;document.body.appendChild(x);var s=document.createElement('script');s.src='/support.js';document.head.appendChild(s);}).catch(function(){});})();
-(function(){var t=0;function r(){var d=document.getElementById('dc-root');if(d&&d.childElementCount>0){d.style.display='block';var p=document.getElementById('prerender');if(p&&p.parentNode)p.parentNode.removeChild(p);return;}if(t++<900)requestAnimationFrame(r);}requestAnimationFrame(r);})();
+(function(){
+  var io=('IntersectionObserver' in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'}):null;
+  document.querySelectorAll('.rv').forEach(function(el){io?io.observe(el):el.classList.add('in');});
+  var bar=document.getElementById('bar'), forms=document.querySelectorAll('form.sub');
+  function vis(el){var r=el.getBoundingClientRect();return r.top<innerHeight&&r.bottom>0;}
+  addEventListener('scroll',function(){var any=false;forms.forEach(function(f){if(vis(f))any=true;});bar.classList.toggle('on',scrollY>600&&!any);},{passive:true});
+  forms.forEach(function(f){f.addEventListener('submit',function(){var b=f.querySelector('button');b.disabled=true;b.firstChild.nodeValue='Envoi… ';});});
+})();
+
+(function(){
+  var M=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+  function firstSun(y,m){var d=new Date(y,m,1);d.setDate(1+(7-d.getDay())%7);return d;}
+  var now=new Date(),t=new Date(now.getFullYear(),now.getMonth(),now.getDate()),d=firstSun(t.getFullYear(),t.getMonth());
+  if(d<t)d=firstSun(t.getFullYear(),t.getMonth()+1);
+  var j=d.getDate()===1?'1er':d.getDate();
+  var long='dimanche '+j+' '+M[d.getMonth()], same=(d.getTime()===t.getTime());
+  document.querySelectorAll('[data-next]').forEach(function(e){e.textContent=same?'aujourd’hui, dimanche':long;});
+  document.querySelectorAll('[data-next-short]').forEach(function(e){e.textContent=M[d.getMonth()];});
+})();
 </script>
 </body>
 </html>
