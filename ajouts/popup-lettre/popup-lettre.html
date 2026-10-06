@@ -12,7 +12,8 @@
      Adaptation pour papierpivoine.fr (seuls changements) :
      · polices : les fichiers du site (/assets/fonts/) au lieu de Google Fonts,
        sous des noms préfixés « ppl » pour ne rien mélanger avec la page ;
-     · illustration : copie locale /assets/ppl/ au lieu de Netlify.
+     · illustration : copie locale /assets/ppl/ au lieu de Netlify ;
+     · PAGES_SANS_POPUP : aussi /semaine-offerte/, /mental-leger/suite/, /liens/ (accord du 2026-10-06).
      Ajouté à chaque page par .github/corriger-site.py au moment de la publication.
      ============================================================ -->
 
@@ -193,7 +194,7 @@
   var DELAI_SECONDES = 20;      // ouverture après 20 s sur le site…
   var SCROLL_POURCENT = 50;     // …ou après la moitié de la page lue
   var JOURS_AVANT_REVOIR = 30;  // fermée : on ne la remontre pas avant 30 jours
-  var PAGES_SANS_POPUP = ['/newsletter/']; // pages où le formulaire est déjà là
+  var PAGES_SANS_POPUP = ['/newsletter/', '/semaine-offerte/', '/mental-leger/suite/', '/liens/']; // formulaire déjà là, abonnées, ou lien en bio
   /* ------------------------------ */
 
   var ov = document.getElementById('ppl-overlay'); if(!ov) return;

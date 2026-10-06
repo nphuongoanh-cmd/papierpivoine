@@ -64,7 +64,7 @@ perdre ta revendication en silence.
 **La pop-up « La lettre »** (depuis le 2026-10-06). Le bloc `ajouts/popup-lettre/popup-lettre.html`
 est collé juste avant `</body>` sur chaque page (sauf les pages de redirection), et son
 illustration est copiée dans `/assets/ppl/`. Elle s'ouvre après 20 s, à la moitié de la page,
-ou quand la souris quitte la page ; jamais sur `/newsletter/` (réglage `PAGES_SANS_POPUP`
+ou quand la souris quitte la page ; jamais sur `/newsletter/`, `/semaine-offerte/`, `/mental-leger/suite/` ni `/liens/` (réglage `PAGES_SANS_POPUP`
 dans le bloc). Elle envoie au formulaire Kit 9685937.
 L'ancienne pop-up Kit automatique (27c8b8373b), chargée par le code des pages, est
 désactivée à la publication. Si un futur paquet la chargeait autrement, ou si un script
