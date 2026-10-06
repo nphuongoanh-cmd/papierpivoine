@@ -69,8 +69,7 @@ dans le bloc). Elle envoie au formulaire Kit 9685937.
 L'ancienne pop-up Kit automatique (27c8b8373b), chargée par le code des pages, est
 désactivée à la publication. Si un futur paquet la chargeait autrement, ou si un script
 Kit apparaissait directement dans une page, la publication échoue : jamais deux pop-ups.
-Pour modifier la pop-up : remplacer `popup-lettre.html` (en gardant les polices du site et
-l'illustration locale), puis publier.
+Pour mettre à jour la pop-up avec une nouvelle version livrée : `python3 ajouts/popup-lettre/adapter.py chemin/vers/le-fichier.html` (il garde l'original et réapplique les adaptations du site), puis publier.
 
 Ce sont les **deux seules choses** que le build ajoute.
 
