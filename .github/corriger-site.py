@@ -13,6 +13,16 @@ le domaine appartient bien à Camélia (nécessaire aux Rich Pins). L'outil de
 design ne l'ajoute pas ; on l'injecte ici pour qu'une régénération ne la
 supprime pas — ce qui dé-revendiquerait le domaine silencieusement.
 
+── Ajout permanent : pop-up « La lettre » (depuis le 2026-10-06) ─────────────
+Pop-up d'inscription conçue à part (ajouts/popup-lettre/popup-lettre.html,
+formulaire Kit 9685937), collée juste avant </body> sur chaque page, avec son
+illustration copiée dans /assets/ppl/. Elle se tient elle-même à l'écart de
+/newsletter/ (PAGES_SANS_POPUP dans le bloc). L'ancienne pop-up Kit
+automatique (27c8b8373b), que le code des pages charge au démarrage, est
+désactivée en posant window.__ppKit27Loaded=true avant ce code : il ne la charge
+que si ce drapeau est absent. Les blocs « Recevoir le cadeau » écrits dans les
+pages (Kit 638990c016, ouverts au clic) ne sont pas touchés.
+
 ── Historique : trois correctifs retirés le 2026-07-18 ──────────────────────
 L'outil de design a corrigé trois bugs à la source (vérifié en ligne), rendant
 inutiles les rustines que ce script appliquait auparavant. Retirées :
@@ -39,6 +49,15 @@ EXCLUS = {".DS_Store"}
 # balise est publique, visible dans le source de chaque page. Ne pas la retirer
 # sans dé-revendiquer le domaine côté Pinterest d'abord.
 PINTEREST_META = '<meta name="p:domain_verify" content="65335738f5dcb1dd57bb33a15d99e30a"/>'
+
+# Pop-up « La lettre » : le bloc à coller avant </body>, et son illustration.
+POPUP_DOSSIER = RACINE / "ajouts" / "popup-lettre"
+POPUP_BLOC = POPUP_DOSSIER / "popup-lettre.html"
+POPUP_IMAGES = {"lettre-the-vert-serre.webp": "assets/ppl/lettre-the-vert-serre.webp"}
+# Empêche le code des pages de charger l'ancienne pop-up Kit automatique.
+KIT_POPUP_UID = "27c8b8373b"
+KIT_POPUP_GARDE = "!window.__ppKit27Loaded"
+KIT_POPUP_STOP = "<script>window.__ppKit27Loaded=true;/* ancienne pop-up Kit désactivée : voir corriger-site.py */</script>"
 
 erreurs = []
 
@@ -84,6 +103,33 @@ def injecter_pinterest(chemin):
     return True
 
 
+def est_redirection(html):
+    return 'http-equiv="refresh"' in html
+
+
+def ajouter_popup(chemin, bloc):
+    """Désactive l'ancienne pop-up Kit et colle la nouvelle avant </body>."""
+    html = chemin.read_text(encoding="utf-8")
+    if est_redirection(html) or 'id="ppl-overlay"' in html:
+        return False
+    if KIT_POPUP_UID in html:
+        html, n = re.subn(r"<head>", "<head>\n" + KIT_POPUP_STOP, html, count=1)
+        if not n:
+            erreurs.append(f"{chemin.relative_to(SORTIE)} : aucune balise <head> pour désactiver la pop-up Kit")
+    i = html.rfind("</body>")
+    if i < 0:
+        erreurs.append(f"{chemin.relative_to(SORTIE)} : aucune balise </body> pour la pop-up")
+        return False
+    chemin.write_text(html[:i] + bloc + "\n" + html[i:], encoding="utf-8")
+    return True
+
+
+def copier_images_popup():
+    for nom, cible in POPUP_IMAGES.items():
+        (SORTIE / cible).parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(POPUP_DOSSIER / nom, SORTIE / cible)
+
+
 def verifier(pages):
     """Garde-fous : on préfère un build qui échoue à un site cassé en ligne."""
     for page in pages:
@@ -117,6 +163,24 @@ def verifier(pages):
     for chemin, ou in sorted(manquants.items()):
         erreurs.append(f"fichier cité introuvable -> /{chemin} (dans {len(ou)} fichier(s), ex. {ou[0]})")
 
+    # pop-up « La lettre » : une seule fois par page, et jamais l'ancienne pop-up Kit
+    for page in pages:
+        html = page.read_text(encoding="utf-8")
+        nom = page.relative_to(SORTIE)
+        if est_redirection(html):
+            continue
+        if html.count('id="ppl-overlay"') != 1:
+            erreurs.append(f"{nom} : pop-up « La lettre » absente ou en double")
+        if KIT_POPUP_UID in html and (KIT_POPUP_GARDE not in html or KIT_POPUP_STOP not in html):
+            erreurs.append(
+                f"{nom} : l'ancienne pop-up Kit ({KIT_POPUP_UID}) n'est plus désactivable "
+                "(le code des pages a changé) : il y aurait deux pop-ups"
+            )
+        if re.search(r"<script[^>]+src=[^>]*(kit\.com|convertkit\.com|ck\.page)", html):
+            erreurs.append(f"{nom} : un script Kit est chargé directement (pop-up en double ?)")
+        if "fonts.googleapis" in html:
+            erreurs.append(f"{nom} : Google Fonts est chargé (le site héberge ses polices)")
+
     for essentiel in ["CNAME", "index.html", "sitemap.xml", "robots.txt"]:
         if not (SORTIE / essentiel).exists():
             erreurs.append(f"fichier essentiel manquant : {essentiel}")
@@ -128,9 +192,13 @@ def main():
 
     pages = sorted(SORTIE.rglob("*.html"))
     print(f"→ {len(pages)} pages HTML")
+    bloc = POPUP_BLOC.read_text(encoding="utf-8")
+    copier_images_popup()
     for page in pages:
         pose = injecter_pinterest(page)
-        print(f"   {str(page.relative_to(SORTIE)):32} {'pinterest' if pose else 'rien à faire'}")
+        popup = ajouter_popup(page, bloc)
+        faits = [n for n, f in (("pinterest", pose), ("pop-up", popup)) if f]
+        print(f"   {str(page.relative_to(SORTIE)):32} {' + '.join(faits) or 'rien à faire'}")
 
     print("→ vérifications")
     verifier(pages)

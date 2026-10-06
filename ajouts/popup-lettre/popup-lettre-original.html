@@ -1,0 +1,324 @@
+<!-- ============================================================
+     Pop-up « La lettre » · Papier Pivoine
+     À coller juste avant </body>, sur toutes les pages du site.
+     Formulaire Kit n° 9685937 (celui qui envoie la semaine offerte).
+
+     Trois mises en page :
+     · téléphone (moins de 600 px) : un panneau qui monte du bas,
+       qu'on ferme en le glissant vers le bas ;
+     · tablette (600 à 959 px) : une carte centrée ;
+     · ordinateur (960 px et plus) : deux colonnes, le texte à gauche,
+       le formulaire à droite.
+     ============================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Fraunces:opsz,wght@9..144,800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ---------- Base (téléphone d'abord) ---------- */
+#ppl-overlay{--paper:#FCF6F2;--ink:#33321E;--muted:#6E6A5E;--pink:#D9776A;--pink-dk:#C4604F;--rose:#F6DCD4;--rose-ink:#B5574C;--sand:#EAD9AC;--line:#EBD9CF;--sage:#B2BD88;
+ position:fixed;inset:0;z-index:2147483000;display:flex;align-items:flex-end;justify-content:center;
+ background:rgba(51,50,30,.4);opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s;
+ -webkit-tap-highlight-color:transparent}
+#ppl-overlay.is-open{opacity:1;visibility:visible}
+#ppl-overlay *{box-sizing:border-box}
+#ppl-box{position:relative;width:100%;max-height:92vh;max-height:92dvh;overflow-y:auto;overscroll-behavior:contain;
+ -webkit-overflow-scrolling:touch;background:var(--paper);color:var(--ink);
+ border-radius:24px 24px 0 0;padding:10px 20px calc(18px + env(safe-area-inset-bottom));
+ font-family:'Nunito Sans',system-ui,-apple-system,sans-serif;-webkit-text-size-adjust:100%;
+ box-shadow:0 -12px 40px -14px rgba(51,50,30,.35);
+ transform:translateY(100%);transition:transform .38s cubic-bezier(.2,.8,.2,1)}
+#ppl-overlay.is-open #ppl-box{transform:translateY(0)}
+#ppl-box.is-dragging{transition:none}
+#ppl-box:focus{outline:none}
+#ppl-grip{display:block;width:44px;height:5px;border-radius:3px;background:#DDCFC6;margin:0 auto 6px}
+#ppl-close{position:absolute;top:6px;right:8px;width:44px;height:44px;border:0;background:none;border-radius:50%;
+ cursor:pointer;color:var(--ink);font-size:28px;line-height:1;display:flex;align-items:center;justify-content:center;
+ touch-action:manipulation;transition:background .2s}
+#ppl-ill{display:block;width:56%;max-width:220px;height:auto;aspect-ratio:900/387;object-fit:contain;margin:4px auto 10px}
+#ppl-kick{display:inline-block;background:var(--rose);color:var(--rose-ink);font-size:12px;font-weight:700;
+ letter-spacing:.09em;text-transform:uppercase;padding:6px 13px;border-radius:999px;margin:0 0 10px}
+#ppl-title{font-family:'Fraunces',Georgia,serif;font-weight:800;font-size:34px;line-height:1.05;margin:0 0 10px;letter-spacing:-.01em}
+#ppl-title mark{background:linear-gradient(transparent 55%,var(--sand) 55%,var(--sand) 92%,transparent 92%);color:inherit;padding:0 .08em}
+#ppl-text{font-size:16px;line-height:1.5;margin:0 0 12px;text-wrap:pretty}
+#ppl-next sup{font-size:.62em;line-height:0}
+#ppl-next{display:inline-flex;align-items:center;gap:8px;max-width:100%;white-space:nowrap;background:#fff;
+ border:1px solid var(--line);border-radius:999px;padding:7px 13px;font-size:14px;color:var(--muted);margin:0 0 14px}
+#ppl-next::before{content:"";flex:none;width:9px;height:9px;border-radius:50%;background:var(--sage);box-shadow:0 0 0 3px #E4E9D3}
+#ppl-next strong{color:var(--ink);font-weight:700}
+#ppl-form{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px 14px 12px}
+#ppl-form label{display:block;font-size:13px;font-weight:700;margin:0 0 6px}
+#ppl-form input{display:block;width:100%;height:48px;font:inherit;font-size:16px;/* 16 px : pas de zoom sur iPhone */
+ color:var(--ink);background:var(--paper);border:1.5px solid var(--line);border-radius:12px;padding:0 14px;margin:0 0 12px;
+ -webkit-appearance:none;appearance:none;transition:border-color .2s}
+#ppl-form input:focus{border-color:var(--pink);outline:none;box-shadow:0 0 0 3px rgba(217,119,106,.18)}
+#ppl-form input::placeholder{color:#A8A196}
+#ppl-btn{width:100%;min-height:52px;border:0;border-radius:999px;background:var(--pink);color:#fff;cursor:pointer;
+ font-family:'Caveat',cursive;font-weight:700;font-size:clamp(21px,6.2vw,25px);line-height:1.05;padding:10px 16px;
+ display:flex;align-items:center;justify-content:center;gap:10px;touch-action:manipulation;
+ box-shadow:0 8px 16px -10px rgba(196,96,79,.8);transition:background .2s,transform .1s}
+#ppl-btn:active{transform:scale(.98)}
+#ppl-btn[disabled]{opacity:.7;cursor:wait}
+#ppl-btn span{white-space:nowrap}
+#ppl-btn svg{width:20px;height:20px;flex:none}
+#ppl-close:focus-visible,#ppl-btn:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
+#ppl-legal{font-size:12.5px;line-height:1.45;color:var(--muted);margin:10px 2px 0;text-align:center;text-wrap:balance}
+#ppl-err{display:none;font-size:13.5px;color:var(--rose-ink);margin:-4px 0 12px}
+#ppl-done{display:none;text-align:center;background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 18px}
+#ppl-done p{font-size:16px;line-height:1.5;margin:0 0 8px}
+#ppl-done .ppl-hand{font-family:'Caveat',cursive;font-weight:700;font-size:24px;color:var(--rose-ink);margin:0}
+
+@media (hover:hover){
+ #ppl-close:hover{background:var(--rose)}
+ #ppl-btn:hover{background:var(--pink-dk)}
+ #ppl-form input:hover{border-color:#DCC3B7}
+}
+/* Très petits téléphones */
+@media (max-width:374px){
+ #ppl-box{padding-left:16px;padding-right:16px}
+ #ppl-title{font-size:31px}
+ #ppl-next{font-size:13px;padding:7px 11px;gap:7px}
+ #ppl-btn{font-size:22px}
+}
+@media (max-width:419px){#ppl-btn svg{display:none}}
+@media (max-width:339px){#ppl-next{white-space:normal}}
+/* Téléphones peu hauts : on garde le bouton visible sans défiler */
+@media (max-width:599px) and (max-height:740px){
+ #ppl-ill{display:none}
+ #ppl-box{padding-top:10px}
+ #ppl-kick{margin-top:2px}
+ #ppl-text{font-size:15.5px;line-height:1.45}
+ #ppl-form label{margin-bottom:5px}
+ #ppl-form input{height:46px;margin-bottom:10px}
+}
+
+/* ---------- Tablette : carte centrée ---------- */
+@media (min-width:600px){
+ #ppl-overlay{align-items:center;padding:24px}
+ #ppl-box{max-width:480px;max-height:calc(100vh - 48px);max-height:calc(100dvh - 48px);border-radius:24px;
+  padding:30px 32px 28px;box-shadow:0 30px 60px -20px rgba(51,50,30,.45);transform:translateY(16px) scale(.98)}
+ #ppl-overlay.is-open #ppl-box{transform:none}
+ #ppl-grip{display:none}
+ #ppl-close{top:12px;right:12px}
+ #ppl-ill{width:62%;max-width:260px;margin:0 auto 14px}
+ #ppl-title{font-size:40px}
+ #ppl-text{font-size:17px}
+ #ppl-form{padding:18px 18px 14px}
+}
+
+/* ---------- Ordinateur : deux colonnes ---------- */
+@media (min-width:960px) and (min-height:540px){
+ #ppl-box{max-width:900px;padding:48px 48px 44px;display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
+ #ppl-intro{min-width:0}
+ #ppl-ill{width:78%;max-width:300px;margin:0 0 18px -4px}
+ #ppl-title{font-size:48px;margin-bottom:14px}
+ #ppl-text{font-size:17px;line-height:1.55;margin-bottom:16px}
+ #ppl-next{margin:0}
+ #ppl-side{min-width:0}
+ #ppl-form{padding:22px 22px 18px;box-shadow:0 18px 36px -24px rgba(51,50,30,.35)}
+ #ppl-form input{height:50px}
+}
+
+/* ---------- Écrans peu hauts (téléphone couché, petit portable) ---------- */
+@media (max-height:540px){
+ #ppl-ill{display:none}
+ #ppl-box{max-height:calc(100vh - 12px);max-height:calc(100dvh - 12px)}
+}
+@media (max-height:540px) and (min-width:600px){
+ #ppl-overlay{padding:6px}
+ #ppl-box{max-width:780px;padding:22px 60px 18px 28px;display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:center}
+ #ppl-close{top:8px;right:8px}
+ #ppl-form{padding:14px 16px 10px}
+ #ppl-form input{height:44px;margin-bottom:10px}
+ #ppl-legal{margin-top:8px}
+ #ppl-title{font-size:34px}
+ #ppl-text{font-size:15.5px}
+ #ppl-next{margin:0}
+}
+
+@media (prefers-reduced-motion:reduce){#ppl-overlay,#ppl-box{transition:none}}
+</style>
+
+<div id="ppl-overlay" aria-hidden="true">
+  <div id="ppl-box" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="ppl-title">
+    <span id="ppl-grip" aria-hidden="true"></span>
+    <button id="ppl-close" type="button" aria-label="Fermer">&times;</button>
+
+    <div id="ppl-intro">
+      <img id="ppl-ill" src="https://phenomenal-sunshine-50fca1.netlify.app/lettre/lettre-the-vert-serre.webp"
+           width="900" height="387" alt="Une enveloppe et une tasse de thé vert" loading="lazy" decoding="async">
+      <div id="ppl-kick">La lettre · gratuite</div>
+      <h2 id="ppl-title">Papier <mark>Pivoine</mark></h2>
+      <p id="ppl-text">Le premier dimanche du mois, un moment à toi&#8239;: un thème de saison, un exercice d’écriture douce, et mes nouvelles. Pour t’accueillir, je t’offre la première semaine de <i>Mental Léger</i>, mon programme d’écriture.</p>
+      <div id="ppl-next">Prochaine lettre&#8239;: <strong id="ppl-date">dimanche 1<sup>er</sup> novembre</strong></div>
+    </div>
+
+    <div id="ppl-side">
+      <form id="ppl-form" action="https://app.kit.com/forms/9685937/subscriptions" method="post" novalidate>
+        <label for="ppl-fn">Ton prénom</label>
+        <input id="ppl-fn" name="fields[first_name]" type="text" autocomplete="given-name" autocapitalize="words"
+               enterkeyhint="next" placeholder="Clémence">
+        <label for="ppl-em">Ton adresse e-mail</label>
+        <input id="ppl-em" name="email_address" type="email" inputmode="email" autocomplete="email"
+               autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="send"
+               placeholder="toi@exemple.fr" required>
+        <p id="ppl-err" role="alert">Il manque ton adresse e-mail (ou une petite faute s’y est glissée).</p>
+        <button id="ppl-btn" type="submit"><span>Recevoir la lettre et mon cadeau</span>
+          <svg viewBox="8 8 104 104" aria-hidden="true"><path fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" d="M62.7,49.8 C66.1,48.3 73.1,61.7 69.5,62.6 C71.8,66.2 60.0,73.3 57.4,69.7 C53.2,71.8 46.4,60.3 50.3,57.4 C49.8,53.3 61.7,47.9 62.7,51.8 M57.1,43.6 C46.3,12.7 80.5,14.0 65.0,44.5 M69.6,46.7 C81.8,18.7 103.5,44.8 74.8,52.4 M77.3,59.3 C107.0,50.6 98.2,86.2 75.1,67.9 M71.5,72.6 C98.7,90.0 68.7,109.6 64.6,76.1 M56.0,75.8 C55.5,106.4 22.2,90.6 49.0,71.4 M46.0,67.6 C19.3,88.3 11.6,52.1 44.5,60.0 M44.9,52.5 C15.6,45.7 36.2,19.9 49.7,47.0"/></svg>
+        </button>
+        <p id="ppl-legal">Gratuit. Ton adresse ne sert qu’à la lettre, rien d’autre. Tu peux te désinscrire quand tu veux, en un&nbsp;clic.</p>
+      </form>
+
+      <div id="ppl-done" aria-live="polite">
+        <p><strong>C’est noté.</strong> La première semaine de <i>Mental Léger</i> est en route vers ta boîte mail.</p>
+        <p>Si tu ne la vois pas, regarde dans les courriers indésirables.</p>
+        <p class="ppl-hand">À dimanche&#8239;!</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  /* ---------- Réglages ---------- */
+  var DELAI_SECONDES = 20;      // ouverture après 20 s sur le site…
+  var SCROLL_POURCENT = 50;     // …ou après la moitié de la page lue
+  var JOURS_AVANT_REVOIR = 30;  // fermée : on ne la remontre pas avant 30 jours
+  var PAGES_SANS_POPUP = ['/newsletter/']; // pages où le formulaire est déjà là
+  /* ------------------------------ */
+
+  var ov = document.getElementById('ppl-overlay'); if(!ov) return;
+  var box = document.getElementById('ppl-box'), form = document.getElementById('ppl-form');
+  var btn = document.getElementById('ppl-btn'), fn = document.getElementById('ppl-fn');
+  var em = document.getElementById('ppl-em'), err = document.getElementById('ppl-err');
+  var KEY = 'ppl-lettre', shown = false, lastFocus = null, savedY = 0;
+  var isSheet = function(){ return window.matchMedia('(max-width:599px)').matches; };
+
+  // ---- Date de la prochaine lettre : le premier dimanche du mois ----
+  function firstSunday(y, m){ var d = new Date(y, m, 1); d.setDate(1 + (7 - d.getDay()) % 7); return d; }
+  function nextLetter(now){
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var d = firstSunday(today.getFullYear(), today.getMonth());
+    if (d <= today) d = firstSunday(today.getFullYear(), today.getMonth() + 1); // le jour J, la lettre est partie
+    return d;
+  }
+  var MOIS = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+  var d = nextLetter(new Date()), j = d.getDate();
+  document.getElementById('ppl-date').innerHTML =
+    'dimanche ' + (j === 1 ? '1<sup>er</sup>' : j) + ' ' + MOIS[d.getMonth()];
+
+  // ---- Mémoire (déjà vue / déjà inscrite) ----
+  function get(){ try { return JSON.parse(localStorage.getItem(KEY) || '{}'); } catch(e){ return {}; } }
+  function set(v){ try { localStorage.setItem(KEY, JSON.stringify(v)); } catch(e){} }
+  function allowed(){
+    var path = location.pathname.replace(/\/?$/, '/');
+    if (PAGES_SANS_POPUP.indexOf(path) > -1) return false;
+    var s = get();
+    if (s.inscrite) return false;
+    if (s.fermee && Date.now() - s.fermee < JOURS_AVANT_REVOIR * 864e5) return false;
+    return true;
+  }
+
+  // ---- Bloquer le défilement de la page derrière (iPhone compris) ----
+  function lock(){
+    savedY = window.scrollY || window.pageYOffset;
+    var b = document.body.style;
+    b.position = 'fixed'; b.top = -savedY + 'px'; b.left = '0'; b.right = '0'; b.width = '100%';
+  }
+  function unlock(){
+    var b = document.body.style;
+    b.position = b.top = b.left = b.right = b.width = '';
+    window.scrollTo(0, savedY);
+  }
+
+  // ---- Ouvrir / fermer ----
+  function open(){
+    if (shown || !allowed()) return; shown = true;
+    lastFocus = document.activeElement;
+    lock();
+    ov.classList.add('is-open'); ov.setAttribute('aria-hidden','false');
+    box.scrollTop = 0;
+    setTimeout(function(){ box.focus({preventScroll:true}); }, 380); // pas de clavier qui surgit sur téléphone
+  }
+  function close(){
+    if (!ov.classList.contains('is-open')) return;
+    ov.classList.remove('is-open'); ov.setAttribute('aria-hidden','true');
+    box.style.transform = '';
+    unlock();
+    var s = get(); if (!s.inscrite){ s.fermee = Date.now(); set(s); }
+    if (lastFocus && lastFocus.focus) lastFocus.focus({preventScroll:true});
+  }
+  document.getElementById('ppl-close').addEventListener('click', close);
+  ov.addEventListener('click', function(e){ if (e.target === ov) close(); });
+  document.addEventListener('keydown', function(e){
+    if (!ov.classList.contains('is-open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'Tab'){ // garder le clavier dans la fenêtre
+      var f = Array.prototype.filter.call(box.querySelectorAll('button,input'), function(x){ return x.offsetParent; });
+      var a = f[0], z = f[f.length-1];
+      if (e.shiftKey && (document.activeElement === a || document.activeElement === box)){ z.focus(); e.preventDefault(); }
+      else if (!e.shiftKey && document.activeElement === z){ a.focus(); e.preventDefault(); }
+    }
+  });
+
+  // ---- Téléphone : glisser le panneau vers le bas pour le fermer ----
+  var y0 = null, dy = 0;
+  box.addEventListener('touchstart', function(e){
+    if (!isSheet() || box.scrollTop > 0 || e.target.closest('input,button')) { y0 = null; return; }
+    y0 = e.touches[0].clientY; dy = 0;
+  }, {passive:true});
+  box.addEventListener('touchmove', function(e){
+    if (y0 === null) return;
+    dy = e.touches[0].clientY - y0;
+    if (dy > 0){ box.classList.add('is-dragging'); box.style.transform = 'translateY(' + dy + 'px)'; }
+  }, {passive:true});
+  box.addEventListener('touchend', function(){
+    if (y0 === null) return;
+    box.classList.remove('is-dragging');
+    if (dy > 110) close(); else box.style.transform = '';
+    y0 = null; dy = 0;
+  });
+
+  // ---- Téléphone : garder le champ visible au-dessus du clavier ----
+  [fn, em].forEach(function(inp){
+    inp.addEventListener('focus', function(){
+      if (!isSheet()) return;
+      setTimeout(function(){ inp.scrollIntoView({block:'center', behavior:'smooth'}); }, 300);
+    });
+  });
+  fn.addEventListener('keydown', function(e){ if (e.key === 'Enter'){ e.preventDefault(); em.focus(); } });
+
+  // ---- Déclencheurs ----
+  if (allowed()){
+    setTimeout(open, DELAI_SECONDES * 1000);
+    window.addEventListener('scroll', function onS(){
+      var h = document.documentElement, p = (h.scrollTop + innerHeight) / h.scrollHeight * 100;
+      if (p >= SCROLL_POURCENT){ window.removeEventListener('scroll', onS); open(); }
+    }, {passive:true});
+    // Ordinateur : quand la souris part vers le haut pour quitter la page
+    if (window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+      document.addEventListener('mouseout', function(e){ if (!e.relatedTarget && e.clientY <= 0) open(); });
+    }
+  }
+  // Ouvrir à la demande : n'importe quel lien ou bouton avec data-ppl-ouvrir
+  document.addEventListener('click', function(e){
+    var t = e.target.closest && e.target.closest('[data-ppl-ouvrir]');
+    if (t){ e.preventDefault(); shown = false; var s = get(); delete s.fermee; set(s); open(); }
+  });
+
+  // ---- Envoi vers Kit ----
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em.value.trim())){ err.style.display = 'block'; em.focus(); return; }
+    err.style.display = 'none'; btn.disabled = true;
+    fetch(form.action, { method:'POST', body:new FormData(form), headers:{ 'Accept':'application/json' } })
+      .then(function(r){ if (!r.ok) throw r; return r.json().catch(function(){ return {}; }); })
+      .then(function(){
+        var s = get(); s.inscrite = true; set(s);
+        if (document.activeElement && document.activeElement.blur) document.activeElement.blur(); // ferme le clavier
+        form.style.display = 'none'; document.getElementById('ppl-done').style.display = 'block';
+      })
+      .catch(function(){ form.submit(); }); // plan B : l'envoi classique, page de confirmation Kit
+  });
+})();
+</script>

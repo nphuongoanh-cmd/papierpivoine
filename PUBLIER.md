@@ -48,7 +48,8 @@ troué en ligne.
 | Chemin | Rôle |
 |---|---|
 | `source/` | Le paquet de l'outil de design, **brut**. C'est le seul dossier que tu remplaces. |
-| `.github/corriger-site.py` | Ajoute la balise Pinterest dans une copie (`_site/`) et vérifie le site. Ne touche jamais à `source/`. |
+| `.github/corriger-site.py` | Ajoute la balise Pinterest et la pop-up « La lettre » dans une copie (`_site/`) et vérifie le site. Ne touche jamais à `source/`. |
+| `ajouts/popup-lettre/` | La pop-up « La lettre » (`popup-lettre.html`), son illustration, et le fichier d'origine tel que livré (`popup-lettre-original.html`). |
 | `.github/workflows/publier.yml` | Lance le script puis met en ligne, à chaque push. |
 | `PUBLIER.md` | Ce fichier. |
 
@@ -60,7 +61,18 @@ troué en ligne.
 sans prévenir. Si elle venait à manquer, la publication échoue au lieu de te faire
 perdre ta revendication en silence.
 
-C'est désormais **la seule chose** que le build ajoute.
+**La pop-up « La lettre »** (depuis le 2026-10-06). Le bloc `ajouts/popup-lettre/popup-lettre.html`
+est collé juste avant `</body>` sur chaque page (sauf les pages de redirection), et son
+illustration est copiée dans `/assets/ppl/`. Elle s'ouvre après 20 s, à la moitié de la page,
+ou quand la souris quitte la page ; jamais sur `/newsletter/` (réglage `PAGES_SANS_POPUP`
+dans le bloc). Elle envoie au formulaire Kit 9685937.
+L'ancienne pop-up Kit automatique (27c8b8373b), chargée par le code des pages, est
+désactivée à la publication. Si un futur paquet la chargeait autrement, ou si un script
+Kit apparaissait directement dans une page, la publication échoue : jamais deux pop-ups.
+Pour modifier la pop-up : remplacer `popup-lettre.html` (en gardant les polices du site et
+l'illustration locale), puis publier.
+
+Ce sont les **deux seules choses** que le build ajoute.
 
 ## Les trois bugs de l'outil sont corrigés (depuis le 2026-07-18)
 
