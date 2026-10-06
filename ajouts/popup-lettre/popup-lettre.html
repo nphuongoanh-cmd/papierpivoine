@@ -13,6 +13,7 @@
      · polices : les fichiers du site (/assets/fonts/) au lieu de Google Fonts,
        sous des noms préfixés « ppl » pour ne rien mélanger avec la page ;
      · illustration : copie locale /assets/ppl/ au lieu de Netlify ;
+     · fermeture : retour à la position sans animation sur les pages en défilement doux ;
      · PAGES_SANS_POPUP : aussi /semaine-offerte/, /mental-leger/suite/, /liens/ (accord du 2026-10-06).
      Ajouté à chaque page par .github/corriger-site.py au moment de la publication.
      ============================================================ -->
@@ -238,7 +239,10 @@
   function unlock(){
     var b = document.body.style;
     b.position = b.top = b.left = b.right = b.width = '';
+    // retour instantané, même si la page a « scroll-behavior: smooth » (sinon elle remonterait puis redescendrait)
+    var h = document.documentElement.style, sb = h.scrollBehavior; h.scrollBehavior = 'auto';
     window.scrollTo(0, savedY);
+    h.scrollBehavior = sb;
   }
 
   // ---- Ouvrir / fermer ----
