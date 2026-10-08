@@ -352,7 +352,7 @@ footer.site a:hover{color:var(--peony-d)!important}
     <div class="kick">Avant de commander</div>
     <h2>Tes questions</h2>
     <div class="faq">
-      <details><summary>Combien coûte l’envoi, et en combien de temps je reçois mon carnet&nbsp;?</summary><p class="todo">[À compléter : frais de port et délai d’envoi.]</p></details>
+      <details><summary>Combien coûte l’envoi, et en combien de temps je reçois mon carnet&nbsp;?</summary><p>Les frais de port s’affichent avant le paiement : à partir de 4,79&nbsp;€ en France, en Colissimo suivi. <span class="todo">[À compléter : délai d’envoi.]</span></p></details>
       <details><summary>Chez toi ou sur Amazon, quelle différence&nbsp;?</summary><p>C’est le même carnet, au même prix. Commandé ici, c’est moi qui l’emballe et qui le poste, <span class="todo">[à compléter : avec un petit mot / une dédicace&nbsp;?]</span> Sur Amazon, tu profites de leur livraison.</p></details>
       <details><summary>Je peux commander plusieurs carnets en une fois&nbsp;?</summary><p>Oui, ajoute-les à ton panier, ils partent dans le même colis.</p></details>
       <details><summary>Comment je reçois Mental Léger&nbsp;?</summary><p>Par e-mail, tout de suite après le paiement : le PDF et le lien de l’appli.</p></details>
@@ -402,10 +402,10 @@ footer.site a:hover{color:var(--peony-d)!important}
 /* Codes produits Payhip (la partie après payhip.com/b/ dans le lien du produit).
    Laisser vide tant que le produit n’est pas en vente sur Payhip. */
 var PRODUITS = {
-  'mon-cocon-d-hiver': '',
-  'le-cocon-dautomne': '',
-  'et-si': '',
-  'mental-leger': ''
+  'mon-cocon-d-hiver': 'W5nwM',
+  'le-cocon-dautomne': 'lXQ4u',
+  'et-si': 'S8y2w',
+  'mental-leger': 'WABCe'
 };
 (function(){
   var io=('IntersectionObserver' in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'}):null;
@@ -420,6 +420,7 @@ var PRODUITS = {
     btn.classList.add('payhip-buy-button');
     btn.setAttribute('data-product',code);
     btn.setAttribute('data-theme','none');
+    btn.setAttribute('data-method','overlay');
     actifs++;
   });
   if(actifs){var s=document.createElement('script');s.src='https://payhip.com/payhip.js';s.async=true;document.head.appendChild(s);}
