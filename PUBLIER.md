@@ -78,8 +78,8 @@ fichiers disparaissaient de `source/assets/`, la publication échoue.
 
 **Le paiement de Mental Léger sur Payhip** (depuis le 2026-10-08). L'outil de design
 écrit encore le lien de paiement Kit dans les pages : la publication le remplace
-partout par le produit Payhip (`WABCe`), et sur `/ecriture/` et `/mental-leger/suite/`
-les boutons ouvrent le paiement Payhip par-dessus la page. Si un lien de paiement Kit
+partout par la page de paiement Payhip, Mental Léger (`WABCe`) déjà dans le panier :
+l'acheteuse arrive directement au paiement. Si un lien de paiement Kit
 restait dans une page, la publication échoue. Pour changer de produit Payhip :
 `PAYHIP_PRODUIT` dans `.github/corriger-site.py`.
 
