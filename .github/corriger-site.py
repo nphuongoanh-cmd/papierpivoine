@@ -3,9 +3,10 @@
 Prépare la version publiée de papierpivoine.fr.
 
 Ce script NE MODIFIE PAS source/. Il recopie le site de source/ vers _site/ et y
-ajoute la seule chose que l'outil de design ne produit pas : la balise de
-vérification Pinterest. source/ reste exactement ce que l'outil livre : on le
-remplace en bloc à chaque mise à jour, sans rien à réappliquer ni à nettoyer.
+ajoute ce que l'outil de design ne produit pas : la balise de vérification
+Pinterest, le favicon là où il manque, et la pop-up « La lettre ». source/
+reste exactement ce que l'outil livre : on le remplace en bloc à chaque mise
+à jour, sans rien à réappliquer ni à nettoyer.
 
 ── Ajout permanent : balise de vérification Pinterest ───────────────────────
 Pinterest exige un <meta name="p:domain_verify"> dans le <head> pour prouver que
@@ -22,6 +23,13 @@ automatique (27c8b8373b), que le code des pages charge au démarrage, est
 désactivée en posant window.__ppKit27Loaded=true avant ce code : il ne la charge
 que si ce drapeau est absent. Les blocs « Recevoir le cadeau » écrits dans les
 pages (Kit 638990c016, ouverts au clic) ne sont pas touchés.
+
+── Ajout permanent : favicon (depuis le 2026-10-08) ─────────────────────────
+Certaines pages livrées par l'outil (pages autonomes comme /newsletter/ ou
+/semaine-offerte/, 404, redirections) ne déclarent pas le favicon : l'onglet
+affichait alors l'icône par défaut du navigateur. Les balises de l'accueil
+(FAVICON_BALISES) sont ajoutées dans le <head> de toute page qui n'a aucun
+<link rel="icon">. Une page qui a déjà le sien n'est pas touchée.
 
 ── Historique : trois correctifs retirés le 2026-07-18 ──────────────────────
 L'outil de design a corrigé trois bugs à la source (vérifié en ligne), rendant
@@ -49,6 +57,16 @@ EXCLUS = {".DS_Store"}
 # balise est publique, visible dans le source de chaque page. Ne pas la retirer
 # sans dé-revendiquer le domaine côté Pinterest d'abord.
 PINTEREST_META = '<meta name="p:domain_verify" content="65335738f5dcb1dd57bb33a15d99e30a"/>'
+
+# Favicon du site, tel que déclaré sur l'accueil. Les fichiers sont dans
+# source/assets/ (fournis par l'outil) ; la vérification des fichiers cités
+# fait échouer le build s'ils disparaissaient.
+FAVICON_BALISES = (
+    '<link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">\n'
+    '<link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon.png">\n'
+    '<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">'
+)
+FAVICON_PRESENT = re.compile(r'<link[^>]+rel="(?:shortcut )?icon"', re.IGNORECASE)
 
 # Pop-up « La lettre » : le bloc à coller avant </body>, et son illustration.
 POPUP_DOSSIER = RACINE / "ajouts" / "popup-lettre"
@@ -103,6 +121,18 @@ def injecter_pinterest(chemin):
     return True
 
 
+def ajouter_favicon(chemin):
+    html = chemin.read_text(encoding="utf-8")
+    if FAVICON_PRESENT.search(html):
+        return False  # la page déclare déjà son favicon
+    nouveau, n = re.subn(r"<head>", "<head>\n" + FAVICON_BALISES, html, count=1)
+    if not n:
+        erreurs.append(f"{chemin.relative_to(SORTIE)} : aucune balise <head> pour le favicon")
+        return False
+    chemin.write_text(nouveau, encoding="utf-8")
+    return True
+
+
 def est_redirection(html):
     return 'http-equiv="refresh"' in html
 
@@ -139,6 +169,8 @@ def verifier(pages):
                 f"{page.relative_to(SORTIE)} : balise Pinterest absente ou en double "
                 "(sans elle, le domaine serait dé-revendiqué)"
             )
+        if not FAVICON_PRESENT.search(html):
+            erreurs.append(f"{page.relative_to(SORTIE)} : favicon absent")
 
     # toute image référencée doit exister
     for page in pages:
@@ -196,8 +228,9 @@ def main():
     copier_images_popup()
     for page in pages:
         pose = injecter_pinterest(page)
+        icone = ajouter_favicon(page)
         popup = ajouter_popup(page, bloc)
-        faits = [n for n, f in (("pinterest", pose), ("pop-up", popup)) if f]
+        faits = [n for n, f in (("pinterest", pose), ("favicon", icone), ("pop-up", popup)) if f]
         print(f"   {str(page.relative_to(SORTIE)):32} {' + '.join(faits) or 'rien à faire'}")
 
     print("→ vérifications")

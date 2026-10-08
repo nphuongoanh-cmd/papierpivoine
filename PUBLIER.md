@@ -71,7 +71,12 @@ désactivée à la publication. Si un futur paquet la chargeait autrement, ou si
 Kit apparaissait directement dans une page, la publication échoue : jamais deux pop-ups.
 Pour mettre à jour la pop-up avec une nouvelle version livrée : `python3 ajouts/popup-lettre/adapter.py chemin/vers/le-fichier.html` (il garde l'original et réapplique les adaptations du site), puis publier.
 
-Ce sont les **deux seules choses** que le build ajoute.
+**Le favicon** (depuis le 2026-10-08). Toute page qui ne déclare pas d'icône reçoit
+celle de l'accueil (`/assets/favicon-48.png`, `/assets/favicon.png`,
+`/assets/apple-touch-icon.png`). Une page qui a déjà la sienne n'est pas touchée. Si ces
+fichiers disparaissaient de `source/assets/`, la publication échoue.
+
+Ce sont les **trois seules choses** que le build ajoute.
 
 ## Les trois bugs de l'outil sont corrigés (depuis le 2026-07-18)
 
