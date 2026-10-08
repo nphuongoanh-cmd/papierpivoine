@@ -3,8 +3,9 @@
 Prépare la version publiée de papierpivoine.fr.
 
 Ce script NE MODIFIE PAS source/. Il recopie le site de source/ vers _site/ et y
-ajoute ce que l'outil de design ne produit pas : la balise de vérification
-Pinterest, le favicon là où il manque, et la pop-up « La lettre ». source/
+ajoute ce que l'outil de design ne produit pas : les pages faites à part
+(ajouts/pages/), la balise de vérification Pinterest, le favicon là où il
+manque, et la pop-up « La lettre ». source/
 reste exactement ce que l'outil livre : on le remplace en bloc à chaque mise
 à jour, sans rien à réappliquer ni à nettoyer.
 
@@ -30,6 +31,13 @@ Certaines pages livrées par l'outil (pages autonomes comme /newsletter/ ou
 affichait alors l'icône par défaut du navigateur. Les balises de l'accueil
 (FAVICON_BALISES) sont ajoutées dans le <head> de toute page qui n'a aucun
 <link rel="icon">. Une page qui a déjà le sien n'est pas touchée.
+
+── Ajout permanent : pages hors outil (depuis le 2026-10-08) ─────────────────
+Les pages faites en dehors de l'outil de design (la boutique /boutique/) vivent
+dans ajouts/pages/ et sont recopiées dans _site/ telles quelles, au même chemin.
+Elles reçoivent ensuite les mêmes ajouts que les autres pages (Pinterest,
+favicon, pop-up). Si l'outil livrait un jour une page au même chemin, la
+publication échoue plutôt que d'en écraser une sans prévenir.
 
 ── Historique : trois correctifs retirés le 2026-07-18 ──────────────────────
 L'outil de design a corrigé trois bugs à la source (vérifié en ligne), rendant
@@ -67,6 +75,9 @@ FAVICON_BALISES = (
     '<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">'
 )
 FAVICON_PRESENT = re.compile(r'<link[^>]+rel="(?:shortcut )?icon"', re.IGNORECASE)
+
+# Pages faites hors de l'outil de design, recopiées telles quelles dans _site/.
+PAGES_AJOUTEES = RACINE / "ajouts" / "pages"
 
 # Pop-up « La lettre » : le bloc à coller avant </body>, et son illustration.
 POPUP_DOSSIER = RACINE / "ajouts" / "popup-lettre"
@@ -107,6 +118,24 @@ def copier_le_site():
         ENTREE, SORTIE,
         ignore=shutil.ignore_patterns(*EXCLUS),
     )
+
+
+def copier_pages_ajoutees():
+    if not PAGES_AJOUTEES.is_dir():
+        return []
+    copiees = []
+    for fichier in sorted(PAGES_AJOUTEES.rglob("*")):
+        if not fichier.is_file() or fichier.name in EXCLUS:
+            continue
+        rel = fichier.relative_to(PAGES_AJOUTEES)
+        cible = SORTIE / rel
+        if cible.exists():
+            erreurs.append(f"ajouts/pages/{rel} : source/ contient déjà ce fichier (une seule des deux versions peut être publiée)")
+            continue
+        cible.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(fichier, cible)
+        copiees.append(str(rel))
+    return copiees
 
 
 def injecter_pinterest(chemin):
@@ -221,6 +250,8 @@ def verifier(pages):
 def main():
     print("→ copie du site vers _site/")
     copier_le_site()
+    for rel in copier_pages_ajoutees():
+        print(f"   + ajouts/pages/{rel}")
 
     pages = sorted(SORTIE.rglob("*.html"))
     print(f"→ {len(pages)} pages HTML")

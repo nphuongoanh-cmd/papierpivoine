@@ -76,7 +76,15 @@ celle de l'accueil (`/assets/favicon-48.png`, `/assets/favicon.png`,
 `/assets/apple-touch-icon.png`). Une page qui a déjà la sienne n'est pas touchée. Si ces
 fichiers disparaissaient de `source/assets/`, la publication échoue.
 
-Ce sont les **trois seules choses** que le build ajoute.
+**Les pages faites à part** (depuis le 2026-10-08). Les pages qui ne viennent pas de
+l'outil de design vivent dans `ajouts/pages/` (aujourd'hui : la boutique,
+`ajouts/pages/boutique/index.html` → `/boutique/`) et sont recopiées dans le site à
+chaque publication, avec les mêmes ajouts que les autres pages. Une régénération ne
+peut donc pas les effacer. Si l'outil livrait un jour une page au même chemin, la
+publication échoue au lieu d'en écraser une. Les codes produits Payhip se règlent
+dans `PRODUITS`, en bas de la page boutique.
+
+Ce sont les **quatre seules choses** que le build ajoute.
 
 ## Les trois bugs de l'outil sont corrigés (depuis le 2026-07-18)
 

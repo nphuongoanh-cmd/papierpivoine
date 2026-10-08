@@ -12,7 +12,7 @@ popup-lettre.html est régénéré avec, et seulement, ces ajustements :
   2. illustration : copie locale /assets/ppl/ au lieu de Netlify ;
   3. fermeture : retour à la position sans animation sur les pages en
      défilement doux (scroll-behavior: smooth) ;
-  4. PAGES_SANS_POPUP : aussi /semaine-offerte/, /mental-leger/suite/, /liens/
+  4. PAGES_SANS_POPUP : aussi /semaine-offerte/, /mental-leger/suite/, /liens/, /boutique/
      (accord du 2026-10-06).
 Le design, le texte et le reste du comportement ne sont pas touchés. Le script
 s'arrête si un repère attendu a disparu du fichier livré.
@@ -29,7 +29,7 @@ SORTIE = ICI / "popup-lettre.html"
 
 NETLIFY = "https://phenomenal-sunshine-50fca1.netlify.app/lettre/lettre-the-vert-serre.webp"
 IMAGE_LOCALE = "/assets/ppl/lettre-the-vert-serre.webp"
-PAGES = "['/newsletter/', '/semaine-offerte/', '/mental-leger/suite/', '/liens/']"
+PAGES = "['/newsletter/', '/semaine-offerte/', '/mental-leger/suite/', '/liens/', '/boutique/']"
 
 LATIN = ("U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, "
          "U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD")
@@ -88,7 +88,7 @@ def main():
             "       sous des noms préfixés « ppl » pour ne rien mélanger avec la page ;\n"
             "     · illustration : copie locale /assets/ppl/ au lieu de Netlify ;\n"
             "     · fermeture : retour à la position sans animation sur les pages en défilement doux ;\n"
-            "     · PAGES_SANS_POPUP : aussi /semaine-offerte/, /mental-leger/suite/, /liens/.\n"
+            "     · PAGES_SANS_POPUP : aussi /semaine-offerte/, /mental-leger/suite/, /liens/, /boutique/.\n"
             "     Ajouté à chaque page par .github/corriger-site.py au moment de la publication.\n")
     t = remplacer(t, "     ============================================================ -->\n",
                   note + "     ============================================================ -->\n", "en-tête")
