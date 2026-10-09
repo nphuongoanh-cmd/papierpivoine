@@ -76,7 +76,14 @@ celle de l'accueil (`/assets/favicon-48.png`, `/assets/favicon.png`,
 `/assets/apple-touch-icon.png`). Une page qui a déjà la sienne n'est pas touchée. Si ces
 fichiers disparaissaient de `source/assets/`, la publication échoue.
 
-Ce sont les **trois seules choses** que le build ajoute.
+**Le paiement de Mental Léger sur Payhip** (depuis le 2026-10-08). L'outil de design
+écrit encore le lien de paiement Kit dans les pages : la publication le remplace
+partout par la page de paiement Payhip, Mental Léger (`WABCe`) déjà dans le panier :
+l'acheteuse arrive directement au paiement. Si un lien de paiement Kit
+restait dans une page, la publication échoue. Pour changer de produit Payhip :
+`PAYHIP_PRODUIT` dans `.github/corriger-site.py`.
+
+Ce sont les **quatre seules choses** que le build ajoute.
 
 ## Les trois bugs de l'outil sont corrigés (depuis le 2026-07-18)
 
