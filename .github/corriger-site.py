@@ -31,14 +31,6 @@ affichait alors l'icône par défaut du navigateur. Les balises de l'accueil
 (FAVICON_BALISES) sont ajoutées dans le <head> de toute page qui n'a aucun
 <link rel="icon">. Une page qui a déjà le sien n'est pas touchée.
 
-── Ajout permanent : paiement Mental Léger sur Payhip (depuis le 2026-10-08) ─
-Mental Léger se vend sur Payhip (page de paiement en français) et non plus sur
-Kit. L'outil de design écrit encore le lien de paiement Kit (KIT_CHECKOUT) dans
-les pages : il est remplacé partout, y compris dans le code des boutons, par la
-page de paiement Payhip avec Mental Léger déjà dans le panier (PAYHIP_URL) :
-l'acheteuse arrive directement au paiement, sans passer par la fiche produit.
-Si un lien Kit restait après publication, la publication échoue.
-
 ── Historique : trois correctifs retirés le 2026-07-18 ──────────────────────
 L'outil de design a corrigé trois bugs à la source (vérifié en ligne), rendant
 inutiles les rustines que ce script appliquait auparavant. Retirées :
@@ -75,12 +67,6 @@ FAVICON_BALISES = (
     '<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">'
 )
 FAVICON_PRESENT = re.compile(r'<link[^>]+rel="(?:shortcut )?icon"', re.IGNORECASE)
-
-# Paiement Mental Léger : Payhip remplace la page de paiement Kit.
-KIT_CHECKOUT = "https://www.camelianguyen.fr/products/de-l-epuisement-mental-a-la-legerete?step=checkout"
-PAYHIP_PRODUIT = "WABCe"
-# Page de paiement Payhip, Mental Léger déjà dans le panier (quantité 1).
-PAYHIP_URL = f"https://payhip.com/buy?s=1&cart_links%5B%5D={PAYHIP_PRODUIT}&qty%5B{PAYHIP_PRODUIT}%5D=1"
 
 # Pop-up « La lettre » : le bloc à coller avant </body>, et son illustration.
 POPUP_DOSSIER = RACINE / "ajouts" / "popup-lettre"
@@ -147,15 +133,6 @@ def ajouter_favicon(chemin):
     return True
 
 
-def passer_a_payhip(chemin):
-    """Remplace le lien de paiement Kit par la page de paiement Payhip."""
-    html = chemin.read_text(encoding="utf-8")
-    if KIT_CHECKOUT not in html:
-        return False
-    chemin.write_text(html.replace(KIT_CHECKOUT, PAYHIP_URL), encoding="utf-8")
-    return True
-
-
 def est_redirection(html):
     return 'http-equiv="refresh"' in html
 
@@ -192,8 +169,6 @@ def verifier(pages):
                 f"{page.relative_to(SORTIE)} : balise Pinterest absente ou en double "
                 "(sans elle, le domaine serait dé-revendiqué)"
             )
-        if KIT_CHECKOUT in html or "camelianguyen.fr/products/" in html:
-            erreurs.append(f"{page.relative_to(SORTIE)} : un lien de paiement Kit reste dans la page")
         if not FAVICON_PRESENT.search(html):
             erreurs.append(f"{page.relative_to(SORTIE)} : favicon absent")
 
@@ -254,9 +229,8 @@ def main():
     for page in pages:
         pose = injecter_pinterest(page)
         icone = ajouter_favicon(page)
-        payhip = passer_a_payhip(page)
         popup = ajouter_popup(page, bloc)
-        faits = [n for n, f in (("pinterest", pose), ("favicon", icone), ("payhip", payhip), ("pop-up", popup)) if f]
+        faits = [n for n, f in (("pinterest", pose), ("favicon", icone), ("pop-up", popup)) if f]
         print(f"   {str(page.relative_to(SORTIE)):32} {' + '.join(faits) or 'rien à faire'}")
 
     print("→ vérifications")
