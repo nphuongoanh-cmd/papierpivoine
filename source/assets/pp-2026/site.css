@@ -215,3 +215,107 @@ footer .legal{border-top:1px solid #E3D3C7;margin-top:36px;padding-top:20px;font
 .offer .o-app{height:320px;overflow:hidden;border-radius:14px}
 .offer .o-app img{height:100%;width:auto;max-width:100%;object-fit:contain}
 .offer .o-app img{-webkit-mask-image:linear-gradient(to bottom,#000 82%,transparent);mask-image:linear-gradient(to bottom,#000 82%,transparent)}
+
+/* ── Harmonisation avec les autres pages de papierpivoine.fr (/ecriture/, /newsletter/) ── */
+:root{--paper:#FCF6F2;--paper-warm:#FCF6F2;--card:#FFFCFA;--ink:#33321E;--deep-olive:#33321E;--ink-soft:#46452F;--ink-faint:#6B6953;--muted:#6B6953;
+  --line:#33321E;--border-faint:#EDE1D6;--peony:#E26D5F;--peony-dk:#BF5548;--rose-deep:#BF5548;--rose:#F7D9D3;--rose-l:#FBEDEA;--pink:#FBEDEA;
+  --sand:#EAD9AC;--sand-l:#F7F0DE;--paper2:#F7F0DE;--sage:#B2BD88;--sage-l:#EEF0DE;--dusty:#DDA9A0;--r:22px;--max:1080px;
+  --font-display:Fraunces,Georgia,serif;--font-body:"Nunito Sans",system-ui,sans-serif;--font-accent:Caveat,cursive}
+body{background:var(--paper);color:var(--ink);font:400 17.5px/1.6 var(--font-body);font-variant-ligatures:none}
+.wrap{max-width:var(--max);padding:0 20px}
+.narrow{max-width:700px;padding:0 20px}
+a{color:var(--peony-dk)} a:hover{color:var(--ink)}
+h1,h2,h3{font-family:var(--font-display);color:var(--deep-olive);text-wrap:balance;font-variation-settings:'opsz' 72}
+h1,h2{font-weight:800;letter-spacing:-.005em;line-height:1.08}
+h1{font-size:clamp(40px,6.2vw,66px)}
+h2{font-size:clamp(30px,4.6vw,44px)}
+h3{font-weight:600;font-size:21px;line-height:1.25}
+p{text-wrap:pretty}
+mark{background:linear-gradient(transparent 55%,var(--sand) 55%,var(--sand) 92%,transparent 92%);padding:0 6px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.eyebrow,.pp-eyebrow{font:500 12px/1.3 var(--font-body);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:14px}
+.lead{font-size:19.5px;color:var(--ink-soft)}
+.hand{font-family:var(--font-accent);font-weight:600;color:var(--peony-dk)}
+.aside{font-family:var(--font-accent);font-size:22px;color:var(--peony-dk)}
+section{padding:84px 0}
+section.tight{padding:64px 0}
+.band{background:var(--sand-l)}
+.band-pink,.mirror{background:var(--rose-l)}
+
+/* boutons : comme le reste du site */
+.btn{background:transparent;color:var(--peony);border:3px solid var(--peony);box-shadow:none;font:700 30px/1.1 var(--font-accent);padding:8px 26px 10px;border-radius:999px;transform:rotate(-2deg);transition:background-color .2s ease,color .2s ease}
+.btn:hover{background:var(--peony);color:var(--card);border-color:var(--peony);transform:rotate(-2deg)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--card)}
+.btn.small{font-size:24px;padding:6px 20px 8px}
+.btns{gap:16px 18px;margin-top:26px}
+@media (max-width:520px){.btn{font-size:24px;padding:8px 20px 10px}}
+.chips a{border-width:1.5px;font-weight:700;color:var(--ink-soft);background:var(--card)}
+
+/* en-tête : identique à /ecriture/ et /newsletter/ */
+.top{position:sticky;top:0;z-index:20;background:var(--paper-warm);backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom:1px solid var(--border-faint)}
+.top .wrap{max-width:none;height:auto;padding:18px min(48px,5vw);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px 24px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 23px var(--font-display);font-variation-settings:'opsz' 72;letter-spacing:-.005em;color:var(--deep-olive);white-space:nowrap}
+.brand img{width:40px;height:40px;border-radius:50%;border:2px solid var(--ink);box-sizing:border-box;flex:none}
+.nav{display:flex;gap:6px 24px;flex-wrap:wrap;font-size:14px;white-space:normal}
+.nav a{color:var(--ink-soft);text-decoration:none;font-weight:400;font-size:14px;padding:4px 0;border-bottom:1px solid transparent}
+.nav a:hover{color:var(--peony)}
+.nav a[aria-current=page]{color:var(--peony);font-weight:400;text-decoration:none;border-bottom-color:var(--peony)}
+.burger{display:none;align-items:center;justify-content:center;width:44px;height:44px;margin:-8px -10px;border:0;background:none;color:var(--deep-olive);cursor:pointer}
+.burger .i-close,.top.open .burger .i-open{display:none}
+.top.open .burger .i-close{display:block}
+.mnav{display:none}
+@media (max-width:1180px){.nav{display:flex}}
+@media (max-width:700px){
+ .nav{display:none}.burger{display:inline-flex}
+ .top.open .mnav{display:flex;flex-direction:column;flex-basis:100%;padding:2px 0 8px}
+ .mnav a{font-size:16px;padding:13px 2px;min-height:44px;display:flex;align-items:center;color:var(--ink-soft);text-decoration:none;border-top:1px solid var(--border-faint)}
+ .mnav a[aria-current=page]{color:var(--peony)}
+}
+
+/* cartes : blanches, sans bordure, comme /ecriture/ */
+.card{background:#fff;border:0;border-radius:var(--r);box-shadow:none}
+.mcard{background:#fff;border:0;border-radius:18px;transform:none!important}
+.mcard p{font-size:17.5px}
+.mcard img{width:40px;height:40px}
+.offer{background:var(--card);border-radius:28px;box-shadow:0 30px 70px -50px rgba(51,50,30,.5)}
+.offer.feat{border:2px solid var(--peony);background:var(--card);box-shadow:0 30px 70px -50px rgba(51,50,30,.5)}
+.offer .tag,.step .tag{font:800 12px/1 var(--font-body);letter-spacing:.12em;padding:7px 11px;background:var(--sand);color:var(--ink)}
+.offer.feat .tag{background:var(--peony);color:#fff}
+.offer .price{font:600 19px var(--font-display);color:var(--ink)}
+.mir-end{font:italic 500 clamp(22px,2.8vw,28px)/1.35 var(--font-display);color:var(--ink)}
+.nl{background:var(--rose-l);border-radius:28px}
+.nl blockquote{font:italic 400 21px/1.45 var(--font-display);color:var(--ink)}
+.nl blockquote cite{font:normal 600 24px var(--font-accent);color:var(--peony-dk)}
+.perm .L{background:var(--sand);color:var(--ink);width:56px;height:56px;font-size:28px}
+.perm h3 small{color:var(--peony-dk);font-weight:600}
+.values .card{background:#fff}
+.note{background:#fff;border:2px dashed var(--dusty);border-radius:var(--r)}
+.help{border:2px dashed var(--dusty);border-left-width:2px;border-radius:var(--r);padding:20px 24px;color:var(--ink-soft);font-size:16px}
+.pull{font-weight:500;color:var(--ink)}
+.promise-line{color:var(--ink-soft);font-weight:500;letter-spacing:.14em;font-size:12px}
+
+/* la pivoine à sept pétales */
+.flower text{font-variation-settings:'opsz' 72}
+.pv-hero{margin:0 auto;text-align:center}
+.pv-big{width:min(420px,88vw);height:auto;display:block;margin:0 auto}
+.pv-hero figcaption{font-size:26px;margin-top:4px}
+.pv-mid{width:150px;height:150px;display:block;margin:0 auto 18px}
+.portrait-d{width:min(360px,80vw)}
+
+/* pied de page : identique aux autres pages */
+footer.site{background:var(--paper-warm);border-top:1px solid var(--border-faint);padding:56px min(48px,5vw) 40px;margin-top:0;font-size:inherit}
+footer.site .fin{max-width:1180px;margin:0 auto}
+footer.site .frow{display:flex;justify-content:space-between;align-items:flex-start;gap:32px;flex-wrap:wrap}
+footer.site .fbrand{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+footer.site .fbrand span{font:800 21px var(--font-display);font-variation-settings:'opsz' 72;color:var(--deep-olive);letter-spacing:-.005em}
+footer.site .fpv{width:30px;height:30px}
+footer.site .fpv path[fill="#F7D9D3"],footer.site .fpv path[fill="#EAD9AC"]{fill:none}
+footer.site .ftag{font:italic 400 15px/1.5 var(--font-body);color:var(--rose-deep);margin:0;max-width:32ch}
+footer.site .fcols{display:flex;gap:40px 64px;flex-wrap:wrap}
+footer.site .pp-eyebrow{margin-bottom:14px}
+footer.site .fcol{display:flex;flex-direction:column;gap:9px;font:14px var(--font-body)}
+footer.site .fcol a{color:var(--ink-soft);text-decoration:none}
+footer.site .fcol a:hover{color:var(--peony-dk)}
+footer.site .fsep{height:1px;background:var(--border-faint);margin:36px 0}
+footer.site .fsmall{font:12px/1.6 var(--font-body);color:var(--ink-faint);margin:0 0 8px;max-width:70ch}
+@media (max-width:700px){footer.site .fcol a{min-height:44px;display:flex;align-items:center}}
