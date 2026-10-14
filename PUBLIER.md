@@ -49,6 +49,10 @@ dossier `blog/` du dépôt. Une régénération de l'outil ne les touche jamais.
    liens, images, citations.
 4. **GitHub Desktop** : « Nouvel article : … », **Commit to main**, **Push origin**.
 
+**Écrire avec Cowork ou Chat** : demande-lui de lire d'abord
+`blog/CONSIGNES-POUR-CLAUDE.md` (format, voix, règles pour Google). Cowork crée le
+dossier et le fichier directement ; Chat te donne le texte de `article.md` à enregistrer.
+
 **Programmer un article** : mets une date future. Il reste invisible et paraît tout
 seul ce jour-là, tôt le matin (la publication tourne chaque jour). Tu peux en
 préparer quatre d'un coup.
