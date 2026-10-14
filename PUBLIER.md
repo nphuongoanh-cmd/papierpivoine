@@ -31,6 +31,59 @@ publié est reconstruit de zéro à partir de `source/` à chaque fois. Un fichi
 retires dans l'outil disparaît du site tout seul — il n'y a plus rien à nettoyer à la
 main.
 
+## Publier un article de blog
+
+Le blog ne passe **pas** par l'outil de design : les articles s'écrivent dans le
+dossier `blog/` du dépôt. Une régénération de l'outil ne les touche jamais.
+
+1. **Copie le dossier `blog/_modele`** et renomme la copie avec la date et quelques
+   mots-clés : `2026-10-27-ruminer-le-soir`. Les mots après la date donnent
+   l'adresse : `papierpivoine.fr/blog/ruminer-le-soir/`. Ne renomme plus le dossier
+   une fois l'article en ligne (l'adresse changerait).
+2. **Dépose tes images** dans ce dossier, telles quelles (JPEG, PNG ou WebP, même
+   lourdes : elles sont allégées et renommées à la publication). Les photos HEIC de
+   l'iPhone sont à exporter en JPEG d'abord.
+3. **Ouvre `article.md`** (TextEdit, ou directement sur github.com) et remplis
+   l'en-tête : titre, date, description, couverture, couverture_alt, themes. Puis
+   écris l'article en dessous. Le modèle montre tout : intertitres (`##`), gras,
+   liens, images, citations.
+4. **GitHub Desktop** : « Nouvel article : … », **Commit to main**, **Push origin**.
+
+**Écrire avec Cowork ou Chat** : demande-lui de lire d'abord
+`blog/CONSIGNES-POUR-CLAUDE.md` (format, voix, règles pour Google). Cowork crée le
+dossier et le fichier directement ; Chat te donne le texte de `article.md` à enregistrer.
+
+**Programmer un article** : mets une date future. Il reste invisible et paraît tout
+seul ce jour-là, tôt le matin (la publication tourne chaque jour). Tu peux en
+préparer quatre d'un coup.
+
+**Relire avant la parution** : un article programmé ou marqué `brouillon: oui` est
+visible à `papierpivoine.fr/blog/apercu/<adresse>/`. Cette page n'est liée nulle
+part et Google ne l'indexe pas.
+
+**Une image dans le texte** : `![ce que montre la photo](photo.jpg "légende facultative")`,
+seule sur sa ligne. La description entre crochets est obligatoire (Google Images et
+lecteurs d'écran).
+
+**Ce qui est fait tout seul** : la page `/blog/` (12 articles par page, le plus récent
+en grand), une page par thème, « À lire aussi » (3 articles des mêmes thèmes) en bas
+de chaque article, le lien « Blog » dans le menu et le pied de page de tout le site,
+le sitemap, le flux RSS `papierpivoine.fr/blog/flux.xml` (pour Pinterest ou Kit), les
+données pour Google (auteur, date, image) et l'aperçu de partage.
+
+**Si la publication échoue** (pastille rouge) : la raison est écrite en clair, par
+exemple une image citée mais absente du dossier, ou une description d'image vide.
+Les **⚠** dans le journal ne bloquent rien : ce sont des conseils (titre trop long,
+couverture de moins de 1200 px de large…).
+
+Les textes de la page `/blog/` (titre, introduction) se changent en haut de
+`.github/blog.py`. L'article d'exemple (`blog/2026-10-20-ecrire-quand-on-est-fatiguee`)
+est un brouillon : réécris-le avec tes mots ou jette son dossier.
+
+À savoir : GitHub met en pause la publication automatique du matin après 60 jours
+sans aucun push. Avec un article par semaine, ça n'arrive pas ; sinon, un clic sur
+« Enable workflow » dans l'onglet Actions la relance.
+
 ## Vérifier que c'est passé
 
 Onglet **Actions** du dépôt sur github.com :
@@ -49,6 +102,9 @@ troué en ligne.
 |---|---|
 | `source/` | Le paquet de l'outil de design, **brut**. C'est le seul dossier que tu remplaces. |
 | `.github/corriger-site.py` | Ajoute la balise Pinterest et la pop-up « La lettre » dans une copie (`_site/`) et vérifie le site. Ne touche jamais à `source/`. |
+| `blog/` | Les articles du blog, un dossier par article. `_modele` n'est jamais publié. |
+| `.github/blog.py` | Construit le blog dans `_site/` (pages, thèmes, RSS, sitemap, lien du menu). |
+| `ajouts/blog/blog.css` | L'apparence du blog, en plus de celle du site. |
 | `ajouts/popup-lettre/` | La pop-up « La lettre » (`popup-lettre.html`), son illustration, et le fichier d'origine tel que livré (`popup-lettre-original.html`). |
 | `.github/workflows/publier.yml` | Lance le script puis met en ligne, à chaque push. |
 | `PUBLIER.md` | Ce fichier. |
@@ -76,7 +132,9 @@ celle de l'accueil (`/assets/favicon-48.png`, `/assets/favicon.png`,
 `/assets/apple-touch-icon.png`). Une page qui a déjà la sienne n'est pas touchée. Si ces
 fichiers disparaissaient de `source/assets/`, la publication échoue.
 
-Ce sont les **trois seules choses** que le build ajoute.
+**Le blog** (depuis le 2026-10-14). Voir « Publier un article de blog » plus haut.
+
+Ce sont les **quatre seules choses** que le build ajoute.
 
 ## Les trois bugs de l'outil sont corrigés (depuis le 2026-07-18)
 
