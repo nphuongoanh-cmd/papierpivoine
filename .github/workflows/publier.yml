@@ -1,9 +1,13 @@
 name: Publier le site
 
-# Se déclenche à chaque push sur main (et manuellement depuis l'onglet Actions).
+# Se déclenche à chaque push sur main (et manuellement depuis l'onglet Actions),
+# et tôt chaque matin (6 ou 7 h, heure de Paris) : un article programmé paraît le jour
+# de sa date, sans rien faire.
 on:
   push:
     branches: [main]
+  schedule:
+    - cron: "7 5 * * *"
   workflow_dispatch:
 
 # Droits nécessaires pour publier sur GitHub Pages.
@@ -23,6 +27,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      # Python et ce qu'il faut pour le blog (texte des articles, images).
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r .github/requirements.txt
 
       # Applique les correctifs aux bugs de l'outil de design, dans _site/
       # uniquement. Si une vérification échoue, le script sort en erreur et
