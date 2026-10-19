@@ -173,6 +173,36 @@ def ajouter_anti_debord(chemin):
     return True
 
 
+# Descriptions raccourcies pour Google (environ 150 caractères : au-delà, la fin
+# est coupée dans les résultats). Accord de Camélia du 2026-10-19. Remplacent
+# celles des paquets, pour la recherche (description) et le partage (og:).
+DESCRIPTIONS = {
+    "index.html": "Exercices d’écriture douce pour femmes hypersensibles et introverties : "
+                  "une lettre gratuite chaque mois, une semaine offerte et Mental Léger.",
+    "7-permissions-pivoine/index.html": "Les sept petites permissions de Papier Pivoine : Poser, Intimité, "
+                                        "Vérité, Observer, Imperfection, Nature, Émerveillement. "
+                                        "Pour chaque page que tu écris.",
+    "apropos/index.html": "Camélia, hypersensible et introvertie, née au Vietnam : son histoire, les livres "
+                          "qui l’accompagnent et pourquoi elle a choisi l’écriture douce.",
+    "newsletter/index.html": "Une lettre douce le premier dimanche du mois : un thème de saison, un exercice "
+                             "d’écriture, les nouvelles de Camélia. En cadeau, une semaine offerte.",
+}
+
+
+def raccourcir_description(chemin):
+    texte = DESCRIPTIONS.get(str(chemin.relative_to(SORTIE)))
+    if not texte:
+        return False
+    html = chemin.read_text(encoding="utf-8")
+    nouveau, n = re.subn(r'(<meta (?:name="description"|property="og:description"|name="twitter:description") content=")[^"]*"',
+                         lambda m: m.group(1) + texte + '"', html)
+    if not n:
+        erreurs.append(f"{chemin.relative_to(SORTIE)} : aucune balise description à raccourcir")
+        return False
+    chemin.write_text(nouveau, encoding="utf-8")
+    return nouveau != html
+
+
 # Barre du haut (ordinateur et menu mobile) : lien « 7 permissions PIVOINE »
 # juste avant « À propos », et « La lettre » devient « La lettre, gratuite ».
 # Fait ici pour survivre aux nouveaux paquets.
@@ -294,8 +324,10 @@ def main():
         popup = ajouter_popup(page, bloc)
         perm = ajouter_lien_permissions(page)
         bord = ajouter_anti_debord(page)
+        desc = raccourcir_description(page)
         faits = [n for n, f in (("pinterest", pose), ("favicon", icone), ("pop-up", popup),
-                                ("menu 7 permissions", perm), ("sans débordement", bord)) if f]
+                                ("menu 7 permissions", perm), ("sans débordement", bord),
+                                ("description", desc)) if f]
         print(f"   {str(page.relative_to(SORTIE)):32} {' + '.join(faits) or 'rien à faire'}")
 
     print("→ vérifications")
