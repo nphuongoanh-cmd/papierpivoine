@@ -84,6 +84,9 @@ def main():
                   f"var PAGES_SANS_POPUP = {PAGES}; // formulaire déjà là, abonnées, ou lien en bio",
                   "PAGES_SANS_POPUP", regex=True)
 
+    # 6. champ prénom : « Ton prénom » comme exemple, au lieu d'un prénom inventé
+    t = remplacer(t, 'placeholder="Clémence"', 'placeholder="Ton prénom"', "exemple du prénom")
+
     # 5. adresse e-mail écrite en code (lisible pour les gens, pas pour les robots qui collectent les adresses)
     t = remplacer(t, f"<strong>{EMAIL}</strong>",
                   "<strong>" + "".join(f"&#{ord(c)};" for c in EMAIL) + "</strong>", "adresse e-mail")
@@ -95,6 +98,7 @@ def main():
             "     · fermeture : retour à la position sans animation sur les pages en défilement doux ;\n"
             "     · PAGES_SANS_POPUP : aussi /semaine-offerte/, /mental-leger/suite/, /liens/.\n"
             "     · adresse e-mail écrite en code (entités HTML), comme sur les pages légales.\n"
+            "     · champ prénom : exemple « Ton prénom » au lieu de « Clémence ».\n"
             "     Ajouté à chaque page par .github/corriger-site.py au moment de la publication.\n")
     t = remplacer(t, "     ============================================================ -->\n",
                   note + "     ============================================================ -->\n", "en-tête")

@@ -16,6 +16,7 @@
      · fermeture : retour à la position sans animation sur les pages en défilement doux ;
      · PAGES_SANS_POPUP : aussi /semaine-offerte/, /mental-leger/suite/, /liens/.
      · adresse e-mail écrite en code (entités HTML), comme sur les pages légales.
+     · champ prénom : exemple « Ton prénom » au lieu de « Clémence ».
      Ajouté à chaque page par .github/corriger-site.py au moment de la publication.
      ============================================================ -->
 
@@ -185,7 +186,7 @@
       <form id="ppl-form" action="https://app.kit.com/forms/9685937/subscriptions" method="post" novalidate>
         <label for="ppl-fn">Ton prénom</label>
         <input id="ppl-fn" name="fields[first_name]" type="text" autocomplete="given-name" autocapitalize="words"
-               enterkeyhint="next" placeholder="Clémence">
+               enterkeyhint="next" placeholder="Ton prénom">
         <label for="ppl-em">Ton adresse e-mail</label>
         <input id="ppl-em" name="email_address" type="email" inputmode="email" autocomplete="email"
                autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="send"
