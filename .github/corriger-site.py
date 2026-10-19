@@ -232,9 +232,16 @@ def reserver_dessin_semaine_offerte(chemin):
 # Mentions légales : informations données par Camélia le 2026-10-19. Elles
 # remplacent les cases « à compléter » des paquets, même si un nouveau paquet
 # les remet.
+# Pas d'adresse ni de téléphone sur le site : choix de Camélia (elle travaille
+# chez elle), informée de l'obligation légale le 2026-10-19.
 INFOS_LEGALES = [
-    (r'<span class="todo">\[statut[^<]*</span>', "entrepreneuse individuelle (micro-entreprise)"),
+    (r'<p>Camélia Nguyen, <span class="todo">\[statut[^<]*</span>',
+     "<p>Papier Pivoine<br>Camélia Nguyen, entrepreneuse individuelle (micro-entreprise)"),
+    (r'<span class="todo">\[adresse postale\]</span><br>', ""),
     (r'<span class="todo">\[numéro SIRET\]</span>', "945 316 016 00019"),
+    # Confidentialité : durée de conservation dans Kit (option A)
+    (r'Après ta désinscription[^<]*<span class="todo">\[à vérifier[^\]]*Kit\]</span>',
+     "Si tu te désinscris, ton adresse est gardée uniquement pour ne plus t’écrire."),
 ]
 
 
@@ -379,6 +386,9 @@ def main():
                                 ("mentions", legal)) if f]
         print(f"   {str(page.relative_to(SORTIE)):32} {' + '.join(faits) or 'rien à faire'}")
 
+    for page in pages:
+        if 'class="todo"' in page.read_text(encoding="utf-8"):
+            print(f"   ⚠ il reste une case « à compléter » dans {page.relative_to(SORTIE)}")
     print("→ vérifications")
     verifier(pages)
 
