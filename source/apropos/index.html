@@ -56,7 +56,7 @@
  <h2>Un endroit à moi, quand j’en ai besoin</h2>
  <p>Je voulais quelque chose que je peux faire tous les jours ou reprendre quand j’en ai besoin, sans prendre rendez-vous et sans avoir à m’expliquer devant quelqu’un. Pour moi, c’est l’écriture.</p>
  <p>Certains jours, j’écris des listes en vrac, et d’autres jours de longues lettres. Mettre les choses sur papier, en liste ou en petit schéma, m’aide à y voir plus clair. Il y a des semaines où j’écris tous les jours et d’autres où je n’écris presque pas, et ça va très bien comme ça.</p>
- <p>Quand j’écris, c’est souvent avec un thé vert le matin ou une tisane le soir. Bao dort à côté de mon carnet, et il en griffe la couverture (elle est couverte de ses marques). Certains samedis, je vais au marché le matin, et ensuite je m’installe à mon bureau pour Papier Pivoine.</p>
+ <p>Quand j’écris, c’est souvent avec un thé vert le matin ou une tisane le soir. Bao dort à côté de mon carnet, et il en griffe la couverture (elle est couverte de ses marques). Certains samedis, je vais au marché le matin, et ensuite je m’installe à mon bureau pour travailler sur Papier Pivoine.</p>
 </div></section>
 
 <section class="band"><div class="wrap">
@@ -112,6 +112,9 @@
 .cf button[disabled]{opacity:.6;cursor:default}
 .cf .cf-erreur{display:none;margin:14px 4px 0;font-size:15px;color:var(--rose-deep,#BF5548)}
 .cf.is-erreur .cf-erreur{display:block}
+.cf .cf-aide{margin:6px 4px 0;font:600 14.5px/1.4 var(--font-body,"Nunito Sans",system-ui,sans-serif);color:var(--peony-dk,#BF5548)}
+.cf .cf-bas+.cf-aide{margin-top:10px}
+.cf input[aria-invalid=true]:not([type=checkbox]),.cf textarea[aria-invalid=true]{border-color:var(--peony-dk,#BF5548)}
 .cf-merci{display:none;max-width:560px;margin:26px auto 0;text-align:left;background:var(--card,#FFFCFA);border:1px solid var(--border-faint,#EDE1D6);border-radius:22px;padding:26px 24px}
 .cf-merci p{margin:0 0 12px;font-size:17.5px;line-height:1.6}
 .cf-merci .hand{font-size:32px;margin:6px 0 0}
@@ -141,9 +144,35 @@
  (function(){
   var f=document.getElementById('cf'); if(!f) return;
   var zone=f.parentNode, btn=f.querySelector('button'), merci=zone.querySelector('.cf-merci');
+  var AIDE={
+   prenom:'Écris ton prénom, s’il te plaît.',
+   email:'Écris ton adresse e-mail, pour que je puisse te répondre.',
+   emailFaux:'Ton adresse e-mail a l’air incomplète. Vérifie-la, s’il te plaît.',
+   message:'Écris ton message, même quelques mots.',
+   accord:'Coche la case, pour que je puisse te répondre.'
+  };
+  function aide(c,t){
+   var p=document.getElementById('aide-'+c.name);
+   if(!p&&t){ p=document.createElement('p'); p.className='cf-aide'; p.id='aide-'+c.name;
+    (c.type==='checkbox'?c.closest('.cf-bas'):c).insertAdjacentElement('afterend',p); }
+   if(p){ p.textContent=t; p.hidden=!t; }
+   if(t){ c.setAttribute('aria-invalid','true'); c.setAttribute('aria-describedby',p.id); }
+   else{ c.removeAttribute('aria-invalid'); c.removeAttribute('aria-describedby'); }
+  }
+  f.addEventListener('input',function(e){ if(e.target.getAttribute('aria-invalid')) aide(e.target,''); });
+  f.addEventListener('change',function(e){ if(e.target.getAttribute('aria-invalid')) aide(e.target,''); });
   f.addEventListener('submit',function(e){
    e.preventDefault(); f.classList.remove('is-erreur');
-   if(!f.checkValidity()){ f.reportValidity(); return; }
+   // messages à nous (avec « tu », dans la police du site) au lieu des bulles du navigateur
+   var premier=null;
+   [f.prenom,f.email,f.message,f.accord].forEach(function(c){
+    var t='';
+    if(c.type==='checkbox'){ if(!c.checked) t=AIDE.accord; }
+    else if(!c.value.trim()) t=AIDE[c.name];
+    else if(c.name==='email'&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(c.value.trim())) t=AIDE.emailFaux;
+    aide(c,t); if(t&&!premier) premier=c;
+   });
+   if(premier){ premier.focus(); return; }
    if(!CONTACT_URL){ f.classList.add('is-erreur'); return; }
    btn.disabled=true; btn.textContent='Envoi…';
    fetch(CONTACT_URL,{method:'POST',body:new URLSearchParams(new FormData(f)),credentials:'omit'})
