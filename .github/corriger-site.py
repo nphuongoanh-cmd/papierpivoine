@@ -154,6 +154,25 @@ def ajouter_popup(chemin, bloc):
     return True
 
 
+# Aucun défilement horizontal : certaines illustrations dépassent volontairement
+# de leur cadre (photo de l'accueil à 108 %) et faisaient glisser la page de
+# quelques pixels entre 900 et 1080 px. « clip » coupe au bord de l'écran sans
+# rien changer d'autre (les bandeaux qui défilent ont leur propre conteneur).
+ANTI_DEBORD = "<style>html{overflow-x:clip}</style>"
+
+
+def ajouter_anti_debord(chemin):
+    html = chemin.read_text(encoding="utf-8")
+    if est_redirection(html) or ANTI_DEBORD in html:
+        return False
+    nouveau, n = re.subn(r"</head>", ANTI_DEBORD + "\n</head>", html, count=1)
+    if not n:
+        erreurs.append(f"{chemin.relative_to(SORTIE)} : aucune balise </head> pour le style anti-débordement")
+        return False
+    chemin.write_text(nouveau, encoding="utf-8")
+    return True
+
+
 # Barre du haut (ordinateur et menu mobile) : lien « 7 permissions PIVOINE »
 # juste avant « À propos », et « La lettre » devient « La lettre, gratuite ».
 # Fait ici pour survivre aux nouveaux paquets.
@@ -266,8 +285,9 @@ def main():
         icone = ajouter_favicon(page)
         popup = ajouter_popup(page, bloc)
         perm = ajouter_lien_permissions(page)
+        bord = ajouter_anti_debord(page)
         faits = [n for n, f in (("pinterest", pose), ("favicon", icone), ("pop-up", popup),
-                                ("menu 7 permissions", perm)) if f]
+                                ("menu 7 permissions", perm), ("sans débordement", bord)) if f]
         print(f"   {str(page.relative_to(SORTIE)):32} {' + '.join(faits) or 'rien à faire'}")
 
     print("→ vérifications")
