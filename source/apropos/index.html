@@ -106,7 +106,9 @@
 .cf ::placeholder{color:#A8A196}
 .cf .cf-piege{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .cf .cf-bas{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 18px;margin-top:6px}
-.cf .cf-note{font-size:14px;color:var(--ink-faint,#6B6953);margin:0}
+.cf .cf-accord{display:flex;align-items:flex-start;gap:10px;margin:0;flex:1 1 260px;cursor:pointer}
+.cf .cf-accord input{width:20px;height:20px;flex:none;margin:2px 0 0;padding:0;accent-color:var(--peony,#E26D5F);cursor:pointer}
+.cf .cf-accord span{display:inline;font-weight:400;font-size:15px;line-height:1.45;color:var(--ink-soft,#46452F);margin:0}
 .cf button[disabled]{opacity:.6;cursor:default}
 .cf .cf-erreur{display:none;margin:14px 4px 0;font-size:15px;color:var(--rose-deep,#BF5548)}
 .cf.is-erreur .cf-erreur{display:block}
@@ -115,7 +117,7 @@
 .cf-merci .hand{font-size:32px;margin:6px 0 0}
 .cf-envoye .cf{display:none}.cf-envoye .cf-merci{display:block;animation:cf-in .4s ease}
 @keyframes cf-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-@media (max-width:520px){.cf{padding:20px 16px 18px}.cf .cf-bas{flex-direction:column;align-items:stretch}.cf .cf-bas .btn{text-align:center}}
+@media (max-width:520px){.cf{padding:20px 16px 18px}.cf .cf-bas{flex-direction:column;align-items:stretch}.cf .cf-accord{flex:none}.cf .cf-bas .btn{text-align:center}}
 </style>
  <div class="cf-zone">
  <form class="cf" id="cf" novalidate>
@@ -123,10 +125,11 @@
   <label><span>Ton adresse e-mail</span><input name="email" type="email" autocomplete="email" placeholder="toi@exemple.fr" maxlength="200" required></label>
   <label><span>Ton message</span><textarea name="message" maxlength="5000" placeholder="Ce que tu as envie de me dire" required></textarea></label>
   <label class="cf-piege" aria-hidden="true">Ne pas remplir<input name="site_web" tabindex="-1" autocomplete="off"></label>
-  <div class="cf-bas"><p class="cf-note">Écrire ne t’inscrit pas à la lettre.</p><button class="btn" type="submit">Envoyer</button></div>
+  <div class="cf-bas"><label class="cf-accord"><input type="checkbox" name="accord" value="oui" required><span>J’accepte que Camélia utilise mon adresse pour me répondre.</span></label><button class="btn" type="submit">Envoyer</button></div>
   <p class="cf-erreur" role="alert">Ton message n’est pas parti. Vérifie ton prénom, ton adresse e-mail et ton message, puis réessaie dans un instant.</p>
  </form>
  <div class="cf-merci" role="status" aria-live="polite" tabindex="-1">
+  <p><strong>Merci, ton message est bien arrivé.</strong></p>
   <p>Je te réponds dès que je peux, depuis ma boîte mail. Si tu ne vois rien venir, jette un œil dans tes indésirables.</p>
   <p>En attendant, si tu ne l’as pas encore, ta première semaine d’écriture douce est offerte&nbsp;: <a href="/semaine-offerte/">papierpivoine.fr/semaine-offerte</a></p>
   <p class="hand">Camélia</p>
