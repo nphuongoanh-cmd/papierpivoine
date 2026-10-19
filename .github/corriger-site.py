@@ -154,6 +154,143 @@ def ajouter_popup(chemin, bloc):
     return True
 
 
+# Aucun défilement horizontal : certaines illustrations dépassent volontairement
+# de leur cadre (photo de l'accueil à 108 %) et faisaient glisser la page de
+# quelques pixels entre 900 et 1080 px. « clip » coupe au bord de l'écran sans
+# rien changer d'autre (les bandeaux qui défilent ont leur propre conteneur).
+ANTI_DEBORD = "<style>html{overflow-x:clip}</style>"
+
+
+def ajouter_anti_debord(chemin):
+    html = chemin.read_text(encoding="utf-8")
+    if est_redirection(html) or ANTI_DEBORD in html:
+        return False
+    nouveau, n = re.subn(r"</head>", ANTI_DEBORD + "\n</head>", html, count=1)
+    if not n:
+        erreurs.append(f"{chemin.relative_to(SORTIE)} : aucune balise </head> pour le style anti-débordement")
+        return False
+    chemin.write_text(nouveau, encoding="utf-8")
+    return True
+
+
+# Descriptions raccourcies pour Google (environ 150 caractères : au-delà, la fin
+# est coupée dans les résultats). Accord de Camélia du 2026-10-19. Remplacent
+# celles des paquets, pour la recherche (description) et le partage (og:).
+DESCRIPTIONS = {
+    "index.html": "Exercices d’écriture douce pour femmes hypersensibles et introverties : "
+                  "une lettre gratuite chaque mois, une semaine offerte et Mental Léger.",
+    "7-permissions-pivoine/index.html": "Les sept petites permissions de Papier Pivoine : Poser, Intimité, "
+                                        "Vérité, Observer, Imperfection, Nature, Émerveillement. "
+                                        "Pour chaque page que tu écris.",
+    "apropos/index.html": "Camélia, hypersensible et introvertie, née au Vietnam : son histoire, les livres "
+                          "qui l’accompagnent et pourquoi elle a choisi l’écriture douce.",
+    "newsletter/index.html": "Une lettre douce le premier dimanche du mois : un thème de saison, un exercice "
+                             "d’écriture, les nouvelles de Camélia. En cadeau, une semaine offerte.",
+}
+
+
+def raccourcir_description(chemin):
+    texte = DESCRIPTIONS.get(str(chemin.relative_to(SORTIE)))
+    if not texte:
+        return False
+    html = chemin.read_text(encoding="utf-8")
+    nouveau, n = re.subn(r'(<meta (?:name="description"|property="og:description"|name="twitter:description") content=")[^"]*"',
+                         lambda m: m.group(1) + texte + '"', html)
+    if not n:
+        erreurs.append(f"{chemin.relative_to(SORTIE)} : aucune balise description à raccourcir")
+        return False
+    chemin.write_text(nouveau, encoding="utf-8")
+    return nouveau != html
+
+
+# Semaine offerte : le dessin du haut (tete-pleine.webp) n'avait pas de taille
+# avant d'arriver. Sur téléphone et tablette il est au-dessus du texte : à son
+# arrivée, tout descendait de 190 px (CLS 0,19 sur connexion lente). On réserve
+# sa place (190 px de haut, et 800 x 568 pour l'ordinateur). Rendu final identique.
+DESSIN_SO = "/assets/landing/semaine-offerte/tete-pleine.webp"
+STYLE_DESSIN_SO = "<style>@media (max-width:860px){.hero-art img{height:190px;object-fit:contain}}</style>"
+
+
+def reserver_dessin_semaine_offerte(chemin):
+    if str(chemin.relative_to(SORTIE)) != "semaine-offerte/index.html":
+        return False
+    html = chemin.read_text(encoding="utf-8")
+    m = re.search(r'<img\b[^>]*src="' + re.escape(DESSIN_SO) + r'"[^>]*>', html)
+    if not m or "hero-art" not in html:
+        print("   (semaine offerte : dessin du haut introuvable, rien à réserver)")
+        return False
+    balise = m.group(0)
+    if "width=" not in balise:
+        balise = balise.replace(f'src="{DESSIN_SO}"', f'src="{DESSIN_SO}" width="800" height="568"')
+    html = html.replace(m.group(0), balise, 1)
+    if STYLE_DESSIN_SO not in html:
+        html = html.replace("</head>", STYLE_DESSIN_SO + "\n</head>", 1)
+    chemin.write_text(html, encoding="utf-8")
+    return True
+
+
+# Mentions légales : informations données par Camélia le 2026-10-19. Elles
+# remplacent les cases « à compléter » des paquets, même si un nouveau paquet
+# les remet.
+# Pas d'adresse ni de téléphone sur le site : choix de Camélia (elle travaille
+# chez elle), informée de l'obligation légale le 2026-10-19.
+INFOS_LEGALES = [
+    (r'<p>Camélia Nguyen, <span class="todo">\[statut[^<]*</span>',
+     "<p>Papier Pivoine<br>Camélia Nguyen, entrepreneuse individuelle (micro-entreprise)"),
+    (r'<span class="todo">\[adresse postale\]</span><br>', ""),
+    (r'<span class="todo">\[numéro SIRET\]</span>', "945 316 016 00019"),
+    # Confidentialité : durée de conservation dans Kit (option A)
+    (r'Après ta désinscription[^<]*<span class="todo">\[à vérifier[^\]]*Kit\]</span>',
+     "Si tu te désinscris, ton adresse est gardée uniquement pour ne plus t’écrire."),
+]
+
+
+def completer_mentions(chemin):
+    html = chemin.read_text(encoding="utf-8")
+    nouveau = html
+    for motif, texte in INFOS_LEGALES:
+        nouveau = re.sub(motif, texte, nouveau)
+    if nouveau == html:
+        return False
+    chemin.write_text(nouveau, encoding="utf-8")
+    return True
+
+
+# Barre du haut (ordinateur et menu mobile) : lien « 7 permissions PIVOINE »
+# juste avant « À propos », et « La lettre » devient « La lettre, gratuite ».
+# Fait ici pour survivre aux nouveaux paquets.
+PERMISSIONS_URL = "/7-permissions-pivoine/"
+NAV_HAUT = re.compile(r'<nav class="m?nav"[^>]*>.*?</nav>', re.S)
+# Six liens : sur petite tablette (701 à 920 px, menu sous le logo), on resserre
+# l'espace entre eux pour qu'ils tiennent sur une ligne ; de 701 à 760 px, le
+# texte passe aussi de 14 à 13 px. Le retour à la ligne reste possible en secours.
+STYLE_MENU = ("<style>@media (min-width:701px) and (max-width:920px){nav.nav{column-gap:"
+              "clamp(12px,calc((100vw - 684px) / 5),24px)}}"
+              "@media (min-width:701px) and (max-width:760px){nav.nav,nav.nav a{font-size:13px}}</style>")
+
+
+def ajouter_lien_permissions(chemin):
+    html = chemin.read_text(encoding="utf-8")
+    courant = ' aria-current="page"' if chemin.parent.name == PERMISSIONS_URL.strip("/") else ""
+    lien = f'<a href="{PERMISSIONS_URL}"{courant}>7 permissions PIVOINE</a>'
+
+    def poser(m):
+        nav = re.sub(r'(<a href="/newsletter/"[^>]*>)La lettre</a>', r"\1La lettre, gratuite</a>", m.group(0))
+        if f'href="{PERMISSIONS_URL}"' in nav:
+            return nav
+        i = nav.find('<a href="/apropos/"')
+        i = i if i >= 0 else nav.rfind("</nav>")
+        return nav[:i] + lien + nav[i:]
+
+    nouveau = NAV_HAUT.sub(poser, html)
+    if '<nav class="nav"' in nouveau and STYLE_MENU not in nouveau:
+        nouveau = nouveau.replace("</head>", STYLE_MENU + "\n</head>", 1)
+    if nouveau == html:
+        return False
+    chemin.write_text(nouveau, encoding="utf-8")
+    return True
+
+
 def copier_images_popup():
     for nom, cible in POPUP_IMAGES.items():
         (SORTIE / cible).parent.mkdir(parents=True, exist_ok=True)
@@ -213,6 +350,14 @@ def verifier(pages):
         if "fonts.googleapis" in html:
             erreurs.append(f"{nom} : Google Fonts est chargé (le site héberge ses polices)")
 
+    # barre du haut : le lien « 7 permissions PIVOINE » dans chaque menu
+    for page in pages:
+        for nav in NAV_HAUT.findall(page.read_text(encoding="utf-8")):
+            if f'href="{PERMISSIONS_URL}"' not in nav:
+                erreurs.append(f"{page.relative_to(SORTIE)} : lien 7 permissions absent de la barre du haut")
+            if "La lettre, gratuite</a>" not in nav:
+                erreurs.append(f"{page.relative_to(SORTIE)} : « La lettre, gratuite » absent de la barre du haut")
+
     for essentiel in ["CNAME", "index.html", "sitemap.xml", "robots.txt"]:
         if not (SORTIE / essentiel).exists():
             erreurs.append(f"fichier essentiel manquant : {essentiel}")
@@ -230,9 +375,20 @@ def main():
         pose = injecter_pinterest(page)
         icone = ajouter_favicon(page)
         popup = ajouter_popup(page, bloc)
-        faits = [n for n, f in (("pinterest", pose), ("favicon", icone), ("pop-up", popup)) if f]
+        perm = ajouter_lien_permissions(page)
+        bord = ajouter_anti_debord(page)
+        desc = raccourcir_description(page)
+        dessin = reserver_dessin_semaine_offerte(page)
+        legal = completer_mentions(page)
+        faits = [n for n, f in (("pinterest", pose), ("favicon", icone), ("pop-up", popup),
+                                ("menu 7 permissions", perm), ("sans débordement", bord),
+                                ("description", desc), ("place du dessin", dessin),
+                                ("mentions", legal)) if f]
         print(f"   {str(page.relative_to(SORTIE)):32} {' + '.join(faits) or 'rien à faire'}")
 
+    for page in pages:
+        if 'class="todo"' in page.read_text(encoding="utf-8"):
+            print(f"   ⚠ il reste une case « à compléter » dans {page.relative_to(SORTIE)}")
     print("→ vérifications")
     verifier(pages)
 
