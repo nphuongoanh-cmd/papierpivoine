@@ -178,6 +178,12 @@ def ajouter_anti_debord(chemin):
 # Fait ici pour survivre aux nouveaux paquets.
 PERMISSIONS_URL = "/7-permissions-pivoine/"
 NAV_HAUT = re.compile(r'<nav class="m?nav"[^>]*>.*?</nav>', re.S)
+# Six liens : sur petite tablette (701 à 920 px, menu sous le logo), on resserre
+# l'espace entre eux pour qu'ils tiennent sur une ligne ; de 701 à 760 px, le
+# texte passe aussi de 14 à 13 px. Le retour à la ligne reste possible en secours.
+STYLE_MENU = ("<style>@media (min-width:701px) and (max-width:920px){nav.nav{column-gap:"
+              "clamp(12px,calc((100vw - 684px) / 5),24px)}}"
+              "@media (min-width:701px) and (max-width:760px){nav.nav,nav.nav a{font-size:13px}}</style>")
 
 
 def ajouter_lien_permissions(chemin):
@@ -194,6 +200,8 @@ def ajouter_lien_permissions(chemin):
         return nav[:i] + lien + nav[i:]
 
     nouveau = NAV_HAUT.sub(poser, html)
+    if '<nav class="nav"' in nouveau and STYLE_MENU not in nouveau:
+        nouveau = nouveau.replace("</head>", STYLE_MENU + "\n</head>", 1)
     if nouveau == html:
         return False
     chemin.write_text(nouveau, encoding="utf-8")
