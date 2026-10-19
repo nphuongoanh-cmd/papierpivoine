@@ -154,8 +154,9 @@ def ajouter_popup(chemin, bloc):
     return True
 
 
-# Lien « 7 permissions PIVOINE » dans la barre du haut (ordinateur et menu
-# mobile), juste avant « À propos ». Ajouté ici pour survivre aux nouveaux paquets.
+# Barre du haut (ordinateur et menu mobile) : lien « 7 permissions PIVOINE »
+# juste avant « À propos », et « La lettre » devient « La lettre, gratuite ».
+# Fait ici pour survivre aux nouveaux paquets.
 PERMISSIONS_URL = "/7-permissions-pivoine/"
 NAV_HAUT = re.compile(r'<nav class="m?nav"[^>]*>.*?</nav>', re.S)
 
@@ -166,7 +167,7 @@ def ajouter_lien_permissions(chemin):
     lien = f'<a href="{PERMISSIONS_URL}"{courant}>7 permissions PIVOINE</a>'
 
     def poser(m):
-        nav = m.group(0)
+        nav = re.sub(r'(<a href="/newsletter/"[^>]*>)La lettre</a>', r"\1La lettre, gratuite</a>", m.group(0))
         if f'href="{PERMISSIONS_URL}"' in nav:
             return nav
         i = nav.find('<a href="/apropos/"')
@@ -244,6 +245,8 @@ def verifier(pages):
         for nav in NAV_HAUT.findall(page.read_text(encoding="utf-8")):
             if f'href="{PERMISSIONS_URL}"' not in nav:
                 erreurs.append(f"{page.relative_to(SORTIE)} : lien 7 permissions absent de la barre du haut")
+            if "La lettre, gratuite</a>" not in nav:
+                erreurs.append(f"{page.relative_to(SORTIE)} : « La lettre, gratuite » absent de la barre du haut")
 
     for essentiel in ["CNAME", "index.html", "sitemap.xml", "robots.txt"]:
         if not (SORTIE / essentiel).exists():
