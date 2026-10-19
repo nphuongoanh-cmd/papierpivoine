@@ -323,7 +323,9 @@ footer.site .fsmall{font:12px/1.6 var(--font-body);color:var(--ink-faint);margin
 /* ===== Oct 19, 2026 rebuild ===== */
 .hero-vis img{width:100%;height:auto;display:block}
 @media (min-width:901px){.hero-vis img{width:108%;max-width:108%;margin-left:-2%}}
-.hero .small{font-size:14px;color:var(--ink-soft);margin-top:14px}
+.hero-ctas{display:flex;flex-direction:column;align-items:flex-start;gap:18px;margin-top:26px}
+.cta-free .small{font-size:14px;color:var(--ink-soft);margin:10px 0 0 6px}
+.says-note{max-width:none!important}
 .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
 .pillar{background:#fff;border-radius:var(--r);padding:26px 24px}
 .pillar img{width:58px;height:58px;display:block;margin-bottom:10px}
@@ -379,6 +381,8 @@ footer.site .fsmall{font:12px/1.6 var(--font-body);color:var(--ink-faint);margin
 .reads .k{font:800 13px/1.3 var(--font-body);letter-spacing:.12em;text-transform:uppercase;color:var(--rose-deep);margin:0 0 4px}
 .reads h3{margin:0 0 10px}
 .reads .card p:last-child{color:var(--ink-soft);font-size:16.5px;margin:0}
+.contact-form{background:#fff;border-radius:var(--r);padding:22px 22px 6px;margin:26px auto 0;text-align:left;max-width:620px}
+.contact-form iframe{display:block;width:100%;border:0}
 .soon{max-width:640px;margin:0 auto;text-align:center}
 .soon img{width:180px;margin:0 auto 24px;display:block;transform:rotate(-3deg);box-shadow:0 14px 30px rgba(43,37,33,.18);border-radius:3px}
 @media (max-width:900px){.pillars,.steps3{grid-template-columns:1fr 1fr}.says figure{flex-basis:calc((100% - 22px)/2)}}
