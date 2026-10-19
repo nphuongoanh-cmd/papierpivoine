@@ -232,6 +232,26 @@ def reserver_dessin_semaine_offerte(chemin):
 # Mentions légales : informations données par Camélia le 2026-10-19. Elles
 # remplacent les cases « à compléter » des paquets, même si un nouveau paquet
 # les remet.
+# Retouches de texte demandées par Camélia : appliquées aussi si un nouveau
+# paquet ramène l'ancienne formulation.
+RETOUCHES = [
+    ("apropos/index.html", "ensuite je m’installe à mon bureau pour Papier Pivoine.",
+     "ensuite je m’installe à mon bureau pour travailler sur Papier Pivoine."),
+]
+
+
+def appliquer_retouches(chemin):
+    html = chemin.read_text(encoding="utf-8")
+    nouveau = html
+    for page, avant, apres in RETOUCHES:
+        if str(chemin.relative_to(SORTIE)) == page:
+            nouveau = nouveau.replace(avant, apres)
+    if nouveau == html:
+        return False
+    chemin.write_text(nouveau, encoding="utf-8")
+    return True
+
+
 # Pas d'adresse ni de téléphone sur le site : choix de Camélia (elle travaille
 # chez elle), informée de l'obligation légale le 2026-10-19.
 INFOS_LEGALES = [
@@ -380,10 +400,11 @@ def main():
         desc = raccourcir_description(page)
         dessin = reserver_dessin_semaine_offerte(page)
         legal = completer_mentions(page)
+        retouche = appliquer_retouches(page)
         faits = [n for n, f in (("pinterest", pose), ("favicon", icone), ("pop-up", popup),
                                 ("menu 7 permissions", perm), ("sans débordement", bord),
                                 ("description", desc), ("place du dessin", dessin),
-                                ("mentions", legal)) if f]
+                                ("mentions", legal), ("retouche", retouche)) if f]
         print(f"   {str(page.relative_to(SORTIE)):32} {' + '.join(faits) or 'rien à faire'}")
 
     for page in pages:
