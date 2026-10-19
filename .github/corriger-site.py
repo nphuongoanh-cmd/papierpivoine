@@ -203,6 +203,32 @@ def raccourcir_description(chemin):
     return nouveau != html
 
 
+# Semaine offerte : le dessin du haut (tete-pleine.webp) n'avait pas de taille
+# avant d'arriver. Sur téléphone et tablette il est au-dessus du texte : à son
+# arrivée, tout descendait de 190 px (CLS 0,19 sur connexion lente). On réserve
+# sa place (190 px de haut, et 800 x 568 pour l'ordinateur). Rendu final identique.
+DESSIN_SO = "/assets/landing/semaine-offerte/tete-pleine.webp"
+STYLE_DESSIN_SO = "<style>@media (max-width:860px){.hero-art img{height:190px;object-fit:contain}}</style>"
+
+
+def reserver_dessin_semaine_offerte(chemin):
+    if str(chemin.relative_to(SORTIE)) != "semaine-offerte/index.html":
+        return False
+    html = chemin.read_text(encoding="utf-8")
+    m = re.search(r'<img\b[^>]*src="' + re.escape(DESSIN_SO) + r'"[^>]*>', html)
+    if not m or "hero-art" not in html:
+        print("   (semaine offerte : dessin du haut introuvable, rien à réserver)")
+        return False
+    balise = m.group(0)
+    if "width=" not in balise:
+        balise = balise.replace(f'src="{DESSIN_SO}"', f'src="{DESSIN_SO}" width="800" height="568"')
+    html = html.replace(m.group(0), balise, 1)
+    if STYLE_DESSIN_SO not in html:
+        html = html.replace("</head>", STYLE_DESSIN_SO + "\n</head>", 1)
+    chemin.write_text(html, encoding="utf-8")
+    return True
+
+
 # Barre du haut (ordinateur et menu mobile) : lien « 7 permissions PIVOINE »
 # juste avant « À propos », et « La lettre » devient « La lettre, gratuite ».
 # Fait ici pour survivre aux nouveaux paquets.
@@ -325,9 +351,10 @@ def main():
         perm = ajouter_lien_permissions(page)
         bord = ajouter_anti_debord(page)
         desc = raccourcir_description(page)
+        dessin = reserver_dessin_semaine_offerte(page)
         faits = [n for n, f in (("pinterest", pose), ("favicon", icone), ("pop-up", popup),
                                 ("menu 7 permissions", perm), ("sans débordement", bord),
-                                ("description", desc)) if f]
+                                ("description", desc), ("place du dessin", dessin)) if f]
         print(f"   {str(page.relative_to(SORTIE)):32} {' + '.join(faits) or 'rien à faire'}")
 
     print("→ vérifications")
