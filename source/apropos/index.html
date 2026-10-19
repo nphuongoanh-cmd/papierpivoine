@@ -41,7 +41,7 @@
  <p>Je suis arrivée en France à 18 ans pour mes études, et j’y vis depuis plus de vingt ans. Toute ma vie, je me suis adaptée, à l’école, puis à un nouveau pays, puis au travail. Je ne suis pas sûre d’avoir souvent été vraiment moi-même.</p>
  <p>C’est en travaillant en France que j’ai compris que j’étais introvertie. Il y a quelques années, j’ai découvert le travail de la psychologue Elaine Aron et j’ai trouvé un deuxième mot pour ce que je vivais depuis toujours : hypersensible. J’ai eu un certain sentiment d’être validée.</p>
  <p>Il y a eu une dépression, et douze ans de psychanalyse. L’écriture est venue à côté, jamais à la place. Elle m’a donné un endroit où poser ce que je portais entre deux rendez-vous.</p>
- <p class="help">Si c’est lourd pour toi en ce moment, tu n’es pas seule : le 3114 répond 24 h/24, gratuitement.</p>
+ <p class="help">Si c’est lourd pour toi en ce moment, tu n’es pas seule : le 3114 répond 24 h/24, gratuitement.</p>
  <p>Des livres de développement perso, j’en ai acheté et commencé plusieurs dizaines. J’en ai fini certains, pas d’autres, et au final je ne sais pas si j’en ai vraiment appliqué quelque chose sur le long terme. J’ai aussi essayé une appli de méditation, un bullet journal et le yoga « pour me détendre ».</p>
  <p>J’ai passé des années à essayer de changer et de m’améliorer. Aujourd’hui, j’ai juste envie d’être en paix et de me sentir bien dans ma vie telle qu’elle est. C’est pour ça que je te dirai toujours que tu n’as rien à réparer.</p>
 </div></section>
@@ -83,6 +83,7 @@
 <section><div class="wrap">
  <div class="narrow center"><p class="eyebrow">Ce qui compte pour moi</p><h2>Quatre choses que je garde</h2></div>
  <div class="values" style="margin-top:36px"><div class="card"><h3>Douceur</h3><p>Pas de pression, pas de compte à rebours, pas de « il faut ».</p></div><div class="card"><h3>Liberté</h3><p>À ton rythme, dans l’ordre que tu veux. Rien à finir.</p></div><div class="card"><h3>Honnêteté</h3><p>Pas de promesse de résultat, et seulement des détails vrais.</p></div><div class="card"><h3>Humour</h3><p>On rit des situations, jamais de toi.</p></div></div>
+ <p class="center" style="margin-top:28px"><a href="/7-permissions-pivoine/">Et les 7 permissions PIVOINE, pour chaque page que tu écris</a></p>
 </div></section>
 
 <section class="band"><div class="wrap">
@@ -91,9 +92,64 @@
  <div class="btns" style="justify-content:center"><a class="btn" href="/semaine-offerte/">Ta première semaine, offerte</a><a class="btn ghost" href="/ecriture/">Découvrir Mental Léger</a></div></div>
 </div></section>
 
-<section class="band-pink tight"><div class="narrow center">
+<section class="band-pink tight" id="ecrire"><div class="narrow center">
  <h2>M’écrire</h2>
- <p class="lead">Tu as envie de me raconter quelque chose, ou tu as une question sur l’écriture douce ou sur le programme ? Écris-moi à <a href="mailto:camelia@camelianguyen.fr">camelia@camelianguyen.fr</a>. Ça me fait toujours plaisir de te lire.</p>
+ <p class="lead">Tu as envie de me raconter quelque chose, ou tu as une question sur l’écriture douce ou sur le programme ? Écris-moi ici. Ça me fait toujours plaisir de te lire.</p>
+ <style>
+/* formulaire de contact (Google Sheets + Apps Script, voir ajouts/contact/) */
+.cf{max-width:560px;margin:26px auto 0;text-align:left;background:var(--card,#FFFCFA);border:1px solid var(--border-faint,#EDE1D6);border-radius:22px;padding:24px 22px 22px;box-shadow:0 10px 30px rgba(51,50,30,.07)}
+.cf label{display:block;margin:0 0 14px}
+.cf label span{display:block;font-weight:700;font-size:14px;color:var(--ink-soft,#46452F);margin:0 0 6px 4px}
+.cf input,.cf textarea{width:100%;box-sizing:border-box;font:400 17px/1.5 var(--font-body,"Nunito Sans",system-ui,sans-serif);color:var(--ink,#33321E);background:#fff;border:1.5px solid #E8C9C0;border-radius:14px;padding:12px 16px}
+.cf textarea{min-height:150px;resize:vertical}
+.cf input:focus,.cf textarea:focus{outline:none;border-color:var(--peony,#E26D5F);box-shadow:0 0 0 3px rgba(226,109,95,.18)}
+.cf ::placeholder{color:#A8A196}
+.cf .cf-piege{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.cf .cf-bas{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 18px;margin-top:6px}
+.cf .cf-note{font-size:14px;color:var(--ink-faint,#6B6953);margin:0}
+.cf button[disabled]{opacity:.6;cursor:default}
+.cf .cf-erreur{display:none;margin:14px 4px 0;font-size:15px;color:var(--rose-deep,#BF5548)}
+.cf.is-erreur .cf-erreur{display:block}
+.cf-merci{display:none;max-width:560px;margin:26px auto 0;text-align:left;background:var(--card,#FFFCFA);border:1px solid var(--border-faint,#EDE1D6);border-radius:22px;padding:26px 24px}
+.cf-merci p{margin:0 0 12px;font-size:17.5px;line-height:1.6}
+.cf-merci .hand{font-size:32px;margin:6px 0 0}
+.cf-envoye .cf{display:none}.cf-envoye .cf-merci{display:block;animation:cf-in .4s ease}
+@keyframes cf-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (max-width:520px){.cf{padding:20px 16px 18px}.cf .cf-bas{flex-direction:column;align-items:stretch}.cf .cf-bas .btn{text-align:center}}
+</style>
+ <div class="cf-zone">
+ <form class="cf" id="cf" novalidate>
+  <label><span>Ton prénom</span><input name="prenom" autocomplete="given-name" placeholder="Ton prénom" maxlength="80" required></label>
+  <label><span>Ton adresse e-mail</span><input name="email" type="email" autocomplete="email" placeholder="toi@exemple.fr" maxlength="200" required></label>
+  <label><span>Ton message</span><textarea name="message" maxlength="5000" placeholder="Ce que tu as envie de me dire" required></textarea></label>
+  <label class="cf-piege" aria-hidden="true">Ne pas remplir<input name="site_web" tabindex="-1" autocomplete="off"></label>
+  <div class="cf-bas"><p class="cf-note">Écrire ne t’inscrit pas à la lettre.</p><button class="btn" type="submit">Envoyer</button></div>
+  <p class="cf-erreur" role="alert">Ton message n’est pas parti. Vérifie ton prénom, ton adresse e-mail et ton message, puis réessaie dans un instant.</p>
+ </form>
+ <div class="cf-merci" role="status" aria-live="polite" tabindex="-1">
+  <p>Je te réponds dès que je peux, depuis ma boîte mail. Si tu ne vois rien venir, jette un œil dans tes indésirables.</p>
+  <p>En attendant, si tu ne l’as pas encore, ta première semaine d’écriture douce est offerte&nbsp;: <a href="/semaine-offerte/">papierpivoine.fr/semaine-offerte</a></p>
+  <p class="hand">Camélia</p>
+ </div>
+ </div>
+ <script>
+ /* Adresse de l'application Google Apps Script (Déployer › Application Web), terminée par /exec. */
+ var CONTACT_URL = 'https://script.google.com/macros/s/AKfycbzaYW0RiNOJUutv71-cc1wPATSxP3MKMwY-XZ2J47y63DMfQDkHYv0qGD3ataHW5HYh9Q/exec';
+ (function(){
+  var f=document.getElementById('cf'); if(!f) return;
+  var zone=f.parentNode, btn=f.querySelector('button'), merci=zone.querySelector('.cf-merci');
+  f.addEventListener('submit',function(e){
+   e.preventDefault(); f.classList.remove('is-erreur');
+   if(!f.checkValidity()){ f.reportValidity(); return; }
+   if(!CONTACT_URL){ f.classList.add('is-erreur'); return; }
+   btn.disabled=true; btn.textContent='Envoi…';
+   fetch(CONTACT_URL,{method:'POST',body:new URLSearchParams(new FormData(f)),credentials:'omit'})
+    .then(function(r){return r.json();})
+    .then(function(d){ if(!d||!d.ok) throw 0; zone.classList.add('cf-envoye'); merci.focus({preventScroll:true}); })
+    .catch(function(){ f.classList.add('is-erreur'); btn.disabled=false; btn.textContent='Envoyer'; });
+  });
+ })();
+ </script>
 </div></section>
 
 <section class="tight"><div class="wrap"><div class="nl">
@@ -101,7 +157,7 @@
   <p class="eyebrow">La lettre · gratuite</p>
   <h2>Commence par un cadeau</h2>
   <p>Chaque premier dimanche du mois, je t’écris une lettre : un thème de saison, un exercice d’écriture douce de dix minutes, et mes nouvelles (Bao compris). En cadeau, tu reçois tout de suite la première semaine de Mental Léger.</p>
-  <a class="btn" href="/newsletter/">Recevoir ma semaine offerte</a>
+  <a class="btn" href="/semaine-offerte/">Recevoir ma semaine offerte</a>
   <p class="fine">C’est gratuit. Tu te désinscris en un clic, quand tu veux.</p>
   <blockquote>« Merci pour tes newsletters qui sont de réelles bouffées d’air frais. »<cite>Virginie, abonnée</cite></blockquote>
  </div>
@@ -115,9 +171,9 @@
    <p class="ftag">Pour celles qui ressentent tout et se rechargent au calme.</p>
   </div>
   <div class="fcols">
-   <div><div class="pp-eyebrow">Découvrir</div><div class="fcol"><a href="/ecriture/">Programme d’écriture</a><a href="/semaine-offerte/">La semaine offerte</a><a href="/newsletter/">La lettre</a><a href="/apropos/">À propos</a></div></div>
+   <div><div class="pp-eyebrow">Découvrir</div><div class="fcol"><a href="/ecriture/">Programme d’écriture</a><a href="/semaine-offerte/">La semaine offerte</a><a href="/7-permissions-pivoine/">7 permissions PIVOINE</a><a href="/apropos/">À propos</a></div></div>
    <div><div class="pp-eyebrow">Rester en lien</div><div class="fcol">
-    <a href="/newsletter/">La lettre, gratuite</a><a href="mailto:camelia@camelianguyen.fr">Écrire à Camélia</a>
+    <a href="/newsletter/">La lettre, gratuite</a><a href="/apropos/#ecrire">Écrire à Camélia</a>
     <a href="https://fr.pinterest.com/papierpivoine/" target="_blank" rel="noopener me">Pinterest</a><a href="https://www.youtube.com/@papierpivoine/shorts" target="_blank" rel="noopener me">YouTube</a><a href="https://www.tiktok.com/@papierpivoine" target="_blank" rel="noopener me">TikTok</a><a href="https://www.instagram.com/papierpivoine/" target="_blank" rel="noopener me">Instagram</a><a href="https://www.facebook.com/share/1Bue8nqYmf/?mibextid=wwXIfr" target="_blank" rel="noopener me">Facebook</a><a href="https://www.threads.com/@papierpivoine" target="_blank" rel="noopener me">Threads</a></div></div>
   </div>
  </div>

@@ -15,6 +15,8 @@
      · illustration : copie locale /assets/ppl/ au lieu de Netlify ;
      · fermeture : retour à la position sans animation sur les pages en défilement doux ;
      · PAGES_SANS_POPUP : aussi /semaine-offerte/, /mental-leger/suite/, /liens/.
+     · adresse e-mail écrite en code (entités HTML), comme sur les pages légales.
+     · champ prénom : exemple « Ton prénom » au lieu de « Clémence ».
      Ajouté à chaque page par .github/corriger-site.py au moment de la publication.
      ============================================================ -->
 
@@ -184,7 +186,7 @@
       <form id="ppl-form" action="https://app.kit.com/forms/9685937/subscriptions" method="post" novalidate>
         <label for="ppl-fn">Ton prénom</label>
         <input id="ppl-fn" name="fields[first_name]" type="text" autocomplete="given-name" autocapitalize="words"
-               enterkeyhint="next" placeholder="Clémence">
+               enterkeyhint="next" placeholder="Ton prénom">
         <label for="ppl-em">Ton adresse e-mail</label>
         <input id="ppl-em" name="email_address" type="email" inputmode="email" autocomplete="email"
                autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="send"
@@ -200,7 +202,7 @@
         <div class="ppl-done-kick">Presque fini</div>
         <p class="ppl-done-title">Encore <mark>un clic</mark></p>
         <p>Je viens de t’envoyer un mail pour vérifier ton adresse. Ouvre-le, clique sur le lien, et ta première semaine arrive juste après.</p>
-        <p>S’il n’est pas là, regarde dans les promotions ou les indésirables. Il vient de <strong>camelia@camelianguyen.fr</strong>.</p>
+        <p>S’il n’est pas là, regarde dans les promotions ou les indésirables. Il vient de <strong>&#99;&#97;&#109;&#101;&#108;&#105;&#97;&#64;&#99;&#97;&#109;&#101;&#108;&#105;&#97;&#110;&#103;&#117;&#121;&#101;&#110;&#46;&#102;&#114;</strong>.</p>
       </div>
     </div>
   </div>

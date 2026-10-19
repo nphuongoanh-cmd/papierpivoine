@@ -29,6 +29,7 @@ SORTIE = ICI / "popup-lettre.html"
 
 NETLIFY = "https://phenomenal-sunshine-50fca1.netlify.app/lettre/lettre-the-vert-serre.webp"
 IMAGE_LOCALE = "/assets/ppl/lettre-the-vert-serre.webp"
+EMAIL = "camelia@camelianguyen.fr"
 PAGES = "['/newsletter/', '/semaine-offerte/', '/mental-leger/suite/', '/liens/']"
 
 LATIN = ("U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, "
@@ -83,12 +84,21 @@ def main():
                   f"var PAGES_SANS_POPUP = {PAGES}; // formulaire déjà là, abonnées, ou lien en bio",
                   "PAGES_SANS_POPUP", regex=True)
 
+    # 6. champ prénom : « Ton prénom » comme exemple, au lieu d'un prénom inventé
+    t = remplacer(t, 'placeholder="Clémence"', 'placeholder="Ton prénom"', "exemple du prénom")
+
+    # 5. adresse e-mail écrite en code (lisible pour les gens, pas pour les robots qui collectent les adresses)
+    t = remplacer(t, f"<strong>{EMAIL}</strong>",
+                  "<strong>" + "".join(f"&#{ord(c)};" for c in EMAIL) + "</strong>", "adresse e-mail")
+
     note = ("     Adaptation pour papierpivoine.fr (générée par adapter.py, seuls changements) :\n"
             "     · polices : les fichiers du site (/assets/fonts/) au lieu de Google Fonts,\n"
             "       sous des noms préfixés « ppl » pour ne rien mélanger avec la page ;\n"
             "     · illustration : copie locale /assets/ppl/ au lieu de Netlify ;\n"
             "     · fermeture : retour à la position sans animation sur les pages en défilement doux ;\n"
             "     · PAGES_SANS_POPUP : aussi /semaine-offerte/, /mental-leger/suite/, /liens/.\n"
+            "     · adresse e-mail écrite en code (entités HTML), comme sur les pages légales.\n"
+            "     · champ prénom : exemple « Ton prénom » au lieu de « Clémence ».\n"
             "     Ajouté à chaque page par .github/corriger-site.py au moment de la publication.\n")
     t = remplacer(t, "     ============================================================ -->\n",
                   note + "     ============================================================ -->\n", "en-tête")
