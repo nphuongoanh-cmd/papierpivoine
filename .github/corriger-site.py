@@ -229,6 +229,26 @@ def reserver_dessin_semaine_offerte(chemin):
     return True
 
 
+# Mentions légales : informations données par Camélia le 2026-10-19. Elles
+# remplacent les cases « à compléter » des paquets, même si un nouveau paquet
+# les remet.
+INFOS_LEGALES = [
+    (r'<span class="todo">\[statut[^<]*</span>', "entrepreneuse individuelle (micro-entreprise)"),
+    (r'<span class="todo">\[numéro SIRET\]</span>', "945 316 016 00019"),
+]
+
+
+def completer_mentions(chemin):
+    html = chemin.read_text(encoding="utf-8")
+    nouveau = html
+    for motif, texte in INFOS_LEGALES:
+        nouveau = re.sub(motif, texte, nouveau)
+    if nouveau == html:
+        return False
+    chemin.write_text(nouveau, encoding="utf-8")
+    return True
+
+
 # Barre du haut (ordinateur et menu mobile) : lien « 7 permissions PIVOINE »
 # juste avant « À propos », et « La lettre » devient « La lettre, gratuite ».
 # Fait ici pour survivre aux nouveaux paquets.
@@ -352,9 +372,11 @@ def main():
         bord = ajouter_anti_debord(page)
         desc = raccourcir_description(page)
         dessin = reserver_dessin_semaine_offerte(page)
+        legal = completer_mentions(page)
         faits = [n for n, f in (("pinterest", pose), ("favicon", icone), ("pop-up", popup),
                                 ("menu 7 permissions", perm), ("sans débordement", bord),
-                                ("description", desc), ("place du dessin", dessin)) if f]
+                                ("description", desc), ("place du dessin", dessin),
+                                ("mentions", legal)) if f]
         print(f"   {str(page.relative_to(SORTIE)):32} {' + '.join(faits) or 'rien à faire'}")
 
     print("→ vérifications")
