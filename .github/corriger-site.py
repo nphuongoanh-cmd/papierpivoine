@@ -470,6 +470,15 @@ def elargir_avertissement(chemin):
         html_page = html_page[:debut] + html_page[debut:].replace(
             "ressentent tout et se rechargent au calme", "ressentent tout<br>et se rechargent au calme")
         chemin.write_text(html_page, encoding="utf-8")
+    # dernière ligne du pied de page : pas de coupure au milieu d'un nom ou d'un lien
+    # (« Mentions / légales » sur iPhone 13 mini) ; elle ne passe à la ligne qu'aux « · »
+    if debut >= 0:
+        pied = html_page[debut:]
+        for groupe in ("Mentions légales", "Papier Pivoine", "Camélia Nguyen", "© 2026"):
+            pied = pied.replace(groupe, groupe.replace(" ", "\u00a0"))
+        if pied != html_page[debut:]:
+            html_page = html_page[:debut] + pied
+            chemin.write_text(html_page, encoding="utf-8")
     if "Ce que tu trouves ici est une pratique douce" not in html_page or STYLE_AVERTISSEMENT in html_page:
         return False
     chemin.write_text(html_page.replace("</head>", STYLE_AVERTISSEMENT + "\n</head>", 1), encoding="utf-8")
