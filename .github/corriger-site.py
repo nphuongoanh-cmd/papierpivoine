@@ -437,7 +437,12 @@ ICONES = {
 }
 RESEAU = re.compile(r'<a href="(https://(?:fr\.|www\.)?(pinterest|youtube|tiktok|instagram|facebook|threads)\.com[^"]*)"([^>]*)>[^<]*</a>')
 SUITE_RESEAUX = re.compile(r'(?:\s*' + RESEAU.pattern + r')+')
-STYLE_RESEAUX = ("<style>.fsocial{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}"
+STYLE_RESEAUX = ("<style>.fsocial{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;"
+                 # toute la largeur des deux colonnes, sans les élargir (min-width en %, largeur propre nulle)
+                 "flex:none;width:0;min-width:100%;margin-top:-6px}"
+                 # tablette et ordinateur : les deux colonnes en grille, la rangée d'icônes sur les deux
+                 "@media (min-width:701px){footer div:has(>.fsocial){display:grid!important;grid-template-columns:auto auto;"
+                 "column-gap:64px!important;row-gap:26px!important}footer .fsocial{grid-column:1/-1;width:auto;min-width:0;margin-top:0}}"
                  ".fsocial a{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;"
                  "background:#fff;border:1.5px solid var(--border-faint,#EDE1D6);color:var(--ink-soft,#46452F)!important;"
                  "transition:color .2s,border-color .2s,background .2s,transform .2s}"
@@ -445,9 +450,9 @@ STYLE_RESEAUX = ("<style>.fsocial{display:flex;flex-wrap:wrap;gap:10px;margin-to
                  "border-color:var(--peony,#E26D5F);background:var(--rose-l,#FBEDEA);transform:rotate(-6deg) translateY(-1px)}"
                  ".fsocial svg{width:20px;height:20px}"
                  # sur téléphone, le site agrandit les liens du pied de page (44 px de haut) : les ronds restent ronds
-                 "footer .fcol .fsocial a{display:grid;min-height:0;padding:0;flex:none}"
-                 "@media (max-width:700px){footer .fcol .fsocial a{width:44px;height:44px}}"
-                 "@media (max-width:360px){.fsocial{gap:8px}footer .fcol .fsocial a{width:40px;height:40px}}</style>")
+                 "footer .fsocial a{display:grid;min-height:0;padding:0;flex:none}"
+                 "@media (max-width:700px){footer .fsocial a{width:44px;height:44px}}"
+                 "@media (max-width:360px){.fsocial{gap:8px}footer .fsocial a{width:40px;height:40px}}</style>")
 
 
 def icones_reseaux(chemin):
@@ -469,6 +474,9 @@ def icones_reseaux(chemin):
     pied, n = SUITE_RESEAUX.subn(remplacer_suite, html_page[debut:])
     if not n:
         return False
+    # la rangée sort de la colonne « Rester en lien » et passe sous les deux colonnes
+    # (dernier enfant de leur conteneur), de « Découvrir » au bord droit de « Rester en lien »
+    pied = re.sub(r'(<div class="fsocial">.*?</a></div>)(\s*</div>\s*</div>)', r"\2\1", pied, count=1, flags=re.S)
     nouveau = (html_page[:debut] + pied).replace("</head>", STYLE_RESEAUX + "\n</head>", 1)
     chemin.write_text(nouveau, encoding="utf-8")
     return True
