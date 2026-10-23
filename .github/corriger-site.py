@@ -456,13 +456,20 @@ STYLE_RESEAUX = ("<style>.fsocial{display:flex;flex-wrap:wrap;gap:10px;justify-c
 
 
 # Pied de page : la phrase « Ce que tu trouves ici est une pratique douce… » prend toute la
-# largeur (2 lignes sur ordinateur au lieu de 3), au lieu de 70 caractères par ligne.
+# largeur (1 ligne sur ordinateur au lieu de 3), au lieu de 70 caractères par ligne ; et la
+# devise « Pour celles qui ressentent tout / et se rechargent au calme. » passe à la ligne après « tout ».
 STYLE_AVERTISSEMENT = ('<style>footer.site .fsmall,footer.site p[style*="max-width:70ch"]'
                        '{max-width:none!important}</style>')
 
 
 def elargir_avertissement(chemin):
     html_page = chemin.read_text(encoding="utf-8")
+    # et la devise du pied de page sur deux lignes, coupée après « tout »
+    debut = html_page.rfind("<footer")
+    if debut >= 0 and "ressentent tout et se rechargent au calme" in html_page[debut:]:
+        html_page = html_page[:debut] + html_page[debut:].replace(
+            "ressentent tout et se rechargent au calme", "ressentent tout<br>et se rechargent au calme")
+        chemin.write_text(html_page, encoding="utf-8")
     if "Ce que tu trouves ici est une pratique douce" not in html_page or STYLE_AVERTISSEMENT in html_page:
         return False
     chemin.write_text(html_page.replace("</head>", STYLE_AVERTISSEMENT + "\n</head>", 1), encoding="utf-8")

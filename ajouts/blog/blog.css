@@ -2,8 +2,9 @@
 
 /* Liste des articles */
 .bhero{padding:64px 0 24px}
+.bhero-img{width:100%;max-width:520px;height:auto;margin:0 auto}
 .bhero .lead{margin-bottom:0}
-.bchips{justify-content:center;margin-top:30px}
+.bchips{justify-content:flex-start;margin-top:30px}
 .bchips a[aria-current=page]{background:var(--ink);border-color:var(--ink);color:var(--card)}
 .blist{padding-top:32px}
 .bcards{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
@@ -33,6 +34,7 @@
  .bcard.bfeat .bbody{padding:24px}
 }
 @media (max-width:600px){.bcards{grid-template-columns:1fr}.bhero{padding:44px 0 12px}}
+@media (max-width:900px){.bhero-img{max-width:340px}}
 
 /* Article */
 .bapercu{margin:0;padding:12px 20px;text-align:center;background:var(--sand);font-weight:700;font-size:15px}
