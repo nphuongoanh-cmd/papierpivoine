@@ -9,8 +9,8 @@
 .bcards{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
 .bcards>*{min-width:0}
 .bune{margin-bottom:28px}
-.bcard{display:flex;flex-direction:column;height:100%;background:#fff;border-radius:var(--r);overflow:hidden;text-decoration:none;color:var(--ink);transition:transform .2s ease,box-shadow .2s ease}
-.bcard:hover{color:var(--ink);transform:translateY(-3px);box-shadow:0 30px 70px -45px rgba(51,50,30,.55)}
+.bcard{box-shadow:0 0 0 1px var(--border-faint,#EDE1D6);display:flex;flex-direction:column;height:100%;background:#fff;border-radius:var(--r);overflow:hidden;text-decoration:none;color:var(--ink);transition:transform .2s ease,box-shadow .2s ease}
+.bcard:hover{color:var(--ink);transform:translateY(-3px);box-shadow:0 0 0 1px var(--border-faint,#EDE1D6),0 30px 70px -45px rgba(51,50,30,.55)}
 .bcard:focus-visible{outline:3px solid var(--peony);outline-offset:3px}
 .bcard .bimg{width:100%;aspect-ratio:3/2;object-fit:cover;background:var(--sand-l)}
 .bbody{display:flex;flex-direction:column;flex:1;padding:22px 24px 24px}
