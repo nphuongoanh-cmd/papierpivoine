@@ -61,10 +61,6 @@ BLOG_INTRO = (
     "plus légèrement."
 )
 
-DESSIN_BLOG = ('<img class="bhero-img" src="/assets/pp-2026/img/camelia-bureau-bao.webp" '
-               'alt="Dessin de Camélia qui écrit à son bureau, une tasse de thé à la main, et de Bao endormi à côté de son carnet" '
-               'width="1100" height="786" fetchpriority="high">')
-
 IMAGES_ACCEPTEES = {".jpg", ".jpeg", ".png", ".webp"}
 LARGEURS = (800, 1600)                 # tailles produites pour chaque image
 LARGEUR_PARTAGE = 1200                 # image de partage et Google Discover
@@ -559,11 +555,11 @@ def pages_liste(articles, themes, habillage, base, titre, description, surtitre,
             suite.append(f'<a class="btn ghost small" href="{base}page/{numero + 1}/" rel="next">Articles plus anciens →</a>')
         pagination = f'<nav class="bpages" aria-label="Pages">{"".join(suite)}</nav>' if suite else ""
         en_titre = titre if numero == 1 else f"{titre} · page {numero}"
-        # même en-tête que les autres pages du site : texte à gauche, dessin à droite
-        contenu = f"""<section class="bhero"><div class="wrap grid2">
- <div><p class="eyebrow">{surtitre}</p><h1>{h1}</h1><p class="lead">{e(intro)}</p>
- <nav class="chips bchips" aria-label="Thèmes">{puces}</nav></div>
- {DESSIN_BLOG}
+        # aligné à gauche comme les autres pages du site, sans dessin : la carte du
+        # premier article, juste en dessous, apporte déjà l'illustration (choix de Camélia)
+        contenu = f"""<section class="bhero"><div class="wrap">
+ <p class="eyebrow">{surtitre}</p><h1>{h1}</h1><p class="lead">{e(intro)}</p>
+ <nav class="chips bchips" aria-label="Thèmes">{puces}</nav>
 </div></section>
 <section class="tight blist"><div class="wrap">{cartes}{pagination}</div></section>
 {BLOC_LETTRE}"""
