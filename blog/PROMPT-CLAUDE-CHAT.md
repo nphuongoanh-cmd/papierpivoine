@@ -13,7 +13,7 @@ Tu m'aides à écrire et mettre en page un article pour le blog de mon site, pap
 - le menu, l'en-tête du site, le logo, le pied de page ;
 - le fil d'Ariane (« Blog › Thème ») ;
 - le titre principal (h1), la date, le temps de lecture, « par Camélia » : ils sont fabriqués à partir des informations ci-dessous ;
-- l'image de couverture dans le texte : elle est affichée en haut par le site ;
+- l'image de couverture dans le texte : elle est affichée en haut par le site (ne la mets pas non plus dans l'article) ;
 - le bloc « Écrit par Camélia », la signature, le bloc de la lettre (« Tu aimes ces mots ? Reçois la suite ») et « À lire aussi » : le site les ajoute à chaque article ;
 - les données Google (JSON-LD), les balises de partage, le flux RSS : faits par le site ;
 - les polices (`@font-face`, polices intégrées) et aucun lien vers Google Fonts ou un autre site.
@@ -54,7 +54,7 @@ Le fichier suit exactement cette structure :
 | Image | Où elle s'affiche | Taille à livrer |
 |---|---|---|
 | **Couverture** | en haut de l'article, sous le titre (jusqu'à 920 px de large, 620 px de haut au plus) | **2400 px de large** (1600 au minimum), en bandeau : entre 16:9 et 3:1. Fond transparent possible (le site est crème, #FCF6F2). |
-| **Vignette** (obligatoire) | les cartes de la page /blog/, « À lire aussi », et l'aperçu quand on partage le lien (Facebook, WhatsApp, Google Discover) | **1800 × 1200 px exactement (3:2)**, fond plein (pas de transparence). Le sujet reste dans la zone centrale : la grande carte sur ordinateur recadre en 4:3, donc environ 12 % sont coupés à gauche et à droite. Pas de texte dans l'image : le titre est écrit à côté. |
+| **Vignette** (obligatoire) | les cartes de la page /blog/, « À lire aussi », et l'aperçu quand on partage le lien (Facebook, WhatsApp, Google Discover) | **1800 × 1200 px exactement (3:2)**, fond plein (pas de transparence), **d'une autre couleur que le fond du site (#FCF6F2)** : le sable clair #F7F0DE par exemple, sinon la carte se fond dans la page. Le sujet reste dans la zone centrale : la grande carte sur ordinateur recadre en 4:3, donc environ 12 % sont coupés à gauche et à droite. Pas de texte dans l'image : le titre est écrit à côté. |
 | **Épingle Pinterest** (facultatif) | quand on enregistre l'article sur Pinterest | **1000 × 1500 px (2:3)**. Peut contenir le titre en grand. |
 | **Images dans le texte** | dans l'article | 1600 px de large au plus, chacune avec un `alt` qui décrit ce qu'on voit. |
 
