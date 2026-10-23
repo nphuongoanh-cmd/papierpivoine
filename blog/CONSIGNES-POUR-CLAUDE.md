@@ -3,7 +3,16 @@
 À lire en entier avant d'écrire. Ces consignes servent à Claude (Cowork ou Chat)
 quand Camélia lui demande un article pour papierpivoine.fr/blog/.
 
+> **Article déjà mis en page (fichier HTML)** : c'est la façon habituelle depuis le
+> 2026-10-23. Voir `blog/PROMPT-CLAUDE-CHAT.md` (ce qu'il faut livrer, tailles de la
+> couverture, de la vignette 1800 × 1200 et de l'épingle). Claude Code transforme le
+> fichier en dossier d'article (`corps.html`, `style.css`, `vignette:`…).
+> Les consignes ci-dessous restent valables pour un article écrit en texte simple.
+
 ## Ce que tu produis
+
+- **Vignette** (conseillée) : `vignette: vignette.jpg`, 1800 × 1200 (3:2), pour les cartes
+  du blog et l'aperçu de partage. Sans elle, la couverture est recadrée en 3:2.
 
 Un dossier dans `blog/`, contenant un fichier `article.md` et les images de l'article.
 

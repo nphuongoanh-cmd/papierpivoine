@@ -228,7 +228,9 @@ def lire_articles(erreurs, avertissements):
         a.titre = typo_fr(champs["titre"])
         a.description = typo_fr(champs["description"])
         a.couverture, a.couverture_alt = champs["couverture"], champs["couverture_alt"]
+        a.vignette_alt_texte = champs.get("vignette_alt")
         a.pin = champs.get("pin")
+        a.vignette = champs.get("vignette")            # image des cartes et du partage (3:2), sinon la couverture
         a.surligne = champs.get("titre_surligne")      # morceau du titre surligné, comme sur le site
         a.corps_html = champs.get("corps")             # corps déjà mis en page (HTML), au lieu du texte
         a.style = champs.get("style")                  # sa feuille de style, limitée à .briche
@@ -250,7 +252,7 @@ def lire_articles(erreurs, avertissements):
                 "c'est le texte sous le lien dans Google)")
         if not a.themes:
             avertissements.append(f"{nom} : aucun thème (ligne themes:), « À lire aussi » sera moins juste")
-        for image in [a.couverture] + ([a.pin] if a.pin else []):
+        for image in [a.couverture] + [x for x in (a.pin, a.vignette) if x]:
             verifier_fichier_image(dossier / image, nom, erreurs)
         articles.append(a)
     return articles
@@ -428,7 +430,7 @@ def lien_theme(nom):
 
 def carte(a, titre="h2", grande=False):
     sizes = "(max-width: 900px) 100vw, 560px" if grande else "(max-width: 900px) 100vw, 340px"
-    img = balise_img(a.image, a.couverture_alt, sizes, classe="bimg")
+    img = balise_img(a.image_carte, a.vignette_alt, sizes, classe="bimg")
     meta = date_fr(a.date) + (f" · {e(a.themes[0])}" if a.themes else "")
     return (
         f'<a class="bcard{" bfeat" if grande else ""}" href="{a.chemin}">{img}<span class="bbody">'
@@ -655,13 +657,22 @@ def construire(entree, sortie, erreurs):
         dossier = sortie / a.chemin.strip("/")
         dossier.mkdir(parents=True, exist_ok=True)
         a.image = produire_image(a.dossier / a.couverture, dossier, a.slug, a.chemin)
+        a.image_carte, a.vignette_alt = a.image, a.couverture_alt
+        if a.vignette and (a.dossier / a.vignette).exists():
+            a.image_carte = produire_image(a.dossier / a.vignette, dossier, f"{a.slug}-vignette", a.chemin)
+            a.vignette_alt = a.vignette_alt_texte or a.couverture_alt
+            l, h = a.image_carte["img"].size
+            if abs(l / h - 1.5) > 0.03:
+                avertissements.append(f"{a.nom} : vignette de {l} × {h} px, pas au format 3:2 (1800 × 1200 conseillé) : elle sera recadrée")
+        elif a.image["img"].width / a.image["img"].height > 1.8:
+            avertissements.append(f"{a.nom} : couverture très allongée et pas de vignette : les cartes la recadreront fort")
         a.fichier_partage = dossier / f"{a.slug}-partage.jpg"
-        largeur, _ = en_jpeg(a.image["img"], LARGEUR_PARTAGE, a.fichier_partage)
+        largeur, _ = en_jpeg(a.image_carte["img"], LARGEUR_PARTAGE, a.fichier_partage)
         a.url_partage = f"{a.url}{a.fichier_partage.name}"
-        if a.image["largeur_origine"] < LARGEUR_PARTAGE:
+        if a.image_carte["largeur_origine"] < LARGEUR_PARTAGE:
             avertissements.append(
-                f"{a.nom} : couverture de {a.image['largeur_origine']} px de large. Google Discover "
-                f"et les grands aperçus de partage demandent au moins {LARGEUR_PARTAGE} px")
+                f"{a.nom} : {'vignette' if a.vignette else 'couverture'} de {a.image_carte['largeur_origine']} px de large. "
+                f"Google Discover et les grands aperçus de partage demandent au moins {LARGEUR_PARTAGE} px")
         a.url_pin = a.fichier_pin = None
         if a.pin and (a.dossier / a.pin).exists():
             a.fichier_pin = dossier / f"{a.slug}-pin.jpg"
