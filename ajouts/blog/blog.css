@@ -69,3 +69,7 @@
 .bauthor p{margin:0}
 .bauthor .bwho{font:600 26px/1.2 var(--font-accent);color:var(--peony-dk);margin-bottom:4px}
 @media (max-width:600px){.bpost{font-size:18px}.bauthor{flex-direction:column;text-align:center}}
+
+/* Article déjà mis en page (corps: …) : marges sur les côtés, comme le reste du site */
+.briche{max-width:768px;margin:0 auto;padding:0 24px}
+@media (max-width:600px){.briche{padding:0 20px}}
