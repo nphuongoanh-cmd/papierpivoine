@@ -1,0 +1,77 @@
+/* Article « L’écriture thérapeutique, c’est quoi ? » : sa mise en page, limitée à son contenu (.briche).
+   L’en-tête, le pied de page et les polices sont ceux du site. */
+.briche{--cream:#FCF6F2;--ink:#33321E;--ink2:#46452F;--pk:#E26D5F;--sage:#B2BD88;--sand:#EAD9AC;--dusty:#DDA9A0;--rose:#FBEDEA;--beige:#F7F0DE;--card:#FFFFFF;--line:#E9DED3;--serif:Fraunces,Georgia,serif;--sans:"Nunito Sans",system-ui,sans-serif;--hand:Caveat,cursive;max-width:760px;margin:0 auto;padding:0 24px;font-family:var(--sans);font-size:18px;line-height:1.7;font-weight:500;color:var(--ink)}
+.briche img{max-width:100%;height:auto;display:block}
+.briche a{color:var(--ink);text-decoration-color:var(--pk);text-decoration-thickness:2px;text-underline-offset:3px}
+.briche a:hover{color:#000;text-decoration-color:var(--ink)}
+.briche strong{font-weight:800}
+.briche h2,.briche h3{font-family:var(--serif);font-weight:800;font-variation-settings:"opsz" 72;color:var(--ink);letter-spacing:-.01em}
+.briche .hl{background:linear-gradient(transparent 48%,var(--sand) 48%,var(--sand) 88%,transparent 88%);-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:0 .08em}
+.briche .eyebrow{font-family:var(--sans);font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2)}
+.briche .btn{display:inline-block;font-family:var(--hand);font-weight:700;font-size:30px;line-height:1;color:var(--pk);border:2.5px solid var(--pk);border-radius:999px;padding:12px 28px 14px;text-decoration:none;transform:rotate(-2deg);background:transparent;transition:background .2s,transform .2s}
+.briche .btn:hover{background:#FDEDEA;color:var(--pk);transform:rotate(-1deg) translateY(-1px)}
+.briche .btn:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.briche .answer{background:var(--card);border-radius:22px;padding:26px 30px 24px;margin:26px 0 30px;box-shadow:0 1px 0 rgba(51,50,30,.04)}
+.briche .answer .eyebrow{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.briche .answer p{font-size:20px;line-height:1.65;margin:0;font-weight:600}
+.briche .me{font-size:18px}
+.briche .toc{border-left:3px solid var(--sage);padding:4px 0 4px 22px;margin:34px 0 8px}
+.briche .toc .eyebrow{margin-bottom:8px;display:block}
+.briche .toc ol{margin:0;padding-left:20px}
+.briche .toc li{margin:4px 0;font-size:16px}
+.briche .toc a{text-decoration:none}
+.briche .toc a:hover{text-decoration:underline}
+.briche h2{font-size:clamp(28px,3.6vw,36px);line-height:1.18;margin:64px 0 18px;display:flex;gap:12px;align-items:flex-start;scroll-margin-top:20px}
+.briche h2 .pv{flex:none;margin-top:.32em}
+.briche p{margin:0 0 20px}
+.briche .lead2{font-family:var(--serif);font-weight:600;font-size:22px;line-height:1.5;font-variation-settings:"opsz" 30}
+.briche .cmp{margin:28px -40px 34px;background:var(--card);border-radius:26px;padding:26px 30px 14px}
+.briche .cmp-head,.briche .cmp-row{display:grid;grid-template-columns:150px 1fr 1fr;gap:18px;align-items:start}
+.briche .cmp-head{padding-bottom:14px}
+.briche .cmp-head b{display:block;font-family:var(--serif);font-weight:800;font-size:22px;line-height:1.2;margin-top:4px}
+.briche .cmp-tb{position:relative;background:var(--rose);border-radius:16px;padding:12px 16px 12px}
+.briche .cmp-tb .ic{position:absolute;right:10px;top:-22px;transform:rotate(8deg)}
+.briche .cmp-ta{padding:12px 16px}
+.briche .cmp-row{border-top:1.5px dashed var(--line);padding:14px 0}
+.briche .cmp-k{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);padding-top:4px}
+.briche .cmp-a{padding:0 16px;font-size:17px;line-height:1.5}
+.briche .cmp-b{padding:0 16px;font-size:17px;line-height:1.5;font-weight:700}
+@media (max-width:860px){.briche .cmp{margin:28px 0 34px}}
+@media (max-width:600px){.briche .cmp{padding:20px 16px 8px}.briche .cmp-head{grid-template-columns:1fr 1fr;gap:10px}.briche .cmp-head>div:first-child{display:none}.briche .cmp-head b{font-size:18px}.briche .cmp-row{grid-template-columns:1fr 1fr;gap:6px 10px}.briche .cmp-k{grid-column:1/-1}.briche .cmp-a,.briche .cmp-b{padding:0 6px;font-size:16px}.briche .cmp-ta,.briche .cmp-tb{padding:10px}}
+.briche .pull{margin:30px 0 30px;background:var(--beige);border-radius:26px;padding:34px 34px 28px;position:relative;text-align:center}
+.briche .pull-ic{position:absolute;left:28px;top:-28px;transform:rotate(-8deg)}
+.briche .pull blockquote{margin:0;font-family:var(--serif);font-weight:800;font-style:italic;font-size:clamp(34px,5vw,46px);line-height:1.1;font-variation-settings:"opsz" 72}
+.briche .pull figcaption{margin-top:14px;font-size:16px;line-height:1.5;color:var(--ink2);font-weight:600}
+.briche .pull-src{display:block;font-size:13px;font-weight:600;margin-top:4px}
+.briche .help{display:flex;gap:16px;align-items:flex-start;background:var(--rose);border-radius:18px;padding:18px 22px;margin:4px 0 24px}
+.briche .help .ic{flex:none;margin-top:2px}
+.briche .help p{margin:0;font-weight:700}
+.briche .bureau{margin:20px auto 22px;max-width:420px}
+.briche .ex{background:var(--card);border-radius:26px;padding:28px 32px 18px;margin:8px 0 30px;position:relative;outline:2px dashed var(--sage);outline-offset:-10px}
+.briche .ex-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.briche .ex-badge{font-family:var(--hand);color:var(--ink);font-size:24px;background:var(--sand);border-radius:999px;padding:0 14px 2px;transform:rotate(3deg)}
+.briche .ex-badge b{font-size:30px}
+.briche .ex-t{font-family:var(--serif);font-weight:800;font-size:28px;line-height:1.2;margin:10px 0 14px !important}
+.briche .ex-steps{list-style:none;padding:0;margin:0 0 18px;counter-reset:s}
+.briche .ex-steps li{display:flex;gap:14px;align-items:center;padding:10px 0;border-top:1.5px dashed var(--line);font-weight:700}
+.briche .ex-steps .ic{flex:none}
+.briche .ex-body p{font-size:17px}
+.briche .ex-steps small{font-weight:500;color:var(--ink2);font-size:15px}
+.briche .ex-lead{margin:0 0 6px !important;font-size:17px}
+.briche .offer{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:center;background:var(--rose);border-radius:28px;padding:28px;margin:40px -40px 10px}
+.briche .offer-img img{display:block;width:100%;height:auto}
+.briche .offer-t{font-family:var(--serif);font-weight:800;font-size:26px;line-height:1.2;margin:8px 0 10px !important}
+.briche .offer-tx p{font-size:17px}
+@media (max-width:860px){.briche .offer{margin:40px 0 10px}}
+@media (max-width:700px){.briche .offer{grid-template-columns:1fr;padding:22px}}
+@media (max-width:520px){.briche .btn{font-size:24px;padding:10px 20px 12px}}
+.briche .src{margin:56px 0 0;background:var(--beige);border-radius:22px;padding:8px 28px 20px}
+.briche .src h2{font-size:24px !important;margin:18px 0 10px !important;align-items:center !important}
+.briche .src ol{margin:0;padding-left:22px;font-size:15px;line-height:1.6}
+.briche .src li{margin:0 0 8px}
+@media (max-width:520px){.briche .answer{padding:20px}.briche .answer p{font-size:18px}.briche .ex{padding:22px 20px 14px}.briche .pull{padding:30px 20px 22px}}
+.briche .qcard{position:relative;margin:8px 0 30px;background:var(--beige);border-radius:24px;padding:26px 30px 24px}
+.briche .qcard-ic{position:absolute;right:22px;top:-26px;transform:rotate(6deg)}
+.briche .qcard p{margin:8px 0 0 !important;font-family:var(--serif);font-weight:700;font-style:italic;font-size:24px;line-height:1.35}
+.briche .src ul{margin:0;padding-left:20px;font-size:15px}
+@media (max-width:520px){.briche{font-size:17px}}

@@ -31,6 +31,12 @@ affichait alors l'icône par défaut du navigateur. Les balises de l'accueil
 (FAVICON_BALISES) sont ajoutées dans le <head> de toute page qui n'a aucun
 <link rel="icon">. Une page qui a déjà le sien n'est pas touchée.
 
+── Ajout permanent : le blog (depuis le 2026-10-14) ──────────────────────────
+Les articles s'écrivent dans blog/ (un dossier par article, voir PUBLIER.md) et
+sont construits par .github/blog.py : pages des articles, liste, thèmes, flux
+RSS, sitemap. Dès qu'un article est en ligne, « Blog » est ajouté après
+« À propos » dans le menu et le pied de page de chaque page.
+
 ── Historique : trois correctifs retirés le 2026-07-18 ──────────────────────
 L'outil de design a corrigé trois bugs à la source (vérifié en ligne), rendant
 inutiles les rustines que ce script appliquait auparavant. Retirées :
@@ -47,6 +53,8 @@ import re
 import shutil
 import sys
 from pathlib import Path
+
+import blog
 
 RACINE = Path(__file__).resolve().parent.parent
 ENTREE = RACINE / "source"   # le paquet de l'outil, tel quel
@@ -131,6 +139,14 @@ def ajouter_favicon(chemin):
         return False
     chemin.write_text(nouveau, encoding="utf-8")
     return True
+
+
+def ajouter_lien_blog(chemin):
+    html = chemin.read_text(encoding="utf-8")
+    nouveau, fait = blog.ajouter_lien_blog(html)
+    if fait:
+        chemin.write_text(nouveau, encoding="utf-8")
+    return fait
 
 
 def est_redirection(html):
@@ -286,7 +302,15 @@ NAV_HAUT = re.compile(r'<nav class="m?nav"[^>]*>.*?</nav>', re.S)
 # texte passe aussi de 14 à 13 px. Le retour à la ligne reste possible en secours.
 STYLE_MENU = ("<style>@media (min-width:701px) and (max-width:920px){nav.nav{column-gap:"
               "clamp(12px,calc((100vw - 684px) / 5),24px)}}"
-              "@media (min-width:701px) and (max-width:760px){nav.nav,nav.nav a{font-size:13px}}</style>")
+              "@media (min-width:701px) and (max-width:760px){nav.nav,nav.nav a{font-size:13px}}"
+              # sept liens, avec « Blog » (la marge latérale de l'en-tête vaut 5 % de l'écran)
+              "@media (min-width:701px) and (max-width:920px){nav.nav:has(a[href=\"/blog/\"]){column-gap:"
+              "clamp(12px,calc((90vw - 628px) / 6),24px)}}"
+              "@media (min-width:701px) and (max-width:777px){nav.nav:has(a[href=\"/blog/\"]),"
+              "nav.nav:has(a[href=\"/blog/\"]) a{font-size:13px}nav.nav:has(a[href=\"/blog/\"]){column-gap:"
+              "clamp(12px,calc((90vw - 584px) / 6),24px)}}"
+              "@media (min-width:701px) and (max-width:728px){nav.nav:has(a[href=\"/blog/\"]),"
+              "nav.nav:has(a[href=\"/blog/\"]) a{font-size:12.5px}nav.nav:has(a[href=\"/blog/\"]){column-gap:10px}}</style>")
 
 
 def ajouter_lien_permissions(chemin):
@@ -387,6 +411,9 @@ def main():
     print("→ copie du site vers _site/")
     copier_le_site()
 
+    print("→ blog")
+    blog_en_ligne = blog.construire(ENTREE, SORTIE, erreurs)
+
     pages = sorted(SORTIE.rglob("*.html"))
     print(f"→ {len(pages)} pages HTML")
     bloc = POPUP_BLOC.read_text(encoding="utf-8")
@@ -401,10 +428,12 @@ def main():
         dessin = reserver_dessin_semaine_offerte(page)
         legal = completer_mentions(page)
         retouche = appliquer_retouches(page)
+        menu = blog_en_ligne and ajouter_lien_blog(page)
         faits = [n for n, f in (("pinterest", pose), ("favicon", icone), ("pop-up", popup),
                                 ("menu 7 permissions", perm), ("sans débordement", bord),
                                 ("description", desc), ("place du dessin", dessin),
-                                ("mentions", legal), ("retouche", retouche)) if f]
+                                ("mentions", legal), ("retouche", retouche),
+                                ("lien blog", menu)) if f]
         print(f"   {str(page.relative_to(SORTIE)):32} {' + '.join(faits) or 'rien à faire'}")
 
     for page in pages:
@@ -412,6 +441,15 @@ def main():
             print(f"   ⚠ il reste une case « à compléter » dans {page.relative_to(SORTIE)}")
     print("→ vérifications")
     verifier(pages)
+    if blog_en_ligne:
+        if not (SORTIE / "blog" / "index.html").exists():
+            erreurs.append("blog : la page /blog/ n'a pas été construite")
+        if "/blog/</loc>" not in (SORTIE / "sitemap.xml").read_text(encoding="utf-8"):
+            erreurs.append("blog : /blog/ absent du sitemap")
+        if not any(blog.LIEN_BLOG.search((SORTIE / p).read_text(encoding="utf-8"))
+                   for p in ("index.html", "apropos/index.html")):
+            erreurs.append("blog : le lien « Blog » n'a pas pu être ajouté au menu "
+                           "(le lien « À propos » a changé dans l'outil ?)")
 
     if erreurs:
         print("\n✗ ÉCHEC — le site ne sera pas publié :")
