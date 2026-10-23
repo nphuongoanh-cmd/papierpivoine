@@ -45,10 +45,11 @@ SITE = "https://papierpivoine.fr"
 PARIS = ZoneInfo("Europe/Paris")
 HEURE_DE_PARUTION = time(7, 0)        # heure affichée aux robots (RSS, Google)
 PAR_PAGE = 12
+THEME_MIN = 3                          # en dessous, une page de thème répète /blog/ : visible, mais pas dans Google
 A_LIRE_AUSSI = 3
 
 # Textes de la page /blog/ : à modifier ici.
-BLOG_TITRE = "Blog · écriture douce et hypersensibilité"
+BLOG_TITRE = "Blog · écriture douce et hypersensibilité · Papier Pivoine"
 BLOG_DESCRIPTION = (
     "Chaque semaine, une idée simple pour écrire, souffler et vivre ta sensibilité "
     "plus légèrement. Par Camélia, de Papier Pivoine."
@@ -388,7 +389,8 @@ def page(habillage, titre, description, url, contenu, *, image=None, type_og="we
         f'<meta name="description" content="{e(description)}">',
     ]
     if noindex:
-        meta.append('<meta name="robots" content="noindex,nofollow">')
+        # aperçu : rien à suivre ; page de thème trop petite : liens suivis quand même
+        meta.append(f'<meta name="robots" content="noindex,{"follow" if noindex == "follow" else "nofollow"}">')
     else:
         meta.append(f'<link rel="canonical" href="{url}">')
     meta += [
@@ -461,9 +463,12 @@ AUTRICE = """<aside class="bauthor">
 # ── Les pages ──────────────────────────────────────────────────────────────
 
 def page_article(a, publies, habillage, apercu):
-    themes = "".join(lien_theme(t) for t in a.themes)
-    chemin_theme = [(a.themes[0], f"{SITE}/blog/theme/{en_slug(a.themes[0])}/")] if a.themes else []
-    fil = '<a href="/blog/">Blog</a>' + (f" › {lien_theme(a.themes[0])}" if a.themes else "")
+    # un thème sans article en ligne n'a pas encore de page (cas d'un brouillon)
+    en_ligne = {en_slug(t) for b in publies for t in b.themes}
+    themes_ok = [t for t in a.themes if en_slug(t) in en_ligne]
+    themes = "".join(lien_theme(t) for t in themes_ok)
+    chemin_theme = [(themes_ok[0], f"{SITE}/blog/theme/{en_slug(themes_ok[0])}/")] if themes_ok else []
+    fil = '<a href="/blog/">Blog</a>' + (f" › {lien_theme(themes_ok[0])}" if themes_ok else "")
     bandeau = ""
     if apercu:
         quand = "brouillon : ne paraîtra pas tant que la ligne brouillon: oui est là" if a.brouillon \
@@ -527,7 +532,7 @@ def page_article(a, publies, habillage, apercu):
 
 
 def pages_liste(articles, themes, habillage, base, titre, description, surtitre, h1, intro,
-                theme_courant=None, nom_theme=None):
+                theme_courant=None, nom_theme=None, noindex=False):
     """Une liste d'articles, découpée en pages de PAR_PAGE. Renvoie {chemin: html}."""
     paquets = [articles[i:i + PAR_PAGE] for i in range(0, len(articles), PAR_PAGE)] or [[]]
     tous = '<a href="/blog/"' + ("" if theme_courant else " aria-current=page") + ">Tous les articles</a>"
@@ -569,7 +574,8 @@ def pages_liste(articles, themes, habillage, base, titre, description, surtitre,
             ariane(*niveaux),
         ]
         image = paquet[0].url_partage if paquet else None
-        resultat[chemin] = page(habillage, en_titre, description, url, contenu, image=image, jsonld=jsonld)
+        resultat[chemin] = page(habillage, en_titre, description, url, contenu, image=image, jsonld=jsonld,
+                                noindex=noindex)
     return resultat
 
 
@@ -701,13 +707,14 @@ def construire(entree, sortie, erreurs):
                     liste, themes, habillage, f"/blog/theme/{slug}/", f"{nom} · Blog Papier Pivoine",
                     f"Tous les articles du blog de Papier Pivoine sur le thème « {nom} ».",
                     "Le blog · thème", e(nom), f"{len(liste)} article{'s' if len(liste) > 1 else ''} sur ce thème.",
-                    theme_courant=slug, nom_theme=nom).items():
+                    theme_courant=slug, nom_theme=nom,
+                    noindex="follow" if len(liste) < THEME_MIN else False).items():
                 ecrire(sortie, chemin, contenu)
         (sortie / "blog" / "flux.xml").write_text(flux_rss(publies), encoding="utf-8")
         completer_sitemap(sortie, [("/blog/", max(a.maj for a in publies), "weekly", "0.8")]
                           + [(a.chemin, a.maj, "monthly", "0.7") for a in publies]
                           + [(f"/blog/theme/{s}/", max(a.maj for a in l), "weekly", "0.5")
-                             for s, (_, l) in themes.items()], erreurs)
+                             for s, (_, l) in themes.items() if len(l) >= THEME_MIN], erreurs)
 
     (sortie / "assets" / "blog").mkdir(parents=True, exist_ok=True)
     shutil.copy2(STYLE, sortie / "assets" / "blog" / "blog.css")

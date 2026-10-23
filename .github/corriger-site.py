@@ -49,6 +49,7 @@ Si l'un de ces bugs réapparaissait, voir l'historique git (commit 320fa0e et
 avant) pour le correctif correspondant.
 """
 
+import html
 import re
 import shutil
 import sys
@@ -299,7 +300,7 @@ PERMISSIONS_URL = "/7-permissions-pivoine/"
 NAV_HAUT = re.compile(r'<nav class="m?nav"[^>]*>.*?</nav>', re.S)
 # Six liens : sur petite tablette (701 à 920 px, menu sous le logo), on resserre
 # l'espace entre eux pour qu'ils tiennent sur une ligne ; de 701 à 760 px, le
-# texte passe aussi de 14 à 13 px. Le retour à la ligne reste possible en secours.
+# texte passe aussi de 14 à 13 px.
 STYLE_MENU = ("<style>@media (min-width:701px) and (max-width:920px){nav.nav{column-gap:"
               "clamp(12px,calc((100vw - 684px) / 5),24px)}}"
               "@media (min-width:701px) and (max-width:760px){nav.nav,nav.nav a{font-size:13px}}"
@@ -310,7 +311,12 @@ STYLE_MENU = ("<style>@media (min-width:701px) and (max-width:920px){nav.nav{col
               "nav.nav:has(a[href=\"/blog/\"]) a{font-size:13px}nav.nav:has(a[href=\"/blog/\"]){column-gap:"
               "clamp(12px,calc((90vw - 584px) / 6),24px)}}"
               "@media (min-width:701px) and (max-width:728px){nav.nav:has(a[href=\"/blog/\"]),"
-              "nav.nav:has(a[href=\"/blog/\"]) a{font-size:12.5px}nav.nav:has(a[href=\"/blog/\"]){column-gap:10px}}</style>")
+              "nav.nav:has(a[href=\"/blog/\"]) a{font-size:12.5px}nav.nav:has(a[href=\"/blog/\"]){column-gap:10px}}"
+              # jamais deux lignes : avant l'arrivée de Nunito Sans, la police de secours, plus large,
+              # faisait passer le menu sur deux lignes un instant, et toute la page sautait (CLS 0,65)
+              "@media (min-width:701px) and (max-width:920px){nav.nav{flex-wrap:nowrap}}</style>")
+# Nunito Sans chargée en priorité sur les pages qui l'utilisent pour le menu
+PRECHARGE_NUNITO = '<link rel="preload" href="/assets/pp-2026/fonts/NunitoSans.woff2" as="font" type="font/woff2" crossorigin>'
 
 
 def ajouter_lien_permissions(chemin):
@@ -329,6 +335,8 @@ def ajouter_lien_permissions(chemin):
     nouveau = NAV_HAUT.sub(poser, html)
     if '<nav class="nav"' in nouveau and STYLE_MENU not in nouveau:
         nouveau = nouveau.replace("</head>", STYLE_MENU + "\n</head>", 1)
+    if "/assets/pp-2026/site.css" in nouveau and PRECHARGE_NUNITO not in nouveau:
+        nouveau = nouveau.replace("</head>", PRECHARGE_NUNITO + "\n</head>", 1)
     if nouveau == html:
         return False
     chemin.write_text(nouveau, encoding="utf-8")
@@ -407,6 +415,42 @@ def verifier(pages):
             erreurs.append(f"fichier essentiel manquant : {essentiel}")
 
 
+# /llms.txt : résumé du site pour les assistants IA (ChatGPT, Claude, Perplexity…),
+# au format proposé sur llmstxt.org. Fait à chaque publication à partir du sitemap :
+# les nouvelles pages et les articles du blog y entrent tout seuls.
+LLMS_INTRO = (
+    "# Papier Pivoine\n\n"
+    "> Papier Pivoine, de Camélia Nguyen : des pages d’écriture douce pour les femmes "
+    "hypersensibles et introverties, qui ressentent tout et se rechargent au calme. "
+    "Une lettre gratuite chaque premier dimanche du mois, la première semaine de Mental Léger "
+    "offerte, Mental Léger (six semaines d’écriture douce, 5 à 10 minutes par jour) et un blog.\n\n"
+    "C’est une pratique douce, pas un soin : elle ne remplace ni un avis médical ni un suivi "
+    "psychologique. En France, le 3114 répond 24 h/24, gratuitement.\n"
+)
+
+
+def ecrire_llms():
+    sitemap = (SORTIE / "sitemap.xml").read_text(encoding="utf-8")
+    pages, articles = [], []
+    for url in re.findall(r"<loc>([^<]+)</loc>", sitemap):
+        chemin = url.replace("https://papierpivoine.fr", "")
+        fichier = SORTIE / chemin.lstrip("/") / "index.html" if chemin.endswith("/") else SORTIE / chemin.lstrip("/")
+        if not fichier.exists():
+            continue
+        tete = fichier.read_text(encoding="utf-8").split("</head>")[0]
+        titre = re.search(r"<title>(.*?)</title>", tete, re.S)
+        desc = re.search(r'<meta name="description" content="([^"]*)"', tete)
+        if not titre:
+            continue
+        ligne = f"- [{html.unescape(titre.group(1)).strip()}]({url})" + (
+            f" : {html.unescape(desc.group(1)).strip()}" if desc else "")
+        (articles if chemin.startswith("/blog/") and chemin != "/blog/" else pages).append(ligne)
+    texte = LLMS_INTRO + "\n## Pages\n\n" + "\n".join(pages) + "\n"
+    if articles:
+        texte += "\n## Articles du blog\n\n" + "\n".join(articles) + "\n"
+    (SORTIE / "llms.txt").write_text(texte, encoding="utf-8")
+
+
 def main():
     print("→ copie du site vers _site/")
     copier_le_site()
@@ -439,6 +483,7 @@ def main():
     for page in pages:
         if 'class="todo"' in page.read_text(encoding="utf-8"):
             print(f"   ⚠ il reste une case « à compléter » dans {page.relative_to(SORTIE)}")
+    ecrire_llms()
     print("→ vérifications")
     verifier(pages)
     if blog_en_ligne:
