@@ -415,6 +415,57 @@ def verifier(pages):
             erreurs.append(f"fichier essentiel manquant : {essentiel}")
 
 
+# Pied de page : les réseaux en icônes (trait encre dans un rond, pivoine au survol)
+# au lieu de six liens en texte. Le nom reste lu par les lecteurs d'écran (aria-label)
+# et s'affiche au survol (title).
+_T = 'fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"'
+ICONES = {
+    "pinterest": ("Pinterest", f'<path {_T} d="M12.9 9.4 10.4 21M8.4 15.2C7.5 14.3 7 13.1 7 11.7 7 8.4 9.7 5.8 13.2 5.8c3.2 0 5.3 2.2 5.3 5.1 0 3.2-1.9 5.5-4.4 5.5-1.1 0-2-.5-2.4-1.3"/>'),
+    "youtube": ("YouTube", f'<rect x="2.5" y="5.5" width="19" height="13" rx="4" {_T}/><path {_T} d="M10.2 9.3v5.4l4.6-2.7z"/>'),
+    "tiktok": ("TikTok", f'<path {_T} d="M13.5 3.5v11a3.2 3.2 0 1 1-3.2-3.2M13.5 3.5c.4 2.4 2.1 4 4.5 4.2"/>'),
+    "instagram": ("Instagram", f'<rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5" {_T}/><circle cx="12" cy="12" r="4" {_T}/><circle cx="17.1" cy="6.9" r=".6" fill="currentColor"/>'),
+    "facebook": ("Facebook", f'<path {_T} d="M15.5 3.5h-2.2A3.8 3.8 0 0 0 9.5 7.3v13.2M7 11h7"/>'),
+    "threads": ("Threads", f'<path {_T} d="M16.6 10.8c-.5-2.4-2.2-3.6-4.6-3.6-3 0-4.9 2.1-4.9 4.9s1.9 4.9 4.9 4.9c2.2 0 3.7-1.1 3.7-2.8 0-2-2.2-2.6-4-2.2-1.4.3-2.1 1-2 2 .1 1.1 1.2 1.6 2.3 1.5 1.9-.2 2.8-1.8 2.8-4M19.5 12a7.5 7.5 0 1 1-2.2-5.3"/>'),
+}
+RESEAU = re.compile(r'<a href="(https://(?:fr\.|www\.)?(pinterest|youtube|tiktok|instagram|facebook|threads)\.com[^"]*)"([^>]*)>[^<]*</a>')
+SUITE_RESEAUX = re.compile(r'(?:\s*' + RESEAU.pattern + r')+')
+STYLE_RESEAUX = ("<style>.fsocial{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}"
+                 ".fsocial a{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;"
+                 "background:#fff;border:1.5px solid var(--border-faint,#EDE1D6);color:var(--ink-soft,#46452F)!important;"
+                 "transition:color .2s,border-color .2s,background .2s,transform .2s}"
+                 ".fsocial a:hover,.fsocial a:focus-visible{color:var(--peony-dk,#BF5548)!important;"
+                 "border-color:var(--peony,#E26D5F);background:var(--rose-l,#FBEDEA);transform:rotate(-6deg) translateY(-1px)}"
+                 ".fsocial svg{width:20px;height:20px}"
+                 # sur téléphone, le site agrandit les liens du pied de page (44 px de haut) : les ronds restent ronds
+                 "footer .fcol .fsocial a{display:grid;min-height:0;padding:0;flex:none}"
+                 "@media (max-width:700px){footer .fcol .fsocial a{width:44px;height:44px}}"
+                 "@media (max-width:360px){.fsocial{gap:8px}footer .fcol .fsocial a{width:40px;height:40px}}</style>")
+
+
+def icones_reseaux(chemin):
+    html_page = chemin.read_text(encoding="utf-8")
+    debut = html_page.rfind("<footer")
+    if debut < 0 or 'class="fsocial"' in html_page:
+        return False
+
+    def remplacer_suite(m):
+        liens = []
+        for lien in RESEAU.finditer(m.group(0)):
+            url, reseau, attrs = lien.groups()
+            nom, svg = ICONES[reseau]
+            attrs = re.sub(r'\s*style="[^"]*"', "", attrs)
+            liens.append(f'<a href="{url}"{attrs} aria-label="{nom}" title="{nom}">'
+                         f'<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">{svg}</svg></a>')
+        return '<div class="fsocial">' + "".join(liens) + "</div>"
+
+    pied, n = SUITE_RESEAUX.subn(remplacer_suite, html_page[debut:])
+    if not n:
+        return False
+    nouveau = (html_page[:debut] + pied).replace("</head>", STYLE_RESEAUX + "\n</head>", 1)
+    chemin.write_text(nouveau, encoding="utf-8")
+    return True
+
+
 # /llms.txt : résumé du site pour les assistants IA (ChatGPT, Claude, Perplexity…),
 # au format proposé sur llmstxt.org. Fait à chaque publication à partir du sitemap :
 # les nouvelles pages et les articles du blog y entrent tout seuls.
@@ -473,11 +524,12 @@ def main():
         legal = completer_mentions(page)
         retouche = appliquer_retouches(page)
         menu = blog_en_ligne and ajouter_lien_blog(page)
+        reseaux = icones_reseaux(page)
         faits = [n for n, f in (("pinterest", pose), ("favicon", icone), ("pop-up", popup),
                                 ("menu 7 permissions", perm), ("sans débordement", bord),
                                 ("description", desc), ("place du dessin", dessin),
                                 ("mentions", legal), ("retouche", retouche),
-                                ("lien blog", menu)) if f]
+                                ("lien blog", menu), ("icônes réseaux", reseaux)) if f]
         print(f"   {str(page.relative_to(SORTIE)):32} {' + '.join(faits) or 'rien à faire'}")
 
     for page in pages:
