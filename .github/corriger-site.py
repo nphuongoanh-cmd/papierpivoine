@@ -302,7 +302,15 @@ NAV_HAUT = re.compile(r'<nav class="m?nav"[^>]*>.*?</nav>', re.S)
 # texte passe aussi de 14 à 13 px. Le retour à la ligne reste possible en secours.
 STYLE_MENU = ("<style>@media (min-width:701px) and (max-width:920px){nav.nav{column-gap:"
               "clamp(12px,calc((100vw - 684px) / 5),24px)}}"
-              "@media (min-width:701px) and (max-width:760px){nav.nav,nav.nav a{font-size:13px}}</style>")
+              "@media (min-width:701px) and (max-width:760px){nav.nav,nav.nav a{font-size:13px}}"
+              # sept liens, avec « Blog » (la marge latérale de l'en-tête vaut 5 % de l'écran)
+              "@media (min-width:701px) and (max-width:920px){nav.nav:has(a[href=\"/blog/\"]){column-gap:"
+              "clamp(12px,calc((90vw - 628px) / 6),24px)}}"
+              "@media (min-width:701px) and (max-width:777px){nav.nav:has(a[href=\"/blog/\"]),"
+              "nav.nav:has(a[href=\"/blog/\"]) a{font-size:13px}nav.nav:has(a[href=\"/blog/\"]){column-gap:"
+              "clamp(12px,calc((90vw - 584px) / 6),24px)}}"
+              "@media (min-width:701px) and (max-width:728px){nav.nav:has(a[href=\"/blog/\"]),"
+              "nav.nav:has(a[href=\"/blog/\"]) a{font-size:12.5px}nav.nav:has(a[href=\"/blog/\"]){column-gap:10px}}</style>")
 
 
 def ajouter_lien_permissions(chemin):
