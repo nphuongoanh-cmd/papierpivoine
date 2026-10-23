@@ -58,3 +58,4 @@
 .pp-src h2{font-size:22px !important;margin:16px 0 8px !important;align-items:center !important}
 .pp-src ul{margin:0;padding-left:20px;font-size:16px}
 @media (max-width:520px){.pp-article{font-size:17px}.pp-answer{padding:18px}.pp-answer p:last-child{font-size:18px}.pp-ex{padding:20px 18px 4px}.pp-q-t{font-size:20px}}
+.pp-offer+p{margin-top:28px}

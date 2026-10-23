@@ -49,6 +49,7 @@ Si l'un de ces bugs réapparaissait, voir l'historique git (commit 320fa0e et
 avant) pour le correctif correspondant.
 """
 
+import html
 import re
 import shutil
 import sys
@@ -299,7 +300,7 @@ PERMISSIONS_URL = "/7-permissions-pivoine/"
 NAV_HAUT = re.compile(r'<nav class="m?nav"[^>]*>.*?</nav>', re.S)
 # Six liens : sur petite tablette (701 à 920 px, menu sous le logo), on resserre
 # l'espace entre eux pour qu'ils tiennent sur une ligne ; de 701 à 760 px, le
-# texte passe aussi de 14 à 13 px. Le retour à la ligne reste possible en secours.
+# texte passe aussi de 14 à 13 px.
 STYLE_MENU = ("<style>@media (min-width:701px) and (max-width:920px){nav.nav{column-gap:"
               "clamp(12px,calc((100vw - 684px) / 5),24px)}}"
               "@media (min-width:701px) and (max-width:760px){nav.nav,nav.nav a{font-size:13px}}"
@@ -310,7 +311,12 @@ STYLE_MENU = ("<style>@media (min-width:701px) and (max-width:920px){nav.nav{col
               "nav.nav:has(a[href=\"/blog/\"]) a{font-size:13px}nav.nav:has(a[href=\"/blog/\"]){column-gap:"
               "clamp(12px,calc((90vw - 584px) / 6),24px)}}"
               "@media (min-width:701px) and (max-width:728px){nav.nav:has(a[href=\"/blog/\"]),"
-              "nav.nav:has(a[href=\"/blog/\"]) a{font-size:12.5px}nav.nav:has(a[href=\"/blog/\"]){column-gap:10px}}</style>")
+              "nav.nav:has(a[href=\"/blog/\"]) a{font-size:12.5px}nav.nav:has(a[href=\"/blog/\"]){column-gap:10px}}"
+              # jamais deux lignes : avant l'arrivée de Nunito Sans, la police de secours, plus large,
+              # faisait passer le menu sur deux lignes un instant, et toute la page sautait (CLS 0,65)
+              "@media (min-width:701px) and (max-width:920px){nav.nav{flex-wrap:nowrap}}</style>")
+# Nunito Sans chargée en priorité sur les pages qui l'utilisent pour le menu
+PRECHARGE_NUNITO = '<link rel="preload" href="/assets/pp-2026/fonts/NunitoSans.woff2" as="font" type="font/woff2" crossorigin>'
 
 
 def ajouter_lien_permissions(chemin):
@@ -329,6 +335,8 @@ def ajouter_lien_permissions(chemin):
     nouveau = NAV_HAUT.sub(poser, html)
     if '<nav class="nav"' in nouveau and STYLE_MENU not in nouveau:
         nouveau = nouveau.replace("</head>", STYLE_MENU + "\n</head>", 1)
+    if "/assets/pp-2026/site.css" in nouveau and PRECHARGE_NUNITO not in nouveau:
+        nouveau = nouveau.replace("</head>", PRECHARGE_NUNITO + "\n</head>", 1)
     if nouveau == html:
         return False
     chemin.write_text(nouveau, encoding="utf-8")
@@ -402,14 +410,179 @@ def verifier(pages):
             if "La lettre, gratuite</a>" not in nav:
                 erreurs.append(f"{page.relative_to(SORTIE)} : « La lettre, gratuite » absent de la barre du haut")
 
+    for nom in PAGES_GARDEES:
+        if a_remettre(SORTIE / nom / "index.html"):
+            erreurs.append(f"/{nom}/ n'est plus une vraie page indexable (elle doit rester en ligne)")
+    for page in pages:
+        for nav in NAV_HAUT.findall(page.read_text(encoding="utf-8")):
+            if 'href="/activites/"' in nav:
+                erreurs.append(f"{page.relative_to(SORTIE)} : /activites/ est revenue dans la barre du haut")
+
     for essentiel in ["CNAME", "index.html", "sitemap.xml", "robots.txt"]:
         if not (SORTIE / essentiel).exists():
             erreurs.append(f"fichier essentiel manquant : {essentiel}")
 
 
+# Pied de page : les réseaux en icônes (trait encre dans un rond, pivoine au survol)
+# au lieu de six liens en texte. Le nom reste lu par les lecteurs d'écran (aria-label)
+# et s'affiche au survol (title).
+_T = 'fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"'
+ICONES = {
+    "pinterest": ("Pinterest", f'<path {_T} d="M12.9 9.4 10.4 21M8.4 15.2C7.5 14.3 7 13.1 7 11.7 7 8.4 9.7 5.8 13.2 5.8c3.2 0 5.3 2.2 5.3 5.1 0 3.2-1.9 5.5-4.4 5.5-1.1 0-2-.5-2.4-1.3"/>'),
+    "youtube": ("YouTube", f'<rect x="2.5" y="5.5" width="19" height="13" rx="4" {_T}/><path {_T} d="M10.2 9.3v5.4l4.6-2.7z"/>'),
+    "tiktok": ("TikTok", f'<path {_T} d="M13.5 3.5v11a3.2 3.2 0 1 1-3.2-3.2M13.5 3.5c.4 2.4 2.1 4 4.5 4.2"/>'),
+    "instagram": ("Instagram", f'<rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5" {_T}/><circle cx="12" cy="12" r="4" {_T}/><circle cx="17.1" cy="6.9" r=".6" fill="currentColor"/>'),
+    "facebook": ("Facebook", f'<path {_T} d="M15.5 3.5h-2.2A3.8 3.8 0 0 0 9.5 7.3v13.2M7 11h7"/>'),
+    "threads": ("Threads", f'<path {_T} d="M16.6 10.8c-.5-2.4-2.2-3.6-4.6-3.6-3 0-4.9 2.1-4.9 4.9s1.9 4.9 4.9 4.9c2.2 0 3.7-1.1 3.7-2.8 0-2-2.2-2.6-4-2.2-1.4.3-2.1 1-2 2 .1 1.1 1.2 1.6 2.3 1.5 1.9-.2 2.8-1.8 2.8-4M19.5 12a7.5 7.5 0 1 1-2.2-5.3"/>'),
+}
+RESEAU = re.compile(r'<a href="(https://(?:fr\.|www\.)?(pinterest|youtube|tiktok|instagram|facebook|threads)\.com[^"]*)"([^>]*)>[^<]*</a>')
+SUITE_RESEAUX = re.compile(r'(?:\s*' + RESEAU.pattern + r')+')
+STYLE_RESEAUX = ("<style>.fsocial{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;"
+                 # toute la largeur des deux colonnes, sans les élargir (min-width en %, largeur propre nulle)
+                 "flex:none;width:0;min-width:100%;margin-top:-6px}"
+                 # tablette et ordinateur : les deux colonnes en grille, la rangée d'icônes sur les deux
+                 "@media (min-width:701px){footer div:has(>.fsocial){display:grid!important;grid-template-columns:auto auto;"
+                 "column-gap:64px!important;row-gap:26px!important}footer .fsocial{grid-column:1/-1;width:auto;min-width:0;margin-top:0}}"
+                 ".fsocial a{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;"
+                 "background:#fff;border:1.5px solid var(--border-faint,#EDE1D6);color:var(--ink-soft,#46452F)!important;"
+                 "transition:color .2s,border-color .2s,background .2s,transform .2s}"
+                 ".fsocial a:hover,.fsocial a:focus-visible{color:var(--peony-dk,#BF5548)!important;"
+                 "border-color:var(--peony,#E26D5F);background:var(--rose-l,#FBEDEA);transform:rotate(-6deg) translateY(-1px)}"
+                 ".fsocial svg{width:20px;height:20px}"
+                 # sur téléphone, le site agrandit les liens du pied de page (44 px de haut) : les ronds restent ronds
+                 "footer .fsocial a{display:grid;min-height:0;padding:0;flex:none}"
+                 "@media (max-width:700px){footer .fsocial a{width:44px;height:44px}}"
+                 "@media (max-width:360px){.fsocial{gap:8px}footer .fsocial a{width:40px;height:40px}}</style>")
+
+
+def icones_reseaux(chemin):
+    html_page = chemin.read_text(encoding="utf-8")
+    debut = html_page.rfind("<footer")
+    if debut < 0 or 'class="fsocial"' in html_page:
+        return False
+
+    def remplacer_suite(m):
+        liens = []
+        for lien in RESEAU.finditer(m.group(0)):
+            url, reseau, attrs = lien.groups()
+            nom, svg = ICONES[reseau]
+            attrs = re.sub(r'\s*style="[^"]*"', "", attrs)
+            liens.append(f'<a href="{url}"{attrs} aria-label="{nom}" title="{nom}">'
+                         f'<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">{svg}</svg></a>')
+        return '<div class="fsocial">' + "".join(liens) + "</div>"
+
+    pied, n = SUITE_RESEAUX.subn(remplacer_suite, html_page[debut:])
+    if not n:
+        return False
+    # la rangée sort de la colonne « Rester en lien » et passe sous les deux colonnes
+    # (dernier enfant de leur conteneur), de « Découvrir » au bord droit de « Rester en lien »
+    pied = re.sub(r'(<div class="fsocial">.*?</a></div>)(\s*</div>\s*</div>)', r"\2\1", pied, count=1, flags=re.S)
+    nouveau = (html_page[:debut] + pied).replace("</head>", STYLE_RESEAUX + "\n</head>", 1)
+    chemin.write_text(nouveau, encoding="utf-8")
+    return True
+
+
+# /llms.txt : résumé du site pour les assistants IA (ChatGPT, Claude, Perplexity…),
+# au format proposé sur llmstxt.org. Fait à chaque publication à partir du sitemap :
+# les nouvelles pages et les articles du blog y entrent tout seuls.
+LLMS_INTRO = (
+    "# Papier Pivoine\n\n"
+    "> Papier Pivoine, de Camélia Nguyen : des pages d’écriture douce pour les femmes "
+    "hypersensibles et introverties, qui ressentent tout et se rechargent au calme. "
+    "Une lettre gratuite chaque premier dimanche du mois, la première semaine de Mental Léger "
+    "offerte, Mental Léger (six semaines d’écriture douce, 5 à 10 minutes par jour) et un blog.\n\n"
+    "C’est une pratique douce, pas un soin : elle ne remplace ni un avis médical ni un suivi "
+    "psychologique. En France, le 3114 répond 24 h/24, gratuitement.\n"
+)
+
+
+def ecrire_llms():
+    sitemap = (SORTIE / "sitemap.xml").read_text(encoding="utf-8")
+    pages, articles = [], []
+    for url in re.findall(r"<loc>([^<]+)</loc>", sitemap):
+        chemin = url.replace("https://papierpivoine.fr", "")
+        fichier = SORTIE / chemin.lstrip("/") / "index.html" if chemin.endswith("/") else SORTIE / chemin.lstrip("/")
+        if not fichier.exists():
+            continue
+        tete = fichier.read_text(encoding="utf-8").split("</head>")[0]
+        titre = re.search(r"<title>(.*?)</title>", tete, re.S)
+        desc = re.search(r'<meta name="description" content="([^"]*)"', tete)
+        if not titre:
+            continue
+        ligne = f"- [{html.unescape(titre.group(1)).strip()}]({url})" + (
+            f" : {html.unescape(desc.group(1)).strip()}" if desc else "")
+        (articles if chemin.startswith("/blog/") and chemin != "/blog/" else pages).append(ligne)
+    texte = LLMS_INTRO + "\n## Pages\n\n" + "\n".join(pages) + "\n"
+    if articles:
+        texte += "\n## Articles du blog\n\n" + "\n".join(articles) + "\n"
+    (SORTIE / "llms.txt").write_text(texte, encoding="utf-8")
+
+
+# Pages gardées en ligne et dans Google, même si un paquet les retire (accord de Camélia,
+# 2026-10-23). Le paquet du 19 octobre avait, sans qu'elle l'ait demandé :
+#   · remplacé /activites/ par une redirection vers l'accueil (elle voulait seulement
+#     la retirer du menu) ;
+#   · remplacé /et-si/ et /le-cocon-dautomne/ par « nouvelle édition en préparation » (noindex).
+# Si un paquet recommence, la page gardée dans ajouts/pages-gardees/ est remise. /activites/
+# reçoit l'en-tête et le pied de page actuels du site (repris de /apropos/) ; les deux pages
+# produit ont leur propre mise en page et restent telles quelles.
+GARDEES = Path(__file__).resolve().parent.parent / "ajouts" / "pages-gardees"
+PAGES_GARDEES = {"activites": True, "et-si": False, "le-cocon-dautomne": False}  # True : habillage du site
+ANCIENNES_ADRESSES = ("saisons-tranquilles", "batterie-faible")              # mènent à /activites/
+EN_TETE = re.compile(r'<a class="skip".*?</header>', re.S)
+PIED = re.compile(r'<footer class="site">.*?</footer>', re.S)
+
+
+def a_remettre(chemin):
+    if not chemin.exists():
+        return True
+    html_page = chemin.read_text(encoding="utf-8")
+    return est_redirection(html_page) or re.search(r'<meta name="robots" content="[^"]*noindex', html_page)
+
+
+def garder_pages():
+    faits = []
+    modele = (SORTIE / "apropos" / "index.html").read_text(encoding="utf-8")
+    for nom, habiller in PAGES_GARDEES.items():
+        page = SORTIE / nom / "index.html"
+        if not a_remettre(page):
+            continue
+        gardee = (GARDEES / f"{nom}.html").read_text(encoding="utf-8")
+        if habiller:
+            haut, bas = EN_TETE.search(modele), PIED.search(modele)
+            if not (haut and bas and EN_TETE.search(gardee) and PIED.search(gardee)):
+                erreurs.append(f"/{nom}/ : en-tête ou pied de page introuvable pour remettre la page gardée")
+                continue
+            haut = haut.group(0).replace(' aria-current="page"', "").replace(" aria-current=page", "")
+            gardee = EN_TETE.sub(lambda m: haut, gardee, count=1)
+            gardee = PIED.sub(lambda m: bas.group(0), gardee, count=1)
+        page.parent.mkdir(parents=True, exist_ok=True)
+        page.write_text(gardee, encoding="utf-8")
+        faits.append(f"/{nom}/ remise")
+    for nom in ANCIENNES_ADRESSES:
+        cible = SORTIE / nom / "index.html"
+        if not cible.exists() or "/activites/" not in cible.read_text(encoding="utf-8"):
+            cible.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(GARDEES / f"{nom}.html", cible)
+            faits.append(f"/{nom}/ → /activites/")
+    plan = SORTIE / "sitemap.xml"
+    xml = plan.read_text(encoding="utf-8")
+    for nom in PAGES_GARDEES:
+        if f"papierpivoine.fr/{nom}/</loc>" not in xml and "</urlset>" in xml:
+            xml = xml.replace("</urlset>", f"  <url><loc>https://papierpivoine.fr/{nom}/</loc>"
+                                           "<lastmod>2026-10-23</lastmod></url>\n</urlset>")
+            faits.append(f"/{nom}/ dans le sitemap")
+    plan.write_text(xml, encoding="utf-8")
+    if faits:
+        print("   " + "\n   ".join(faits))
+
+
 def main():
     print("→ copie du site vers _site/")
     copier_le_site()
+
+    print("→ pages gardées en ligne (/activites/, /et-si/, /le-cocon-dautomne/)")
+    garder_pages()
 
     print("→ blog")
     blog_en_ligne = blog.construire(ENTREE, SORTIE, erreurs)
@@ -429,16 +602,18 @@ def main():
         legal = completer_mentions(page)
         retouche = appliquer_retouches(page)
         menu = blog_en_ligne and ajouter_lien_blog(page)
+        reseaux = icones_reseaux(page)
         faits = [n for n, f in (("pinterest", pose), ("favicon", icone), ("pop-up", popup),
                                 ("menu 7 permissions", perm), ("sans débordement", bord),
                                 ("description", desc), ("place du dessin", dessin),
                                 ("mentions", legal), ("retouche", retouche),
-                                ("lien blog", menu)) if f]
+                                ("lien blog", menu), ("icônes réseaux", reseaux)) if f]
         print(f"   {str(page.relative_to(SORTIE)):32} {' + '.join(faits) or 'rien à faire'}")
 
     for page in pages:
         if 'class="todo"' in page.read_text(encoding="utf-8"):
             print(f"   ⚠ il reste une case « à compléter » dans {page.relative_to(SORTIE)}")
+    ecrire_llms()
     print("→ vérifications")
     verifier(pages)
     if blog_en_ligne:
