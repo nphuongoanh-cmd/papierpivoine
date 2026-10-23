@@ -229,6 +229,12 @@ def lire_articles(erreurs, avertissements):
         a.description = typo_fr(champs["description"])
         a.couverture, a.couverture_alt = champs["couverture"], champs["couverture_alt"]
         a.pin = champs.get("pin")
+        a.surligne = champs.get("titre_surligne")      # morceau du titre surligné, comme sur le site
+        a.corps_html = champs.get("corps")             # corps déjà mis en page (HTML), au lieu du texte
+        a.style = champs.get("style")                  # sa feuille de style, limitée à .briche
+        for f in [x for x in (a.corps_html, a.style) if x]:
+            if not (dossier / f).exists():
+                erreurs.append(f"{nom} : fichier introuvable -> {f}")
         a.brouillon = champs.get("brouillon", "").lower() in ("oui", "yes", "true", "1")
         a.themes = []
         for t in re.split(r"[,;]", champs.get("themes", "")):
@@ -268,7 +274,40 @@ def verifier_fichier_image(chemin, nom, erreurs):
 IMAGE_MD = re.compile(r'!\[([^\]]*)\]\(\s*<?([^)\s>]+)>?(?:\s+"([^"]*)")?\s*\)')
 
 
+IMG_HTML = re.compile(r'<img\b[^>]*>')
+
+
+def rendre_html(a, dossier_sortie, url_dossier, erreurs):
+    """Corps déjà mis en page : les images du dossier deviennent des WebP allégés."""
+    corps = (a.dossier / a.corps_html).read_text(encoding="utf-8")
+    compteur = 0
+
+    def image(m):
+        nonlocal compteur
+        balise = m.group(0)
+        src = re.search(r'\ssrc="([^"]+)"', balise)
+        if not src or src.group(1).startswith(("http://", "https://", "/", "data:")):
+            return balise
+        alt = re.search(r'\salt="([^"]*)"', balise)
+        classe = re.search(r'\sclass="([^"]*)"', balise)
+        if not verifier_fichier_image(a.dossier / src.group(1), a.nom, erreurs):
+            return ""
+        compteur += 1
+        im = produire_image(a.dossier / src.group(1), dossier_sortie, f"{a.slug}-{compteur}", url_dossier)
+        return balise_img(im, html.unescape(alt.group(1)) if alt else "", "(max-width: 760px) 100vw, 700px",
+                          classe=classe.group(1) if classe else "")
+
+    corps = IMG_HTML.sub(image, corps)
+    corps = re.sub(r"<(/?)h1\b", r"<\1h2", corps)
+    texte = re.sub(r"<(style|script)\b.*?</\1>", " ", corps, flags=re.S)
+    a.mots = len(html.unescape(re.sub(r"<[^>]+>", " ", texte)).split())
+    a.lecture = max(1, round(a.mots / 200))
+    return corps
+
+
 def rendre_texte(a, dossier_sortie, url_dossier, erreurs):
+    if a.corps_html:
+        return rendre_html(a, dossier_sortie, url_dossier, erreurs)
     compteur = 0
 
     def image(m):
@@ -440,17 +479,23 @@ def page_article(a, publies, habillage, apercu):
         aussi = ('<section class="band"><div class="wrap"><h2 class="center">À lire aussi</h2>'
                  '<div class="bcards">' + "".join(carte(b, "h3") for b in lies) + "</div></div></section>")
 
+    titre_h1 = e(a.titre)
+    if a.surligne and e(a.surligne) in titre_h1:
+        titre_h1 = titre_h1.replace(e(a.surligne), f"<mark>{e(a.surligne)}</mark>", 1)
+    if a.corps_html:
+        texte = f'<div class="briche">\n{a.corps}\n</div>\n<div class="bpost narrow">'
+    else:
+        texte = f'<div class="bpost narrow">\n{a.corps}'
     couverture = balise_img(a.image, a.couverture_alt, "(max-width: 960px) 100vw, 920px",
                             classe="bcover", paresseuse=False, pin=a.url_pin)
     contenu = f"""{bandeau}<article class="bpost-page">
 <header class="bhead narrow">
  <p class="bcrumb">{fil}</p>
- <h1>{e(a.titre)}</h1>
+ <h1>{titre_h1}</h1>
  <p class="bmeta"><time datetime="{a.date.isoformat()}">{date_fr(a.date)}</time> · {a.lecture} min de lecture · par <a href="/apropos/">Camélia</a>{maj}</p>
 </header>
 <div class="bcover-wrap">{couverture}</div>
-<div class="bpost narrow">
-{a.corps}
+{texte}
 {f'<p class="bthemes">{themes}</p>' if themes else ""}
 {AUTRICE}
 </div>
@@ -473,6 +518,8 @@ def page_article(a, publies, habillage, apercu):
     extra = (f'<meta property="article:published_time" content="{horodatage(a.date).isoformat()}">'
              f'<meta property="article:modified_time" content="{horodatage(a.maj).isoformat()}">'
              '<meta name="author" content="Camélia Nguyen">')
+    if a.style:
+        extra += f'<link rel="stylesheet" href="{a.chemin}{a.slug}.css">'
     return page(habillage, f"{a.titre} · Papier Pivoine", a.description, a.url, contenu,
                 image=a.url_partage, type_og="article", jsonld=jsonld, noindex=apercu, extra_head=extra)
 
@@ -621,6 +668,8 @@ def construire(entree, sortie, erreurs):
             en_jpeg(ouvrir_image(a.dossier / a.pin), 1000, a.fichier_pin)
             a.url_pin = f"{a.url}{a.fichier_pin.name}"
         a.corps = rendre_texte(a, dossier, a.chemin, erreurs)
+        if a.style and (a.dossier / a.style).exists():
+            shutil.copy2(a.dossier / a.style, dossier / f"{a.slug}.css")
 
     # thèmes : {slug: (nom affiché, [articles])}, le nom vient de l'article le plus récent
     themes = {}
