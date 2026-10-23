@@ -410,9 +410,9 @@ def verifier(pages):
             if "La lettre, gratuite</a>" not in nav:
                 erreurs.append(f"{page.relative_to(SORTIE)} : « La lettre, gratuite » absent de la barre du haut")
 
-    activites = (SORTIE / "activites" / "index.html").read_text(encoding="utf-8")
-    if est_redirection(activites) or "noindex" in activites:
-        erreurs.append("/activites/ n'est plus une vraie page indexable (elle doit rester en ligne)")
+    for nom in PAGES_GARDEES:
+        if a_remettre(SORTIE / nom / "index.html"):
+            erreurs.append(f"/{nom}/ n'est plus une vraie page indexable (elle doit rester en ligne)")
     for page in pages:
         for nav in NAV_HAUT.findall(page.read_text(encoding="utf-8")):
             if 'href="/activites/"' in nav:
@@ -510,55 +510,71 @@ def ecrire_llms():
     (SORTIE / "llms.txt").write_text(texte, encoding="utf-8")
 
 
-# /activites/ (carnets d'activités) : la page reste en ligne et dans Google, mais hors du
-# menu (accord de Camélia, 2026-10-23). Le paquet du 19 octobre l'avait remplacée par une
-# redirection vers l'accueil, sans qu'elle l'ait demandé : si un paquet recommence, on remet
-# la page gardée dans ajouts/activites/, avec l'en-tête et le pied de page actuels du site
-# (repris de /apropos/), et les anciennes adresses /saisons-tranquilles/ et
-# /batterie-faible/ y mènent de nouveau.
-ACTIVITES = Path(__file__).resolve().parent.parent / "ajouts" / "activites"
+# Pages gardées en ligne et dans Google, même si un paquet les retire (accord de Camélia,
+# 2026-10-23). Le paquet du 19 octobre avait, sans qu'elle l'ait demandé :
+#   · remplacé /activites/ par une redirection vers l'accueil (elle voulait seulement
+#     la retirer du menu) ;
+#   · remplacé /et-si/ et /le-cocon-dautomne/ par « nouvelle édition en préparation » (noindex).
+# Si un paquet recommence, la page gardée dans ajouts/pages-gardees/ est remise. /activites/
+# reçoit l'en-tête et le pied de page actuels du site (repris de /apropos/) ; les deux pages
+# produit ont leur propre mise en page et restent telles quelles.
+GARDEES = Path(__file__).resolve().parent.parent / "ajouts" / "pages-gardees"
+PAGES_GARDEES = {"activites": True, "et-si": False, "le-cocon-dautomne": False}  # True : habillage du site
+ANCIENNES_ADRESSES = ("saisons-tranquilles", "batterie-faible")              # mènent à /activites/
 EN_TETE = re.compile(r'<a class="skip".*?</header>', re.S)
 PIED = re.compile(r'<footer class="site">.*?</footer>', re.S)
 
 
-def garder_activites():
-    page = SORTIE / "activites" / "index.html"
+def a_remettre(chemin):
+    if not chemin.exists():
+        return True
+    html_page = chemin.read_text(encoding="utf-8")
+    return est_redirection(html_page) or re.search(r'<meta name="robots" content="[^"]*noindex', html_page)
+
+
+def garder_pages():
     faits = []
-    if not page.exists() or est_redirection(page.read_text(encoding="utf-8")):
-        gardee = (ACTIVITES / "activites.html").read_text(encoding="utf-8")
-        modele = (SORTIE / "apropos" / "index.html").read_text(encoding="utf-8")
-        haut, bas = EN_TETE.search(modele), PIED.search(modele)
-        if not (haut and bas and EN_TETE.search(gardee) and PIED.search(gardee)):
-            erreurs.append("/activites/ : en-tête ou pied de page introuvable pour remettre la page gardée")
-            return
-        haut = haut.group(0).replace(' aria-current="page"', "").replace(" aria-current=page", "")
-        gardee = EN_TETE.sub(lambda m: haut, gardee, count=1)
-        gardee = PIED.sub(lambda m: bas.group(0), gardee, count=1)
+    modele = (SORTIE / "apropos" / "index.html").read_text(encoding="utf-8")
+    for nom, habiller in PAGES_GARDEES.items():
+        page = SORTIE / nom / "index.html"
+        if not a_remettre(page):
+            continue
+        gardee = (GARDEES / f"{nom}.html").read_text(encoding="utf-8")
+        if habiller:
+            haut, bas = EN_TETE.search(modele), PIED.search(modele)
+            if not (haut and bas and EN_TETE.search(gardee) and PIED.search(gardee)):
+                erreurs.append(f"/{nom}/ : en-tête ou pied de page introuvable pour remettre la page gardée")
+                continue
+            haut = haut.group(0).replace(' aria-current="page"', "").replace(" aria-current=page", "")
+            gardee = EN_TETE.sub(lambda m: haut, gardee, count=1)
+            gardee = PIED.sub(lambda m: bas.group(0), gardee, count=1)
         page.parent.mkdir(parents=True, exist_ok=True)
         page.write_text(gardee, encoding="utf-8")
-        faits.append("page remise")
-    for nom in ("saisons-tranquilles", "batterie-faible"):
+        faits.append(f"/{nom}/ remise")
+    for nom in ANCIENNES_ADRESSES:
         cible = SORTIE / nom / "index.html"
         if not cible.exists() or "/activites/" not in cible.read_text(encoding="utf-8"):
             cible.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copy2(ACTIVITES / f"{nom}.html", cible)
+            shutil.copy2(GARDEES / f"{nom}.html", cible)
             faits.append(f"/{nom}/ → /activites/")
     plan = SORTIE / "sitemap.xml"
     xml = plan.read_text(encoding="utf-8")
-    if "papierpivoine.fr/activites/</loc>" not in xml and "</urlset>" in xml:
-        plan.write_text(xml.replace("</urlset>", "  <url><loc>https://papierpivoine.fr/activites/</loc>"
-                                    "<lastmod>2026-10-23</lastmod></url>\n</urlset>"), encoding="utf-8")
-        faits.append("sitemap")
+    for nom in PAGES_GARDEES:
+        if f"papierpivoine.fr/{nom}/</loc>" not in xml and "</urlset>" in xml:
+            xml = xml.replace("</urlset>", f"  <url><loc>https://papierpivoine.fr/{nom}/</loc>"
+                                           "<lastmod>2026-10-23</lastmod></url>\n</urlset>")
+            faits.append(f"/{nom}/ dans le sitemap")
+    plan.write_text(xml, encoding="utf-8")
     if faits:
-        print("   /activites/ : " + ", ".join(faits))
+        print("   " + "\n   ".join(faits))
 
 
 def main():
     print("→ copie du site vers _site/")
     copier_le_site()
 
-    print("→ /activites/ (hors menu, gardée en ligne)")
-    garder_activites()
+    print("→ pages gardées en ligne (/activites/, /et-si/, /le-cocon-dautomne/)")
+    garder_pages()
 
     print("→ blog")
     blog_en_ligne = blog.construire(ENTREE, SORTIE, erreurs)
