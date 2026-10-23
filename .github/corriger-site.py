@@ -455,6 +455,36 @@ STYLE_RESEAUX = ("<style>.fsocial{display:flex;flex-wrap:wrap;gap:10px;justify-c
                  "@media (max-width:360px){.fsocial{gap:8px}footer .fsocial a{width:40px;height:40px}}</style>")
 
 
+# Pied de page : la phrase « Ce que tu trouves ici est une pratique douce… » prend toute la
+# largeur (1 ligne sur ordinateur au lieu de 3), au lieu de 70 caractères par ligne ; et la
+# devise « Pour celles qui ressentent tout / et se rechargent au calme. » passe à la ligne après « tout ».
+STYLE_AVERTISSEMENT = ('<style>footer.site .fsmall,footer.site p[style*="max-width:70ch"]'
+                       '{max-width:none!important}</style>')
+
+
+def elargir_avertissement(chemin):
+    html_page = chemin.read_text(encoding="utf-8")
+    # et la devise du pied de page sur deux lignes, coupée après « tout »
+    debut = html_page.rfind("<footer")
+    if debut >= 0 and "ressentent tout et se rechargent au calme" in html_page[debut:]:
+        html_page = html_page[:debut] + html_page[debut:].replace(
+            "ressentent tout et se rechargent au calme", "ressentent tout<br>et se rechargent au calme")
+        chemin.write_text(html_page, encoding="utf-8")
+    # dernière ligne du pied de page : pas de coupure au milieu d'un nom ou d'un lien
+    # (« Mentions / légales » sur iPhone 13 mini) ; elle ne passe à la ligne qu'aux « · »
+    if debut >= 0:
+        pied = html_page[debut:]
+        for groupe in ("Mentions légales", "Papier Pivoine", "Camélia Nguyen", "© 2026"):
+            pied = pied.replace(groupe, groupe.replace(" ", "\u00a0"))
+        if pied != html_page[debut:]:
+            html_page = html_page[:debut] + pied
+            chemin.write_text(html_page, encoding="utf-8")
+    if "Ce que tu trouves ici est une pratique douce" not in html_page or STYLE_AVERTISSEMENT in html_page:
+        return False
+    chemin.write_text(html_page.replace("</head>", STYLE_AVERTISSEMENT + "\n</head>", 1), encoding="utf-8")
+    return True
+
+
 def icones_reseaux(chemin):
     html_page = chemin.read_text(encoding="utf-8")
     debut = html_page.rfind("<footer")
@@ -603,11 +633,13 @@ def main():
         retouche = appliquer_retouches(page)
         menu = blog_en_ligne and ajouter_lien_blog(page)
         reseaux = icones_reseaux(page)
+        avertissement = elargir_avertissement(page)
         faits = [n for n, f in (("pinterest", pose), ("favicon", icone), ("pop-up", popup),
                                 ("menu 7 permissions", perm), ("sans débordement", bord),
                                 ("description", desc), ("place du dessin", dessin),
                                 ("mentions", legal), ("retouche", retouche),
-                                ("lien blog", menu), ("icônes réseaux", reseaux)) if f]
+                                ("lien blog", menu), ("icônes réseaux", reseaux),
+                                ("avertissement", avertissement)) if f]
         print(f"   {str(page.relative_to(SORTIE)):32} {' + '.join(faits) or 'rien à faire'}")
 
     for page in pages:

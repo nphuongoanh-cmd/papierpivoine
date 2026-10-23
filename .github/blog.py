@@ -555,8 +555,10 @@ def pages_liste(articles, themes, habillage, base, titre, description, surtitre,
             suite.append(f'<a class="btn ghost small" href="{base}page/{numero + 1}/" rel="next">Articles plus anciens →</a>')
         pagination = f'<nav class="bpages" aria-label="Pages">{"".join(suite)}</nav>' if suite else ""
         en_titre = titre if numero == 1 else f"{titre} · page {numero}"
+        # aligné à gauche comme les autres pages du site, sans dessin : la carte du
+        # premier article, juste en dessous, apporte déjà l'illustration (choix de Camélia)
         contenu = f"""<section class="bhero"><div class="wrap">
- <div class="narrow center"><p class="eyebrow">{surtitre}</p><h1>{h1}</h1><p class="lead">{e(intro)}</p></div>
+ <p class="eyebrow">{surtitre}</p><h1>{h1}</h1><p class="lead">{e(intro)}</p>
  <nav class="chips bchips" aria-label="Thèmes">{puces}</nav>
 </div></section>
 <section class="tight blist"><div class="wrap">{cartes}{pagination}</div></section>

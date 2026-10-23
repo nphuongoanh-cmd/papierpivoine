@@ -2,8 +2,10 @@
 
 /* Liste des articles */
 .bhero{padding:64px 0 24px}
+.bhero h1{max-width:16ch}
+.bhero .lead{max-width:44ch}
 .bhero .lead{margin-bottom:0}
-.bchips{justify-content:center;margin-top:30px}
+.bchips{justify-content:flex-start;margin-top:30px}
 .bchips a[aria-current=page]{background:var(--ink);border-color:var(--ink);color:var(--card)}
 .blist{padding-top:32px}
 .bcards{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
