@@ -54,7 +54,7 @@ Le fichier suit exactement cette structure :
 | Image | Où elle s'affiche | Taille à livrer |
 |---|---|---|
 | **Couverture** | en haut de l'article, sous le titre (jusqu'à 920 px de large, 620 px de haut au plus) | **2400 px de large** (1600 au minimum), en bandeau : entre 16:9 et 3:1. Fond transparent possible (le site est crème, #FCF6F2). |
-| **Vignette** (obligatoire) | les cartes de la page /blog/, « À lire aussi », et l'aperçu quand on partage le lien (Facebook, WhatsApp, Google Discover) | **1800 × 1200 px exactement (3:2)**, fond plein (pas de transparence), **d'une autre couleur que le fond du site (#FCF6F2)** : le sable clair #F7F0DE par exemple, sinon la carte se fond dans la page. Le sujet reste dans la zone centrale : la grande carte sur ordinateur recadre en 4:3, donc environ 12 % sont coupés à gauche et à droite. Pas de texte dans l'image : le titre est écrit à côté. |
+| **Vignette** (obligatoire) | les cartes de la page /blog/, « À lire aussi », et l'aperçu quand on partage le lien (Facebook, WhatsApp, Google Discover) | **1800 × 1200 px exactement (3:2)**, fond plein (pas de transparence), **d'une autre couleur que le fond du site (#FCF6F2)** : le rose clair #FBEDEA (celui du bloc de la lettre), sinon la carte se fond dans la page. Le sujet reste dans la zone centrale : la grande carte sur ordinateur recadre en 4:3, donc environ 12 % sont coupés à gauche et à droite. Pas de texte dans l'image : le titre est écrit à côté. |
 | **Épingle Pinterest** (facultatif) | quand on enregistre l'article sur Pinterest | **1000 × 1500 px (2:3)**. Peut contenir le titre en grand. |
 | **Images dans le texte** | dans l'article | 1600 px de large au plus, chacune avec un `alt` qui décrit ce qu'on voit. |
 
