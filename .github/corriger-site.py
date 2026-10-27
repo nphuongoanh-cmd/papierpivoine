@@ -50,6 +50,7 @@ avant) pour le correctif correspondant.
 """
 
 import html
+import json
 import re
 import shutil
 import sys
@@ -418,6 +419,14 @@ def verifier(pages):
             if 'href="/activites/"' in nav:
                 erreurs.append(f"{page.relative_to(SORTIE)} : /activites/ est revenue dans la barre du haut")
 
+    for page in pages:
+        for m in JSONLD.finditer(page.read_text(encoding="utf-8")):
+            try:
+                if list(_marques_incompletes(json.loads(m.group(2)))):
+                    erreurs.append(f"{page.relative_to(SORTIE)} : un produit a une marque (brand) sans type")
+            except ValueError:
+                erreurs.append(f"{page.relative_to(SORTIE)} : données Google (JSON-LD) illisibles")
+
     for essentiel in ["CNAME", "index.html", "sitemap.xml", "robots.txt"]:
         if not (SORTIE / essentiel).exists():
             erreurs.append(f"fichier essentiel manquant : {essentiel}")
@@ -607,6 +616,50 @@ def garder_pages():
         print("   " + "\n   ".join(faits))
 
 
+# Données Google (JSON-LD) : un produit dont la marque (« brand ») n'est qu'un renvoi
+# {"@id": …} est refusé par le rapport « Fiches de marchand » de la Search Console
+# (« Type d'objet non valide pour le champ brand », 2026-10-27). On écrit la marque en entier,
+# comme sur /ecriture/ : {"@type": "Brand", "name": "Papier Pivoine"}.
+JSONLD = re.compile(r'(<script type="application/ld\+json">)(.*?)(</script>)', re.S)
+MARQUE = {"@type": "Brand", "name": "Papier Pivoine"}
+
+
+def _marques_incompletes(objet):
+    if isinstance(objet, dict):
+        if isinstance(objet.get("brand"), dict) and "@type" not in objet["brand"]:
+            yield objet
+        for valeur in objet.values():
+            yield from _marques_incompletes(valeur)
+    elif isinstance(objet, list):
+        for valeur in objet:
+            yield from _marques_incompletes(valeur)
+
+
+def corriger_marque(chemin):
+    html_page = chemin.read_text(encoding="utf-8")
+    change = False
+
+    def corriger(m):
+        nonlocal change
+        try:
+            donnees = json.loads(m.group(2))
+        except ValueError:
+            return m.group(0)
+        trouves = list(_marques_incompletes(donnees))
+        if not trouves:
+            return m.group(0)
+        for produit in trouves:
+            produit["brand"] = dict(MARQUE)
+        change = True
+        texte = json.dumps(donnees, ensure_ascii=False).replace("</", "<\\/")
+        return m.group(1) + texte + m.group(3)
+
+    nouveau = JSONLD.sub(corriger, html_page)
+    if change:
+        chemin.write_text(nouveau, encoding="utf-8")
+    return change
+
+
 def main():
     print("→ copie du site vers _site/")
     copier_le_site()
@@ -634,12 +687,13 @@ def main():
         menu = blog_en_ligne and ajouter_lien_blog(page)
         reseaux = icones_reseaux(page)
         avertissement = elargir_avertissement(page)
+        marque = corriger_marque(page)
         faits = [n for n, f in (("pinterest", pose), ("favicon", icone), ("pop-up", popup),
                                 ("menu 7 permissions", perm), ("sans débordement", bord),
                                 ("description", desc), ("place du dessin", dessin),
                                 ("mentions", legal), ("retouche", retouche),
                                 ("lien blog", menu), ("icônes réseaux", reseaux),
-                                ("avertissement", avertissement)) if f]
+                                ("avertissement", avertissement), ("marque Google", marque)) if f]
         print(f"   {str(page.relative_to(SORTIE)):32} {' + '.join(faits) or 'rien à faire'}")
 
     for page in pages:
