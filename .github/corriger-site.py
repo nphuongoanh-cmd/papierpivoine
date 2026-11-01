@@ -207,6 +207,8 @@ DESCRIPTIONS = {
     # 1er novembre 2026 : les pages des carnets
     "activites/index.html": "Le cocon d’automne, Mon cocon d’hiver et ET SI… ? : des carnets d’activités pour "
                             "les femmes hypersensibles. Écrire, colorier, jouer, sans rien à réussir.",
+    "le-cocon-dautomne/index.html": "Le cocon d’automne, nouvelle édition : un carnet bien-être et anti-stress "
+                                    "pour femmes hypersensibles. Écrire, colorier, jouer, dans l’ordre que tu veux.",
     "et-si/index.html": "Un cahier d’activités pour les femmes qui pensent trop : des pages d’écriture, des jeux "
                         "et des coloriages pour sortir les « et si… » de ta tête.",
 }
@@ -267,6 +269,10 @@ RETOUCHES = [
     ("confidentialite/index.html",
      " Sur la page À propos, le formulaire de contact est affiché par Tally, qui applique sa propre politique de confidentialité.",
      ""),
+    # titre court du Cocon d'automne (97 caractères dans le paquet du 1er novembre)
+    ("le-cocon-dautomne/index.html",
+     "<title>Le cocon d’automne · carnet bien-être pour femmes hypersensibles et introverties · Papier Pivoine</title>",
+     "<title>Le cocon d’automne · carnet bien-être pour hypersensibles</title>"),
     # titre court de l'accueil (≤ 55 caractères, accord du 2026-10-19)
     ("index.html", "<title>Écriture douce pour hypersensibles et introverties · Papier Pivoine</title>",
      "<title>Écriture douce pour hypersensibles · Papier Pivoine</title>"),
@@ -348,6 +354,41 @@ def remettre_formulaire(chemin):
         return False
     bloc = FORMULAIRE.read_text(encoding="utf-8").split("-->\n", 1)[1].rstrip("\n")
     chemin.write_text(TALLY.sub(lambda m: bloc, html_page, count=1), encoding="utf-8")
+    return True
+
+
+# Polices : le site héberge ses polices (pas d'appel à Google, comme promis sur la page
+# confidentialité). Une page qui demande Fraunces, Nunito Sans ou Caveat à Google Fonts
+# (Cocon d'automne du 1er novembre) reçoit à la place les fichiers du site.
+GOOGLE_FONTS = re.compile(r'<link rel="preconnect" href="https://fonts\.(?:googleapis|gstatic)\.com"[^>]*>\s*'
+                          r'|<link href="https://fonts\.googleapis\.com/css2\?([^"]*)" rel="stylesheet">')
+POLICES_DU_SITE = {"Fraunces", "Nunito Sans", "Caveat"}
+POLICES_LOCALES = (
+    '<link rel="preload" href="/assets/pp-2026/fonts/Fraunces.woff2" as="font" type="font/woff2" crossorigin>'
+    '<link rel="preload" href="/assets/pp-2026/fonts/NunitoSans.woff2" as="font" type="font/woff2" crossorigin>'
+    '<link rel="preload" href="/assets/pp-2026/fonts/Caveat.woff2" as="font" type="font/woff2" crossorigin>'
+    "<style>"
+    "@font-face{font-family:'Fraunces';src:url('/assets/pp-2026/fonts/Fraunces.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}"
+    "@font-face{font-family:'Fraunces';src:url('/assets/pp-2026/fonts/Fraunces-Italic.woff2') format('woff2');font-weight:100 900;font-style:italic;font-display:swap}"
+    "@font-face{font-family:'Nunito Sans';src:url('/assets/pp-2026/fonts/NunitoSans.woff2') format('woff2');font-weight:200 1000;font-display:swap}"
+    "@font-face{font-family:'Caveat';src:url('/assets/pp-2026/fonts/Caveat.woff2') format('woff2');font-weight:400 700;font-display:swap}"
+    "</style>"
+)
+
+
+def polices_locales(chemin):
+    html_page = chemin.read_text(encoding="utf-8")
+    if "fonts.googleapis" not in html_page:
+        return False
+    demandees = set()
+    for m in GOOGLE_FONTS.finditer(html_page):
+        if m.group(1):
+            demandees |= {f.split(":")[0].replace("+", " ") for f in re.findall(r"family=([^&]+)", m.group(1))}
+    if not demandees or not demandees <= POLICES_DU_SITE:
+        return False  # police que le site n'a pas : la vérification bloque la publication
+    nouveau = GOOGLE_FONTS.sub("", html_page)
+    nouveau = nouveau.replace("</head>", POLICES_LOCALES + "\n</head>", 1)
+    chemin.write_text(nouveau, encoding="utf-8")
     return True
 
 
@@ -573,8 +614,8 @@ def ecrire_llms():
 # 2026-10-23). Le paquet du 19 octobre avait, sans qu'elle l'ait demandé, remplacé /activites/
 # par une redirection vers l'accueil, et /et-si/ et /le-cocon-dautomne/ par « nouvelle édition
 # en préparation » (noindex). Si un paquet recommence, la page gardée dans ajouts/pages-gardees/
-# est remise. Versions gardées : /activites/ et /et-si/ du 1er novembre 2026 (les carnets,
-# « Carnets » dans le menu), /le-cocon-dautomne/ d'avant le 19 octobre (en attendant la nouvelle).
+# est remise. Versions gardées : /activites/, /et-si/ et /le-cocon-dautomne/ du 1er novembre
+# 2026 (les carnets, nouvelles éditions, « Carnets » dans le menu).
 # /activites/ reçoit l'en-tête et le pied de page actuels du site (repris de /apropos/) ;
 # les pages produit ont leur propre mise en page et restent telles quelles.
 GARDEES = Path(__file__).resolve().parent.parent / "ajouts" / "pages-gardees"
@@ -691,6 +732,7 @@ def main():
         icone = ajouter_favicon(page)
         popup = ajouter_popup(page, bloc)
         menu_ok = regler_menu(page)
+        polices = polices_locales(page)
         formulaire = remettre_formulaire(page)
         bord = ajouter_anti_debord(page)
         desc = raccourcir_description(page)
@@ -702,7 +744,7 @@ def main():
         avertissement = elargir_avertissement(page)
         marque = corriger_marque(page)
         faits = [n for n, f in (("pinterest", pose), ("favicon", icone), ("pop-up", popup),
-                                ("menu", menu_ok), ("formulaire de contact", formulaire), ("sans débordement", bord),
+                                ("menu", menu_ok), ("polices du site", polices), ("formulaire de contact", formulaire), ("sans débordement", bord),
                                 ("description", desc), ("place du dessin", dessin),
                                 ("mentions", legal), ("retouche", retouche),
                                 ("lien blog", menu), ("icônes réseaux", reseaux),
