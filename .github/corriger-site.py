@@ -195,8 +195,8 @@ def ajouter_anti_debord(chemin):
 # est coupée dans les résultats). Accord de Camélia du 2026-10-19. Remplacent
 # celles des paquets, pour la recherche (description) et le partage (og:).
 DESCRIPTIONS = {
-    "index.html": "Exercices d’écriture douce pour femmes hypersensibles et introverties : "
-                  "une lettre gratuite chaque mois, une semaine offerte et Mental Léger.",
+    "index.html": "Exercices d’écriture douce pour hypersensibles et introverties : une newsletter "
+                  "gratuite, une semaine offerte, Mental Léger et des carnets d’activités.",
     "7-permissions-pivoine/index.html": "Les sept petites permissions de Papier Pivoine : Poser, Intimité, "
                                         "Vérité, Observer, Imperfection, Nature, Émerveillement. "
                                         "Pour chaque page que tu écris.",
@@ -204,6 +204,13 @@ DESCRIPTIONS = {
                           "qui l’accompagnent et pourquoi elle a choisi l’écriture douce.",
     "newsletter/index.html": "Une lettre douce le premier dimanche du mois : un thème de saison, un exercice "
                              "d’écriture, les nouvelles de Camélia. En cadeau, une semaine offerte.",
+    # 1er novembre 2026 : les pages des carnets
+    "activites/index.html": "Le cocon d’automne, Mon cocon d’hiver et ET SI… ? : des carnets d’activités pour "
+                            "les femmes hypersensibles. Écrire, colorier, jouer, sans rien à réussir.",
+    "le-cocon-dautomne/index.html": "Le cocon d’automne, nouvelle édition : un carnet bien-être et anti-stress "
+                                    "pour femmes hypersensibles. Écrire, colorier, jouer, dans l’ordre que tu veux.",
+    "et-si/index.html": "Un cahier d’activités pour les femmes qui pensent trop : des pages d’écriture, des jeux "
+                        "et des coloriages pour sortir les « et si… » de ta tête.",
 }
 
 
@@ -255,6 +262,20 @@ def reserver_dessin_semaine_offerte(chemin):
 RETOUCHES = [
     ("apropos/index.html", "ensuite je m’installe à mon bureau pour Papier Pivoine.",
      "ensuite je m’installe à mon bureau pour travailler sur Papier Pivoine."),
+    # formulaire de contact maison (Google Sheets) au lieu de Tally, depuis le 2026-10-19
+    ("confidentialite/index.html",
+     "passent par Tally, l’outil du formulaire, puis arrivent dans ma boîte mail.",
+     "sont enregistrés dans un tableau Google Sheets à mon nom et m’arrivent par e-mail (services Google)."),
+    ("confidentialite/index.html",
+     " Sur la page À propos, le formulaire de contact est affiché par Tally, qui applique sa propre politique de confidentialité.",
+     ""),
+    # titre court du Cocon d'automne (97 caractères dans le paquet du 1er novembre)
+    ("le-cocon-dautomne/index.html",
+     "<title>Le cocon d’automne · carnet bien-être pour femmes hypersensibles et introverties · Papier Pivoine</title>",
+     "<title>Le cocon d’automne · carnet bien-être pour hypersensibles</title>"),
+    # titre court de l'accueil (≤ 55 caractères, accord du 2026-10-19)
+    ("index.html", "<title>Écriture douce pour hypersensibles et introverties · Papier Pivoine</title>",
+     "<title>Écriture douce pour hypersensibles · Papier Pivoine</title>"),
 ]
 
 
@@ -277,6 +298,15 @@ INFOS_LEGALES = [
      "<p>Papier Pivoine<br>Camélia Nguyen, entrepreneuse individuelle (micro-entreprise)"),
     (r'<span class="todo">\[adresse postale\]</span><br>', ""),
     (r'<span class="todo">\[numéro SIRET\]</span>', "945 316 016 00019"),
+    # Mentions légales : l'hébergeur
+    (r'<span class="todo">\[hébergeur du site[^<]*</span>',
+     "GitHub, Inc. (service GitHub Pages), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, "
+     "États-Unis, github.com"),
+    # Confidentialité : statistiques et cookies (le formulaire de contact n'en dépose pas non plus)
+    (r'<span class="todo">\[à compléter[^\]]*outil de statistiques[^<]*</span>',
+     "Le site n’utilise aucun outil de statistiques ni de publicité, et ne dépose aucun cookie. Seul un "
+     "petit repère est gardé dans ton navigateur, pour ne pas te remontrer la fenêtre d’inscription à la "
+     "lettre une fois que tu l’as fermée ou que tu t’es inscrite."),
     # Confidentialité : durée de conservation dans Kit (option A)
     (r'Après ta désinscription[^<]*<span class="todo">\[à vérifier[^\]]*Kit\]</span>',
      "Si tu te désinscris, ton adresse est gardée uniquement pour ne plus t’écrire."),
@@ -294,46 +324,78 @@ def completer_mentions(chemin):
     return True
 
 
-# Barre du haut (ordinateur et menu mobile) : lien « 7 permissions PIVOINE »
-# juste avant « À propos », et « La lettre » devient « La lettre, gratuite ».
-# Fait ici pour survivre aux nouveaux paquets.
-PERMISSIONS_URL = "/7-permissions-pivoine/"
+# Barre du haut (ordinateur et menu mobile) : le menu est celui du paquet (depuis le
+# 1er novembre : Accueil · Programme d'écriture · Carnets · Semaine offerte · Newsletter ·
+# À propos), plus « Blog » (ajouté par le blog). Choix de Camélia du 2026-11-01 : « 7
+# permissions PIVOINE » reste dans le pied de page et sur l'accueil, plus dans le menu.
 NAV_HAUT = re.compile(r'<nav class="m?nav"[^>]*>.*?</nav>', re.S)
-# Six liens : sur petite tablette (701 à 920 px, menu sous le logo), on resserre
-# l'espace entre eux pour qu'ils tiennent sur une ligne ; de 701 à 760 px, le
-# texte passe aussi de 14 à 13 px.
+# Petite tablette (701 à 920 px, menu sous le logo) : l'espace entre les liens s'adapte pour
+# qu'ils tiennent sur une ligne (7 liens, 485 px de texte ; la marge de l'en-tête vaut 5 % de
+# l'écran), et jamais de retour à la ligne : avant l'arrivée de Nunito Sans, la police de
+# secours, plus large, faisait passer le menu sur deux lignes un instant (CLS 0,65).
 STYLE_MENU = ("<style>@media (min-width:701px) and (max-width:920px){nav.nav{column-gap:"
-              "clamp(12px,calc((100vw - 684px) / 5),24px)}}"
-              "@media (min-width:701px) and (max-width:760px){nav.nav,nav.nav a{font-size:13px}}"
-              # sept liens, avec « Blog » (la marge latérale de l'en-tête vaut 5 % de l'écran)
-              "@media (min-width:701px) and (max-width:920px){nav.nav:has(a[href=\"/blog/\"]){column-gap:"
-              "clamp(12px,calc((90vw - 628px) / 6),24px)}}"
-              "@media (min-width:701px) and (max-width:777px){nav.nav:has(a[href=\"/blog/\"]),"
-              "nav.nav:has(a[href=\"/blog/\"]) a{font-size:13px}nav.nav:has(a[href=\"/blog/\"]){column-gap:"
-              "clamp(12px,calc((90vw - 584px) / 6),24px)}}"
-              "@media (min-width:701px) and (max-width:728px){nav.nav:has(a[href=\"/blog/\"]),"
-              "nav.nav:has(a[href=\"/blog/\"]) a{font-size:12.5px}nav.nav:has(a[href=\"/blog/\"]){column-gap:10px}}"
-              # jamais deux lignes : avant l'arrivée de Nunito Sans, la police de secours, plus large,
-              # faisait passer le menu sur deux lignes un instant, et toute la page sautait (CLS 0,65)
-              "@media (min-width:701px) and (max-width:920px){nav.nav{flex-wrap:nowrap}}</style>")
+              "clamp(12px,calc((90vw - 500px) / 6),24px);flex-wrap:nowrap}}</style>")
 # Nunito Sans chargée en priorité sur les pages qui l'utilisent pour le menu
 PRECHARGE_NUNITO = '<link rel="preload" href="/assets/pp-2026/fonts/NunitoSans.woff2" as="font" type="font/woff2" crossorigin>'
 
 
-def ajouter_lien_permissions(chemin):
+# Formulaire de contact de /apropos/ : le formulaire maison (Google Sheets + Apps Script,
+# ajouts/contact/) remplace le formulaire Tally si un paquet le ramène (paquet du 1er novembre).
+FORMULAIRE = Path(__file__).resolve().parent.parent / "ajouts" / "contact" / "formulaire.html"
+TALLY = re.compile(r'<div class="contact-form"><iframe[^>]*tally\.so.*?</iframe></div>\s*'
+                   r'<script async src="https://tally\.so/widgets/embed\.js"></script>', re.S)
+
+
+def remettre_formulaire(chemin):
+    if str(chemin.relative_to(SORTIE)) != "apropos/index.html":
+        return False
+    html_page = chemin.read_text(encoding="utf-8")
+    if not TALLY.search(html_page):
+        return False
+    bloc = FORMULAIRE.read_text(encoding="utf-8").split("-->\n", 1)[1].rstrip("\n")
+    chemin.write_text(TALLY.sub(lambda m: bloc, html_page, count=1), encoding="utf-8")
+    return True
+
+
+# Polices : le site héberge ses polices (pas d'appel à Google, comme promis sur la page
+# confidentialité). Une page qui demande Fraunces, Nunito Sans ou Caveat à Google Fonts
+# (Cocon d'automne du 1er novembre) reçoit à la place les fichiers du site.
+GOOGLE_FONTS = re.compile(r'<link rel="preconnect" href="https://fonts\.(?:googleapis|gstatic)\.com"[^>]*>\s*'
+                          r'|<link href="https://fonts\.googleapis\.com/css2\?([^"]*)" rel="stylesheet">')
+POLICES_DU_SITE = {"Fraunces", "Nunito Sans", "Caveat"}
+POLICES_LOCALES = (
+    '<link rel="preload" href="/assets/pp-2026/fonts/Fraunces.woff2" as="font" type="font/woff2" crossorigin>'
+    '<link rel="preload" href="/assets/pp-2026/fonts/NunitoSans.woff2" as="font" type="font/woff2" crossorigin>'
+    '<link rel="preload" href="/assets/pp-2026/fonts/Caveat.woff2" as="font" type="font/woff2" crossorigin>'
+    "<style>"
+    "@font-face{font-family:'Fraunces';src:url('/assets/pp-2026/fonts/Fraunces.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}"
+    "@font-face{font-family:'Fraunces';src:url('/assets/pp-2026/fonts/Fraunces-Italic.woff2') format('woff2');font-weight:100 900;font-style:italic;font-display:swap}"
+    "@font-face{font-family:'Nunito Sans';src:url('/assets/pp-2026/fonts/NunitoSans.woff2') format('woff2');font-weight:200 1000;font-display:swap}"
+    "@font-face{font-family:'Caveat';src:url('/assets/pp-2026/fonts/Caveat.woff2') format('woff2');font-weight:400 700;font-display:swap}"
+    "</style>"
+)
+
+
+def polices_locales(chemin):
+    html_page = chemin.read_text(encoding="utf-8")
+    if "fonts.googleapis" not in html_page:
+        return False
+    demandees = set()
+    for m in GOOGLE_FONTS.finditer(html_page):
+        if m.group(1):
+            demandees |= {f.split(":")[0].replace("+", " ") for f in re.findall(r"family=([^&]+)", m.group(1))}
+    if not demandees or not demandees <= POLICES_DU_SITE:
+        return False  # police que le site n'a pas : la vérification bloque la publication
+    nouveau = GOOGLE_FONTS.sub("", html_page)
+    nouveau = nouveau.replace("</head>", POLICES_LOCALES + "\n</head>", 1)
+    chemin.write_text(nouveau, encoding="utf-8")
+    return True
+
+
+def regler_menu(chemin):
+    """Menu sur une ligne sur petite tablette, et Nunito Sans chargée en priorité."""
     html = chemin.read_text(encoding="utf-8")
-    courant = ' aria-current="page"' if chemin.parent.name == PERMISSIONS_URL.strip("/") else ""
-    lien = f'<a href="{PERMISSIONS_URL}"{courant}>7 permissions PIVOINE</a>'
-
-    def poser(m):
-        nav = re.sub(r'(<a href="/newsletter/"[^>]*>)La lettre</a>', r"\1La lettre, gratuite</a>", m.group(0))
-        if f'href="{PERMISSIONS_URL}"' in nav:
-            return nav
-        i = nav.find('<a href="/apropos/"')
-        i = i if i >= 0 else nav.rfind("</nav>")
-        return nav[:i] + lien + nav[i:]
-
-    nouveau = NAV_HAUT.sub(poser, html)
+    nouveau = html
     if '<nav class="nav"' in nouveau and STYLE_MENU not in nouveau:
         nouveau = nouveau.replace("</head>", STYLE_MENU + "\n</head>", 1)
     if "/assets/pp-2026/site.css" in nouveau and PRECHARGE_NUNITO not in nouveau:
@@ -403,21 +465,12 @@ def verifier(pages):
         if "fonts.googleapis" in html:
             erreurs.append(f"{nom} : Google Fonts est chargé (le site héberge ses polices)")
 
-    # barre du haut : le lien « 7 permissions PIVOINE » dans chaque menu
-    for page in pages:
-        for nav in NAV_HAUT.findall(page.read_text(encoding="utf-8")):
-            if f'href="{PERMISSIONS_URL}"' not in nav:
-                erreurs.append(f"{page.relative_to(SORTIE)} : lien 7 permissions absent de la barre du haut")
-            if "La lettre, gratuite</a>" not in nav:
-                erreurs.append(f"{page.relative_to(SORTIE)} : « La lettre, gratuite » absent de la barre du haut")
-
     for nom in PAGES_GARDEES:
         if a_remettre(SORTIE / nom / "index.html"):
             erreurs.append(f"/{nom}/ n'est plus une vraie page indexable (elle doit rester en ligne)")
-    for page in pages:
-        for nav in NAV_HAUT.findall(page.read_text(encoding="utf-8")):
-            if 'href="/activites/"' in nav:
-                erreurs.append(f"{page.relative_to(SORTIE)} : /activites/ est revenue dans la barre du haut")
+    apropos = (SORTIE / "apropos" / "index.html").read_text(encoding="utf-8")
+    if 'id="cf"' not in apropos or "tally.so" in apropos:
+        erreurs.append("apropos/index.html : le formulaire de contact maison n'y est plus (Tally revenu ?)")
 
     for page in pages:
         for m in JSONLD.finditer(page.read_text(encoding="utf-8")):
@@ -558,13 +611,13 @@ def ecrire_llms():
 
 
 # Pages gardées en ligne et dans Google, même si un paquet les retire (accord de Camélia,
-# 2026-10-23). Le paquet du 19 octobre avait, sans qu'elle l'ait demandé :
-#   · remplacé /activites/ par une redirection vers l'accueil (elle voulait seulement
-#     la retirer du menu) ;
-#   · remplacé /et-si/ et /le-cocon-dautomne/ par « nouvelle édition en préparation » (noindex).
-# Si un paquet recommence, la page gardée dans ajouts/pages-gardees/ est remise. /activites/
-# reçoit l'en-tête et le pied de page actuels du site (repris de /apropos/) ; les deux pages
-# produit ont leur propre mise en page et restent telles quelles.
+# 2026-10-23). Le paquet du 19 octobre avait, sans qu'elle l'ait demandé, remplacé /activites/
+# par une redirection vers l'accueil, et /et-si/ et /le-cocon-dautomne/ par « nouvelle édition
+# en préparation » (noindex). Si un paquet recommence, la page gardée dans ajouts/pages-gardees/
+# est remise. Versions gardées : /activites/, /et-si/ et /le-cocon-dautomne/ du 1er novembre
+# 2026 (les carnets, nouvelles éditions, « Carnets » dans le menu).
+# /activites/ reçoit l'en-tête et le pied de page actuels du site (repris de /apropos/) ;
+# les pages produit ont leur propre mise en page et restent telles quelles.
 GARDEES = Path(__file__).resolve().parent.parent / "ajouts" / "pages-gardees"
 PAGES_GARDEES = {"activites": True, "et-si": False, "le-cocon-dautomne": False}  # True : habillage du site
 ANCIENNES_ADRESSES = ("saisons-tranquilles", "batterie-faible")              # mènent à /activites/
@@ -678,7 +731,9 @@ def main():
         pose = injecter_pinterest(page)
         icone = ajouter_favicon(page)
         popup = ajouter_popup(page, bloc)
-        perm = ajouter_lien_permissions(page)
+        menu_ok = regler_menu(page)
+        polices = polices_locales(page)
+        formulaire = remettre_formulaire(page)
         bord = ajouter_anti_debord(page)
         desc = raccourcir_description(page)
         dessin = reserver_dessin_semaine_offerte(page)
@@ -689,7 +744,7 @@ def main():
         avertissement = elargir_avertissement(page)
         marque = corriger_marque(page)
         faits = [n for n, f in (("pinterest", pose), ("favicon", icone), ("pop-up", popup),
-                                ("menu 7 permissions", perm), ("sans débordement", bord),
+                                ("menu", menu_ok), ("polices du site", polices), ("formulaire de contact", formulaire), ("sans débordement", bord),
                                 ("description", desc), ("place du dessin", dessin),
                                 ("mentions", legal), ("retouche", retouche),
                                 ("lien blog", menu), ("icônes réseaux", reseaux),
