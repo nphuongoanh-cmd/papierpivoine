@@ -13,7 +13,8 @@ popup-lettre.html est régénéré avec, et seulement, ces ajustements :
   3. fermeture : retour à la position sans animation sur les pages en
      défilement doux (scroll-behavior: smooth) ;
   4. PAGES_SANS_POPUP : aussi /semaine-offerte/, /mental-leger/suite/, /liens/
-     (accord du 2026-10-06).
+     (accord du 2026-10-06) ;
+  5. adresse e-mail écrite en code ; 6. « Ton prénom » ; 7. « La newsletter · gratuite ».
 Le design, le texte et le reste du comportement ne sont pas touchés. Le script
 s'arrête si un repère attendu a disparu du fichier livré.
 """
@@ -91,6 +92,10 @@ def main():
     t = remplacer(t, f"<strong>{EMAIL}</strong>",
                   "<strong>" + "".join(f"&#{ord(c)};" for c in EMAIL) + "</strong>", "adresse e-mail")
 
+    # 7. « Newsletter » au lieu de « La lettre » (règle du 1er novembre 2026)
+    t = remplacer(t, '<div id="ppl-kick">La lettre · gratuite</div>',
+                  '<div id="ppl-kick">La newsletter · gratuite</div>', "surtitre de la pop-up")
+
     note = ("     Adaptation pour papierpivoine.fr (générée par adapter.py, seuls changements) :\n"
             "     · polices : les fichiers du site (/assets/fonts/) au lieu de Google Fonts,\n"
             "       sous des noms préfixés « ppl » pour ne rien mélanger avec la page ;\n"
@@ -99,6 +104,7 @@ def main():
             "     · PAGES_SANS_POPUP : aussi /semaine-offerte/, /mental-leger/suite/, /liens/.\n"
             "     · adresse e-mail écrite en code (entités HTML), comme sur les pages légales.\n"
             "     · champ prénom : exemple « Ton prénom » au lieu de « Clémence ».\n"
+            "     · surtitre : « La newsletter · gratuite » au lieu de « La lettre · gratuite ».\n"
             "     Ajouté à chaque page par .github/corriger-site.py au moment de la publication.\n")
     t = remplacer(t, "     ============================================================ -->\n",
                   note + "     ============================================================ -->\n", "en-tête")
