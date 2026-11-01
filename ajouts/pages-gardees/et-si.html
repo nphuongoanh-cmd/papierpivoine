@@ -86,16 +86,14 @@ mark{background:linear-gradient(100deg,transparent 2%,var(--sand) 4%,var(--sand)
 .hero .lead{font-size:1.16rem;max-width:30em;margin:22px 0 30px;color:#F6E6E3}
 .hero .lead .title{color:#FFF8F0}
 .hero .facts{margin-top:18px;font-size:.92rem;color:#EBCFD3}
-.cover{position:relative;justify-self:center;width:min(330px,74vw);margin-bottom:30px}
+.cover{--cw:min(330px,74vw);position:relative;justify-self:center;width:var(--cw);margin-bottom:30px}
 .cover img{border-radius:3px 6px 6px 3px;transform:rotate(-3deg);box-shadow:0 30px 60px rgba(40,10,18,.55),0 6px 14px rgba(40,10,18,.4);outline:1px solid rgba(255,255,255,.18)}
-.cover::after{content:"";position:absolute;left:0;top:0;bottom:0;width:16px;transform:rotate(-3deg);border-radius:3px 0 0 3px;background:linear-gradient(90deg,rgba(0,0,0,.35),rgba(255,255,255,.14) 45%,transparent)}
-.cover .cover-note{position:absolute;right:-10px;bottom:-66px;font-size:1.6rem;color:var(--mustard);transform:rotate(-4deg);white-space:nowrap}
-.cover .cover-note svg{position:absolute;left:-42px;top:-36px;width:44px;height:44px;color:var(--mustard)}
+.cover::after{content:"";position:absolute;left:0;top:0;bottom:0;width:16px;transform:rotate(-3deg);transform-origin:calc(var(--cw) / 2) 50%;border-radius:3px 0 0 3px;background:linear-gradient(90deg,rgba(94,33,49,.38),rgba(255,255,255,.10) 45%,transparent)}
 .edge{position:absolute;left:0;right:0;bottom:-1px;height:70px;color:var(--paper)}
 @media(min-width:900px){
   .hero{padding:36px 0 170px}
   .hero .wrap{grid-template-columns:1.15fr .85fr;gap:60px}
-  .cover{width:350px}
+  .cover{--cw:350px}
 }
 
 /* ---------- notebook page (recognition) ---------- */
@@ -239,7 +237,6 @@ footer nav a{text-decoration:underline;text-underline-offset:3px}
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="peony" viewBox="0 0 120 120"><path fill="none" stroke="#E26D5F" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" d="M62.7,49.8 C66.1,48.3 73.1,61.7 69.5,62.6 C71.8,66.2 60.0,73.3 57.4,69.7 C53.2,71.8 46.4,60.3 50.3,57.4 C49.8,53.3 61.7,47.9 62.7,51.8 M57.1,43.6 C46.3,12.7 80.5,14.0 65.0,44.5 M69.6,46.7 C81.8,18.7 103.5,44.8 74.8,52.4 M77.3,59.3 C107.0,50.6 98.2,86.2 75.1,67.9 M71.5,72.6 C98.7,90.0 68.7,109.6 64.6,76.1 M56.0,75.8 C55.5,106.4 22.2,90.6 49.0,71.4 M46.0,67.6 C19.3,88.3 11.6,52.1 44.5,60.0 M44.9,52.5 C15.6,45.7 36.2,19.9 49.7,47.0"/></symbol>
   <symbol id="arrow" viewBox="0 0 44 28"><path fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" d="M3 15 C14 13 26 14 39 14 M29 5 C33 9 36 12 40 14 C36 17 32 20 28 24"/></symbol>
-  <symbol id="curl" viewBox="0 0 60 60"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="M52 50 C36 52 20 44 18 30 C16 18 28 14 32 22 C36 30 24 36 16 30 C10 25 9 17 10 10 M4 16 C7 13 9 11 10 8 C12 11 14 13 17 15"/></symbol>
 </svg>
 
 <!-- ============ HERO ============ -->
@@ -250,7 +247,7 @@ footer nav a{text-decoration:underline;text-underline-offset:3px}
         <img src="/assets/logo-papier-pivoine.jpg" width="92" height="92" alt="">
         <span>Papier Pivoine</span>
       </a>
-      <nav aria-label="Navigation"><a href="/">Accueil</a><a href="/activites/">Carnets</a><a href="/semaine-offerte/">Semaine offerte</a><a href="/apropos/">À propos</a></nav>
+      <nav aria-label="Navigation"><a href="/">Accueil</a><a href="/activites/" aria-current="page">Carnets d’activités</a><a href="/semaine-offerte/">Semaine offerte</a><a href="/apropos/">À propos</a></nav>
     </div>
   </div>
 
@@ -266,7 +263,6 @@ footer nav a{text-decoration:underline;text-underline-offset:3px}
       <div class="cover">
         <img src="/assets/landing/et-si-2026/et-si-cahier-activites-apaiser-anxiete-couverture.webp" width="720" height="1080" fetchpriority="high"
              alt="Couverture du cahier ET SI… ?, une femme les yeux fermés sous cinq nuages « et si… ? », Papier Pivoine">
-        <p class="cover-note hand"><svg aria-hidden="true"><use href="#curl"/></svg>(Bao dort, lui.)</p>
       </div>
     </div>
     <svg class="edge" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 38 C120 22 240 50 360 40 C480 30 600 12 720 26 C840 40 960 58 1080 44 C1200 30 1320 20 1440 34 L1440 70 L0 70 Z"/></svg>
@@ -395,7 +391,7 @@ footer nav a{text-decoration:underline;text-underline-offset:3px}
 
 <footer>
   <div class="wrap">
-    <nav aria-label="Papier Pivoine"><a href="/">Accueil</a><a href="/semaine-offerte/">Semaine offerte</a><a href="/newsletter/">Newsletter</a><a href="/mentions-legales/">Mentions légales</a><a href="/confidentialite/">Confidentialité</a></nav>
+    <nav aria-label="Papier Pivoine"><a href="/">Accueil</a><a href="/activites/">Carnets d’activités</a><a href="/semaine-offerte/">Semaine offerte</a><a href="/newsletter/">Newsletter</a><a href="/mentions-legales/">Mentions légales</a><a href="/confidentialite/">Confidentialité</a></nav>
     <p>Activités de détente et de réflexion. Si tu traverses des idées sombres, le <span class="nb">3114</span> répond <span class="nb">24&nbsp;h/24</span>, gratuitement.</p>
     <p>© 2026 Papier Pivoine · Camélia Nguyen, <a href="https://papierpivoine.fr/">papierpivoine.fr</a></p>
   </div>

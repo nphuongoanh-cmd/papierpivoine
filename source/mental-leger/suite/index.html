@@ -340,8 +340,8 @@ footer.site a:hover{color:var(--peony-d)!important}
   <div class="wrap">
     <a class="brand" href="/" aria-label="Papier Pivoine, accueil"><img src="/assets/logo-papier-pivoine.jpg" width="400" height="400" alt="">Papier Pivoine</a>
     <button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mnav" onclick="var h=document.getElementById('top');var o=h.classList.toggle('open');this.setAttribute('aria-expanded',o)"><svg class="i-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M3 8h18"></path><path d="M3 16h18"></path></svg><svg class="i-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg></button>
-    <nav class="nav" aria-label="Navigation"><a href="/">Accueil</a><a href="/ecriture/">Programme d’écriture</a><a href="/activites/">Carnets</a><a href="/semaine-offerte/">Semaine offerte</a><a href="/newsletter/">Newsletter</a><a href="/apropos/">À propos</a></nav>
-    <nav class="mnav" id="mnav" aria-label="Navigation mobile"><a href="/">Accueil</a><a href="/ecriture/">Programme d’écriture</a><a href="/activites/">Carnets</a><a href="/semaine-offerte/">Semaine offerte</a><a href="/newsletter/">Newsletter</a><a href="/apropos/">À propos</a></nav>
+    <nav class="nav" aria-label="Navigation"><a href="/">Accueil</a><a href="/ecriture/">Programme d’écriture</a><a href="/activites/">Carnets d’activités</a><a href="/semaine-offerte/">Semaine offerte</a><a href="/newsletter/">Newsletter</a><a href="/apropos/">À propos</a></nav>
+    <nav class="mnav" id="mnav" aria-label="Navigation mobile"><a href="/">Accueil</a><a href="/ecriture/">Programme d’écriture</a><a href="/activites/">Carnets d’activités</a><a href="/semaine-offerte/">Semaine offerte</a><a href="/newsletter/">Newsletter</a><a href="/apropos/">À propos</a></nav>
   </div>
 </header>
 
@@ -618,6 +618,5 @@ if ('IntersectionObserver' in window) {
 var mp = document.getElementById('motPlay'), ma = document.getElementById('motAudio');
 if (mp && ma) mp.addEventListener('click', function () { if (ma.paused) ma.play(); else ma.pause(); });
 </script>
-
 </body>
 </html>
