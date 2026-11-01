@@ -330,11 +330,11 @@ def completer_mentions(chemin):
 # permissions PIVOINE » reste dans le pied de page et sur l'accueil, plus dans le menu.
 NAV_HAUT = re.compile(r'<nav class="m?nav"[^>]*>.*?</nav>', re.S)
 # Petite tablette (701 à 920 px, menu sous le logo) : l'espace entre les liens s'adapte pour
-# qu'ils tiennent sur une ligne (7 liens, 485 px de texte ; la marge de l'en-tête vaut 5 % de
+# qu'ils tiennent sur une ligne (7 liens, 552 px de texte ; la marge de l'en-tête vaut 5 % de
 # l'écran), et jamais de retour à la ligne : avant l'arrivée de Nunito Sans, la police de
 # secours, plus large, faisait passer le menu sur deux lignes un instant (CLS 0,65).
 STYLE_MENU = ("<style>@media (min-width:701px) and (max-width:920px){nav.nav{column-gap:"
-              "clamp(12px,calc((90vw - 500px) / 6),24px);flex-wrap:nowrap}}</style>")
+              "clamp(12px,calc((90vw - 566px) / 6),24px);flex-wrap:nowrap}}</style>")
 # Nunito Sans chargée en priorité sur les pages qui l'utilisent pour le menu
 PRECHARGE_NUNITO = '<link rel="preload" href="/assets/pp-2026/fonts/NunitoSans.woff2" as="font" type="font/woff2" crossorigin>'
 
@@ -400,6 +400,13 @@ def regler_menu(chemin):
         nouveau = nouveau.replace("</head>", STYLE_MENU + "\n</head>", 1)
     if "/assets/pp-2026/site.css" in nouveau and PRECHARGE_NUNITO not in nouveau:
         nouveau = nouveau.replace("</head>", PRECHARGE_NUNITO + "\n</head>", 1)
+    # pages qui déclarent elles-mêmes leur Nunito Sans (programme, suite…) : ce fichier-là.
+    # À 1024 px, logo et menu tiennent tout juste côte à côte ; avec la police de secours, le
+    # menu passait un instant sous le logo (CLS 0,21 sur /ecriture/, 1er novembre).
+    face = re.search(r"@font-face\{[^}]*Nunito Sans[^}]*url\(['\"]?(/[^'\")]+\.woff2)", nouveau)
+    if '<nav class="nav"' in nouveau and face and f'href="{face.group(1)}"' not in nouveau:
+        nouveau = nouveau.replace("</head>", f'<link rel="preload" href="{face.group(1)}" as="font" '
+                                  'type="font/woff2" crossorigin>\n</head>', 1)
     if nouveau == html:
         return False
     chemin.write_text(nouveau, encoding="utf-8")
