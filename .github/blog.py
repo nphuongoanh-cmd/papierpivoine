@@ -444,9 +444,9 @@ def carte(a, titre="h2", grande=False):
 
 BLOC_LETTRE = """<section class="tight"><div class="wrap"><div class="nl">
  <div>
-  <p class="eyebrow">La lettre · gratuite</p>
+  <p class="eyebrow">La newsletter · gratuite</p>
   <h2>Tu aimes ces mots&nbsp;? Reçois la suite</h2>
-  <p>Chaque premier dimanche du mois, je t’écris une lettre : un thème de saison, un exercice d’écriture douce de dix minutes, et mes nouvelles (Bao compris). En cadeau, tu reçois tout de suite la première semaine de Mental Léger.</p>
+  <p>Le premier dimanche du mois, je t’envoie ma newsletter : un thème de saison, un exercice d’écriture douce de dix minutes, et mes nouvelles (Bao compris). En cadeau, tu reçois tout de suite la première semaine de Mental Léger.</p>
   <a class="btn" href="/newsletter/">Recevoir ma semaine offerte</a>
   <p class="fine">C’est gratuit. Tu te désinscris en un clic, quand tu veux.</p>
  </div>
